@@ -1,0 +1,1 @@
+// Interface for implement of service
