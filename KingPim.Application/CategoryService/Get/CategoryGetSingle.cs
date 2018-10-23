@@ -26,6 +26,8 @@ namespace KingPim.Application.CategoryService.Get
                 {
                     Id = entity.Id,
                     Name = entity.Name
+                    
+                    
                 };
         }
     }
