@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KingPim.Application.ProductService.Get;
+using KingPim.Application.ProductService.Modify;
+using KingPim.Web.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KingPim.Web.Controllers
@@ -13,24 +15,36 @@ namespace KingPim.Web.Controllers
     {
         //Inject services
         private readonly IProductGetAll _productGetAll;
+        private readonly IProductGetSingle _productGetSingle;
+        private readonly IProductModifyCreate _productModifyCreate;
+        private readonly IProductModifyPut _productModifyPut;
+        private readonly IProductModifyDelete _productModifyDelete;
 
         public ProductController(
-            IProductGetAll productGetAll)
+            IProductGetAll productGetAll,
+            IProductGetSingle productGetSingle,
+            IProductModifyCreate productModifyCreate,
+            IProductModifyPut productModifyPut,
+            IProductModifyDelete productModifyDelete)
 
         {
             _productGetAll = productGetAll;
+            _productGetSingle = productGetSingle;
+            _productModifyCreate = productModifyCreate;
+            _productModifyPut = productModifyPut;
+            _productModifyDelete = productModifyDelete;
 
         }
 
-        // GET: pim/Category/
+        // GET: pim/Category/SubCategory/Product
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
             return Ok(await _productGetAll.Execute());
         }
 
-        // GET: pim/Category/1
-        /* [HttpGet("{id}")]
+        // GET: pim/Category/SubCategory/Product/1
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct([FromRoute] int id)
         {
             var category = await _productGetSingle.Execute(id);
@@ -42,33 +56,33 @@ namespace KingPim.Web.Controllers
 
             return Ok(category);
         }
-         // POST: pim/Category
+        // POST: pim/Category/SubCategory/Product
         [HttpPost]
         [ValidateModel]
-        public async Task<IActionResult> PostCategory([FromBody] CategoryModifyCreateModel category)
+        public async Task<IActionResult> PostProduct([FromBody] ProductModifyCreateModel product)
         {
 
-            await _categoryModifyCreate.Execute(category);
+            await _productModifyCreate.Execute(product);
 
-            return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
-        // PUT: pim/Category/1 , Dont work all the way
+        // PUT: pim/Category/SubCategory/Product/1 , Dont work all the way
         [HttpPut("{id}")]
         [ValidateModel]
-        public async Task<IActionResult> PutCategory([FromRoute] int id, [FromBody] CategoryModifyPutModel category)
+        public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] ProductModifyPutModel product)
         {
-            await _categoryModifyPut.Execute(category);
+            await _productModifyPut.Execute(product);
 
             return NoContent();
         }
-        // DELETE: pim/Category/1
+        // DELETE: pim/Category/SubCategory/Product/1
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory([FromRoute] int id)
+        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
         {
-            await _categoryModifyDelete.Execute(id);
+            await _productModifyDelete.Execute(id);
 
             return NoContent();
-        } */
+        }
 
     }
 }

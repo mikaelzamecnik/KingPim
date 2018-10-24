@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-  background-color:whitesmoke!important;
+
+body {
+  background-color: whitesmoke !important;
+  font-family: 'Niramit', sans-serif!important;
 }
 #main_container {
   margin-top: 50px;

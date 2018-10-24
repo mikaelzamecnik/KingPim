@@ -1,6 +1,7 @@
 using KingPim.Application.CategoryService.Get;
 using KingPim.Application.CategoryService.Modify;
 using KingPim.Application.ProductService.Get;
+using KingPim.Application.ProductService.Modify;
 using KingPim.Application.SubCategoryService.Get;
 using KingPim.Application.SubCategoryService.Modify;
 using KingPim.Persistence;
@@ -56,6 +57,11 @@ namespace KingPim.Web
             services.AddScoped<ISubCategoryModifyDelete, SubCategoryModifyDelete>();
             //Services for Products
             services.AddScoped<IProductGetAll, ProductGetAll>();
+            services.AddScoped<IProductGetSingle, ProductGetSingle>();
+            services.AddScoped<IProductModifyCreate, ProductModifyCreate>();
+            services.AddScoped<IProductModifyPut, ProductModifyPut>();
+            services.AddScoped<IProductModifyDelete, ProductModifyDelete>();
+            
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

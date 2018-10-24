@@ -1,0 +1,26 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>SubCategory</th>
+      <th>Name</th>
+      <th>DateCreated</th>
+      <th>DateUpdated</th>
+      <th>Edited by</th>
+      <th>Version</th>
+      <th>Published</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let productInfo of productData ">
+      <td>{{ productInfo.id }}</td>
+      <td>{{ productInfo.subCategoryId }}</td>
+      <td>{{ productInfo.name }}</td>
+      <td>{{ productInfo.dateCreated }}</td>
+      <td>{{ productInfo.dateUpdated }}</td>
+      <td>{{ productInfo.editedBy }}</td>
+      <td>{{ productInfo.version }}</td>
+      <td>{{ productInfo.publishedStatus }}</td>
+    </tr>
+  </tbody>
+</table>

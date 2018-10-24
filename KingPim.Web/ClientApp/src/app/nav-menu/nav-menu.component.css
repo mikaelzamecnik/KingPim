@@ -1,5 +1,11 @@
-nav{
-  background-color:white;
-  border-bottom:dotted 1px;
+nav {
+  background-color: white;
+  border-bottom: dotted 1px;
+}
+.navbar-nav .nav-item .nav-link {
+  color: rebeccapurple;
+}
 
+.navbar-nav .nav-item:hover .nav-link {
+  color: lightblue;
 }
