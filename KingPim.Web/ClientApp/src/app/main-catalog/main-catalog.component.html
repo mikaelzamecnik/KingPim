@@ -1,22 +1,10 @@
 
-<a href="#" id="new-button">New</a>
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let categoryInfo of categoryData ">
-      <td>{{ categoryInfo.id }}</td>
-      <td>{{ categoryInfo.name }}</td>
-      
+<button href="#" class="btn btn-outline-primary" id="create_new_category">Create new category</button><br />
+<ul id="list_formatter" *ngFor="let categoryInfo of categoryData ">
+  <li>{{ categoryInfo.name }}</li>
+</ul><br />
 
-      <!-- <td>
-      <a href="#" (click)="editRecord(this)">Edit</a>
-      <a href="#" (click)="deleteRecord(this)">Delete</a>
-  </td> -->
-    </tr>
-  </tbody>
-</table>
+<ul id="list_formatter" *ngFor="let subcategoryInfo of subcategoryData ">
+  <li>{{ subcategoryInfo.name }}</li>
+</ul>
+

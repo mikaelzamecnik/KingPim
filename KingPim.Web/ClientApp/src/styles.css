@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-  background-color:gold!important;
+  background-color:whitesmoke!important;
+}
+#main_container {
+  margin-top: 50px;
 }

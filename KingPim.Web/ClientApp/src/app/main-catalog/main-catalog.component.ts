@@ -12,6 +12,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MainCatalogComponent implements OnInit {
 
   @Input() categoryData: Array<any>;
+  @Input() subcategoryData: Array<any>;
 
   constructor() { }
 
