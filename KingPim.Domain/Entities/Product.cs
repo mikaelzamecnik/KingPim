@@ -9,6 +9,8 @@ namespace KingPim.Domain.Entities
         public int ProductId { get; set; }
         public int SubCategoryId { get; set; }
         public virtual SubCategory SubCategory {get;set;}
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
         public string Name { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }

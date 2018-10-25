@@ -16,20 +16,25 @@ public static void FillIfEmpty(KingPimDbContext ctx){
         ctx.SaveChanges();
     }
     if(!ctx.SubCategories.Any()){
-        ctx.SubCategories.Add(new SubCategory{Name = "Laptop", CategoryId = 1});
-        ctx.SubCategories.Add(new SubCategory{Name = "Desktop", CategoryId = 1});
-        ctx.SubCategories.Add(new SubCategory{Name = "Small", CategoryId = 2});
-        ctx.SubCategories.Add(new SubCategory{Name = "Large", CategoryId = 2});
+        ctx.SubCategories.Add(new SubCategory{Name = "Laptop"});
+        ctx.SubCategories.Add(new SubCategory{Name = "Desktop"});
+        ctx.SubCategories.Add(new SubCategory{Name = "Small"});
+        ctx.SubCategories.Add(new SubCategory{Name = "Large"});
         ctx.SaveChanges();
     }
     if(!ctx.Products.Any()){
-        ctx.Products.Add(new Product{Name = "Lenovo", SubCategoryId=1, DateCreated = DateTime.Now, 
+        ctx.Products.Add(new Product{Name = "Lenovo",CategoryId=1, SubCategoryId=1, DateCreated = DateTime.Now,
         DateUpdated = DateTime.Now, EditedBy = "Mike", Version = "v3.2", PublishedStatus = false});
-        ctx.Products.Add(new Product{Name = "IBM", SubCategoryId=1, DateCreated = DateTime.Now, 
+
+        ctx.Products.Add(new Product{Name = "IBM",CategoryId = 1,SubCategoryId =1, DateCreated = DateTime.Now,
         DateUpdated = DateTime.Now, EditedBy = "Mike", Version = "v3.2", PublishedStatus = false});
-        ctx.Products.Add(new Product{Name = "Sony", SubCategoryId=2, DateCreated = DateTime.Now, 
+
+        ctx.Products.Add(new Product{Name = "Sony",
+            CategoryId = 2, SubCategoryId =2, DateCreated = DateTime.Now,
         DateUpdated = DateTime.Now, EditedBy = "Bert", Version = "v3.2", PublishedStatus = false});
-        ctx.Products.Add(new Product{Name = "LG", SubCategoryId=2, DateCreated = DateTime.Now, 
+
+        ctx.Products.Add(new Product{Name = "LG",
+            CategoryId = 2, SubCategoryId =2, DateCreated = DateTime.Now,
         DateUpdated = DateTime.Now, EditedBy = "Bert", Version = "v3.2", PublishedStatus = false});
         ctx.SaveChanges();
     }

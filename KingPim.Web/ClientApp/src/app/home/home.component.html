@@ -1,18 +1,19 @@
 
 <div class='container-fluid' id="main_container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <app-main-catalog [categoryData]='categoryData'></app-main-catalog>
       <app-main-catalog [subcategoryData]='subcategoryData'></app-main-catalog>
     </div>
-    <div class="col-md-6">
-      <h1>Main Catalog</h1><br />
-      <app-show-all-products [productData]='productData'></app-show-all-products>
-     
+    <div class="col-md-9">
+      <h1>Catalog / Products</h1><br />
+      <app-add-edit-product (productCreated)="createOrUpdateProduct($event)" [productInfo]="currentProduct"></app-add-edit-product>
+      <app-show-all-products [productData]='productData' (editClicked)="editClicked($event)" (newClicked)="newClicked()" (recordDeleted)="deleteClicked($event)"></app-show-all-products>
+
 
 
     </div>
-    <div class="col-md-3">
+    <div class="col-md-1">
       Information
     </div>
   </div>

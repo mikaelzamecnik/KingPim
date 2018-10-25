@@ -13,9 +13,12 @@ import { ToolsComponent } from './tools/tools.component';
 import { AssetsLibraryComponent } from './assets-library/assets-library.component';
 import { CategoryDataService } from './category-data.service';
 import { SubCategoryDataService } from './sub-category-data.service';
-import { ProductDataService  } from './product-data.service';
+import { ProductDataService } from './product-data.service';
+import { DecimalPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import * as _ from 'lodash';
 import { ShowAllProductsComponent } from './show-all-products/show-all-products.component';
+import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { ShowAllProductsComponent } from './show-all-products/show-all-products.
     AccountsComponent,
     ToolsComponent,
     AssetsLibraryComponent,
-    ShowAllProductsComponent
+    ShowAllProductsComponent,
+    AddEditProductComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,7 +48,7 @@ import { ShowAllProductsComponent } from './show-all-products/show-all-products.
   providers: [
     CategoryDataService,
     SubCategoryDataService,
-    ProductDataService 
+    ProductDataService
   ],
   bootstrap: [AppComponent]
 })
