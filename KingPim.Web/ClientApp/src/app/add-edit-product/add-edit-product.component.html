@@ -3,10 +3,19 @@
   <h2 *ngIf="productInfo && productInfo.id !== undefined">Update record (ID: )</h2>
   <form>
     <div class="form-group">
-      <label for="name"></label>
-      <input type="text" id="name" [(ngModel)]="productInfo.name" [ngModelOptions]="{standalone: true}" class="form-control" />
+      <label for="name">Product Name</label>
+      <input type="text" id="name" [(ngModel)]="productInfo.name" class="form-control" />
     </div>
-    <button type="button" class="btn btn-primary" (click)="addOrUpdateProductRecord($event);">Save</button>
+    <div class="form-group">
+      <label for="subcategory"></label>
+      <select>
+        <option *ngFor="let subcategoryInfo of subcategoryData"  [(ngModel)]="productInfo.subCategoryId">
+          {{subcategoryInfo.name }}
+        </option>
+      </select>
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="addOrUpdateProductRecord($event);">{{buttonText}}</button>
 
   </form>
 </div>

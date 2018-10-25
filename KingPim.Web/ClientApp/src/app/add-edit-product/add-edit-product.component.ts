@@ -9,11 +9,10 @@ export class AddEditProductComponent implements OnInit {
   @Output() productCreated = new EventEmitter<any>();
   @Input() productInfo: any;
   public buttonText = 'Save';
-
+  @Input() subcategoryData: Array<any>;
 
   constructor() {
     this.clearProductInfo();
-    console.log(this.productInfo.name);
   }
 
   ngOnInit() {
@@ -22,8 +21,9 @@ export class AddEditProductComponent implements OnInit {
   private clearProductInfo = function () {
     // Create an empty product object
     this.productInfo = {
-      id: undefined,
-      name: '',
+      name: "",
+      
+      
     };
   };
   public addOrUpdateProductRecord = function (event) {

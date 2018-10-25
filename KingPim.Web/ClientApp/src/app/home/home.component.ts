@@ -24,11 +24,11 @@ export class HomeComponent {
     private subcategoryDataService: SubCategoryDataService,
     private productDataService: ProductDataService)
   {
-    this.currentProduct = this.setInitialValuesForProductData();
-
     categoryDataService.GetCategories().subscribe((data: any) => this.categoryData = data);
     subcategoryDataService.GetSubCategories().subscribe((data: any) => this.subcategoryData = data);
     productDataService.GetProducts().subscribe((data: any) => this.productData = data);
+
+    this.currentProduct = this.setInitialValuesForProductData();
   }
 
   private setInitialValuesForProductData() {
@@ -45,12 +45,12 @@ export class HomeComponent {
 
     if (productWithId) {
       const updateIndex = _.findIndex(this.productData, { id: productWithId.id });
-      this.productService.UpdateProduct(product).subscribe(
-        productRecord => this.productData.splice(updateIndex, 1, product)
+      this.productDataService.UpdateProduct(product).subscribe(
+        _productRecord => this.productData.splice(updateIndex, 1, product)
       );
     } else {
-      this.productService.AddProduct(product).subscribe(
-        productRecord => this.productData.push(product)
+      this.productDataService.AddProduct(product).subscribe(
+        _productRecord => this.productData.push(product)
       );
     }
 
@@ -68,7 +68,7 @@ export class HomeComponent {
   public deleteClicked(record) {
     const deleteIndex = _.findIndex(this.productData, { id: record.id });
     this.productDataService.RemoveProduct(record).subscribe(
-      result => this.productData.splice(deleteIndex, 1)
+      _result => this.productData.splice(deleteIndex, 1)
     );
   }
 
