@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KingPim.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace KingPim.Application.ProductService.Get
@@ -7,6 +8,7 @@ namespace KingPim.Application.ProductService.Get
     {
 
         public int Id { get; set; }
+        public SubCategory SubCategory { get; set; }
         public int SubCategoryId { get; set; }
         public string Name { get; set; }
         public DateTime? DateCreated { get; set; }

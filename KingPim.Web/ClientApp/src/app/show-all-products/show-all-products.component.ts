@@ -12,6 +12,7 @@ export class ShowAllProductsComponent implements OnInit {
   @Output() editClicked = new EventEmitter<any>();
   @Input() productData: Array<any>;
 
+
   constructor() { }
 
   ngOnInit() {

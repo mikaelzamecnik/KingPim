@@ -28,8 +28,8 @@ namespace KingPim.Application.ProductService.Get
                    EditedBy = c.EditedBy,
                    Version = c.Version,
                    PublishedStatus = c.PublishedStatus,
-                   CategoryId = c.Category.Name,
-                   SubCategoryId = c.SubCategory.Name
+                   SubCategory = c.SubCategory,
+
                 }).ToListAsync();
         }
     }

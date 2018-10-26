@@ -24,11 +24,10 @@ namespace KingPim.Application.ProductService.Modify
                 Id = model.Id,
                 Name = model.Name,
                 DateCreated = model.DateCreated,
-                DateUpdated = model.DateUpdated,
                 EditedBy = model.EditedBy,
                 Version = model.Version,
                 PublishedStatus = model.PublishedStatus,
-                SubCategoryId = model.SubCategoryId
+                SubCategory = model.SubCategory
             };
                 _context.Products.Add(entity);
 

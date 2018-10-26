@@ -110,8 +110,6 @@ namespace KingPim.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryId");
-
                     b.Property<DateTime?>("DateCreated");
 
                     b.Property<DateTime>("DateUpdated");
@@ -120,17 +118,13 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("ProductId");
-
                     b.Property<bool>("PublishedStatus");
 
-                    b.Property<int>("SubCategoryId");
+                    b.Property<int?>("SubCategoryId");
 
                     b.Property<string>("Version");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("SubCategoryId");
 
@@ -179,9 +173,13 @@ namespace KingPim.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CategoryID");
+
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("SubCategories");
                 });
@@ -208,15 +206,9 @@ namespace KingPim.Persistence.Migrations
 
             modelBuilder.Entity("KingPim.Domain.Entities.Product", b =>
                 {
-                    b.HasOne("KingPim.Domain.Entities.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("KingPim.Domain.Entities.SubCategory", "SubCategory")
-                        .WithMany()
-                        .HasForeignKey("SubCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("Products")
+                        .HasForeignKey("SubCategoryId");
                 });
 
             modelBuilder.Entity("KingPim.Domain.Entities.SingleAttribute", b =>
@@ -230,6 +222,13 @@ namespace KingPim.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("AttributeTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("KingPim.Domain.Entities.SubCategory", b =>
+                {
+                    b.HasOne("KingPim.Domain.Entities.Category", "Category")
+                        .WithMany("SubCategories")
+                        .HasForeignKey("CategoryID");
                 });
 #pragma warning restore 612, 618
         }

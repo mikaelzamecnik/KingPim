@@ -34,6 +34,8 @@ export class HomeComponent {
   private setInitialValuesForProductData() {
     return {
       id: undefined,
+      editedBy: "Mikael",
+      subCategoryId: this.subcategoryData
     }
   }
 
@@ -46,11 +48,11 @@ export class HomeComponent {
     if (productWithId) {
       const updateIndex = _.findIndex(this.productData, { id: productWithId.id });
       this.productDataService.UpdateProduct(product).subscribe(
-        _productRecord => this.productData.splice(updateIndex, 1, product)
+        productRecord => this.productData.splice(updateIndex, 1, product)
       );
     } else {
       this.productDataService.AddProduct(product).subscribe(
-        _productRecord => this.productData.push(product)
+        productRecord => this.productData.push(product)
       );
     }
 
@@ -68,7 +70,7 @@ export class HomeComponent {
   public deleteClicked(record) {
     const deleteIndex = _.findIndex(this.productData, { id: record.id });
     this.productDataService.RemoveProduct(record).subscribe(
-      _result => this.productData.splice(deleteIndex, 1)
+      result => this.productData.splice(deleteIndex, 1)
     );
   }
 

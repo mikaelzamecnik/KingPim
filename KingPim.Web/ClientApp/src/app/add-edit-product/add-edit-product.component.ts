@@ -8,8 +8,10 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 export class AddEditProductComponent implements OnInit {
   @Output() productCreated = new EventEmitter<any>();
   @Input() productInfo: any;
-  public buttonText = 'Save';
+  @Input() productData: Array<any>;
+  @Input() categoryData: Array<any>;
   @Input() subcategoryData: Array<any>;
+  public buttonText = 'Save';
 
   constructor() {
     this.clearProductInfo();
@@ -21,9 +23,10 @@ export class AddEditProductComponent implements OnInit {
   private clearProductInfo = function () {
     // Create an empty product object
     this.productInfo = {
-      name: "",
-      
-      
+      id: undefined,
+      date: ''
+
+
     };
   };
   public addOrUpdateProductRecord = function (event) {

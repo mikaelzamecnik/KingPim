@@ -23,18 +23,16 @@ public static void FillIfEmpty(KingPimDbContext ctx){
         ctx.SaveChanges();
     }
     if(!ctx.Products.Any()){
-        ctx.Products.Add(new Product{Name = "Lenovo",CategoryId=1, SubCategoryId=1, DateCreated = DateTime.Now,
+        ctx.Products.Add(new Product{Name = "Lenovo", SubCategoryId=1, DateCreated = DateTime.Now,
         DateUpdated = DateTime.Now, EditedBy = "Mike", Version = "v3.2", PublishedStatus = false});
 
-        ctx.Products.Add(new Product{Name = "IBM",CategoryId = 1,SubCategoryId =1, DateCreated = DateTime.Now,
+        ctx.Products.Add(new Product{Name = "IBM",SubCategoryId =2, DateCreated = DateTime.Now,
         DateUpdated = DateTime.Now, EditedBy = "Mike", Version = "v3.2", PublishedStatus = false});
 
-        ctx.Products.Add(new Product{Name = "Sony",
-            CategoryId = 2, SubCategoryId =2, DateCreated = DateTime.Now,
+        ctx.Products.Add(new Product{Name = "Sony", SubCategoryId =3, DateCreated = DateTime.Now,
         DateUpdated = DateTime.Now, EditedBy = "Bert", Version = "v3.2", PublishedStatus = false});
 
-        ctx.Products.Add(new Product{Name = "LG",
-            CategoryId = 2, SubCategoryId =2, DateCreated = DateTime.Now,
+        ctx.Products.Add(new Product{Name = "LG", SubCategoryId =4, DateCreated = DateTime.Now,
         DateUpdated = DateTime.Now, EditedBy = "Bert", Version = "v3.2", PublishedStatus = false});
         ctx.SaveChanges();
     }

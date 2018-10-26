@@ -68,11 +68,18 @@ namespace KingPim.Persistence.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    CategoryID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SubCategories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SubCategories_Categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -101,31 +108,23 @@ namespace KingPim.Persistence.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ProductId = table.Column<int>(nullable: false),
-                    SubCategoryId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: true),
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     EditedBy = table.Column<string>(nullable: true),
                     Version = table.Column<string>(nullable: true),
-                    PublishedStatus = table.Column<bool>(nullable: false)
+                    PublishedStatus = table.Column<bool>(nullable: false),
+                    SubCategoryId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Products_SubCategories_SubCategoryId",
                         column: x => x.SubCategoryId,
                         principalTable: "SubCategories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -201,11 +200,6 @@ namespace KingPim.Persistence.Migrations
                 column: "SubCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
-                table: "Products",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Products_SubCategoryId",
                 table: "Products",
                 column: "SubCategoryId");
@@ -219,6 +213,11 @@ namespace KingPim.Persistence.Migrations
                 name: "IX_SingleAttributes_AttributeTypeId",
                 table: "SingleAttributes",
                 column: "AttributeTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubCategories_CategoryID",
+                table: "SubCategories",
+                column: "CategoryID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -245,10 +244,10 @@ namespace KingPim.Persistence.Migrations
                 name: "AttributeTypes");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "SubCategories");
 
             migrationBuilder.DropTable(
-                name: "SubCategories");
+                name: "Categories");
         }
     }
 }

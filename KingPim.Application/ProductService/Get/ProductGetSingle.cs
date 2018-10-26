@@ -32,7 +32,7 @@ namespace KingPim.Application.ProductService.Get
                 EditedBy = entity.EditedBy,
                 Version = entity.Version,
                 PublishedStatus = entity.PublishedStatus,
-                SubCategoryId = entity.SubCategoryId
+                SubCategory = entity.SubCategory
             };
         }
     }

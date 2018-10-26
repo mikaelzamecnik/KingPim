@@ -63,6 +63,8 @@ namespace KingPim.Web.Controllers
         {
 
             await _productModifyCreate.Execute(product);
+            product.DateCreated = DateTime.Now;
+            product.EditedBy = "Admin"; // Should post what user is logged in at the moment
 
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }

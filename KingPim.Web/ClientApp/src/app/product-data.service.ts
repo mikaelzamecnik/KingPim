@@ -17,16 +17,16 @@ export class ProductDataService {
   }
 
   public GetProductId(payload) {
-    return this.http.get(this.accessPointUrl + '/' + payload.Id, { headers: this.headers });
+    return this.http.get(this.accessPointUrl + '/' + payload.id, { headers: this.headers });
   }
   public AddProduct(payload) {
     return this.http.post(this.accessPointUrl, payload, { headers: this.headers });
   }
   public RemoveProduct(payload) {
-    return this.http.delete(this.accessPointUrl + '/' + payload.Id, { headers: this.headers });
+    return this.http.delete(this.accessPointUrl + '/' + payload.id, { headers: this.headers });
   }
   public UpdateProduct(payload) {
-    return this.http.put(this.accessPointUrl + '/' + payload.Id, { headers: this.headers });
+    return this.http.put(this.accessPointUrl + '/' + payload.id, { headers: this.headers });
   }
 
 }
