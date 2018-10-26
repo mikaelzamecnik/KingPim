@@ -24,7 +24,7 @@ export class AddEditProductComponent implements OnInit {
     // Create an empty product object
     this.productInfo = {
       id: undefined,
-      date: ''
+      dateAdded: ''
 
 
     };

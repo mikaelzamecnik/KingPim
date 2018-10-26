@@ -2,7 +2,6 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th>Category</th>
       <th>SubCategory</th>
       <th>Name</th>
       <th>DateCreated</th>
@@ -15,11 +14,10 @@
   <tbody>
     <tr *ngFor="let productInfo of productData ">
       <td>{{ productInfo.id }}</td>
-      <td>{{ productInfo.categoryId }}</td>
-      <td>{{ productInfo.subCategoryId }}</td>
+      <td>{{ productInfo.subCategory.name }}</td>
       <td>{{ productInfo.name }}</td>
-      <td>{{ productInfo.dateCreated | date:'yyyy-MM-dd HH:mm' }}</td>
-      <td>{{ productInfo.dateUpdated | date:'yyyy-MM-dd HH:mm' }}</td>
+      <td>{{ productInfo.dateCreated | date:'d/M/y, h:mm a' }}</td>
+      <td>{{ productInfo.dateUpdated | date:'d/M/y, h:mm a' }}</td>
       <td>{{ productInfo.editedBy }}</td>
       <td>{{ productInfo.version }}</td>
       <td>{{ productInfo.publishedStatus }}</td>

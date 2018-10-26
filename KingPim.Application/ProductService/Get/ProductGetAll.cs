@@ -28,7 +28,7 @@ namespace KingPim.Application.ProductService.Get
                    EditedBy = c.EditedBy,
                    Version = c.Version,
                    PublishedStatus = c.PublishedStatus,
-                   SubCategory = c.SubCategory,
+                   SubCategory = c.SubCategory
 
                 }).ToListAsync();
         }

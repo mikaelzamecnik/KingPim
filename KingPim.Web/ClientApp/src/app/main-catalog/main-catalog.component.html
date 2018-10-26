@@ -1,10 +1,29 @@
 
-<button href="#" class="btn btn-outline-primary" id="create_new_category">Create new category</button><br />
-<ul class="list_formatter" *ngFor="let categoryInfo of categoryData ">
-  <li>{{ categoryInfo.name }}</li>
-</ul><br />
+<!--<form>
+  <div class="form-group">
+    <label for="cat-input">Add Category</label>
+    <input type="text" id="cat-input" [(ngModel)]="categoryData.name" name="category" class="form-control" />
+  </div>
+    </form>-->
+<h6><strong>Categories</strong></h6><br />
+                                    <div>
+                                      <ul class="list_formatter" *ngFor="let categoryInfo of categoryData ">
+                                        <li>{{ categoryInfo.name }}</li>
+                                      </ul><br />
 
-<ul class="list_formatter" *ngFor="let subcategoryInfo of subcategoryData ">
-  <li>{{ subcategoryInfo.name }}</li>
-</ul>
+                                    </div>
+    
+         <!--<form>
+           <div class="form-group">
+             <label for="sub-input">Add SubCategory</label>
+             <input type="text" id="cat-input" [(ngModel)]="subCategoryInfo.name" name="sub" class="form-control" />
+           </div>
+         </form>-->
+<h6><strong>SubCategories</strong></h6><br />
+                                                  <div>
+                                                    <ul class="list_formatter" *ngFor="let subcategoryInfo of subcategoryData ">
+                                                      <li>{{ subcategoryInfo.name }}</li>
+                                                    </ul>
+                                                  </div>
+           
 

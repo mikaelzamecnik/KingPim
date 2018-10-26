@@ -8,7 +8,7 @@ public class ProductGetAllModel{
 
         public int Id { get; set; }
         public SubCategory SubCategory { get; set; }
-        public int SubCategoryId { get; set; }
+        public int? SubCategoryId { get; set; }
         public string Name { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
