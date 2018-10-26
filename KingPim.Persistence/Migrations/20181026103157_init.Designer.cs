@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KingPim.Persistence.Migrations
 {
     [DbContext(typeof(KingPimDbContext))]
-    [Migration("20181026080019_init")]
+    [Migration("20181026103157_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
