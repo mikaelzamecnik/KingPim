@@ -23,8 +23,10 @@ export class AddEditProductComponent implements OnInit {
   private clearProductInfo = function () {
     // Create an empty product object
     this.productInfo = {
-      id: undefined,
-      dateAdded: ''
+      id: null,
+      name: null,
+      dateUpdated: '',
+      dateCreated:''
 
 
     };

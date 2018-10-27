@@ -11,6 +11,7 @@ export class ShowAllProductsComponent implements OnInit {
   @Output() newClicked = new EventEmitter<any>();
   @Output() editClicked = new EventEmitter<any>();
   @Input() productData: Array<any>;
+  @Input() productInfo: any;
 
 
   constructor() { }

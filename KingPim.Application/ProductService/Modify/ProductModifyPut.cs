@@ -19,9 +19,8 @@ namespace KingPim.Application.ProductService.Modify
         public async Task Execute(ProductModifyPutModel model)
         {
             var entity = await _context.Products.SingleAsync(c => c.Id == model.Id);
-                {
 
-                entity.Id = model.Id;
+
                 entity.Name = model.Name;
                 entity.DateUpdated = model.DateUpdated;
                 entity.EditedBy = model.EditedBy;
@@ -29,11 +28,11 @@ namespace KingPim.Application.ProductService.Modify
                 entity.PublishedStatus = model.PublishedStatus;
                 entity.SubCategory = model.SubCategory;
 
-                     _context.Products.Add(entity);
+                     _context.Products.Update(entity);
 
                 await _context.SaveChangesAsync();
-                }
-               
+
+
         }
     }
 }
