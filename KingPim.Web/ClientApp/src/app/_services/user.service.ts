@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserRegistration } from '../models/user.registration.interface';
-import { ConfigService } from '../utils/config.service';
+import { UserRegistration } from '../_interfaces/user.registration.interface';
 import { BaseService } from "./base.service";
 import '../../rxjs-operators';
 import { Observable } from 'rxjs/Rx';
@@ -9,7 +8,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class UserService extends BaseService {
-  baseUrl: string = '';
+  public accessPointUrl: string = 'api';
   // Observable navItem source
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
   // Observable navItem stream
@@ -17,11 +16,10 @@ export class UserService extends BaseService {
 
   private loggedIn = false;
 
-  constructor(private http: Http, private configService: ConfigService) {
+  constructor(private http: Http) {
     super();
     this.loggedIn = !!localStorage.getItem('auth_token');
     this._authNavStatusSource.next(this.loggedIn);
-    this.baseUrl = configService.getApiURI();
   }
 
   register(email: string, password: string, firstName: string, lastName: string, location: string): Observable<UserRegistration> {
@@ -29,8 +27,8 @@ export class UserService extends BaseService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.baseUrl + "api/account", body, options)
-      .map(res => true)
+    return this.http.post(this.accessPointUrl +'/account', body, options)
+      .map(_res => true)
       .catch(this.handleError);
   }
 
@@ -38,11 +36,7 @@ export class UserService extends BaseService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    return this.http
-      .post(
-        this.baseUrl + '/auth/login',
-        JSON.stringify({ userName, password }), { headers }
-      )
+    return this.http.post(this.accessPointUrl + '/auth/login',JSON.stringify({ userName, password }), { headers } )
       .map(res => res.json())
       .map(res => {
         localStorage.setItem('auth_token', res.auth_token);

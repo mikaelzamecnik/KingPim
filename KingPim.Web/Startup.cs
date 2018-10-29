@@ -11,7 +11,6 @@ using KingPim.Application.SubCategoryService.Modify;
 using KingPim.Domain.Entities.Identity;
 using KingPim.Persistence;
 using KingPim.Web.Extensions;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -26,7 +25,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Text;
 
