@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using KingPim.Application.ProductService.Get;
 using KingPim.Application.ProductService.Modify;
 using KingPim.Web.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KingPim.Web.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     [Produces("application/json")]
     [Route("pim/Category/SubCategory/[controller]")]
     public class ProductController : Controller

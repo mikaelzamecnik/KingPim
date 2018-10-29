@@ -9,9 +9,12 @@ using KingPim.Persistence;
 using Microsoft.AspNetCore.Identity;
 using KingPim.Domain.Entities.Identity;
 using KingPim.Application.Account;
+using KingPim.Web.Helpers;
 
 namespace KingPim.Web.Controllers
 {
+
+    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly KingPimDbContext _appDbContext;
@@ -38,7 +41,7 @@ namespace KingPim.Web.Controllers
             var userIdentity = _mapper.Map<AppUser>(model);
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
-            //if (!result.Succeeded) return new BadRequestObjectResult(Error.AddErrorsToModelState(result, ModelState)); Error Wont work
+            if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
 
             await _appDbContext.Admins.AddAsync(new Admin { IdentityId = userIdentity.Id, Location = model.Location });
             await _appDbContext.Publishers.AddAsync(new Publisher { IdentityId = userIdentity.Id, Location = model.Location });

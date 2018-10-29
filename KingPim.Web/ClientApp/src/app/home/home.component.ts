@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryDataService } from './../category-data.service';
-import { SubCategoryDataService } from './../sub-category-data.service';
-import { ProductDataService } from './../product-data.service';
+import { CategoryDataService } from './../_services/category-data.service';
+import { SubCategoryDataService } from './../_services/sub-category-data.service';
+import { ProductDataService } from './../_services/product-data.service';
 import * as _ from 'lodash';
 
 @Component({
