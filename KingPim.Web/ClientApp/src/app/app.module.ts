@@ -19,8 +19,6 @@ import { DatePipe } from '@angular/common';
 import * as _ from 'lodash';
 import { ShowAllProductsComponent } from './show-all-products/show-all-products.component';
 import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
-import { RegistrationFormComponent } from './registration-form/registration-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +30,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
     ToolsComponent,
     AssetsLibraryComponent,
     ShowAllProductsComponent,
-    AddEditProductComponent,
-    RegistrationFormComponent,
-    LoginFormComponent
+    AddEditProductComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
