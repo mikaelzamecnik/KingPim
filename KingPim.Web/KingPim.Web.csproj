@@ -36,6 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\_helpers\fake-backend.ts" />
+    <None Remove="ClientApp\src\app\_helpers\fake-backend.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\KingPim.Application\KingPim.Application.csproj" />
     <ProjectReference Include="..\KingPim.Domain\KingPim.Domain.csproj" />
     <ProjectReference Include="..\KingPim.Persistence\KingPim.Persistence.csproj" />

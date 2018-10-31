@@ -1,15 +1,12 @@
 
 
 using KingPim.Domain.Entities;
-using KingPim.Domain.Entities.Identity;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace KingPim.Persistence
 {
 
-public class KingPimDbContext: IdentityDbContext<IdentityUser>
+public class KingPimDbContext: DbContext
 {
 
     public KingPimDbContext(DbContextOptions<KingPimDbContext> options):base(options) {}
@@ -23,9 +20,7 @@ public class KingPimDbContext: IdentityDbContext<IdentityUser>
     public DbSet<SingleAttribute> SingleAttributes{get;set;}
     public DbSet<SubCategory> SubCategories{get;set;}
     public DbSet<ProductAttributesValues> ProductAttributesValues{get;set;}
-        public DbSet<Admin> Admins { get; set; }
-        public DbSet<Publisher> Publishers { get; set; }
-        public DbSet<Editor> Editors { get; set; }
+    public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
