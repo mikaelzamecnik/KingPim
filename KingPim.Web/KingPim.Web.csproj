@@ -36,11 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\_helpers\error.interceptor.ts" />
-    <None Remove="ClientApp\src\app\_helpers\error.interceptor.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\KingPim.Application\KingPim.Application.csproj" />
     <ProjectReference Include="..\KingPim.Domain\KingPim.Domain.csproj" />
     <ProjectReference Include="..\KingPim.Persistence\KingPim.Persistence.csproj" />

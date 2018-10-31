@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { AlertComponent } from './_components';
-import { JwtInterceptor/*, ErrorInterceptor*/ } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { CatalogComponent } from './catalog';
 import { LoginComponent } from './login';
@@ -41,16 +41,16 @@ import { AddEditProductComponent } from './add-edit-product/add-edit-product.com
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    routing,
     HttpClientModule,
     AngularFontAwesomeModule,
-    BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    routing
+    HttpClientModule
+    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    //{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     CategoryDataService,
     SubCategoryDataService,
     ProductDataService
