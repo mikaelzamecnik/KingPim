@@ -36,8 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\_helpers\fake-backend.ts" />
-    <None Remove="ClientApp\src\app\_helpers\fake-backend.ts" />
+    <None Remove="ClientApp\src\app\_helpers\error.interceptor.ts" />
+    <None Remove="ClientApp\src\app\_helpers\error.interceptor.ts" />
   </ItemGroup>
 
   <ItemGroup>
