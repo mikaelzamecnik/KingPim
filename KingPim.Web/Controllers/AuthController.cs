@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using AutoMapper;
-using KingPim.Application.Account;
+using KingPim.Application.Account.Jwt;
 using KingPim.Application.Account.Helpers;
 using KingPim.Domain.Entities.Identity;
-using KingPim.Persistence;
 using KingPim.Web.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using KingPim.Application.Account;
 
 namespace KingPim.Web.Controllers
 {

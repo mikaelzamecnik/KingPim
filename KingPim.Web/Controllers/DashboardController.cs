@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace KingPim.Web.Controllers
 {
 
-        [Authorize(Policy = "ApiUser")]
+        [Authorize(Policy = "Admin")]
         [Route("api/[controller]/[action]")]
         public class DashboardController : Controller
         {

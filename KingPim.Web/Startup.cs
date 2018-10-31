@@ -1,7 +1,7 @@
 using AutoMapper;
 using FluentValidation.AspNetCore;
-using KingPim.Application.Account;
 using KingPim.Application.Account.Helpers;
+using KingPim.Application.Account.Jwt;
 using KingPim.Application.CategoryService.Get;
 using KingPim.Application.CategoryService.Modify;
 using KingPim.Application.ProductService.Get;
@@ -116,7 +116,7 @@ namespace KingPim.Web
             // api user claim policy
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("ApiUser", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
+                options.AddPolicy("Admin", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
             });
 
 

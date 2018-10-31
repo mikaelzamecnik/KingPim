@@ -7,7 +7,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KingPim.Application.Account
+namespace KingPim.Application.Account.Jwt
 {
     public class JwtFactory : IJwtFactory
     {

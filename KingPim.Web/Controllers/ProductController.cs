@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KingPim.Web.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+   // [Authorize(Roles = "Admin")]
     [Produces("application/json")]
     [Route("pim/Category/SubCategory/[controller]")]
     public class ProductController : Controller
