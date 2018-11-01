@@ -12,14 +12,15 @@
         </a>
       </li>
       <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <a class="nav-link" [routerLink]='["/catalog"]' (click)='collapse()'>
+          <i class="fa fa-book fa-fw"></i>ProductCatalog
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]='["link-active"]'>
         <a class="nav-link" [routerLink]='["/assets-library"]' (click)='collapse()'>
           <i class="fa fa-book fa-fw"></i>Media-Library
         </a>
       </li>
-      <li class="nav-item" [routerLinkActive]='["link-active"]'>
-        <a class="nav-link" [routerLink]='["/tools"]' (click)='collapse()'>
-          <i class="fa fa-cog fa-fw"></i>Tools
-        </a>
       <li class="nav-item" [routerLinkActive]='["link-active"]'>
         <a class="nav-link" [routerLink]='["/accounts"]' (click)='collapse()'>
           <i class="fa fa-user"></i> Accounts
@@ -28,7 +29,7 @@
         <a class="nav-item nav-link" (click)="logout()">
           Logout - {{currentUser.firstName}} {{currentUser.lastName}}
         </a>
-          
+
 
     </ul>
 

@@ -15,7 +15,6 @@ import { RegisterComponent } from './register';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { MainCatalogComponent } from './main-catalog/main-catalog.component';
 import { AccountsComponent } from './accounts/accounts.component';
-import { ToolsComponent } from './tools/tools.component';
 import { AssetsLibraryComponent } from './assets-library/assets-library.component';
 import { CategoryDataService } from './_services/category-data.service';
 import { SubCategoryDataService } from './_services/sub-category-data.service';
@@ -34,7 +33,6 @@ import { AddEditProductComponent } from './add-edit-product/add-edit-product.com
     NavMenuComponent,
     MainCatalogComponent,
     AccountsComponent,
-    ToolsComponent,
     AssetsLibraryComponent,
     ShowAllProductsComponent,
     AddEditProductComponent,
@@ -48,7 +46,7 @@ import { AddEditProductComponent } from './add-edit-product/add-edit-product.com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
-    
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
