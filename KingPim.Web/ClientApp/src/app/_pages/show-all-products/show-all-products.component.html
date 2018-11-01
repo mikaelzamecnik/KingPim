@@ -22,8 +22,8 @@
       <td>{{ productInfo.version }}</td>
       <td>{{ productInfo.publishedStatus }}</td>
       <td>
-        <a href="#" (click)="editRecord(productInfo)">Edit</a>
-        <a href="#" (click)="deleteRecord(productInfo)">Delete</a>
+        <a (click)="editRecord(productInfo)">Edit</a>
+        <a (click)="deleteRecord(productInfo)">Delete</a>
       </td>
     </tr>
   </tbody>

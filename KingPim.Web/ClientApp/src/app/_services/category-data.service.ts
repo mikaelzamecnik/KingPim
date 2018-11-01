@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Category } from '../_models';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CategoryDataService {
   private headers: HttpHeaders;
   private accessPointUrl:string = 'pim/Category/';

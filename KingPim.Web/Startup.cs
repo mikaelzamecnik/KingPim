@@ -1,5 +1,4 @@
 using AutoMapper;
-using FluentValidation.AspNetCore;
 using KingPim.Application.Account.Service;
 using KingPim.Application.CategoryService.Get;
 using KingPim.Application.CategoryService.Modify;
@@ -15,7 +14,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +21,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
-using System;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,7 +105,7 @@ namespace KingPim.Web
 
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAutoMapper();
             //Services for Categories
             services.AddScoped<ICategoryGetAll, CategoryGetAll>();
@@ -133,7 +130,7 @@ namespace KingPim.Web
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                configuration.RootPath = "ClientApp";
             });
 
         }

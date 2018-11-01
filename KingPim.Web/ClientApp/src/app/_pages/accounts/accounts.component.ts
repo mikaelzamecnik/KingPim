@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { User } from '../../_models';
+import { UserService, AuthenticationService } from '../../_services';
 
-import { User } from '../_models';
-import { UserService, AuthenticationService } from '../_services';
-
-@Component({ templateUrl: 'accounts.component.html' })
+@Component({ selector: 'app-accounts', templateUrl: 'accounts.component.html' })
 export class AccountsComponent implements OnInit, OnDestroy {
   currentUser: User;
   currentUserSubscription: Subscription;

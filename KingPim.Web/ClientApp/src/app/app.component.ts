@@ -4,7 +4,13 @@ import { User } from './_models';
 import { AuthenticationService } from './_services';
 
 
-@Component({ selector: 'app', templateUrl: 'app.component.html' })
+@Component({
+  selector: 'app',
+  template:
+ `
+<alert></alert>
+  <router-outlet></router-outlet>`
+})
 export class AppComponent {
   currentUser: User;
 

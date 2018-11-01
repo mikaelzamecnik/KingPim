@@ -9,15 +9,20 @@ import { User } from '../_models';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+    private loggedIn = new BehaviorSubject<boolean>(true);
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-        this.currentUser = this.currentUserSubject.asObservable();
-    }
+      this.currentUser = this.currentUserSubject.asObservable();
+      
+  }
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
 
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
-    }
+  }
 
     login(username: string, password: string) {
         return this.http.post<any>(`/users/authenticate`, { username, password })
