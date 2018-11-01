@@ -24,6 +24,13 @@
         <a class="nav-link" [routerLink]='["/accounts"]' (click)='collapse()'>
           <i class="fa fa-user"></i> Accounts
         </a>
+      <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <a class="nav-item nav-link" (click)="logout()">
+          Logout - {{currentUser.firstName}} {{currentUser.lastName}}
+        </a>
+          
+
     </ul>
+
   </div>
 </nav>

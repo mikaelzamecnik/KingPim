@@ -1,9 +1,24 @@
-﻿<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 7!!</p>
-<h3>All registered users:</h3>
+<!-- nav -->
+<app-nav-menu></app-nav-menu>
+<div class='container-fluid' id="main_container">
+  <div class="row">
+    <div class="col-md-2">
+      <app-main-catalog [categoryData]='categoryData' [subcategoryData]='subcategoryData'></app-main-catalog>
+    </div>
+    <div class="col-md-9">
+      <h1>Catalog / Products</h1><br />
+      <app-add-edit-product (productCreated)="createOrUpdateProduct($event)" [productInfo]="currentProduct" [productData]="productData" [categoryData]="categoryData" [subcategoryData]="subcategoryData"></app-add-edit-product>
+      <app-show-all-products [productData]='productData' [productInfo]="currentProduct" (editClicked)="editClicked($event)" (newClicked)="newClicked()" (recordDeleted)="deleteClicked($event)"></app-show-all-products>
+    </div>
+    <div class="col-md-1">
+      Information
+    </div>
+  </div>
+</div>
+<h1>User: {{currentUser.firstName}}!</h1>
 <ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.firstName}} {{user.lastName}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
+  <li *ngFor="let user of users">
+    {{user.username}} ({{user.firstName}} {{user.lastName}})
+    - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+  </li>
 </ul>

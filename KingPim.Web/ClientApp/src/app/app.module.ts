@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -44,6 +45,7 @@ import { AddEditProductComponent } from './add-edit-product/add-edit-product.com
     routing,
     HttpClientModule,
     AngularFontAwesomeModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule
     
