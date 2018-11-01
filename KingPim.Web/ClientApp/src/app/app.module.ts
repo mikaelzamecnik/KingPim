@@ -22,6 +22,7 @@ import { ProductDataService } from './_services/product-data.service';
 import * as _ from 'lodash';
 import { ShowAllProductsComponent } from './show-all-products/show-all-products.component';
 import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
+import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddEditProductComponent } from './add-edit-product/add-edit-product.com
     AssetsLibraryComponent,
     ShowAllProductsComponent,
     AddEditProductComponent,
-    CatalogComponent
+    CatalogComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

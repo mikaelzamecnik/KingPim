@@ -5,16 +5,17 @@ import { RegisterComponent } from './register';
 import { AuthGuard } from './_guards';
 
 import { CatalogComponent } from './catalog';
+import {AccountsComponent} from './accounts';
+import { DashboardComponent } from './dashboard.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'catalog', component: CatalogComponent },
 
 
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
