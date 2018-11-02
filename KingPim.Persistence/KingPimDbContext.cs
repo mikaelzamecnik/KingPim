@@ -1,5 +1,3 @@
-
-
 using KingPim.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 

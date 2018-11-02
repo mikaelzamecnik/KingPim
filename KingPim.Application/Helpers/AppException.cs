@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace KingPim.Application.Helpers
 {
-    // Custom exception class for throwing application specific exceptions (e.g. for validation) 
-    // that can be caught and handled within the application
+    // Custom exception class for throwing application specific exceptions that can be caught and handled within the application
     public class AppException : Exception
     {
         public AppException() : base() { }
@@ -14,7 +11,7 @@ namespace KingPim.Application.Helpers
         public AppException(string message) : base(message) { }
 
         public AppException(string message, params object[] args)
-            : base(String.Format(CultureInfo.CurrentCulture, message, args))
+            : base(string.Format(CultureInfo.CurrentCulture, message, args))
         {
         }
     }

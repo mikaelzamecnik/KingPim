@@ -10,13 +10,13 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace KingPim.Web.Controllers
 {
+    //Apply when app goes live
+    // [Authorize(Roles = "Admin")] 
     [Authorize]
     [ApiController]
     [Route("[controller]")]
