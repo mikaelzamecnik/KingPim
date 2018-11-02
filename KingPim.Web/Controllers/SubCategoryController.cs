@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using KingPim.Application.SubCategoryService.Get;
 using KingPim.Application.SubCategoryService.Modify;
 using KingPim.Web.Filters;
@@ -9,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KingPim.Web.Controllers
 {
-
+        //Apply when app goes live
+        // [Authorize(Roles = "Admin")] 
         [Produces("application/json")]
         [Route("pim/Category/[controller]")]
         public class SubCategoryController : Controller

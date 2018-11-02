@@ -1,0 +1,29 @@
+<div class='container-fluid' id="main_container">
+  <div class="row">
+    <div class="col-md-2">
+      <app-main-catalog [categoryData]='categoryData' [subcategoryData]='subcategoryData'  [categoryInfo]="currentCategory" [subcategoryInfo]="currentSubCategory" (recordDeleted)="deleteCategoryClicked($event)"></app-main-catalog>
+    </div>
+    <div class="col-md-8">
+      <h1>Catalog / Products</h1><br />
+      <app-add-edit-product (productCreated)="createOrUpdateProduct($event)" [productInfo]="currentProduct" [productData]="productData" [categoryData]="categoryData" [subcategoryData]="subcategoryData"></app-add-edit-product>
+      <app-show-all-products [productData]='productData' [productInfo]="currentProduct" (editClicked)="editClicked($event)" (newClicked)="newClicked()" (recordDeleted)="deleteClicked($event)"></app-show-all-products>
+    </div>
+    <div class="col-md-2">
+      Information
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

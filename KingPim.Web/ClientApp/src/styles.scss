@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-  background-color: whitesmoke !important;
-  font-family: 'Niramit', sans-serif!important;
+  background-color: white !important;
+  font-family: 'Niramit', sans-serif !important;
+  
+}
+a {
+  cursor: pointer!important;
 }
 #main_container {
   margin-top: 50px;
@@ -56,3 +60,21 @@ body {
     transform: rotate(360deg);
   }
 }
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.Absolute-Center.is-Responsive {
+  width: 50%;
+  height: 50%;
+  min-width: 200px;
+  max-width: 400px;
+  padding: 40px;
+ 
+}
+
