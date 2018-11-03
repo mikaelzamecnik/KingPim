@@ -39,13 +39,13 @@ namespace KingPim.Persistence.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    CategoryID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    CategoryName = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryID);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,19 +83,19 @@ namespace KingPim.Persistence.Migrations
                 name: "SubCategories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    SubcategoryID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    SubcategoryName = table.Column<string>(maxLength: 100, nullable: false),
                     CategoryID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubCategories", x => x.Id);
+                    table.PrimaryKey("PK_SubCategories", x => x.SubcategoryID);
                     table.ForeignKey(
                         name: "FK_SubCategories_Categories_CategoryID",
                         column: x => x.CategoryID,
                         principalTable: "Categories",
-                        principalColumn: "Id",
+                        principalColumn: "CategoryID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -115,7 +115,7 @@ namespace KingPim.Persistence.Migrations
                         name: "FK_AttributeGroups_SubCategories_SubCategoryId",
                         column: x => x.SubCategoryId,
                         principalTable: "SubCategories",
-                        principalColumn: "Id",
+                        principalColumn: "SubcategoryID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -123,9 +123,9 @@ namespace KingPim.Persistence.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ProductID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    ProductName = table.Column<string>(maxLength: 100, nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: true),
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     EditedBy = table.Column<string>(nullable: true),
@@ -135,12 +135,12 @@ namespace KingPim.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.ProductID);
                     table.ForeignKey(
                         name: "FK_Products_SubCategories_SubCategoryId",
                         column: x => x.SubCategoryId,
                         principalTable: "SubCategories",
-                        principalColumn: "Id",
+                        principalColumn: "SubcategoryID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -197,7 +197,7 @@ namespace KingPim.Persistence.Migrations
                         name: "FK_AssetMedias_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "Id",
+                        principalColumn: "ProductID",
                         onDelete: ReferentialAction.Cascade);
                 });
 

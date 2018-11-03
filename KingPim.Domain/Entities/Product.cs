@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace KingPim.Domain.Entities
 {
     public class Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        [ScaffoldColumn(false)]
+        public int ProductID { get; set; }
+
+        [Required, StringLength(100), Display(Name = "Name")]
+        public string ProductName { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
         public string EditedBy { get; set; }

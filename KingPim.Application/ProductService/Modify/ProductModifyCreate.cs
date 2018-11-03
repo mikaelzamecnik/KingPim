@@ -21,8 +21,8 @@ namespace KingPim.Application.ProductService.Modify
             var entity = new Product
                 {
 
-                Id = model.Id,
-                Name = model.Name,
+                ProductID = model.Id,
+                ProductName = model.Name,
                 DateCreated = model.DateCreated,
                 EditedBy = model.EditedBy,
                 Version = model.Version,

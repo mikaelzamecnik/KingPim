@@ -14,6 +14,7 @@ export class ShowAllProductsComponent implements OnInit {
   @Input() productInfo: any;
 
 
+
   constructor() { }
 
   ngOnInit() {

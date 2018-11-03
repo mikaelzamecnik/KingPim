@@ -17,11 +17,11 @@ namespace KingPim.Application.ProductService.Modify
 
         public async Task Execute(int id)
         {
-            var entity = await _context.Products.SingleAsync(c => c.Id == id);
+            var entity = await _context.Products.SingleAsync(c => c.ProductID == id);
             _context.Products.Remove(entity);
 
             await _context.SaveChangesAsync();
-            
+
         }
     }
 }

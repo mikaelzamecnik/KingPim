@@ -24,10 +24,8 @@ namespace KingPim.Application.CategoryService.Get
 
             return new CategoryGetSingleModel
                 {
-                    Id = entity.Id,
-                    Name = entity.Name
-                    
-                    
+                    Id = entity.CategoryID,
+                    Name = entity.CategoryName
                 };
         }
     }

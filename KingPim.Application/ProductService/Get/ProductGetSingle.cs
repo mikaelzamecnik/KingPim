@@ -25,8 +25,8 @@ namespace KingPim.Application.ProductService.Get
 
             return new ProductGetSingleModel
             {
-                Id = entity.Id,
-                Name = entity.Name,
+                Id = entity.ProductID,
+                Name = entity.ProductName,
                 DateCreated = entity.DateCreated,
                 DateUpdated = entity.DateUpdated,
                 EditedBy = entity.EditedBy,

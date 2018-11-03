@@ -20,8 +20,8 @@ namespace KingPim.Application.SubCategoryService.Get
             return await _context.SubCategories.Select(c =>
                 new SubCategoryGetAllModel
                 {
-                    Id = c.Id,
-                    Name = c.Name,
+                    Id = c.SubcategoryID,
+                    Name = c.SubcategoryName,
 
 
                 }).ToListAsync();

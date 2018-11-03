@@ -18,10 +18,10 @@ namespace KingPim.Application.ProductService.Modify
 
         public async Task Execute(ProductModifyPutModel model)
         {
-            var entity = await _context.Products.SingleAsync(c => c.Id == model.Id);
+            var entity = await _context.Products.SingleAsync(c => c.ProductID == model.Id);
 
 
-                entity.Name = model.Name;
+                entity.ProductName = model.Name;
                 entity.DateUpdated = model.DateUpdated;
                 entity.EditedBy = model.EditedBy;
                 entity.Version = model.Version;

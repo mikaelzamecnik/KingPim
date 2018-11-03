@@ -1,20 +1,23 @@
-<table class="table table-hover">
+<table class="table">
   <thead>
     <tr>
       <th>Id</th>
-      <!--<th>SubCategory</th>-->
+      <th>Category</th>
+      <th>SubCategory</th>
       <th>Name</th>
       <th>DateCreated</th>
       <th>DateUpdated</th>
       <th>Edited by</th>
       <th>Version</th>
       <th>Published</th>
+      <th>Edit/Delete</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let productInfo of productData ">
       <td>{{ productInfo.id }}</td>
-      <!--<td>{{ productInfo.subCategory.name }}</td>-->
+      <td>{{ productInfo.subCategory.categoryID }}</td>
+      <td>{{ productInfo.subCategory.subcategoryName }}</td>
       <td>{{ productInfo.name }}</td>
       <td>{{ productInfo.dateCreated | date:'d/M/y, h:mm a' }}</td>
       <td>{{ productInfo.dateUpdated | date:'d/M/y, h:mm a' }}</td>
@@ -22,7 +25,7 @@
       <td>{{ productInfo.version }}</td>
       <td>{{ productInfo.publishedStatus }}</td>
       <td>
-        <a (click)="editRecord(productInfo)">Edit</a>
+        <a (click)="editRecord(productInfo)">Edit</a><br />
         <a (click)="deleteRecord(productInfo)">Delete</a>
       </td>
     </tr>

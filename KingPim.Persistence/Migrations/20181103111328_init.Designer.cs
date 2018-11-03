@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KingPim.Persistence.Migrations
 {
     [DbContext(typeof(KingPimDbContext))]
-    [Migration("20181031075237_init")]
+    [Migration("20181103111328_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,20 +95,22 @@ namespace KingPim.Persistence.Migrations
 
             modelBuilder.Entity("KingPim.Domain.Entities.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
-                    b.HasKey("Id");
+                    b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("KingPim.Domain.Entities.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ProductID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -118,7 +120,9 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<string>("EditedBy");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.Property<bool>("PublishedStatus");
 
@@ -126,7 +130,7 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<string>("Version");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProductID");
 
                     b.HasIndex("SubCategoryId");
 
@@ -171,15 +175,17 @@ namespace KingPim.Persistence.Migrations
 
             modelBuilder.Entity("KingPim.Domain.Entities.SubCategory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SubcategoryID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("CategoryID");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("SubcategoryName")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
-                    b.HasKey("Id");
+                    b.HasKey("SubcategoryID");
 
                     b.HasIndex("CategoryID");
 

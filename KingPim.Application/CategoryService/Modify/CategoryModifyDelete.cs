@@ -18,11 +18,11 @@ namespace KingPim.Application.CategoryService.Modify
 
         public async Task Execute(int id)
         {
-            var entity = await _context.Categories.SingleAsync(c => c.Id == id);
+            var entity = await _context.Categories.SingleAsync(c => c.CategoryID == id);
             _context.Categories.Remove(entity);
 
             await _context.SaveChangesAsync();
-            
+
         }
     }
 }

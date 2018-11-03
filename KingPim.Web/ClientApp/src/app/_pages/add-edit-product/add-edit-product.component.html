@@ -3,7 +3,6 @@
   <h2 *ngIf="productInfo && productInfo.id !== undefined">Update record (ID: )</h2>
   <form>
     <div class="form-group">
-      <label for="id-input">id</label>
       <input type="hidden" id="id-input" [(ngModel)]="productInfo.id" [ngModelOptions]="{standalone: true}" class="form-control" />
     </div>
     <div class="form-group">
@@ -11,19 +10,18 @@
       <input type="text" id="name-input" [(ngModel)]="productInfo.name" [ngModelOptions]="{standalone: true}" class="form-control" />
     </div>
     <div class="form-group">
-      <label for="category"></label>
+      <label for="category-id">Category</label><br />
       <select>
-      <option *ngFor="let categoryInfo of categoryData " name="category" >
+      <option *ngFor="let categoryInfo of categoryData " id="category-id" >
         {{ categoryInfo.name }}
       </option>
     </select>
     </div>
     <div class="form-group">
-      <label for="subcategory"></label>
+      <label for="subcategory-id">Sub Category</label><br />
       <select>
-        <option *ngFor="let subcategoryInfo of subcategoryData ">
-          [(ngModel)]="productData.subcategoryId" name="subcategory"
-          {{ subcategoryInfo.id }}
+        <option *ngFor="let subcategoryInfo of subcategoryData " id="subcategory-id">
+          {{ subcategoryInfo.name }}
         </option>
       </select>
     </div>

@@ -21,14 +21,14 @@ namespace KingPim.Application.ProductService.Get
             return await _context.Products.Select(c =>
                 new ProductGetAllModel
                 {
-                   Id = c.Id,
-                   Name = c.Name,
+                   Id = c.ProductID,
+                   Name = c.ProductName,
                    DateCreated = c.DateCreated,
                    DateUpdated = c.DateUpdated,
                    EditedBy = c.EditedBy,
                    Version = c.Version,
                    PublishedStatus = c.PublishedStatus,
-                   SubCategory = c.SubCategory
+                   SubCategory = c.SubCategory,
 
                 }).ToListAsync();
         }
