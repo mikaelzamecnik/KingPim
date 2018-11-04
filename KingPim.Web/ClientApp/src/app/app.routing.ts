@@ -7,6 +7,7 @@ import { HomeLayoutComponent } from './_layouts/home-layout.component';
 import { CatalogComponent } from './_pages/catalog';
 import { AccountsComponent } from './_pages/accounts';
 import { HomeComponent } from './home';
+import { RegisterComponent } from './_pages/register';
 
 
 const routes: Routes = [
@@ -16,9 +17,11 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'catalog', component: CatalogComponent },
-      { path: 'accounts', component: AccountsComponent }
+      { path: 'accounts', component: AccountsComponent },
+      
     ]
   },
+  { path: 'register', component: RegisterComponent },
 
   { path: '', component: LoginLayoutComponent, children: [{ path: 'login', component: LoginComponent }] },
   { path: '**', redirectTo: '' }

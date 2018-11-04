@@ -86,10 +86,6 @@ namespace KingPim.Web
                     ValidateAudience = false
                 };
             });
-
-            // configure DI for application services
-            services.AddScoped<IUserService, UserService>();
-
             //Configure cors to make the api avalible to other systems
             services.AddCors(options =>
             {
@@ -99,14 +95,11 @@ namespace KingPim.Web
                     .AllowAnyHeader()
                     .AllowCredentials());
             });
-
             services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
-
-
-
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAutoMapper();
+            // configure DI for application services
+            services.AddScoped<IUserService, UserService>();
             //Services for Categories
             services.AddScoped<ICategoryGetAll, CategoryGetAll>();
             services.AddScoped<ICategoryGetSingle, CategoryGetSingle>();

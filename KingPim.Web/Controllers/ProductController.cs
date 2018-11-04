@@ -61,13 +61,12 @@ namespace KingPim.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> PostProduct([FromBody] ProductModifyCreateModel product)
         {
-            product.DateCreated = DateTime.Now;
-            product.EditedBy = "Admin"; // Should post what user is logged in at the moment
+            
             await _productModifyCreate.Execute(product);
 
 
 
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            return CreatedAtAction("GetProduct", new { id = product.ProductID }, product);
         }
         // PUT: pim/Category/SubCategory/Product/1 , Dont work all the way
         [HttpPut("{id}")]
@@ -75,7 +74,7 @@ namespace KingPim.Web.Controllers
         public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] ProductModifyPutModel product)
 
         {
-            product.DateUpdated = DateTime.Now;
+            
             await _productModifyPut.Execute(product);
 
 

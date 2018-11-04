@@ -8,7 +8,6 @@ namespace KingPim.Domain.Entities
     {
         [ScaffoldColumn(false)]
         public int ProductID { get; set; }
-
         [Required, StringLength(100), Display(Name = "Name")]
         public string ProductName { get; set; }
         public DateTime? DateCreated { get; set; }
@@ -18,5 +17,7 @@ namespace KingPim.Domain.Entities
         public bool PublishedStatus { get; set; }
         public int? SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
+        
+
     }
 }

@@ -10,6 +10,7 @@ namespace KingPim.Persistence
 
         public static void FillIfEmpty(KingPimDbContext ctx)
         {
+            
             if (!ctx.Categories.Any())
             {
                 ctx.Categories.Add(new Category { CategoryName = "Computers" });
@@ -29,53 +30,15 @@ namespace KingPim.Persistence
                 ctx.Products.Add(new Product
                 {
                     ProductName = "Lenovo",
-
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now,
+                    EditedBy = "Mike",
+                    Version = "v3.2",
                     SubCategoryId = 1,
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
-                    EditedBy = "Mike",
-                    Version = "v3.2",
-                    PublishedStatus = false
-                });
-
-                ctx.Products.Add(new Product
-                {
-                    ProductName = "IBM",
-
-                    SubCategoryId = 2,
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
-                    EditedBy = "Mike",
-                    Version = "v3.2",
-                    PublishedStatus = false
-                });
-
-                ctx.Products.Add(new Product
-                {
-                    ProductName = "Sony",
-
-                    SubCategoryId = 3,
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
-                    EditedBy = "Bert",
-                    Version = "v3.2",
-                    PublishedStatus = false
-                });
-
-                ctx.Products.Add(new Product
-                {
-                    ProductName = "LG",
-
-                    SubCategoryId = 4,
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
-                    EditedBy = "Bert",
-                    Version = "v3.2",
-                    PublishedStatus = false
+                   
                 });
                 ctx.SaveChanges();
             }
-
 
         }
 

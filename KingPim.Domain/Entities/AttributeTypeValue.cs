@@ -1,18 +1,16 @@
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace KingPim.Domain.Entities
 {
-    public class AttributeType
+    public class AttributeTypeValue
     {
         public int Id { get; set; }
-
         public int ProductId { get; set; }
         public Product Product { get; set; }
-        [Key]
-        public int SingleAttributeId { get; set; }
+        public int AttributeId { get; set; }
         public SingleAttribute SingleAttribute { get; set; }
-        [Key]
         public int? AttributeGroupId { get; set; }
         public AttributeGroup AttributeGroup { get; set; }
         public string Value { get; set; }

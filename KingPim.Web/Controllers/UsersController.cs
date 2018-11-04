@@ -79,6 +79,7 @@ namespace KingPim.Web.Controllers
 
             try
             {
+                
                 // save
                 _userService.Create(user, userDto.Password);
                 return Ok();

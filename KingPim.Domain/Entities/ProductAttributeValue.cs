@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KingPim.Domain.Entities
 {
-    public class ProductAttributesValues
+    public class ProductAttributesValue
     {
         [Key]
-        public int ProductId { get; set; }
+        public int ProductID { get; set; }
         [Key]
-        public int AttributeId { get; set; }
+        public int SingleAttributeId  { get; set; }
         public string Value { get; set; }
     }
 }

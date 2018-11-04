@@ -1,19 +1,18 @@
-using KingPim.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace KingPim.Application.ProductService.Modify
+namespace KingPim.Domain.Entities
 {
-    public class ProductModifyPutModel
+    public class ProductSystemValue
     {
-        public int ProductID { get; set; }
+        public int Id { get; set; }
+        public int ProductId { get; set; }
         public string ProductName { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
         public string EditedBy { get; set; }
         public string Version { get; set; }
         public bool PublishedStatus { get; set; }
-        public int? SubCategoryId { get; set; }
-        public virtual SubCategory SubCategory { get; set; }
     }
 }

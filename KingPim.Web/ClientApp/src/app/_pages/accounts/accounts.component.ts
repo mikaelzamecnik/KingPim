@@ -33,6 +33,11 @@ export class AccountsComponent implements OnInit, OnDestroy {
       this.loadAllUsers()
     });
   }
+  getUser(id: number) {
+    this.userService.getById(id).pipe(first()).subscribe(() => {
+      this.loadAllUsers()
+    });
+  }
 
   private loadAllUsers() {
     this.userService.getAll().pipe(first()).subscribe(users => {

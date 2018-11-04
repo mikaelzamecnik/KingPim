@@ -15,6 +15,8 @@ namespace KingPim.Domain.Entities
         public virtual Category Category { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<SubcategoryAttributeGroup> SubcategoryAttributeGroups { get; set; }
+        public bool PublishedStatus { get; set; }
 
     }
 }
