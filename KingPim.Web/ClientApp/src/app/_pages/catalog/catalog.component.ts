@@ -51,7 +51,7 @@ export class CatalogComponent {
     // if product is present in productData this is an update
     // otherwise it is adding a new element
     let productWithId;
-    productWithId = _.find(this.productData, (el => el.productID === product.id));
+    productWithId = _.find(this.productData, (el => el.id === product.id));
 
     if (productWithId) {
       const updateIndex = _.findIndex(this.productData, { productID: productWithId.id });

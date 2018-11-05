@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KingPim.Application.Account;
+using KingPim.Application.Account.Service;
 using KingPim.Application.ProductService.Get;
 using KingPim.Application.ProductService.Modify;
 using KingPim.Web.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KingPim.Web.Controllers
 {
     //Apply when app goes live
-   // [Authorize(Roles = "Admin")] 
+   [Authorize] 
     [Produces("application/json")]
     [Route("pim/Category/SubCategory/[controller]")]
     public class ProductController : Controller
@@ -19,13 +22,15 @@ namespace KingPim.Web.Controllers
         private readonly IProductModifyCreate _productModifyCreate;
         private readonly IProductModifyPut _productModifyPut;
         private readonly IProductModifyDelete _productModifyDelete;
+        private readonly IUserService _userService;
 
         public ProductController(
             IProductGetAll productGetAll,
             IProductGetSingle productGetSingle,
             IProductModifyCreate productModifyCreate,
             IProductModifyPut productModifyPut,
-            IProductModifyDelete productModifyDelete)
+            IProductModifyDelete productModifyDelete,
+            IUserService userService)
 
         {
             _productGetAll = productGetAll;
@@ -33,6 +38,7 @@ namespace KingPim.Web.Controllers
             _productModifyCreate = productModifyCreate;
             _productModifyPut = productModifyPut;
             _productModifyDelete = productModifyDelete;
+            _userService = userService;
 
         }
 
@@ -47,21 +53,24 @@ namespace KingPim.Web.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct([FromRoute] int id)
         {
-            var category = await _productGetSingle.Execute(id);
+            var product= await _productGetSingle.Execute(id);
 
-            if (category == null)
+            if (product == null)
             {
                 return NotFound();
             }
 
-            return Ok(category);
+            return Ok(product);
         }
         // POST: pim/Category/SubCategory/Product
         [HttpPost]
         [ValidateModel]
         public async Task<IActionResult> PostProduct([FromBody] ProductModifyCreateModel product)
         {
-            
+            //var user = _userService.GetAll(HttpContext.User);
+
+            product.DateCreated = DateTime.UtcNow;
+            product.EditedBy = "SuperAdmin";
             await _productModifyCreate.Execute(product);
 
 
@@ -74,7 +83,8 @@ namespace KingPim.Web.Controllers
         public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] ProductModifyPutModel product)
 
         {
-            
+            product.DateUpdated = DateTime.UtcNow;
+            product.DateCreated = DateTime.UtcNow;
             await _productModifyPut.Execute(product);
 
 

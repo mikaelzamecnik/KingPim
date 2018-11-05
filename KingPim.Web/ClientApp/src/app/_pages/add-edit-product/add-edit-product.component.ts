@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { CategoryDataService } from '../../_services';
 
 @Component({
   selector: 'app-add-edit-product',
@@ -13,12 +14,14 @@ export class AddEditProductComponent implements OnInit {
   @Input() subcategoryData: Array<any>;
   public buttonText = 'Save';
 
-  constructor() {
+  constructor(private categoryDataService: CategoryDataService) {
     this.clearProductInfo();
+    this.categoryDataService.GetCategories().subscribe((data: any) => this.categoryData = data);
   }
 
   ngOnInit() {
   }
+  
 
   private clearProductInfo = function () {
     // Create an empty product object

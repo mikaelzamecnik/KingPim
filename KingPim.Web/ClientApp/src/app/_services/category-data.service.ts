@@ -20,7 +20,7 @@ export class CategoryDataService {
   public GetCategoryId(payload) {
     return this.http.get(this.accessPointUrl + '/' + payload.Id, { headers: this.headers });
   }
-  public AddCategory(payload: Category) {
+  public AddCategory(payload) {
     return this.http.post(this.accessPointUrl, payload, { headers: this.headers });
   }
   public RemoveCategory(payload) {
