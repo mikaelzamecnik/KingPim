@@ -71,6 +71,7 @@ namespace KingPim.Web.Controllers
 
             product.DateCreated = DateTime.UtcNow;
             product.EditedBy = "SuperAdmin";
+            product.Version = 1;
             await _productModifyCreate.Execute(product);
 
 
@@ -85,6 +86,7 @@ namespace KingPim.Web.Controllers
         {
             product.DateUpdated = DateTime.UtcNow;
             product.DateCreated = DateTime.UtcNow;
+            product.Version = (product.Version + 1);
             await _productModifyPut.Execute(product);
 
 
