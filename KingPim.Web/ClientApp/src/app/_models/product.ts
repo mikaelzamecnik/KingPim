@@ -1,5 +1,5 @@
 export class Product {
-  id: number;
+  productID: number;
   name: string;
   dateadded: Date;
   dateupdate: Date;

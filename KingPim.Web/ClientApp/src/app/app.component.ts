@@ -8,8 +8,9 @@ import { AuthenticationService } from './_services';
   selector: 'app',
   template:
  `
-<alert></alert>
-  <router-outlet></router-outlet>`
+
+  <router-outlet></router-outlet>
+<alert></alert>`
 })
 export class AppComponent {
   currentUser: User;

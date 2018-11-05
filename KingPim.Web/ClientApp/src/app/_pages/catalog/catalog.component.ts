@@ -51,10 +51,10 @@ export class CatalogComponent {
     // if product is present in productData this is an update
     // otherwise it is adding a new element
     let productWithId;
-    productWithId = _.find(this.productData, (el => el.id === product.id));
+    productWithId = _.find(this.productData, (el => el.productID === product.id));
 
     if (productWithId) {
-      const updateIndex = _.findIndex(this.productData, { id: productWithId.id });
+      const updateIndex = _.findIndex(this.productData, { productID: productWithId.id });
       this.productDataService.UpdateProduct(product).subscribe(
         _productRecord => this.productData.splice(updateIndex, 1, product)
       );
@@ -76,46 +76,9 @@ export class CatalogComponent {
   };
 
   public deleteClicked(record) {
-    const deleteIndex = _.findIndex(this.productData, { id: record.id });
+    const deleteIndex = _.findIndex(this.productData, { productID: record.id });
     this.productDataService.RemoveProduct(record).subscribe(
       _result => this.productData.splice(deleteIndex, 1)
     );
   }
-
-  public createOrUpdateCategory = function (category: any) {
-    // if category is present in productData this is an update
-    // otherwise it is adding a new element
-    let categoryWithId;
-    categoryWithId = _.find(this.categoryData, (el => el.id === category.id));
-
-    if (categoryWithId) {
-      const updateIndex = _.findIndex(this.categoryData, { id: categoryWithId.id });
-      this.categoryDataService.UpdateCategory(category).subscribe(
-        _categoryRecord => this.categoryData.splice(updateIndex, 1, category)
-      );
-    } else {
-      this.categoryDataService.AddCategory(category).subscribe(
-        _categoryRecord => this.productData.push(category)
-      );
-    }
-
-    this.currentproduct = this.setInitialValuesForCategoryData();
-  };
-
-  public editCategoryClicked = function (record) { 
-    this.currentCategory = record;
-  };
-
-  public newCategoryClicked = function () {
-    this.currentCategory = this.setInitialValuesForCategoryData();
-  };
-
-  public deleteCategoryClicked(record) {
-    const deleteIndex = _.findIndex(this.categoryData, { id: record.id });
-    this.categoryDataService.RemoveCategory(record).subscribe(
-      _result => this.categoryData.splice(deleteIndex, 1)
-    );
-  }
-
-
 }

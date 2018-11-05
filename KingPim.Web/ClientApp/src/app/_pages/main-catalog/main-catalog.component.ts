@@ -1,4 +1,8 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CategoryDataService } from '../../_services/category-data.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { AlertService } from '../../_services';
 
 
 @Component({
@@ -8,54 +12,50 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class MainCatalogComponent implements OnInit {
 
-  @Output() recordCategoryDeleted = new EventEmitter<any>();
-  @Output() newCategoryClicked = new EventEmitter<any>();
   @Input() categoryData: Array<any>;
-  @Input() subcategoryData: Array<any>;
-  @Output() categoryCreated = new EventEmitter<any>();
   @Input() categoryInfo: any;
-  @Output() subcategoryCreated = new EventEmitter<any>();
-  @Input() subcategoryInfo: any;
-  public buttonText = 'Save';
+  registerForm: FormGroup;
+  loading = false;
+  submitted = false;
+
+
   
 
-  constructor() {
-    this.clearCategoryInfo();
-    this.clearSubCategoryInfo();
+  constructor(private categoryDataService: CategoryDataService, private formBuilder: FormBuilder,
+    private alertService: AlertService) {
+
+    categoryDataService.GetCategories().subscribe((data: any) => this.categoryData = data);
+    
   }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      name: ['', Validators.required],
+    });
+  }
+  get f() { return this.registerForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    this.loading = false;
+    this.categoryDataService.AddCategory(this.registerForm.value)
+      .pipe(first())
+      .subscribe(
+        _data => {
+          this.alertService.success('Registration successful', true);
+          this.categoryDataService.GetCategories;
+          // Why dosent it refresh SPA
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        });
   }
 
-  private clearCategoryInfo = function () {
-    // Create an empty category object
-    this.categoryInfo = {
-      id: null,
-      name: null,
-    };
-  };
-private clearSubCategoryInfo = function () {
-    // Create an empty product object
-    this.subcategoryInfo = {
-      id: null,
-      name: null,
-    };
-};
-  public addOrUpdateCategoryRecord = function (event) {
-    this.categoryCreated.emit(this.categoryInfo);
-    this.clearCategoryInfo();
-  };
-  public addOrUpdateSubCategoryRecord = function (event) {
-    this.subcategoryCreated.emit(this.subcategoryInfo);
-    this.clearSubCategoryInfo();
-  };
-
-  public newCategoryRecord() {
-    this.newCategoryClicked.emit();
-  }
-
-  public deleteCategoryRecord(record) {
-    this.recordCategoryDeleted.emit(record);
-}
 
 }
