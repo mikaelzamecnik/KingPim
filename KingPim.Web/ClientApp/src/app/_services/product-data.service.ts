@@ -20,7 +20,7 @@ export class ProductDataService {
   public GetProductId(payload) {
     return this.http.get(this.accessPointUrl + '/' + payload.productID, { headers: this.headers });
   }
-  public AddProduct(payload) {
+  public AddProduct(payload: Product) {
     return this.http.post(this.accessPointUrl, payload, { headers: this.headers });
   }
   public RemoveProduct(payload) {

@@ -33,7 +33,7 @@ namespace KingPim.Persistence
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     EditedBy = "Mike",
-                    Version = "v3.2",
+                    Version = 1,
                     SubCategoryId = 1,
                    
                 });

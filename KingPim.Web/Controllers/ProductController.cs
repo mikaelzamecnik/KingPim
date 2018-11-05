@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace KingPim.Web.Controllers
 {
     //Apply when app goes live
-   [Authorize] 
+   //[Authorize] 
     [Produces("application/json")]
     [Route("pim/Category/SubCategory/[controller]")]
     public class ProductController : Controller
@@ -81,13 +81,11 @@ namespace KingPim.Web.Controllers
         // PUT: pim/Category/SubCategory/Product/1 , Dont work all the way
         [HttpPut("{id}")]
         [ValidateModel]
-        public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] ProductModifyPutModel product)
+        public IActionResult PutProduct([FromRoute] int id, [FromBody] ProductModifyPutModel product)
 
         {
             product.DateUpdated = DateTime.UtcNow;
-            product.DateCreated = DateTime.UtcNow;
-            product.Version = (product.Version + 1);
-            await _productModifyPut.Execute(product);
+            _productModifyPut.Execute(product);
 
 
 

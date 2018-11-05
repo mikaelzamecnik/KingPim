@@ -115,8 +115,8 @@ namespace KingPim.Web
             //Services for Products
             services.AddScoped<IProductGetAll, ProductGetAll>();
             services.AddScoped<IProductGetSingle, ProductGetSingle>();
-            services.AddScoped<IProductModifyCreate, ProductModifyCreate>();
-            services.AddScoped<IProductModifyPut, ProductModifyPut>();
+            services.AddTransient<IProductModifyCreate, ProductModifyCreate>();
+            services.AddTransient<IProductModifyPut, ProductModifyPut>();
             services.AddScoped<IProductModifyDelete, ProductModifyDelete>();
 
 

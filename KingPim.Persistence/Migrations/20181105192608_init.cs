@@ -116,7 +116,7 @@ namespace KingPim.Persistence.Migrations
                     DateCreated = table.Column<DateTime>(nullable: true),
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     EditedBy = table.Column<string>(nullable: true),
-                    Version = table.Column<string>(nullable: true),
+                    Version = table.Column<int>(nullable: false),
                     PublishedStatus = table.Column<bool>(nullable: false),
                     SubCategoryId = table.Column<int>(nullable: true)
                 },

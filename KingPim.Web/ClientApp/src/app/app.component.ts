@@ -8,7 +8,6 @@ import { AuthenticationService } from './_services';
   selector: 'app',
   template:
  `
-
   <router-outlet></router-outlet>
 <alert></alert>`
 })

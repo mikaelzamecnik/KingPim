@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KingPim.Persistence.Migrations
 {
     [DbContext(typeof(KingPimDbContext))]
-    [Migration("20181104183945_init")]
+    [Migration("20181105192608_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -119,7 +119,7 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<int?>("SubCategoryId");
 
-                    b.Property<string>("Version");
+                    b.Property<int>("Version");
 
                     b.HasKey("ProductID");
 

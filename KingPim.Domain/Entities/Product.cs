@@ -13,7 +13,7 @@ namespace KingPim.Domain.Entities
         public DateTime? DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
         public string EditedBy { get; set; }
-        public string Version { get; set; }
+        public int Version { get; set; }
         public bool PublishedStatus { get; set; }
         public int? SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }

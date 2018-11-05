@@ -117,7 +117,7 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<int?>("SubCategoryId");
 
-                    b.Property<string>("Version");
+                    b.Property<int>("Version");
 
                     b.HasKey("ProductID");
 

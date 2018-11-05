@@ -29,29 +29,17 @@ export class CatalogComponent {
     productDataService.GetProducts().subscribe((data: any) => this.productData = data);
 
     this.currentProduct = this.setInitialValuesForProductData();
-    this.currentCategory = this.setInitialValuesForCategoryData();
-    this.currentSubCategory = this.setInitialValuesForSubCategoryData();}
+  }
 
   private setInitialValuesForProductData() {
     return {
     }
   }
-      private setInitialValuesForCategoryData() {
-    return {
-    }
-  }
-          private setInitialValuesForSubCategoryData() {
-            return {
-            } 
-
-    
-  }
-
   public createOrUpdateProduct = function (product: any) {
     // if product is present in productData this is an update
     // otherwise it is adding a new element
     let productWithId;
-    productWithId = _.find(this.productData, (el => el.id === product.id));
+    productWithId = _.find(this.productData, (el => el.productID === product.productID));
 
     if (productWithId) {
       const updateIndex = _.findIndex(this.productData, { productID: productWithId.id });
