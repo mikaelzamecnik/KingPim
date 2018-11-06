@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Product } from '../_models';
 
 @Injectable()
 export class ProductDataService {
@@ -26,10 +25,10 @@ export class ProductDataService {
     this.http.post(`${this.accessPointUrl}/`, obj)
       .subscribe(res => console.log('Done'));
   }
-  deleteProduct(Id) {
+  deleteProduct(id) {
     return this
       .http
-      .get(`${this.accessPointUrl}/${Id}`);
+      .delete(`${this.accessPointUrl}/${id}`);
   }
   editProduct(id) {
     return this
