@@ -11,18 +11,18 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { CatalogComponent } from './_pages/catalog';
 import { LoginComponent } from './login';
-import { RegisterComponent } from './_pages/register';
+import { RegisterComponent } from './_pages/accounts/register';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { MainCatalogComponent } from './_pages/main-catalog/main-catalog.component';
 import { AccountsComponent } from './_pages/accounts/accounts.component';
 import { CategoryDataService } from './_services/category-data.service';
 import { SubCategoryDataService } from './_services/sub-category-data.service';
 import { ProductDataService } from './_services/product-data.service';
 import * as _ from 'lodash';
-import { ShowAllProductsComponent } from './_pages/show-all-products/show-all-products.component';
-import { AddEditProductComponent } from './_pages/add-edit-product/add-edit-product.component';
 import { HomeLayoutComponent } from './_layouts/home-layout.component';
 import { LoginLayoutComponent } from './_layouts/login-layout.component';
+import { ProductAddComponent } from './_pages/catalog/products/product-add/product-add.component';
+import { ProductGetComponent } from './_pages/catalog/products/product-get/product-get.component';
+import { ProductEditComponent } from './_pages/catalog/products/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +32,13 @@ import { LoginLayoutComponent } from './_layouts/login-layout.component';
     LoginComponent,
     RegisterComponent,
     NavMenuComponent,
-    MainCatalogComponent,
     AccountsComponent,
-    ShowAllProductsComponent,
-    AddEditProductComponent,
     CatalogComponent,
     HomeLayoutComponent,
     LoginLayoutComponent,
+    ProductAddComponent,
+    ProductGetComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

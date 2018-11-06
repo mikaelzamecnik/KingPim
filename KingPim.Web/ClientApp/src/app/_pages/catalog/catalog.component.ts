@@ -26,7 +26,7 @@ export class CatalogComponent {
   {
     categoryDataService.GetCategories().subscribe((data: any) => this.categoryData = data);
     subcategoryDataService.GetSubCategories().subscribe((data: any) => this.subcategoryData = data);
-    productDataService.GetProducts().subscribe((data: any) => this.productData = data);
+
 
     this.currentProduct = this.setInitialValuesForProductData();
   }
@@ -63,10 +63,4 @@ export class CatalogComponent {
     this.currentProduct = this.setInitialValuesForProductData();
   };
 
-  public deleteClicked(record) {
-    const deleteIndex = _.findIndex(this.productData, { productID: record.id });
-    this.productDataService.RemoveProduct(record).subscribe(
-      _result => this.productData.splice(deleteIndex, 1)
-    );
-  }
 }

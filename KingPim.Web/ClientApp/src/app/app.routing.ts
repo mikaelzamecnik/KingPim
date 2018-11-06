@@ -7,7 +7,10 @@ import { HomeLayoutComponent } from './_layouts/home-layout.component';
 import { CatalogComponent } from './_pages/catalog';
 import { AccountsComponent } from './_pages/accounts';
 import { HomeComponent } from './home';
-import { RegisterComponent } from './_pages/register';
+import { RegisterComponent } from './_pages/accounts/register';
+import { ProductGetComponent } from './_pages/catalog/products/product-get/product-get.component';
+import { ProductAddComponent } from './_pages/catalog/products/product-add/product-add.component';
+import { ProductEditComponent } from './_pages/catalog/products/product-edit/product-edit.component';
 
 
 const routes: Routes = [
@@ -18,10 +21,13 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'catalog', component: CatalogComponent },
       { path: 'accounts', component: AccountsComponent },
-      
+      { path: 'product', component: ProductGetComponent },
+      { path: 'product/create', component: ProductAddComponent },
+      { path: 'product/edit:id', component: ProductEditComponent },
+
     ]
   },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent }, //Removed when going live
 
   { path: '', component: LoginLayoutComponent, children: [{ path: 'login', component: LoginComponent }] },
   { path: '**', redirectTo: '' }
