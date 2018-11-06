@@ -20,7 +20,7 @@ export class MainCatalogComponent implements OnInit {
   submitted = false;
 
 
-  
+
 
   constructor(private categoryDataService: CategoryDataService, private formBuilder: FormBuilder,
     private alertService: AlertService) {
@@ -35,10 +35,8 @@ export class MainCatalogComponent implements OnInit {
     });
   }
   get f() { return this.categoryForm.controls; }
-  
   onSubmit() {
     this.submitted = true;
-    
 
     if (this.categoryForm.invalid) {
       return;
@@ -52,14 +50,11 @@ export class MainCatalogComponent implements OnInit {
         console.log(_data);
         this.alertService.success('Category Added', true);
         this.categoryDataService.GetCategories().subscribe((data: any) => this.categoryData = data);
-        
-        
         },
         error => {
           this.alertService.error(error);
           this.loading = false;
       });
-    
   }
 
 

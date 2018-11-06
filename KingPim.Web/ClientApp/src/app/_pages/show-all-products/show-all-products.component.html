@@ -24,10 +24,10 @@
       <td>{{ productInfo.version }}</td>
       <td>{{ productInfo.publishedStatus }}</td>
       <td>
-        <a (click)="editRecord(productInfo)">Edit</a><br />
-        <a (click)="deleteRecord(productInfo)">Delete</a>
+        <button class="btn btn-link" (click)="editRecord(productInfo)">Edit</button><br />
+        <button class="btn btn-link"  data-toggle="modal" data-target="#addeditmodal" (click)="deleteRecord(productInfo)">Delete</button>
       </td>
     </tr>
   </tbody>
 </table>
-<button type="button" class="btn btn-primary" (click)="newRecord()">New</button>
+

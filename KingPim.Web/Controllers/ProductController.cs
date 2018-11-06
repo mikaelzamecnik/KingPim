@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace KingPim.Web.Controllers
 {
     //Apply when app goes live
-   //[Authorize] 
+   //[Authorize]
     [Produces("application/json")]
     [Route("pim/Category/SubCategory/[controller]")]
     public class ProductController : Controller
@@ -69,9 +69,11 @@ namespace KingPim.Web.Controllers
         {
             //var user = _userService.GetAll(HttpContext.User);
 
-            product.DateCreated = DateTime.UtcNow;
+            product.DateCreated = DateTime.Now;
+            product.DateUpdated = DateTime.Now;
             product.EditedBy = "SuperAdmin";
             product.Version = 1;
+            product.SubCategoryId = 1;
             await _productModifyCreate.Execute(product);
 
 
@@ -84,11 +86,13 @@ namespace KingPim.Web.Controllers
         public IActionResult PutProduct([FromRoute] int id, [FromBody] ProductModifyPutModel product)
 
         {
-            product.DateUpdated = DateTime.UtcNow;
+            // Logic for put request
+
+            product.Version = product.Version++;
+            product.DateUpdated = DateTime.Now;
+
+
             _productModifyPut.Execute(product);
-
-
-
             return NoContent();
         }
         // DELETE: pim/Category/SubCategory/Product/1

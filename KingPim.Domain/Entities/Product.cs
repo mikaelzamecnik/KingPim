@@ -10,7 +10,7 @@ namespace KingPim.Domain.Entities
         public int ProductID { get; set; }
         [Required, StringLength(100), Display(Name = "Name")]
         public string ProductName { get; set; }
-        public DateTime? DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
         public string EditedBy { get; set; }
         public int Version { get; set; }

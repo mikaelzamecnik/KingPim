@@ -21,7 +21,7 @@ export class AddEditProductComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
 
   private clearProductInfo = function () {
     // Create an empty product object
@@ -30,7 +30,7 @@ export class AddEditProductComponent implements OnInit {
   };
   public addOrUpdateProductRecord = function (event) {
     this.productCreated.emit(this.productInfo);
-    this.clearProductInfo();
+
   };
 
 }

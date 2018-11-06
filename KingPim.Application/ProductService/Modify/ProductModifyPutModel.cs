@@ -8,7 +8,6 @@ namespace KingPim.Application.ProductService.Modify
     {
         public int ProductID { get; set; }
         public string ProductName { get; set; }
-        public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
         public string EditedBy { get; set; }
         public int Version { get; set; }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { ProductDataService } from '../../_services';
 
 @Component({
   selector: 'app-show-all-products',
@@ -15,7 +16,7 @@ export class ShowAllProductsComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private productDataService: ProductDataService) { }
 
   ngOnInit() {
   }
@@ -27,10 +28,13 @@ export class ShowAllProductsComponent implements OnInit {
     const clonedRecord = Object.assign({}, record);
     this.editClicked.emit(clonedRecord);
 
+
   }
 
   public newRecord() {
     this.newClicked.emit();
   }
+  onSubmit() {
+    this.productDataService.GetProducts().subscribe((data: any) => this.productData = data);}
 
 }
