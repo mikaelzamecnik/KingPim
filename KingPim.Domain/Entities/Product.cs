@@ -6,7 +6,7 @@ namespace KingPim.Domain.Entities
 {
     public class Product
     {
-        [ScaffoldColumn(false)]
+        
         public int ProductID { get; set; }
         [Required, StringLength(100), Display(Name = "Name")]
         public string ProductName { get; set; }

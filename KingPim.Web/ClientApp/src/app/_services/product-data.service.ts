@@ -35,14 +35,14 @@ export class ProductDataService {
       .http
       .get(`${this.accessPointUrl}/${id}`);
   }
-  updateProduct(productName, productID) {
+  updateProduct(productName, id) {
 
     const obj = {
       productName: productName
     };
     this
       .http
-      .post(`${this.accessPointUrl}/${productID}`, obj)
+      .put(`${this.accessPointUrl}/${id}`, obj)
       .subscribe(res => console.log('Done'));
   }
 

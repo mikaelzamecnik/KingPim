@@ -83,7 +83,7 @@ namespace KingPim.Web.Controllers
         // PUT: pim/Category/SubCategory/Product/1 , Dont work all the way
         [HttpPut("{id}")]
         [ValidateModel]
-        public IActionResult PutProduct([FromRoute] int id, [FromBody] ProductModifyPutModel product)
+        public async Task<IActionResult> PutProduct([FromRoute] int id,[FromBody] ProductModifyPutModel product)
 
         {
             // Logic for put request
@@ -92,7 +92,7 @@ namespace KingPim.Web.Controllers
             product.DateUpdated = DateTime.Now;
 
 
-            _productModifyPut.Execute(product);
+           await _productModifyPut.Execute(product);
             return NoContent();
         }
         // DELETE: pim/Category/SubCategory/Product/1

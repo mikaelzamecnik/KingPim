@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: 'accounts', component: AccountsComponent },
       { path: 'product', component: ProductGetComponent },
       { path: 'product/create', component: ProductAddComponent },
-      { path: 'product/edit:id', component: ProductEditComponent },
+      { path: 'product/edit/:id', component: ProductEditComponent },
 
     ]
   },

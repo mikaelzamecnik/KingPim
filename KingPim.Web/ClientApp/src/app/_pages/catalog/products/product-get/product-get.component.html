@@ -12,7 +12,7 @@
     <tr *ngFor="let product of products">
       <td>{{product.productID}}</td>
       <td>{{ product.productName }}</td>
-      <td><a [routerLink]="['/edit', product.productID]" class="btn btn-primary">Edit</a></td>
+      <td><a [routerLink]="['/product/edit', product.productID]" class="btn btn-primary">Edit</a></td>
       <td><a (click) = "deleteProduct(product.productID)" class="btn btn-danger">Delete</a></td>
     </tr>
   </tbody>

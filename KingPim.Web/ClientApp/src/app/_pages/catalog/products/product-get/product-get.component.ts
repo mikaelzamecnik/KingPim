@@ -13,18 +13,21 @@ export class ProductGetComponent implements OnInit {
 
   constructor(private ps: ProductDataService) { }
 
-  deleteProduct(productID) {
-    this.ps.deleteProduct(productID).subscribe(_res => {
-      console.log('Deleted',productID);
-    });
-  }
-
   ngOnInit() {
+    this.showProducts();
+  }
+  // to show products oninit and after deletion
+  showProducts() {
     this.ps
       .getProducts()
       .subscribe((data: Product[]) => {
         this.products = data;
       });
   }
-
+  deleteProduct(productID) {
+    this.ps.deleteProduct(productID).subscribe(res => {
+      this.showProducts();
+      console.log('Deleted', productID);
+    });
+  }
 }
