@@ -69,11 +69,12 @@ namespace KingPim.Web.Controllers
         {
             //var user = _userService.GetAll(HttpContext.User);
 
+
             product.DateCreated = DateTime.Now;
             product.DateUpdated = DateTime.Now;
             product.EditedBy = "SuperAdmin";
             product.Version = 1;
-            product.SubCategoryId = 1;
+
             await _productModifyCreate.Execute(product);
 
 
@@ -87,8 +88,10 @@ namespace KingPim.Web.Controllers
 
          {
             // Additonal logic for put request
+            int ver = 1 + product.Version++;
             product.ProductID = id;
-            product.Version = product.Version++;
+            product.EditedBy = "SuperAdmin"; // Change to user
+            product.Version = ver;
             product.DateUpdated = DateTime.Now;
 
 
