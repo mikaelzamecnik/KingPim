@@ -38,7 +38,7 @@ export class ProductEditComponent implements OnInit {
       console.log(params, productName);
       this.ps.updateProduct(productName, params['id']);
       console.log(params, productName);
-      this.router.navigate(['catalog']);
+      this.router.navigate(['/catalog']);
     });
   }
 

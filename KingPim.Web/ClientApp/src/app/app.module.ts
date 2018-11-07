@@ -23,6 +23,12 @@ import { LoginLayoutComponent } from './_layouts/login-layout.component';
 import { ProductAddComponent } from './_pages/catalog/products/product-add/product-add.component';
 import { ProductGetComponent } from './_pages/catalog/products/product-get/product-get.component';
 import { ProductEditComponent } from './_pages/catalog/products/product-edit/product-edit.component';
+import { SubCategoryGetComponent } from './_pages/catalog/subcategories/subcategory-get/subcategory-get.component';
+//import { CategoryAddComponent } from './_pages/catalog/categories/category-add/category-add.component';
+//import { CategoryEditComponent } from './_pages/catalog/categories/category-edit/category-edit.component';
+import { CategoryGetComponent } from './_pages/catalog/categories/category-get/category-get.component';
+//import { SubCategoryAddComponent } from './_pages/catalog/subcategories/subcategory-add/subcategory-add.component';
+//import { SubCategoryEditComponent } from './_pages/catalog/subcategories/subcategory-edit/subcategory-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +45,12 @@ import { ProductEditComponent } from './_pages/catalog/products/product-edit/pro
     ProductAddComponent,
     ProductGetComponent,
     ProductEditComponent,
+    SubCategoryGetComponent,
+    //CategoryAddComponent,
+    //CategoryEditComponent,
+    CategoryGetComponent,
+    //SubCategoryAddComponent,
+    //SubCategoryEditComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

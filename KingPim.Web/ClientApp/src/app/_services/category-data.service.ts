@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Category } from '../_models';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CategoryDataService {
   private headers: HttpHeaders;
-  private accessPointUrl:string = 'pim/Category/';
+  private accessPointUrl: string = 'pim/Category';
 
 
   constructor(private http: HttpClient) {
@@ -13,21 +12,38 @@ export class CategoryDataService {
 
   }
 
-  public GetCategories() {
-    return this.http.get(this.accessPointUrl, { headers: this.headers });
+  getCategories() {
+    return this
+      .http.get(`${this.accessPointUrl}`);
   }
 
-  public GetCategoryId(payload) {
-    return this.http.get(this.accessPointUrl + '/' + payload.Id, { headers: this.headers });
+  addCategory(CategoryName) {
+    const obj = {
+      CategoryName: CategoryName
+    };
+    console.log(obj);
+    this.http.post(`${this.accessPointUrl}/`, obj)
+      .subscribe(res => console.log('Done'));
   }
-  public AddCategory(payload) {
-    return this.http.post(this.accessPointUrl, payload, { headers: this.headers });
+  deleteCategory(id) {
+    return this
+      .http
+      .delete(`${this.accessPointUrl}/${id}`);
   }
-  public RemoveCategory(payload) {
-    return this.http.delete(this.accessPointUrl + '/' + payload.Id, { headers: this.headers });
+  editCategory(id) {
+    return this
+      .http
+      .get(`${this.accessPointUrl}/${id}`);
   }
-  public UpdateCategory(payload) {
-    return this.http.put(this.accessPointUrl + '/' + payload.Id, { headers: this.headers });
+  updateCategory(categoryName, id) {
+
+    const obj = {
+      categoryName: categoryName
+    };
+    this
+      .http
+      .put(`${this.accessPointUrl}/${id}`, obj)
+      .subscribe(res => console.log('Done'));
   }
 
 }
