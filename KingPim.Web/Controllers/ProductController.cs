@@ -87,7 +87,6 @@ namespace KingPim.Web.Controllers
 
         {
             // Logic for put request
-
             product.Version = product.Version++;
             product.DateUpdated = DateTime.Now;
 

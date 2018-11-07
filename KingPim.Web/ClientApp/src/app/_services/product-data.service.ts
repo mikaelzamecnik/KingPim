@@ -38,7 +38,7 @@ export class ProductDataService {
   updateProduct(productName, id) {
 
     const obj = {
-      productName: productName
+      ProductName: productName
     };
     this
       .http
