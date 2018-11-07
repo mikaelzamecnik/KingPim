@@ -109,9 +109,7 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<string>("EditedBy");
 
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                    b.Property<string>("ProductName");
 
                     b.Property<bool>("PublishedStatus");
 

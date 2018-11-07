@@ -85,8 +85,9 @@ namespace KingPim.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> PutProduct([FromRoute] int id,[FromBody] ProductModifyPutModel product)
 
-        {
-            // Logic for put request
+         {
+            // Additonal logic for put request
+            product.ProductID = id;
             product.Version = product.Version++;
             product.DateUpdated = DateTime.Now;
 

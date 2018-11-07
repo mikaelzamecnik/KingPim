@@ -112,8 +112,8 @@ namespace KingPim.Persistence.Migrations
                 {
                     ProductID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ProductName = table.Column<string>(maxLength: 100, nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: true),
+                    ProductName = table.Column<string>(nullable: true),
+                    DateCreated = table.Column<DateTime>(nullable: false),
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     EditedBy = table.Column<string>(nullable: true),
                     Version = table.Column<int>(nullable: false),

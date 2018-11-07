@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KingPim.Persistence.Migrations
 {
     [DbContext(typeof(KingPimDbContext))]
-    [Migration("20181106104906_init2")]
-    partial class init2
+    [Migration("20181107080509_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,9 +111,7 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<string>("EditedBy");
 
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                    b.Property<string>("ProductName");
 
                     b.Property<bool>("PublishedStatus");
 

@@ -25,8 +25,6 @@ export class ProductEditComponent implements OnInit {
       productName: ['', Validators.required],
     });
   }
-  
-
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.ps.editProduct(params['id']).subscribe(res => {
