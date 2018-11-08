@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SubCategoryDataService } from '../../../../_services';
 import { SubCategory } from '../../../../_models';
+import { MatDialog } from '@angular/material';
+import { SubcategoryAddComponent } from '../subcategory-add/subcategory-add.component';
 
 @Component({
   selector: 'app-subcategory-get',
@@ -11,7 +13,18 @@ export class SubcategoryGetComponent implements OnInit {
 
   subCategories: SubCategory[];
 
-  constructor(private scs: SubCategoryDataService) { }
+  constructor(private scs: SubCategoryDataService,
+    public dialog: MatDialog) { }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SubcategoryAddComponent, {
+      width: '250px',
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Added');
+    });
+  }
 
   ngOnInit() {
     this.showSubcategories();

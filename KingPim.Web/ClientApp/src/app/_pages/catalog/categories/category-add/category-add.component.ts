@@ -1,7 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryDataService } from '../../../../_services/category-data.service';
+import { Category } from '../../../../_models';
+import { MatDialogRef } from '@angular/material';
+import { CategoryGetComponent } from '../category-get/category-get.component';
 
 @Component({
   selector: 'app-category-add',
@@ -11,14 +14,22 @@ import { CategoryDataService } from '../../../../_services/category-data.service
 export class CategoryAddComponent implements OnInit {
   loading = false;
   angForm: FormGroup;
+  categories: Category[];
 
   constructor(
     private fb: FormBuilder,
     private cs: CategoryDataService,
-    private router: Router)
+    private router: Router,
+    public dialogRef: MatDialogRef<CategoryGetComponent>,)
   {
     this.createForm();
   }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+    
+  }
+
   createForm() {
     this.angForm = this.fb.group({
       categoryName: ['', Validators.required]
@@ -26,14 +37,23 @@ export class CategoryAddComponent implements OnInit {
     });
 
   }
+  showCategories() {
+    this.cs
+      .getCategories()
+      .subscribe((data: Category[]) => {
+        this.categories = data;
+      });
+  }
   // Add Category to db
   addCategory(categoryName) {
     this.loading = true;
     this.cs.addCategory(categoryName);
-    this.router.navigate(['/catalog']); //TODO routing goes to fast, backend cant keep up
+    this.router.navigate(['/catalog']);
+    //TODO routing goes to fast, backend cant keep up
   }
 
   ngOnInit() {
+    this.showCategories();
   }
 
 }

@@ -4,6 +4,7 @@ import { User } from '../_models';
 import { AuthenticationService } from '../_services';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',

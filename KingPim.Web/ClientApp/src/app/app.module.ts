@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +18,7 @@ import { AccountsComponent } from './_pages/accounts/accounts.component';
 import { CategoryDataService } from './_services/category-data.service';
 import { SubCategoryDataService } from './_services/sub-category-data.service';
 import { ProductDataService } from './_services/product-data.service';
+import { MaterialModule } from './material';
 import * as _ from 'lodash';
 import { HomeLayoutComponent } from './_layouts/home-layout.component';
 import { LoginLayoutComponent } from './_layouts/login-layout.component';
@@ -59,7 +61,9 @@ import { SubcategoryGetComponent } from './_pages/catalog/subcategories/subcateg
     AngularFontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
 
   ],
   providers: [

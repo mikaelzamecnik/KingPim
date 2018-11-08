@@ -5,10 +5,12 @@ import { Product } from '../../../../_models';
 @Component({
   selector: 'app-product-get',
   templateUrl: './product-get.component.html',
-  styleUrls: ['./product-get.component.css']
+  styleUrls: ['./product-get.component.css'],
 })
 export class ProductGetComponent implements OnInit {
 
+  columnsToDisplay: string[] = ['Id', 'Name', 'Category', 'SubCategory',
+    'Created','Updated','Version','Editedby','Published','Edit','Delete'];
   products: Product[];
 
   constructor(private ps: ProductDataService) { }
