@@ -1,9 +1,16 @@
 <ul class="list-group">
-  <li class="list-group-item list-group-item list-group-item-dark"><strong>Categories</strong><a href="#"><strong>+</strong></a></li>
+  <li class="list-group-item list-group-item list-group-item-dark"><strong>Categories</strong><a href="#categorymodal" data-toggle="modal"><strong>+</strong></a></li>
   <li class="list-group-item list-group-item-light" *ngFor="let category of categories">
     <strong>{{category.name}}</strong><a (click)="deleteCategory(category.id)">-</a>
   </li>
 </ul>
-
-
+<div id="categorymodal" class="modal" tabindex="-1" role="dialog" aria-labelledby="categorymodal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-category-add></app-category-add>
+      </div>
+    </div>
+  </div>
+</div>
 <!--TODO PUT ADD CATEGORY AND CATEGORIES IN A SMALL MODAL-->

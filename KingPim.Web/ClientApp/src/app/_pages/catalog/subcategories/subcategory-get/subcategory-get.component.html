@@ -1,6 +1,16 @@
 <ul class="list-group">
-  <li class="list-group-item list-group-item list-group-item-dark"><strong>SubCategories&nbsp;&nbsp;&nbsp;</strong><a href="#"><strong>+</strong></a></li>
+  <li class="list-group-item list-group-item list-group-item-dark"><strong>SubCategories</strong><a href="#subcategorymodal" data-toggle="modal"><strong>+</strong></a></li>
   <li class="list-group-item list-group-item-light" *ngFor="let subcategory of subCategories">
     <strong>{{subcategory.name}}</strong><a (click)="deleteSubCategory(subcategory.id)">-</a>
   </li>
 </ul>
+<div id="subcategorymodal" class="modal" tabindex="-1" role="dialog" aria-labelledby="subcategorymodal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-subcategory-add></app-subcategory-add>
+      </div>
+    </div>
+  </div>
+</div>
+<!--TODO PUT ADD CATEGORY AND CATEGORIES IN A SMALL MODAL-->
