@@ -10,7 +10,7 @@
       <th>Version</th>
       <th>EditedBy</th>
       <th>Published</th>
-      <th colspan="3">Actions</th>
+      <th colspan="2">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -26,11 +26,7 @@
       <td>{{ product.publishedStatus }}</td>
       <td><a [routerLink]="['/product/edit', product.productID]" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
       <td><a (click)="deleteProduct(product.productID)" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
-
     </tr>
-    
-   
-
   </tbody>
 </table>
 

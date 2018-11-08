@@ -17,13 +17,13 @@ export class CategoryDataService {
       .http.get(`${this.accessPointUrl}`);
   }
 
-  addCategory(CategoryName) {
+  addCategory(categoryName) {
     const obj = {
-      CategoryName: CategoryName
+      categoryName: categoryName
     };
     console.log(obj);
     this.http.post(`${this.accessPointUrl}/`, obj)
-      .subscribe(res => console.log('Done'));
+      .subscribe(res => console.log('Done', obj));
   }
   deleteCategory(id) {
     return this

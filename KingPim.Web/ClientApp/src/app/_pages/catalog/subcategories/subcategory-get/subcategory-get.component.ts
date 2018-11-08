@@ -7,7 +7,7 @@ import { SubCategory } from '../../../../_models';
   templateUrl: './subcategory-get.component.html',
   styleUrls: ['./subcategory-get.component.css']
 })
-export class SubCategoryGetComponent implements OnInit {
+export class SubcategoryGetComponent implements OnInit {
 
   subCategories: SubCategory[];
 
@@ -22,6 +22,7 @@ export class SubCategoryGetComponent implements OnInit {
       .getSubCategories()
       .subscribe((data: SubCategory[]) => {
         this.subCategories = data;
+        console.log(data);
       });
   }
   deleteSubCategory(subCategoryId) {

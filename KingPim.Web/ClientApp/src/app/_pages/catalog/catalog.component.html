@@ -1,15 +1,19 @@
-<div class='container fluid' id="main_container">
+<div class='container-fluid' id="main_container">
   <div class="row">
     <div class="col-md-2">
       <app-category-get></app-category-get><br />
-      <app-subcategory-get></app-subcategory-get>
+      <app-category-add></app-category-add><br />
+      <app-subcategory-get></app-subcategory-get><br />
+      <app-subcategory-add></app-subcategory-add>
     </div>
     <div class="col-md-8">
-      <div><h1>Products</h1></div><br /><div><button class="btn btn-info" [routerLink]='["/product/create"]' (click)='collapse()'>
-  <i class="fa fa-plus-square"></i> Create Product
-</button></div><br />
+      <h1>Products</h1><br /><button class="btn btn-info" [routerLink]='["/product/create"]' (click)='collapse()'>
+        <i class="fa fa-plus-square"></i> Create Product
+      </button><br /><br />
       <app-product-get></app-product-get>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-2">
+      Information
+    </div>
   </div>
-  </div>
+</div>

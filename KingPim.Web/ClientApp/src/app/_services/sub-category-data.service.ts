@@ -17,9 +17,10 @@ export class SubCategoryDataService {
       .http.get(`${this.accessPointUrl}`);
   }
 
-  addSubCategory(subCategoryName) {
+  addSubCategory(subcategoryName, categoryId) {
     const obj = {
-      subCategoryName: subCategoryName
+      subcategoryName: subcategoryName,
+      categoryId: categoryId
     };
     console.log(obj);
     this.http.post(`${this.accessPointUrl}/`, obj)
@@ -35,10 +36,10 @@ export class SubCategoryDataService {
       .http
       .get(`${this.accessPointUrl}/${id}`);
   }
-  updateSubCategory(subCategoryName, id) {
+  updateSubCategory(subcategoryName, id) {
 
     const obj = {
-      subCategoryName: subCategoryName
+      subcategoryName: subcategoryName
     };
     this
       .http

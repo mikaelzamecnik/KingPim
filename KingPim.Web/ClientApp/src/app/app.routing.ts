@@ -11,9 +11,13 @@ import { RegisterComponent } from './_pages/accounts/register';
 import { ProductGetComponent } from './_pages/catalog/products/product-get/product-get.component';
 import { ProductAddComponent } from './_pages/catalog/products/product-add/product-add.component';
 import { ProductEditComponent } from './_pages/catalog/products/product-edit/product-edit.component';
-import { SubCategoryGetComponent } from './_pages/catalog/subcategories/subcategory-get/subcategory-get.component';
-//import { SubCategoryAddComponent } from './_pages/catalog/subcategories/subcategory-add/subcategory-add.component';
-//import { SubCategoryEditComponent } from './_pages/catalog/subcategories/subcategory-edit/subcategory-edit.component';
+import { CategoryGetComponent } from './_pages/catalog/categories/category-get/category-get.component';
+import { CategoryAddComponent } from './_pages/catalog/categories/category-add/category-add.component';
+import { CategoryEditComponent } from './_pages/catalog/categories/category-edit/category-edit.component';
+import { SubcategoryGetComponent } from './_pages/catalog/subcategories/subcategory-get/subcategory-get.component';
+import { SubcategoryAddComponent } from './_pages/catalog/subcategories/subcategory-add/subcategory-add.component';
+import { SubcategoryEditComponent } from './_pages/catalog/subcategories/subcategory-edit/subcategory-edit.component';
+
 
 
 const routes: Routes = [
@@ -27,9 +31,12 @@ const routes: Routes = [
       { path: 'product', component: ProductGetComponent },
       { path: 'product/create', component: ProductAddComponent },
       { path: 'product/edit/:id', component: ProductEditComponent },
-      { path: 'subcategory', component: SubCategoryGetComponent },
-      //{ path: 'subcategory/create', component: SubCategoryAddComponent },
-      //{ path: 'subcategory/edit/:id', component: SubCategoryEditComponent },
+      { path: 'category', component: CategoryGetComponent },
+      { path: 'category/create', component: CategoryAddComponent },
+      { path: 'category/edit/:id', component: CategoryEditComponent },
+      { path: 'subcategory', component: SubcategoryGetComponent },
+      { path: 'subcategory/create', component: SubcategoryAddComponent },
+      { path: 'subcategory/edit/:id', component: SubcategoryEditComponent },
 
     ]
   },

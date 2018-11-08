@@ -103,14 +103,14 @@ namespace KingPim.Web
             //Services for Categories
             services.AddScoped<ICategoryGetAll, CategoryGetAll>();
             services.AddScoped<ICategoryGetSingle, CategoryGetSingle>();
-            services.AddScoped<ICategoryModifyCreate, CategoryModifyCreate>();
-            services.AddScoped<ICategoryModifyPut, CategoryModifyPut>();
+            services.AddTransient<ICategoryModifyCreate, CategoryModifyCreate>();
+            services.AddTransient<ICategoryModifyPut, CategoryModifyPut>();
             services.AddScoped<ICategoryModifyDelete, CategoryModifyDelete>();
             //Services for SubCategories
             services.AddScoped<ISubCategoryGetAll, SubCategoryGetAll>();
             services.AddScoped<ISubCategoryGetSingle, SubCategoryGetSingle>();
-            services.AddScoped<ISubCategoryModifyCreate, SubCategoryModifyCreate>();
-            services.AddScoped<ISubCategoryModifyPut, SubCategoryModifyPut>();
+            services.AddTransient<ISubCategoryModifyCreate, SubCategoryModifyCreate>();
+            services.AddTransient<ISubCategoryModifyPut, SubCategoryModifyPut>();
             services.AddScoped<ISubCategoryModifyDelete, SubCategoryModifyDelete>();
             //Services for Products
             services.AddScoped<IProductGetAll, ProductGetAll>();

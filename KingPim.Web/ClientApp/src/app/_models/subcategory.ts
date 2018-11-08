@@ -1,5 +1,5 @@
 export class SubCategory {
-  subCategoryId: number;
+  subCategoryID: number;
   subCategoryName: string;
-  categoryId: number;
+  category: string;
 }
