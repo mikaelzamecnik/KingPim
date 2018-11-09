@@ -18,6 +18,8 @@ import { AccountsComponent } from './_pages/accounts/accounts.component';
 import { CategoryDataService } from './_services/category-data.service';
 import { SubCategoryDataService } from './_services/sub-category-data.service';
 import { ProductDataService } from './_services/product-data.service';
+import { AttributeGroupDataService } from './_services/attribute-group-data.service';
+import { AttributeDataService } from './_services/attribute-data.service';
 import { MaterialModule } from './material';
 import * as _ from 'lodash';
 import { HomeLayoutComponent } from './_layouts/home-layout.component';
@@ -83,7 +85,9 @@ import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     CategoryDataService,
     SubCategoryDataService,
-    ProductDataService
+    ProductDataService,
+    AttributeGroupDataService,
+    AttributeDataService
   ],
   bootstrap: [AppComponent]
 })

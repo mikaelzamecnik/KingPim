@@ -1,3 +1,8 @@
-<p>
-  attributegroup-get works!
-</p>
+<mat-list>
+  <mat-list-item><strong>Attributegroups</strong><!--<a (click)="openDialog()"><strong>+</strong></a>--></mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let attributegroup of attributegroups">
+    {{attributegroup.name}}
+    <!--<a (click)="deleteCategory(category.id)">-</a>-->
+  </mat-list-item>
+</mat-list>
