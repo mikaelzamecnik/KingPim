@@ -10,7 +10,6 @@ namespace KingPim.Persistence
 
         public static void FillIfEmpty(KingPimDbContext ctx)
         {
-            
             if (!ctx.Categories.Any())
             {
                 ctx.Categories.Add(new Category { CategoryName = "Computers" });
@@ -35,7 +34,14 @@ namespace KingPim.Persistence
                     EditedBy = "Mike",
                     Version = 1,
                     SubCategoryId = 1,
-                   
+                });
+                ctx.SaveChanges();
+            }
+            if (!ctx.AttributeGroups.Any())
+            {
+                ctx.AttributeGroups.Add(new AttributeGroup
+                {
+                    Name = "Ports",
                 });
                 ctx.SaveChanges();
             }
