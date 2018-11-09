@@ -1,10 +1,10 @@
+using KingPim.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace KingPim.Domain.Entities
+namespace KingPim.Application.AttributeService.Modify
 {
-    public class SingleAttribute
+    public class AttributeModifyPutModel
     {
         public int SingleAttributeId { get; set; }
         public int? AttributeGroupId { get; set; }

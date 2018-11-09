@@ -16,7 +16,7 @@ using System.Text;
 namespace KingPim.Web.Controllers
 {
     //Apply when app goes live
-    // [Authorize(Roles = "Admin")] 
+    // [Authorize(Roles = "Admin")]
     [Authorize]
     [ApiController]
     [Route("[controller]")]
@@ -79,7 +79,6 @@ namespace KingPim.Web.Controllers
 
             try
             {
-                
                 // save
                 _userService.Create(user, userDto.Password);
                 return Ok();

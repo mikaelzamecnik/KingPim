@@ -17,6 +17,12 @@ import { CategoryEditComponent } from './_pages/catalog/categories/category-edit
 import { SubcategoryGetComponent } from './_pages/catalog/subcategories/subcategory-get/subcategory-get.component';
 import { SubcategoryAddComponent } from './_pages/catalog/subcategories/subcategory-add/subcategory-add.component';
 import { SubcategoryEditComponent } from './_pages/catalog/subcategories/subcategory-edit/subcategory-edit.component';
+import { AttributegroupGetComponent } from './_pages/catalog/attributegroups/attributegroup-get/attributegroup-get.component';
+import { AttributegroupAddComponent } from './_pages/catalog/attributegroups/attributegroup-add/attributegroup-add.component';
+import { AttributegroupEditComponent } from './_pages/catalog/attributegroups/attributegroup-edit/attributegroup-edit.component';
+import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get/attribute-get.component';
+import { AttributeAddComponent } from './_pages/catalog/attributes/attribute-add/attribute-add.component';
+import { AttributeEditComponent } from './_pages/catalog/attributes/attribute-edit/attribute-edit.component';
 
 
 
@@ -37,6 +43,12 @@ const routes: Routes = [
       { path: 'subcategory', component: SubcategoryGetComponent },
       { path: 'subcategory/create', component: SubcategoryAddComponent },
       { path: 'subcategory/edit/:id', component: SubcategoryEditComponent },
+      { path: 'attributegroup', component: AttributegroupGetComponent },
+      { path: 'attributegroup/create', component: AttributegroupAddComponent },
+      { path: 'attributegroup/edit/:id', component: AttributegroupEditComponent },
+      { path: 'attribute', component: AttributeGetComponent },
+      { path: 'attribute/create', component: AttributeAddComponent },
+      { path: 'attribute/edit/:id', component: AttributeEditComponent },
 
     ]
   },

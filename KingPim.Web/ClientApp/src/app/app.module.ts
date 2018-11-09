@@ -31,6 +31,12 @@ import { CategoryGetComponent } from './_pages/catalog/categories/category-get/c
 import { SubcategoryAddComponent } from './_pages/catalog/subcategories/subcategory-add/subcategory-add.component';
 import { SubcategoryEditComponent } from './_pages/catalog/subcategories/subcategory-edit/subcategory-edit.component';
 import { SubcategoryGetComponent } from './_pages/catalog/subcategories/subcategory-get/subcategory-get.component';
+import { AttributegroupAddComponent } from './_pages/catalog/attributegroups/attributegroup-add/attributegroup-add.component';
+import { AttributegroupEditComponent } from './_pages/catalog/attributegroups/attributegroup-edit/attributegroup-edit.component';
+import { AttributegroupGetComponent } from './_pages/catalog/attributegroups/attributegroup-get/attributegroup-get.component';
+import { AttributeAddComponent } from './_pages/catalog/attributes/attribute-add/attribute-add.component';
+import { AttributeEditComponent } from './_pages/catalog/attributes/attribute-edit/attribute-edit.component';
+import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get/attribute-get.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +59,12 @@ import { SubcategoryGetComponent } from './_pages/catalog/subcategories/subcateg
     SubcategoryGetComponent,
     SubcategoryAddComponent,
     SubcategoryEditComponent,
+    AttributegroupAddComponent,
+    AttributegroupEditComponent,
+    AttributegroupGetComponent,
+    AttributeAddComponent,
+    AttributeEditComponent,
+    AttributeGetComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

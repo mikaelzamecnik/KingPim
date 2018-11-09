@@ -2,6 +2,8 @@ using AutoMapper;
 using KingPim.Application.Account.Service;
 using KingPim.Application.AttributeGroupService.Get;
 using KingPim.Application.AttributeGroupService.Modify;
+using KingPim.Application.AttributeService.Get;
+using KingPim.Application.AttributeService.Modify;
 using KingPim.Application.CategoryService.Get;
 using KingPim.Application.CategoryService.Modify;
 using KingPim.Application.Helpers;
@@ -126,6 +128,12 @@ namespace KingPim.Web
             services.AddTransient<IAgModifyCreate, AgModifyCreate>();
             services.AddTransient<IAgModifyPut, AgModifyPut>();
             services.AddScoped<IAgModifyDelete, AgModifyDelete>();
+            //Services for SingleAttribute
+            services.AddScoped<IAttributeGetAll, AttributeGetAll>();
+            services.AddScoped<IAttributeGetSingle, AttributeGetSingle>();
+            services.AddTransient<IAttributeModifyCreate, AttributeModifyCreate>();
+            services.AddTransient<IAttributeModifyPut, AttributeModifyPut>();
+            services.AddScoped<IAttributeModifyDelete, AttributeModifyDelete>();
 
 
             // In production, the Angular files will be served from this directory

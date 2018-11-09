@@ -1,10 +1,10 @@
+﻿using KingPim.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace KingPim.Domain.Entities
+namespace KingPim.Application.AttributeService.Get
 {
-    public class SingleAttribute
+    public class AttributeGetSingleModel
     {
         public int SingleAttributeId { get; set; }
         public int? AttributeGroupId { get; set; }
@@ -13,4 +13,5 @@ namespace KingPim.Domain.Entities
         public string Name { get; set; }
         // Enum values for diffrent input types ?
     }
+
 }
