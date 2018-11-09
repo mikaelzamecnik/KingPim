@@ -50,7 +50,6 @@ export class SubcategoryAddComponent implements OnInit {
   addSubCategory(subcategoryName, categoryId) {
     this.loading = true;
     this.scs.addSubCategory(subcategoryName, categoryId);
-    this.router.navigate(['catalog']); //TODO routing goes to fast, backend cant keep up
   }
 
   ngOnInit() {

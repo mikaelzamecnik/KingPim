@@ -22,8 +22,14 @@ export class CategoryGetComponent implements OnInit {
       width: '250px',
       
     });
-    dialogRef.afterClosed().subscribe(result => {
+    //Show result after the button is closed
+    dialogRef.afterClosed().subscribe(result =>  {
       console.log('Added');
+      this.cs
+        .getCategories()
+        .subscribe((result: Category[]) => {
+          this.categories = result;
+        });
     });
   }
 

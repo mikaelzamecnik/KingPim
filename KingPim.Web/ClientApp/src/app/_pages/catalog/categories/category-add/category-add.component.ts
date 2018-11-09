@@ -19,7 +19,6 @@ export class CategoryAddComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private cs: CategoryDataService,
-    private router: Router,
     public dialogRef: MatDialogRef<CategoryGetComponent>,)
   {
     this.createForm();
@@ -27,7 +26,6 @@ export class CategoryAddComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
-    
   }
 
   createForm() {
@@ -37,23 +35,15 @@ export class CategoryAddComponent implements OnInit {
     });
 
   }
-  showCategories() {
-    this.cs
-      .getCategories()
-      .subscribe((data: Category[]) => {
-        this.categories = data;
-      });
-  }
+
   // Add Category to db
   addCategory(categoryName) {
     this.loading = true;
     this.cs.addCategory(categoryName);
-    this.router.navigate(['/catalog']);
-    //TODO routing goes to fast, backend cant keep up
   }
 
   ngOnInit() {
-    this.showCategories();
+    
   }
 
 }

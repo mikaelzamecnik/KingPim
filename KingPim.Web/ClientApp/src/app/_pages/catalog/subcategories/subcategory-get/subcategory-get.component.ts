@@ -11,9 +11,10 @@ import { SubcategoryAddComponent } from '../subcategory-add/subcategory-add.comp
 })
 export class SubcategoryGetComponent implements OnInit {
 
-  subCategories: SubCategory[];
+  subcategories: SubCategory[];
 
-  constructor(private scs: SubCategoryDataService,
+  constructor(
+    private scs: SubCategoryDataService,
     public dialog: MatDialog) { }
 
   openDialog(): void {
@@ -23,6 +24,11 @@ export class SubcategoryGetComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('Added');
+      this.scs
+        .getSubCategories()
+        .subscribe((result: SubCategory[]) => {
+          this.subcategories = result;
+        });
     });
   }
 
@@ -34,8 +40,7 @@ export class SubcategoryGetComponent implements OnInit {
     this.scs
       .getSubCategories()
       .subscribe((data: SubCategory[]) => {
-        this.subCategories = data;
-        console.log(data);
+        this.subcategories = data;
       });
   }
   deleteSubCategory(subCategoryId) {
