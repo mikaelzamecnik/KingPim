@@ -43,10 +43,10 @@ export class SubcategoryGetComponent implements OnInit {
         this.subcategories = data;
       });
   }
-  deleteSubCategory(subCategoryId) {
-    this.scs.deleteSubCategory(subCategoryId).subscribe(res => {
+  deleteSubCategory(subCategoryID) {
+    this.scs.deleteSubCategory(subCategoryID).subscribe(res => {
       this.showSubcategories();
-      console.log('Deleted', subCategoryId);
+      console.log('Deleted', subCategoryID);
     });
   }
 }

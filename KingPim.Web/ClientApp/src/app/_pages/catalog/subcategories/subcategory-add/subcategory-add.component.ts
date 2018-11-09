@@ -21,7 +21,6 @@ export class SubcategoryAddComponent implements OnInit {
     private fb: FormBuilder,
     private cs: CategoryDataService,
     private scs: SubCategoryDataService,
-    private router: Router,
     public dialogRef: MatDialogRef<SubcategoryGetComponent>,)
   {
     this.createForm();

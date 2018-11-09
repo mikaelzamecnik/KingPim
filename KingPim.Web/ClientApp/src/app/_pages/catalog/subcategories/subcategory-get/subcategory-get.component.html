@@ -1,7 +1,7 @@
 <mat-list>
   <mat-list-item><strong>SubCategories</strong><a (click)="openDialog()"><strong>+</strong></a></mat-list-item>
   <mat-divider></mat-divider>
-  <mat-list-item *ngFor="let category of categories">{{subcategory.name}}
-    <a deleteSubCategory(subcategory.id)>-</a>
+  <mat-list-item *ngFor="let subcategory of subcategories">{{subcategory.name}}
+    <a (click)="deleteSubCategory(subcategory.id)">-</a>
   </mat-list-item>
 </mat-list>

@@ -20,7 +20,6 @@ export class CategoryGetComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(CategoryAddComponent, {
       width: '250px',
-      
     });
     //Show result after the button is closed
     dialogRef.afterClosed().subscribe(result =>  {
