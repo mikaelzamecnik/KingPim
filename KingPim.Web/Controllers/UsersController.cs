@@ -66,6 +66,7 @@ namespace KingPim.Web.Controllers
                 user.Username,
                 user.FirstName,
                 user.LastName,
+                user.Email,
                 Token = tokenString
             });
         }
@@ -76,11 +77,11 @@ namespace KingPim.Web.Controllers
         {
             // map dto to entity
             var user = _mapper.Map<User>(userDto);
-
             try
             {
-                // save
-                _userService.Create(user, userDto.Password);
+               
+            // save
+            _userService.Create(user, userDto.Password);
                 return Ok();
             }
             catch (AppException ex)
