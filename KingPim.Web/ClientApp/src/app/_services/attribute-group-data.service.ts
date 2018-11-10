@@ -17,9 +17,10 @@ export class AttributeGroupDataService {
       .http.get(`${this.accessPointUrl}`);
   }
 
-  addAttributeGroup(name) {
+  addAttributeGroup(name, subcategoryId) {
     const obj = {
-      name: name
+      name: name,
+      subcategoryId: subcategoryId
     };
     console.log(obj);
     this.http.post(`${this.accessPointUrl}/`, obj)

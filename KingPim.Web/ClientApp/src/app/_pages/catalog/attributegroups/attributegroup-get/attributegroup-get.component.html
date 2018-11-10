@@ -1,8 +1,11 @@
 <mat-list>
-  <mat-list-item><strong>Attributegroups</strong><!--<a (click)="openDialog()"><strong>+</strong></a>--></mat-list-item>
+  <mat-list-item><strong>Attributegroups</strong><a (click)="openDialog()"><strong>+</strong></a></mat-list-item>
   <mat-divider></mat-divider>
   <mat-list-item *ngFor="let attributegroup of attributegroups">
-    {{attributegroup.name}}
-    <!--<a (click)="deleteCategory(category.id)">-</a>-->
+    <span matBadge="4" matBadgeOverlap="false" matBadgeSize="small"><button mat-button [matMenuTriggerFor]="menu">{{attributegroup.name}}</button></span> <!--Should Dynamicly count how many items are in that group-->
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Add Attributes to group {{attributegroup.name}}</button>
+      <button (click)="deleteAttributeGroup(attributegroup.id)" mat-menu-item>Delete AttributeGRoup</button>
+    </mat-menu>
   </mat-list-item>
 </mat-list>

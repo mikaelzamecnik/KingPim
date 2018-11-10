@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { SubCategoryDataService } from '../../../../_services/sub-category-data.service';
 import { Category } from '../../../../_models';
 import { CategoryDataService } from '../../../../_services';
@@ -22,9 +21,8 @@ export class SubcategoryAddComponent implements OnInit {
     private cs: CategoryDataService,
     private scs: SubCategoryDataService,
     public dialogRef: MatDialogRef<SubcategoryGetComponent>,)
-  {
-    this.createForm();
-  }
+  { this.createForm(); }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
