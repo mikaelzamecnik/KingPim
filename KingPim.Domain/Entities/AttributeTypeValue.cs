@@ -9,7 +9,7 @@ namespace KingPim.Domain.Entities
         public int Id { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; }
-        public int AttributeId { get; set; }
+        public int SingleAttributeId { get; set; }
         public SingleAttribute SingleAttribute { get; set; }
         public int? AttributeGroupId { get; set; }
         public AttributeGroup AttributeGroup { get; set; }

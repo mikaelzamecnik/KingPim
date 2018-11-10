@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KingPim.Persistence.Migrations
 {
     [DbContext(typeof(KingPimDbContext))]
-    [Migration("20181107080509_init")]
+    [Migration("20181109191343_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,11 +63,9 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<int?>("AttributeGroupId");
 
-                    b.Property<int>("AttributeId");
-
                     b.Property<int>("ProductId");
 
-                    b.Property<int?>("SingleAttributeId");
+                    b.Property<int>("SingleAttributeId");
 
                     b.Property<string>("Value");
 
@@ -198,6 +196,8 @@ namespace KingPim.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Email");
+
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
@@ -206,11 +206,30 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<byte[]>("PasswordSalt");
 
+                    b.Property<int>("RoleId");
+
+                    b.Property<int?>("UserRolesId");
+
                     b.Property<string>("Username");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserRolesId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("KingPim.Domain.Entities.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Role");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("KingPim.Domain.Entities.AttributeType", b =>
@@ -244,7 +263,8 @@ namespace KingPim.Persistence.Migrations
 
                     b.HasOne("KingPim.Domain.Entities.SingleAttribute", "SingleAttribute")
                         .WithMany("AttributeTypeValue")
-                        .HasForeignKey("SingleAttributeId");
+                        .HasForeignKey("SingleAttributeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("KingPim.Domain.Entities.Product", b =>
@@ -279,6 +299,13 @@ namespace KingPim.Persistence.Migrations
                         .WithMany("SubcategoryAttributeGroups")
                         .HasForeignKey("SubcategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("KingPim.Domain.Entities.User", b =>
+                {
+                    b.HasOne("KingPim.Domain.Entities.UserRole", "UserRoles")
+                        .WithMany()
+                        .HasForeignKey("UserRolesId");
                 });
 #pragma warning restore 612, 618
         }

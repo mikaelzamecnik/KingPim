@@ -1,7 +1,12 @@
 <mat-list>
   <mat-list-item><strong>Categories</strong><a (click)="openDialog()"><strong>+</strong></a></mat-list-item>
   <mat-divider></mat-divider>
-  <mat-list-item *ngFor="let category of categories">{{category.name}}
-    <a (click)="deleteCategory(category.id)">-</a>
+  <mat-list-item *ngFor="let category of categories">
+    <span matBadge="4" matBadgeOverlap="false" matBadgeSize="small"><button mat-button [matMenuTriggerFor]="menu">{{category.name}}</button></span> <!--Should Dynamicly count how many items are in that group-->
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Filter Products by: {{category.name}}</button>
+      <button (click)="deleteCategory(category.id)" mat-menu-item>Delete Category</button>
+    </mat-menu>
   </mat-list-item>
 </mat-list>
+

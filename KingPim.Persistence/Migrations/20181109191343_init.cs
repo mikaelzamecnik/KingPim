@@ -49,20 +49,16 @@ namespace KingPim.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "UserRoles",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    Username = table.Column<string>(nullable: true),
-                    PasswordHash = table.Column<byte[]>(nullable: true),
-                    PasswordSalt = table.Column<byte[]>(nullable: true)
+                    Role = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_UserRoles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -103,6 +99,32 @@ namespace KingPim.Persistence.Migrations
                         column: x => x.CategoryID,
                         principalTable: "Categories",
                         principalColumn: "CategoryID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Username = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    RoleId = table.Column<int>(nullable: false),
+                    UserRolesId = table.Column<int>(nullable: true),
+                    PasswordHash = table.Column<byte[]>(nullable: true),
+                    PasswordSalt = table.Column<byte[]>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_UserRoles_UserRolesId",
+                        column: x => x.UserRolesId,
+                        principalTable: "UserRoles",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -198,8 +220,7 @@ namespace KingPim.Persistence.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ProductId = table.Column<int>(nullable: false),
-                    AttributeId = table.Column<int>(nullable: false),
-                    SingleAttributeId = table.Column<int>(nullable: true),
+                    SingleAttributeId = table.Column<int>(nullable: false),
                     AttributeGroupId = table.Column<int>(nullable: true),
                     Value = table.Column<string>(nullable: true)
                 },
@@ -223,7 +244,7 @@ namespace KingPim.Persistence.Migrations
                         column: x => x.SingleAttributeId,
                         principalTable: "SingleAttributes",
                         principalColumn: "SingleAttributeId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -260,6 +281,11 @@ namespace KingPim.Persistence.Migrations
                 name: "IX_SubCategories_CategoryID",
                 table: "SubCategories",
                 column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_UserRolesId",
+                table: "Users",
+                column: "UserRolesId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -284,6 +310,9 @@ namespace KingPim.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "SingleAttributes");
+
+            migrationBuilder.DropTable(
+                name: "UserRoles");
 
             migrationBuilder.DropTable(
                 name: "SubCategories");
