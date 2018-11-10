@@ -14,6 +14,7 @@ export class ProductAddComponent implements OnInit {
   loading = false;
   angForm: FormGroup;
   subcategories: SubCategory[];
+  resizeToFitContent: boolean = true;
 
   constructor(
     private fb: FormBuilder,

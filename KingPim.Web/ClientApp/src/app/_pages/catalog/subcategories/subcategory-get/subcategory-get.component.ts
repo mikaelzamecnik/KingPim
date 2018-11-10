@@ -20,6 +20,7 @@ export class SubcategoryGetComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(SubcategoryAddComponent, {
       width: '250px',
+      backdropClass: 'custom-modalbox',
 
     });
     dialogRef.afterClosed().subscribe(result => {

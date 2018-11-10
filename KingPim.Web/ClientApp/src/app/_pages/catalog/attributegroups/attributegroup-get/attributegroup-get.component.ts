@@ -19,9 +19,9 @@ export class AttributegroupGetComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AttributegroupAddComponent, {
-      width: '250px', 
+      width: '250px',
+      backdropClass: 'custom-modalbox'
     });
-    
     //Show result after the button is closed
     dialogRef.afterClosed().subscribe(result => {
       console.log('Added');
