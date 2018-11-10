@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace KingPim.Web.Controllers
 {
     //Apply when app goes live
-    // [Authorize(Roles = "Admin")] 
+    // [Authorize(Roles = "Admin")]
     [Produces("application/json")]
     [Route("pim/[controller]")]
     public class CategoryController : Controller
@@ -61,7 +61,7 @@ namespace KingPim.Web.Controllers
 
             await _categoryModifyCreate.Execute(category);
 
-            return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+            return CreatedAtAction("GetCategory", new { id = category.CategoryID }, category);
         }
         // PUT: pim/Category/1 , Dont work all the way
         [HttpPut("{id}")]

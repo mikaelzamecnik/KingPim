@@ -1,11 +1,16 @@
 nav {
-  background-color: white;
-  border-bottom: dotted 1px;
+  background-color: ghostwhite;
 }
 .navbar-nav .nav-item .nav-link {
-  color: rebeccapurple;
+  color: darkgray;
 }
 
 .navbar-nav .nav-item:hover .nav-link {
   color: lightblue;
+}
+.centericon{
+  align-self:center;
+  align-content:center;
+  align-items:center;
+  text-align:center;
 }

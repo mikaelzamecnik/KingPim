@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Product } from '../_models';
 
 @Injectable()
 export class ProductDataService {
@@ -13,21 +12,39 @@ export class ProductDataService {
 
   }
 
-  public GetProducts() {
-    return this.http.get(this.accessPointUrl, { headers: this.headers });
+  getProducts() {
+    return this
+      .http.get(`${this.accessPointUrl}`);
   }
 
-  public GetProductId(payload) {
-    return this.http.get(this.accessPointUrl + '/' + payload.productID, { headers: this.headers });
+  addProduct(productName, subCategoryId) {
+    const obj = {
+      productName: productName,
+      subCategoryId: subCategoryId
+    };
+    console.log(obj);
+    this.http.post(`${this.accessPointUrl}/`, obj)
+      .subscribe(res => console.log('Done'));
   }
-  public AddProduct(payload: Product) {
-    return this.http.post(this.accessPointUrl, payload, { headers: this.headers });
+  deleteProduct(id) {
+    return this
+      .http
+      .delete(`${this.accessPointUrl}/${id}`);
   }
-  public RemoveProduct(payload) {
-    return this.http.delete(this.accessPointUrl + '/' + payload.productID, { headers: this.headers });
+  editProduct(id) {
+    return this
+      .http
+      .get(`${this.accessPointUrl}/${id}`);
   }
-  public UpdateProduct(payload) {
-    return this.http.put(this.accessPointUrl + '/' + payload.productID, { headers: this.headers });
+  updateProduct(productName, id) {
+
+    const obj = {
+      productName: productName
+    };
+    this
+      .http
+      .put(`${this.accessPointUrl}/${id}`, obj)
+      .subscribe(res => console.log('Done'));
   }
 
 }

@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class SubCategoryDataService {
   private headers: HttpHeaders;
-  private accessPointUrl: string = 'pim/Category/SubCategory/';
+  private accessPointUrl: string = 'pim/Category/SubCategory';
 
 
   constructor(private http: HttpClient) {
@@ -12,21 +12,39 @@ export class SubCategoryDataService {
 
   }
 
-  public GetSubCategories() {
-    return this.http.get(this.accessPointUrl, { headers: this.headers });
+  getSubCategories() {
+    return this
+      .http.get(`${this.accessPointUrl}`);
   }
 
-  public GetSubCategoryId(payload) {
-    return this.http.get(this.accessPointUrl + '/' + payload.Id, { headers: this.headers });
+  addSubCategory(subcategoryName, categoryId) {
+    const obj = {
+      subcategoryName: subcategoryName,
+      categoryId: categoryId
+    };
+    console.log(obj);
+    this.http.post(`${this.accessPointUrl}/`, obj)
+      .subscribe(res => console.log('Done'));
   }
-  public AddSubCategory(payload) {
-    return this.http.post(this.accessPointUrl, payload, { headers: this.headers });
+  deleteSubCategory(id) {
+    return this
+      .http
+      .delete(`${this.accessPointUrl}/${id}`);
   }
-  public RemoveSubCategory(payload) {
-    return this.http.delete(this.accessPointUrl + '/' + payload.Id, { headers: this.headers });
+  editSubCategory(id) {
+    return this
+      .http
+      .get(`${this.accessPointUrl}/${id}`);
   }
-  public UpdateSubCategory(payload) {
-    return this.http.put(this.accessPointUrl + '/' + payload.Id, { headers: this.headers });
+  updateSubCategory(subcategoryName, id) {
+
+    const obj = {
+      subcategoryName: subcategoryName
+    };
+    this
+      .http
+      .put(`${this.accessPointUrl}/${id}`, obj)
+      .subscribe(res => console.log('Done'));
   }
 
 }

@@ -20,8 +20,8 @@ namespace KingPim.Application.CategoryService.Modify
         {
             var entity = new Category
                 {
-                    CategoryID = model.Id,
-                    CategoryName = model.Name
+                    CategoryID = model.CategoryID,
+                    CategoryName = model.CategoryName
                 };
                 _context.Categories.Add(entity);
 

@@ -1,42 +1,18 @@
 <div class='container-fluid' id="main_container">
   <div class="row">
     <div class="col-md-2">
-      <app-main-catalog [categoryData]="categoryData" [categoryInfo]="currentCategory"></app-main-catalog>
+      <app-category-get></app-category-get><br />
+      <app-subcategory-get></app-subcategory-get><br />
     </div>
     <div class="col-md-8">
-      <h1>Catalog / Products</h1><br />
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addeditmodal" (click)="newRecord()">New</button><br />
-
-      <app-show-all-products [productData]='productData' [productInfo]="currentProduct" data-toggle="modal" data-target="#addeditmodal"
-                             (editClicked)="editClicked($event)" (newClicked)="newClicked()" (recordDeleted)="deleteClicked($event)"></app-show-all-products>
+      <h1>Products</h1><br /><button mat-raised-button [routerLink]='["/product/create"]' >
+        <i class="fa fa-plus"></i> Add Product
+      </button><br /><br />
+      <app-product-get></app-product-get>
     </div>
     <div class="col-md-2">
-      Information
+      <app-attributegroup-get></app-attributegroup-get><br />
+      <app-attribute-get></app-attribute-get>
     </div>
   </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="addeditmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <br />
-        <app-add-edit-product (productCreated)="createOrUpdateProduct($event)" [productInfo]="currentProduct"
-                              [productData]="productData" [categoryData]="categoryData" [subcategoryData]="subcategoryData"></app-add-edit-product>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-

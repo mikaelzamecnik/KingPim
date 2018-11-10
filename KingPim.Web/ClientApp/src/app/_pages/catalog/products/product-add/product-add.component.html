@@ -1,0 +1,60 @@
+<div class='container-fluid' id="main_container">
+  <div class="row">
+    <div class="col-md-2">
+      <app-category-get></app-category-get><br />
+      <app-subcategory-get></app-subcategory-get><br />
+    </div>
+    <div class="col-md-8">
+      <h1>Add Product</h1>
+      <a class="nav-link" [routerLink]='["/catalog"]'>
+        <i class="fa fa-arrow-left"></i><small> Back to Overview</small>
+      </a>
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>General Product Information</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <form [formGroup]="angForm" novalidate>
+              <div class="formcontainer">
+                <mat-form-field>
+                  <input matInput type="text" placeholder="Product Name" class="form-control" formControlName="productName" #productName />
+                </mat-form-field>
+                <div *ngIf="angForm.controls['productName'].invalid && (angForm.controls['productName'].dirty || angForm.controls['productName'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['productName'].errors.required">
+                    A Product name is required.
+                  </div>
+                </div>
+                <mat-form-field>
+                  <mat-select placeholder="Select SubCategory" formControlName="subCategoryId" #subCategoryId>
+                    <mat-option [value]="subCategory.id" *ngFor="let subCategory of subcategories ">
+                      {{ subCategory.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div *ngIf="angForm.controls['subCategoryId'].invalid && (angForm.controls['subCategoryId'].dirty || angForm.controls['subCategoryId'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['subCategoryId'].errors.required">
+                    A SubCategory is required
+                  </div>
+                </div>
+                <br />
+                <mat-card-actions>
+                  <button mat-raised-button (click)="addProduct(productName.value, subCategoryId.value)"
+                          [disabled]="angForm.pristine || angForm.invalid || loading">
+                    Add Product
+                  </button>
+                </mat-card-actions>
+                <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
+                <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+              </div>
+                </form>
+          </mat-card-content>
+        </mat-card>
+
+</div><!--Closing Main Div-->
+    <div class="col-md-2">
+      <app-attributegroup-get></app-attributegroup-get><br />
+      <app-attribute-get></app-attribute-get>
+    </div>
+  </div>
+</div>

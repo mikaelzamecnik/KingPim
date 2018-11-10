@@ -1,0 +1,11 @@
+<mat-list>
+  <mat-list-item><strong>SubCategories</strong><a (click)="openDialog()"><strong>+</strong></a></mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let subcategory of subcategories">
+    <span matBadge="4" matBadgeOverlap="false" matBadgeSize="small"><button mat-button [matMenuTriggerFor]="menu">{{subcategory.name}}</button></span> <!--Should Dynamicly count how many items are in that group-->
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Filter Products by: {{subcategory.name}}</button>
+      <button (click)="deleteSubCategory(subcategory.id)" mat-menu-item>Delete SubCategory</button>
+    </mat-menu>
+  </mat-list-item>
+</mat-list>

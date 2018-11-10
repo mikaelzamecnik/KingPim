@@ -1,5 +1,9 @@
 using AutoMapper;
 using KingPim.Application.Account.Service;
+using KingPim.Application.AttributeGroupService.Get;
+using KingPim.Application.AttributeGroupService.Modify;
+using KingPim.Application.AttributeService.Get;
+using KingPim.Application.AttributeService.Modify;
 using KingPim.Application.CategoryService.Get;
 using KingPim.Application.CategoryService.Modify;
 using KingPim.Application.Helpers;
@@ -103,14 +107,14 @@ namespace KingPim.Web
             //Services for Categories
             services.AddScoped<ICategoryGetAll, CategoryGetAll>();
             services.AddScoped<ICategoryGetSingle, CategoryGetSingle>();
-            services.AddScoped<ICategoryModifyCreate, CategoryModifyCreate>();
-            services.AddScoped<ICategoryModifyPut, CategoryModifyPut>();
+            services.AddTransient<ICategoryModifyCreate, CategoryModifyCreate>();
+            services.AddTransient<ICategoryModifyPut, CategoryModifyPut>();
             services.AddScoped<ICategoryModifyDelete, CategoryModifyDelete>();
             //Services for SubCategories
             services.AddScoped<ISubCategoryGetAll, SubCategoryGetAll>();
             services.AddScoped<ISubCategoryGetSingle, SubCategoryGetSingle>();
-            services.AddScoped<ISubCategoryModifyCreate, SubCategoryModifyCreate>();
-            services.AddScoped<ISubCategoryModifyPut, SubCategoryModifyPut>();
+            services.AddTransient<ISubCategoryModifyCreate, SubCategoryModifyCreate>();
+            services.AddTransient<ISubCategoryModifyPut, SubCategoryModifyPut>();
             services.AddScoped<ISubCategoryModifyDelete, SubCategoryModifyDelete>();
             //Services for Products
             services.AddScoped<IProductGetAll, ProductGetAll>();
@@ -118,6 +122,18 @@ namespace KingPim.Web
             services.AddTransient<IProductModifyCreate, ProductModifyCreate>();
             services.AddTransient<IProductModifyPut, ProductModifyPut>();
             services.AddScoped<IProductModifyDelete, ProductModifyDelete>();
+            //Services for AttributeGroups
+            services.AddScoped<IAgGetAll, AgGetAll>();
+            services.AddScoped<IAgGetSingle, AgGetSingle>();
+            services.AddTransient<IAgModifyCreate, AgModifyCreate>();
+            services.AddTransient<IAgModifyPut, AgModifyPut>();
+            services.AddScoped<IAgModifyDelete, AgModifyDelete>();
+            //Services for SingleAttribute
+            services.AddScoped<IAttributeGetAll, AttributeGetAll>();
+            services.AddScoped<IAttributeGetSingle, AttributeGetSingle>();
+            services.AddTransient<IAttributeModifyCreate, AttributeModifyCreate>();
+            services.AddTransient<IAttributeModifyPut, AttributeModifyPut>();
+            services.AddScoped<IAttributeModifyDelete, AttributeModifyDelete>();
 
 
             // In production, the Angular files will be served from this directory

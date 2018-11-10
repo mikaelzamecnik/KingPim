@@ -18,21 +18,30 @@ namespace KingPim.Application.ProductService.Modify
 
         public async Task Execute(ProductModifyCreateModel model)
         {
-            var entity = new Product
+            try
+            {
+                var entity = new Product
                 {
 
-                ProductID = model.ProductID,
-                ProductName = model.ProductName,
-                DateCreated = model.DateCreated,
-                EditedBy = model.EditedBy,
-                Version = model.Version,
-                PublishedStatus = model.PublishedStatus,
-                SubCategoryId = model.SubCategoryId
+                    ProductID = model.ProductID,
+                    ProductName = model.ProductName,
+                    DateCreated = model.DateCreated,
+                    EditedBy = model.EditedBy,
+                    Version = model.Version,
+                    PublishedStatus = model.PublishedStatus,
+                    SubCategoryId = model.SubCategoryId
 
-            };
+                };
                 _context.Products.Add(entity);
 
                 await _context.SaveChangesAsync();
+            }
+            catch (System.Exception e)
+            {
+
+                throw e;
+            }
+
         }
     }
 }

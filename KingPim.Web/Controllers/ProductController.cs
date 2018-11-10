@@ -69,11 +69,12 @@ namespace KingPim.Web.Controllers
         {
             //var user = _userService.GetAll(HttpContext.User);
 
+
             product.DateCreated = DateTime.Now;
             product.DateUpdated = DateTime.Now;
             product.EditedBy = "SuperAdmin";
             product.Version = 1;
-            product.SubCategoryId = 1;
+
             await _productModifyCreate.Execute(product);
 
 
@@ -83,16 +84,18 @@ namespace KingPim.Web.Controllers
         // PUT: pim/Category/SubCategory/Product/1 , Dont work all the way
         [HttpPut("{id}")]
         [ValidateModel]
-        public IActionResult PutProduct([FromRoute] int id, [FromBody] ProductModifyPutModel product)
+        public async Task<IActionResult> PutProduct([FromRoute] int id,[FromBody] ProductModifyPutModel product)
 
-        {
-            // Logic for put request
-
-            product.Version = product.Version++;
+         {
+            // Additonal logic for put request
+            int ver = 1 + product.Version++;
+            product.ProductID = id;
+            product.EditedBy = "SuperAdmin"; // Change to user
+            product.Version = ver;
             product.DateUpdated = DateTime.Now;
 
 
-            _productModifyPut.Execute(product);
+           await _productModifyPut.Execute(product);
             return NoContent();
         }
         // DELETE: pim/Category/SubCategory/Product/1

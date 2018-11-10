@@ -7,7 +7,23 @@ import { HomeLayoutComponent } from './_layouts/home-layout.component';
 import { CatalogComponent } from './_pages/catalog';
 import { AccountsComponent } from './_pages/accounts';
 import { HomeComponent } from './home';
-import { RegisterComponent } from './_pages/register';
+import { RegisterComponent } from './_pages/accounts/register';
+import { ProductGetComponent } from './_pages/catalog/products/product-get/product-get.component';
+import { ProductAddComponent } from './_pages/catalog/products/product-add/product-add.component';
+import { ProductEditComponent } from './_pages/catalog/products/product-edit/product-edit.component';
+import { CategoryGetComponent } from './_pages/catalog/categories/category-get/category-get.component';
+import { CategoryAddComponent } from './_pages/catalog/categories/category-add/category-add.component';
+import { CategoryEditComponent } from './_pages/catalog/categories/category-edit/category-edit.component';
+import { SubcategoryGetComponent } from './_pages/catalog/subcategories/subcategory-get/subcategory-get.component';
+import { SubcategoryAddComponent } from './_pages/catalog/subcategories/subcategory-add/subcategory-add.component';
+import { SubcategoryEditComponent } from './_pages/catalog/subcategories/subcategory-edit/subcategory-edit.component';
+import { AttributegroupGetComponent } from './_pages/catalog/attributegroups/attributegroup-get/attributegroup-get.component';
+import { AttributegroupAddComponent } from './_pages/catalog/attributegroups/attributegroup-add/attributegroup-add.component';
+import { AttributegroupEditComponent } from './_pages/catalog/attributegroups/attributegroup-edit/attributegroup-edit.component';
+import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get/attribute-get.component';
+import { AttributeAddComponent } from './_pages/catalog/attributes/attribute-add/attribute-add.component';
+import { AttributeEditComponent } from './_pages/catalog/attributes/attribute-edit/attribute-edit.component';
+
 
 
 const routes: Routes = [
@@ -18,10 +34,25 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'catalog', component: CatalogComponent },
       { path: 'accounts', component: AccountsComponent },
-      
+      { path: 'product', component: ProductGetComponent },
+      { path: 'product/create', component: ProductAddComponent },
+      { path: 'product/edit/:id', component: ProductEditComponent },
+      { path: 'category', component: CategoryGetComponent },
+      { path: 'category/create', component: CategoryAddComponent },
+      { path: 'category/edit/:id', component: CategoryEditComponent },
+      { path: 'subcategory', component: SubcategoryGetComponent },
+      { path: 'subcategory/create', component: SubcategoryAddComponent },
+      { path: 'subcategory/edit/:id', component: SubcategoryEditComponent },
+      { path: 'attributegroup', component: AttributegroupGetComponent },
+      { path: 'attributegroup/create', component: AttributegroupAddComponent },
+      { path: 'attributegroup/edit/:id', component: AttributegroupEditComponent },
+      { path: 'attribute', component: AttributeGetComponent },
+      { path: 'attribute/create', component: AttributeAddComponent },
+      { path: 'attribute/edit/:id', component: AttributeEditComponent },
+
     ]
   },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent }, //Removed when going live
 
   { path: '', component: LoginLayoutComponent, children: [{ path: 'login', component: LoginComponent }] },
   { path: '**', redirectTo: '' }

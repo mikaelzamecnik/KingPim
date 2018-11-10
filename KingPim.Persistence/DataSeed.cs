@@ -1,6 +1,7 @@
 using System.Linq;
 using System;
 using KingPim.Domain.Entities;
+using AutoMapper;
 
 namespace KingPim.Persistence
 {
@@ -10,7 +11,15 @@ namespace KingPim.Persistence
 
         public static void FillIfEmpty(KingPimDbContext ctx)
         {
-            
+
+
+            if (!ctx.UserRoles.Any())
+            {
+                ctx.UserRoles.Add(new UserRole { Role = "Admin" });
+                ctx.UserRoles.Add(new UserRole { Role = "Publisher" });
+                ctx.UserRoles.Add(new UserRole { Role = "Editor" });
+                ctx.SaveChanges();
+            }
             if (!ctx.Categories.Any())
             {
                 ctx.Categories.Add(new Category { CategoryName = "Computers" });
@@ -35,7 +44,14 @@ namespace KingPim.Persistence
                     EditedBy = "Mike",
                     Version = 1,
                     SubCategoryId = 1,
-                   
+                });
+                ctx.SaveChanges();
+            }
+            if (!ctx.AttributeGroups.Any())
+            {
+                ctx.AttributeGroups.Add(new AttributeGroup
+                {
+                    Name = "Ports",
                 });
                 ctx.SaveChanges();
             }
