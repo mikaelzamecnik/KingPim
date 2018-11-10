@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProductDataService } from '../../../../_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { delay } from 'q';
 
 @Component({
   selector: 'app-product-edit',
@@ -33,9 +32,9 @@ export class ProductEditComponent implements OnInit {
       });
     });
   }
-  updateProduct(productName) {
+  updateProduct(productName, publishedStatus) {
     this.route.params.subscribe(params => {
-      this.ps.updateProduct(productName, params['id']);
+      this.ps.updateProduct(productName, publishedStatus, params['id']);
       this.router.navigate(['/catalog']);
     });
   }

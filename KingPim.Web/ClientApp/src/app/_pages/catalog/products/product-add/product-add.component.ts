@@ -14,14 +14,12 @@ export class ProductAddComponent implements OnInit {
   loading = false;
   angForm: FormGroup;
   subcategories: SubCategory[];
-  resizeToFitContent: boolean = true;
 
   constructor(
     private fb: FormBuilder,
     private ps: ProductDataService,
     private scs: SubCategoryDataService,
-    private router: Router)
-  {
+    private router: Router) {
     this.createForm();
   }
   createForm() {
@@ -34,7 +32,7 @@ export class ProductAddComponent implements OnInit {
     });
 
   }
-  //Show SubCategories in Add Product
+  // Show SubCategories in Add Product
   showSubCategories() {
     this.scs
       .getSubCategories()
@@ -48,7 +46,7 @@ export class ProductAddComponent implements OnInit {
     console.log(subCategoryId);
     this.loading = true;
     this.ps.addProduct(productName, subCategoryId);
-    this.router.navigate(['/catalog']); //TODO routing goes to fast, backend cant keep up
+    this.router.navigate(['/catalog']); // TODO routing goes to fast, backend cant keep up
   }
 
   ngOnInit() {

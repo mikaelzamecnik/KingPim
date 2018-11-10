@@ -12,7 +12,11 @@ namespace KingPim.Persistence
         public static void FillIfEmpty(KingPimDbContext ctx)
         {
 
-
+            if (!ctx.Catalogs.Any())
+            {
+                ctx.Catalogs.Add(new Catalog { Name = "ProductCatalog" });
+                ctx.SaveChanges();
+            }
             if (!ctx.UserRoles.Any())
             {
                 ctx.UserRoles.Add(new UserRole { Role = "Admin" });
@@ -22,8 +26,8 @@ namespace KingPim.Persistence
             }
             if (!ctx.Categories.Any())
             {
-                ctx.Categories.Add(new Category { CategoryName = "Computers" });
-                ctx.Categories.Add(new Category { CategoryName = "Televisions" });
+                ctx.Categories.Add(new Category { CategoryName = "Computers", CatalogId = 1 });
+                ctx.Categories.Add(new Category { CategoryName = "Televisions", CatalogId = 1 });
                 ctx.SaveChanges();
             }
             if (!ctx.SubCategories.Any())

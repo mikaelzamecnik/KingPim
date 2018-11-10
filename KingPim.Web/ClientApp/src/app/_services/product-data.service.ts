@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class ProductDataService {
   private headers: HttpHeaders;
-  private accessPointUrl: string = 'pim/Category/SubCategory/Product';
+  private accessPointUrl = 'pim/Category/SubCategory/Product';
 
 
   constructor(private http: HttpClient) {
@@ -36,10 +36,11 @@ export class ProductDataService {
       .http
       .get(`${this.accessPointUrl}/${id}`);
   }
-  updateProduct(productName, id) {
+  updateProduct(productName, id, publishedStatus) {
 
     const obj = {
-      productName: productName
+      productName: productName,
+      publishedStatus: publishedStatus
     };
     this
       .http

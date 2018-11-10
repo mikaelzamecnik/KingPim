@@ -21,7 +21,8 @@ namespace KingPim.Application.CategoryService.Get
                 new CategoryGetAllModel
                 {
                     Id = c.CategoryID,
-                    Name = c.CategoryName
+                    Name = c.CategoryName,
+                    CatalogId = c.CatalogId
                 }).ToListAsync();
         }
     }
