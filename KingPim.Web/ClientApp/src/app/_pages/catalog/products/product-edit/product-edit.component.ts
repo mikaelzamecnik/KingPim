@@ -4,10 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-product-edit',
-  templateUrl: './product-edit.component.html',
-  styleUrls: ['./product-edit.component.css']
-})
+  selector: 'app-product-edit', templateUrl: './product-edit.component.html'})
 export class ProductEditComponent implements OnInit {
 
   product: any = {};

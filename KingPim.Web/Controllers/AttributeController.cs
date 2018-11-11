@@ -76,7 +76,7 @@ namespace KingPim.Web.Controllers
 
 
 
-            return CreatedAtAction("GetAttribute", new { id = att.SingleAttributeId }, att);
+            return CreatedAtAction("GetAttribute", new { id = att.Id }, att);
         }
         // PUT: pim/Category/SubCategory/AG/Attribute/1
         [HttpPut("{id}")]

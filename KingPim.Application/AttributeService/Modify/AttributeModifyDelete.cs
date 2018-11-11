@@ -17,7 +17,7 @@ namespace KingPim.Application.AttributeService.Modify
 
         public async Task Execute(int id)
         {
-            var entity = await _context.SingleAttributes.SingleAsync(c => c.SingleAttributeId == id);
+            var entity = await _context.SingleAttributes.SingleAsync(c => c.Id == id);
             _context.SingleAttributes.Remove(entity);
 
             await _context.SaveChangesAsync();

@@ -14,7 +14,7 @@ namespace KingPim.Application.ProductService.Modify
         public string EditedBy { get; set; }
         public int Version { get; set; }
         public bool PublishedStatus { get; set; }
-        public int? SubCategoryId { get; set; }
+        public int SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
 
     }

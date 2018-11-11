@@ -5,10 +5,7 @@ import { MatDialog } from '@angular/material';
 import { SubcategoryAddComponent } from '../subcategory-add/subcategory-add.component';
 
 @Component({
-  selector: 'app-subcategory-get',
-  templateUrl: './subcategory-get.component.html',
-  styleUrls: ['./subcategory-get.component.css']
-})
+  selector: 'app-subcategory-get', templateUrl: './subcategory-get.component.html'})
 export class SubcategoryGetComponent implements OnInit {
 
   subcategories: SubCategory[];
@@ -27,8 +24,8 @@ export class SubcategoryGetComponent implements OnInit {
       console.log('Added');
       this.scs
         .getSubCategories()
-        .subscribe((result: SubCategory[]) => {
-          this.subcategories = result;
+        .subscribe((_result: SubCategory[]) => {
+          this.subcategories = _result;
         });
     });
   }

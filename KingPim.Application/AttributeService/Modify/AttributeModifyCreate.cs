@@ -23,9 +23,10 @@ namespace KingPim.Application.AttributeService.Modify
                 var entity = new SingleAttribute
                 {
 
-                    SingleAttributeId = model.SingleAttributeId,
+                    Id = model.Id,
                     Name = model.Name,
-                    AttributeGroupId = model.AttributeGroupId
+                    AttributeGroupId = model.AttributeGroupId,
+                    AttributeValues = model.AttributeValues
                 };
                 _context.SingleAttributes.Add(entity);
 

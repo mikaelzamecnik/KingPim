@@ -6,10 +6,7 @@ import { SubCategoryDataService } from '../../../../_services/sub-category-data.
 import { SubCategory } from '../../../../_models';
 
 @Component({
-  selector: 'app-product-add',
-  templateUrl: './product-add.component.html',
-  styleUrls: ['./product-add.component.css']
-})
+  selector: 'app-product-add', templateUrl: './product-add.component.html'})
 export class ProductAddComponent implements OnInit {
   loading = false;
   angForm: FormGroup;

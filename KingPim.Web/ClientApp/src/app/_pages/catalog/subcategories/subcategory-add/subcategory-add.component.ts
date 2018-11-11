@@ -7,10 +7,7 @@ import { MatDialogRef } from '@angular/material';
 import { SubcategoryGetComponent } from '../subcategory-get/subcategory-get.component';
 
 @Component({
-  selector: 'app-subcategory-add',
-  templateUrl: './subcategory-add.component.html',
-  styleUrls: ['./subcategory-add.component.css']
-})
+  selector: 'app-subcategory-add', templateUrl: './subcategory-add.component.html'})
 export class SubcategoryAddComponent implements OnInit {
   loading = false;
   angForm: FormGroup;
@@ -20,8 +17,8 @@ export class SubcategoryAddComponent implements OnInit {
     private fb: FormBuilder,
     private cs: CategoryDataService,
     private scs: SubCategoryDataService,
-    public dialogRef: MatDialogRef<SubcategoryGetComponent>,)
-  { this.createForm(); }
+    public dialogRef: MatDialogRef<SubcategoryGetComponent> ) {
+      this.createForm(); }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -34,7 +31,7 @@ export class SubcategoryAddComponent implements OnInit {
     });
 
   }
-  //Show Categories in Add SubCategory
+  // Show Categories in Add SubCategory
   showCategories() {
     this.cs
       .getCategories()

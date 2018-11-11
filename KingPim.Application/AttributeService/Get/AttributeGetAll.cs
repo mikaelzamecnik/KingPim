@@ -16,15 +16,17 @@ namespace KingPim.Application.AttributeService.Get
             _context = context;
         }
 
-        public IEnumerable<SingleAttribute> SingleAttributes => _context.SingleAttributes.Include(c => c.SingleAttributeId).Include(d => d.SingleAttributeId);
+        public IEnumerable<SingleAttribute> SingleAttributes => _context.SingleAttributes.Include(c => c.Id).Include(d => d.Id);
         public async Task<IEnumerable<AttributeGetAllModel>> Execute()
         {
             return await _context.SingleAttributes.Select(c =>
                 new AttributeGetAllModel
                 {
-                 SingleAttributeId = c.SingleAttributeId,
+                 Id = c.Id,
                  Name = c.Name,
-                 AttributeGroupId = c.AttributeGroupId
+                 AttributeGroupId = c.AttributeGroupId,
+                 AttributeValues = c.AttributeValues,
+                 AttValueEnum = c.AttValueEnum
 
         }).ToListAsync();
         }

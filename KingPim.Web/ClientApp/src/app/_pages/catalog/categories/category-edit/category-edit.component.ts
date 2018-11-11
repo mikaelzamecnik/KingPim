@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-category-edit',
-  templateUrl: './category-edit.component.html',
-  styleUrls: ['./category-edit.component.css']
-})
+  selector: 'app-category-edit', templateUrl: './category-edit.component.html'})
 export class CategoryEditComponent implements OnInit {
 
   constructor() { }

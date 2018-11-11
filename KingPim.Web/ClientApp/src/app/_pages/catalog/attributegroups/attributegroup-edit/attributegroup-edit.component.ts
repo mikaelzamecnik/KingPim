@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-attributegroup-edit',
-  templateUrl: './attributegroup-edit.component.html',
-  styleUrls: ['./attributegroup-edit.component.css']
-})
+  selector: 'app-attributegroup-edit', templateUrl: './attributegroup-edit.component.html'})
 export class AttributegroupEditComponent implements OnInit {
 
   constructor() { }

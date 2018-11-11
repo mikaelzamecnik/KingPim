@@ -7,10 +7,7 @@ import { SubCategory } from '../../../../_models';
 import { AttributeGroupDataService } from '../../../../_services';
 
 @Component({
-  selector: 'app-attributegroup-add',
-  templateUrl: './attributegroup-add.component.html',
-  styleUrls: ['./attributegroup-add.component.css']
-})
+  selector: 'app-attributegroup-add', templateUrl: './attributegroup-add.component.html'})
 export class AttributegroupAddComponent implements OnInit {
   loading = false;
   angForm: FormGroup;
@@ -20,8 +17,8 @@ export class AttributegroupAddComponent implements OnInit {
     private fb: FormBuilder,
     private ag: AttributeGroupDataService,
     private scs: SubCategoryDataService,
-    public dialogRef: MatDialogRef<AttributegroupGetComponent>, )
-  { this.createForm(); }
+    public dialogRef: MatDialogRef<AttributegroupGetComponent> ) {
+      this.createForm(); }
 
   onNoClick(): void {
     this.dialogRef.close();

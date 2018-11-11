@@ -1,34 +1,52 @@
 import { Component, OnInit } from '@angular/core';
 import { AttributeGroup } from '../../../../_models/attributegroup';
+import { Attribute } from '../../../../_models/attribute';
 import { AttributeGroupDataService } from '../../../../_services';
+import { AttributeDataService } from '../../../../_services';
 import { MatDialog } from '@angular/material';
 import { AttributegroupAddComponent } from '../attributegroup-add/attributegroup-add.component';
+import { AttributeAddComponent } from '../../attributes/attribute-add/attribute-add.component';
 
 @Component({
-  selector: 'app-attributegroup-get',
-  templateUrl: './attributegroup-get.component.html',
-  styleUrls: ['./attributegroup-get.component.css']
-})
+  selector: 'app-attributegroup-get', templateUrl: './attributegroup-get.component.html'})
 export class AttributegroupGetComponent implements OnInit {
 
   attributegroups: AttributeGroup[];
+  attributes: Attribute[];
 
   constructor(
     private ag: AttributeGroupDataService,
+    private att: AttributeDataService,
     public dialog: MatDialog) { }
-
-  openDialog(): void {
+  // OpenModal For add new attributegroup
+  openAgDialog(): void {
     const dialogRef = this.dialog.open(AttributegroupAddComponent, {
       width: '250px',
       backdropClass: 'custom-modalbox'
     });
-    //Show result after the button is closed
+    // Show result after the button is closed
     dialogRef.afterClosed().subscribe(result => {
       console.log('Added');
       this.ag
         .getAttributeGroups()
-        .subscribe((result: AttributeGroup[]) => {
-          this.attributegroups = result;
+        .subscribe((_result: AttributeGroup[]) => {
+          this.attributegroups = _result;
+        });
+    });
+  }
+   // OpenModal For add new attribute
+   openAttDialog(): void {
+    const dialogRef = this.dialog.open(AttributeAddComponent, {
+      width: '500px',
+      backdropClass: 'custom-modalbox'
+    });
+    // Show result after the button is closed
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Added');
+      this.att
+        .getAttribute()
+        .subscribe((_result: Attribute[]) => {
+          this.attributes = _result;
         });
     });
   }

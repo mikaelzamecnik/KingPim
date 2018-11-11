@@ -25,9 +25,10 @@ namespace KingPim.Application.AttributeService.Get
 
             return new AttributeGetSingleModel
             {
-                SingleAttributeId = entity.SingleAttributeId,
+                Id = entity.Id,
                 Name = entity.Name,
-                AttributeGroupId = entity.AttributeGroupId
+                AttributeGroupId = entity.AttributeGroupId,
+                AttributeValues = entity.AttributeValues
             };
         }
     }

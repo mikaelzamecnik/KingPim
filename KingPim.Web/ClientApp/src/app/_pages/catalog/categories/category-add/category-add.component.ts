@@ -7,10 +7,7 @@ import { MatDialogRef } from '@angular/material';
 import { CategoryGetComponent } from '../category-get/category-get.component';
 
 @Component({
-  selector: 'app-category-add',
-  templateUrl: './category-add.component.html',
-  styleUrls: ['./category-add.component.css']
-})
+  selector: 'app-category-add', templateUrl: './category-add.component.html'})
 export class CategoryAddComponent implements OnInit {
   loading = false;
   angForm: FormGroup;
@@ -19,8 +16,7 @@ export class CategoryAddComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private cs: CategoryDataService,
-    public dialogRef: MatDialogRef<CategoryGetComponent>,)
-  {
+    public dialogRef: MatDialogRef<CategoryGetComponent>) {
     this.createForm();
   }
 
@@ -31,9 +27,15 @@ export class CategoryAddComponent implements OnInit {
   createForm() {
     this.angForm = this.fb.group({
       categoryName: ['', Validators.required]
-      // Add more
     });
 
+  }
+  showCategories() {
+    this.cs
+      .getCategories()
+      .subscribe((data: Category[]) => {
+        this.categories = data;
+      });
   }
 
   // Add Category to db
@@ -43,7 +45,6 @@ export class CategoryAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
 }

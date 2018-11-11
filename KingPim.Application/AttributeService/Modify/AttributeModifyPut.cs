@@ -20,11 +20,12 @@ namespace KingPim.Application.AttributeService.Modify
         {
             try
             {
-                var entity =  await _context.SingleAttributes.SingleOrDefaultAsync(c => c.SingleAttributeId == model.SingleAttributeId);
+                var entity =  await _context.SingleAttributes.SingleOrDefaultAsync(c => c.Id == model.Id);
 
 
                 entity.Name = model.Name;
                 entity.AttributeGroupId = model.AttributeGroupId;
+                entity.AttributeValues = model.AttributeValues;
 
                 _context.SingleAttributes.Update(entity);
 

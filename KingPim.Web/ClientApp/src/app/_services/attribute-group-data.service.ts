@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class AttributeGroupDataService {
   private headers: HttpHeaders;
-  private accessPointUrl: string = 'pim/Category/SubCategory/Ag';
+  private accessPointUrl = 'pim/Category/SubCategory/Ag';
 
 
   constructor(private http: HttpClient) {

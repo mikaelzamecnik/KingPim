@@ -6,12 +6,12 @@ namespace KingPim.Application.AttributeService.Get
 {
 public class AttributeGetAllModel
     {
-        public int SingleAttributeId { get; set; }
-        public int? AttributeGroupId { get; set; }
-        public AttributeGroup AttributeGroup { get; set; }
-        public IEnumerable<AttributeTypeValue> AttributeTypeValue { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        // Enum values for diffrent input types ?
+        public int AttributeGroupId { get; set; }
+        public AttributeGroup AttributeGroup { get; set; }
+        public IEnumerable<AttributeValue> AttributeValues { get; set; }
+        public AttValueEnum AttValueEnum { get; set; }
     }
 
 }
