@@ -10,7 +10,9 @@ import {
   MatDividerModule,
   MatBadgeModule,
   MatMenuModule,
-  MatCardModule
+  MatCardModule,
+  MatExpansionModule,
+  MatBottomSheetModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -27,7 +29,9 @@ import { NgModule } from '@angular/core';
     MatDividerModule,
     MatBadgeModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule,
+    MatBottomSheetModule
   ],
   exports: [
     MatButtonModule,
@@ -41,7 +45,9 @@ import { NgModule } from '@angular/core';
     MatDividerModule,
     MatBadgeModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule,
+    MatBottomSheetModule
   ],
 })
 export class MaterialModule { }

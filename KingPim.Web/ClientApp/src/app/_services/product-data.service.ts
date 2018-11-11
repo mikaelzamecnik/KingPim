@@ -36,11 +36,9 @@ export class ProductDataService {
       .http
       .get(`${this.accessPointUrl}/${id}`);
   }
-  updateProduct(productName, id, publishedStatus) {
-
+  updateProduct(productName, id) {
     const obj = {
-      productName: productName,
-      publishedStatus: publishedStatus
+      productName: productName
     };
     this
       .http

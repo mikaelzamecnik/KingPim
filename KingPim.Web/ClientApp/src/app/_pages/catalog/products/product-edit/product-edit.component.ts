@@ -32,10 +32,10 @@ export class ProductEditComponent implements OnInit {
       });
     });
   }
-  updateProduct(productName, publishedStatus) {
+  updateProduct(productName) {
     this.route.params.subscribe(params => {
-      this.ps.updateProduct(productName, publishedStatus, params['id']);
-      this.router.navigate(['/catalog']);
+      this.ps.updateProduct(productName,  params['id']);
+      this.router.navigate(['catalog']);
     });
   }
 

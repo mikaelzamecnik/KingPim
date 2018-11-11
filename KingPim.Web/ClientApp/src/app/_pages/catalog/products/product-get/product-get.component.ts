@@ -7,15 +7,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-product-get',
   templateUrl: './product-get.component.html',
-  styleUrls: ['./product-get.component.css'],
+  styleUrls: ['./product-get.component.css']
 })
 export class ProductGetComponent implements OnInit {
 
   columnsToDisplay: string[] = ['Id', 'Name', 'Category', 'SubCategory',
     'Created', 'Updated', 'Version', 'Editedby', 'Published', 'Edit', 'Delete'];
-  products: Product[];
-  product: any = {};
+  productData: Product[];
   angForm: FormGroup;
+  panelOpenState = false;
 
   constructor(private ps: ProductDataService,
     private route: ActivatedRoute,
@@ -25,11 +25,10 @@ export class ProductGetComponent implements OnInit {
 
   ngOnInit() {
     this.showProducts();
-
   }
   createForm() {
     this.angForm = this.fb.group({
-      publishedStatus: [''],
+      publishedStatus: ['']
     });
   }
   // to show products oninit and after deletion
@@ -37,7 +36,8 @@ export class ProductGetComponent implements OnInit {
     this.ps
       .getProducts()
       .subscribe((data: Product[]) => {
-        this.products = data;
+        this.productData = data;
+        console.log(data);
       });
   }
   deleteProduct(productID) {
@@ -46,9 +46,12 @@ export class ProductGetComponent implements OnInit {
       console.log('Deleted', productID);
     });
   }
-  editProduct(productName , publishedStatus, productID) {
-    this.ps.editProduct(productID);
-    console.log(productID);
-      this.ps.updateProduct(productName , publishedStatus, productID);
-      }
+  editProduct(productID) {
+    this.ps.editProduct(productID).subscribe(res => {
+     });
+     console.log('ID', productID);
+  }
+  updateProduct(productID, productName) {
+    this.ps.updateProduct(productID, productName);
+    }
     }
