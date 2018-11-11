@@ -30,12 +30,12 @@ export class AccountsComponent implements OnInit, OnDestroy {
 
   deleteUser(id: number) {
     this.userService.delete(id).pipe(first()).subscribe(() => {
-      this.loadAllUsers()
+      this.loadAllUsers();
     });
   }
   getUser(id: number) {
     this.userService.getById(id).pipe(first()).subscribe(() => {
-      this.loadAllUsers()
+      this.loadAllUsers();
     });
   }
 

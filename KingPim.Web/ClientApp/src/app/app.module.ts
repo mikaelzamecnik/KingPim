@@ -39,6 +39,7 @@ import { AttributegroupGetComponent } from './_pages/catalog/attributegroups/att
 import { AttributeAddComponent } from './_pages/catalog/attributes/attribute-add/attribute-add.component';
 import { AttributeEditComponent } from './_pages/catalog/attributes/attribute-edit/attribute-edit.component';
 import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get/attribute-get.component';
+import { ExportComponent } from './_pages/export/export.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get
     AttributeAddComponent,
     AttributeEditComponent,
     AttributeGetComponent,
+    ExportComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

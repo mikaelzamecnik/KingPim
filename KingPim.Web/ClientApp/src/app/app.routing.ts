@@ -23,6 +23,7 @@ import { AttributegroupEditComponent } from './_pages/catalog/attributegroups/at
 import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get/attribute-get.component';
 import { AttributeAddComponent } from './_pages/catalog/attributes/attribute-add/attribute-add.component';
 import { AttributeEditComponent } from './_pages/catalog/attributes/attribute-edit/attribute-edit.component';
+import { ExportComponent } from './_pages/export/export.component';
 
 
 
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'catalog', component: CatalogComponent },
       { path: 'accounts', component: AccountsComponent },
+      { path: 'export', component: ExportComponent },
       { path: 'product', component: ProductGetComponent },
       { path: 'product/create', component: ProductAddComponent },
       { path: 'product/edit/:id', component: ProductEditComponent },
@@ -52,7 +54,7 @@ const routes: Routes = [
 
     ]
   },
-  { path: 'register', component: RegisterComponent }, //Removed when going live
+  { path: 'register', component: RegisterComponent }, // Removed when going live
 
   { path: '', component: LoginLayoutComponent, children: [{ path: 'login', component: LoginComponent }] },
   { path: '**', redirectTo: '' }

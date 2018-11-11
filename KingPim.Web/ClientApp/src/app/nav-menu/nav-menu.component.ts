@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class NavMenuComponent implements OnInit {
   currentUser: User;
   isLoggedIn$: Observable<boolean>;
+  isExpanded = false;
 
   constructor(
     private router: Router,
@@ -29,7 +30,6 @@ export class NavMenuComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  isExpanded = false;
 
   collapse() {
     this.isExpanded = false;
