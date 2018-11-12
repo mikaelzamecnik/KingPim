@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AttributeDataService {
 
   private headers: HttpHeaders;
-  private accessPointUrl = 'pim/Category/SubCategory/Attribute';
+  private accessPointUrl = 'pim/Category/SubCategory/AG/Attribute';
 
 
   constructor(private http: HttpClient) {
@@ -13,12 +13,12 @@ export class AttributeDataService {
 
   }
 
-  getAttribute() {
+  getAttributes() {
     return this
       .http.get(`${this.accessPointUrl}`);
   }
 
-  addAttribute() {
+  addAttributes() {
     const obj = { };
     console.log(obj);
     this.http.post(`${this.accessPointUrl}/`, obj)

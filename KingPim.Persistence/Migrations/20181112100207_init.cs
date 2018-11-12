@@ -27,7 +27,8 @@ namespace KingPim.Persistence.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    PublishedStatus = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,6 +55,7 @@ namespace KingPim.Persistence.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     AttributeGroupId = table.Column<int>(nullable: false),
                     AttValueEnum = table.Column<int>(nullable: false)
                 },
@@ -123,11 +125,18 @@ namespace KingPim.Persistence.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SubcategoryName = table.Column<string>(maxLength: 100, nullable: false),
                     CategoryID = table.Column<int>(nullable: true),
-                    PublishedStatus = table.Column<bool>(nullable: false)
+                    PublishedStatus = table.Column<bool>(nullable: false),
+                    CatalogId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SubCategories", x => x.SubcategoryID);
+                    table.ForeignKey(
+                        name: "FK_SubCategories_Catalogs_CatalogId",
+                        column: x => x.CatalogId,
+                        principalTable: "Catalogs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_SubCategories_Categories_CategoryID",
                         column: x => x.CategoryID,
@@ -148,11 +157,18 @@ namespace KingPim.Persistence.Migrations
                     EditedBy = table.Column<string>(nullable: true),
                     Version = table.Column<int>(nullable: false),
                     PublishedStatus = table.Column<bool>(nullable: false),
-                    SubCategoryId = table.Column<int>(nullable: false)
+                    SubCategoryId = table.Column<int>(nullable: false),
+                    CatalogId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.ProductID);
+                    table.ForeignKey(
+                        name: "FK_Products_Catalogs_CatalogId",
+                        column: x => x.CatalogId,
+                        principalTable: "Catalogs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Products_SubCategories_SubCategoryId",
                         column: x => x.SubCategoryId,
@@ -231,6 +247,11 @@ namespace KingPim.Persistence.Migrations
                 column: "CatalogId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Products_CatalogId",
+                table: "Products",
+                column: "CatalogId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_SubCategoryId",
                 table: "Products",
                 column: "SubCategoryId");
@@ -239,6 +260,11 @@ namespace KingPim.Persistence.Migrations
                 name: "IX_SingleAttributes_AttributeGroupId",
                 table: "SingleAttributes",
                 column: "AttributeGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubCategories_CatalogId",
+                table: "SubCategories",
+                column: "CatalogId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SubCategories_CategoryID",

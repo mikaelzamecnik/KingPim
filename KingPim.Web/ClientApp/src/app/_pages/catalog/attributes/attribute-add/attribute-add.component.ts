@@ -1,17 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { AttributeGetComponent } from '../../attributes/attribute-get/attribute-get.component';
+import { AttributeGroupDataService, SubCategoryDataService, AttributeDataService } from '../../../../_services';
+import { AttributeGroup } from '../../../../_models';
+import { Attribute } from '../../../../_models';
 
 @Component({
   selector: 'app-attribute-add', templateUrl: './attribute-add.component.html'})
 export class AttributeAddComponent implements OnInit {
+  angForm: FormGroup;
+  attributegroup: AttributeGroup[];
+  attributes: Attribute[];
 
-  constructor(public dialogRef: MatDialogRef<AttributeGetComponent>) { }
-
-  ngOnInit() {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private ag: AttributeGroupDataService,
+    public scs: SubCategoryDataService,
+    public att: AttributeDataService,
+    public dialogRef: MatDialogRef<AttributeGetComponent>) { }
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  ngOnInit() {
+    this.showAttribute();
+  }
+  // Show attributes and child attributevalue, attvalueEnum
+  showAttribute() {
+    this.att
+      .getAttributes()
+      .subscribe((data: Attribute[]) => {
+        this.attributes = data;
+      });
+  }
+  showAttributeGroups() {
+    this.ag
+      .getAttributeGroups()
+      .subscribe((data: AttributeGroup[]) => {
+        this.attributegroup = data;
+      });
   }
 
 }

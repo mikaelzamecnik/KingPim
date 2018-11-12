@@ -44,7 +44,7 @@ export class AttributegroupGetComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('Added');
       this.att
-        .getAttribute()
+        .getAttributes()
         .subscribe((_result: Attribute[]) => {
           this.attributes = _result;
         });
