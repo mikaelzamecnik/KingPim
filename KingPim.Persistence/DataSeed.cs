@@ -12,6 +12,12 @@ namespace KingPim.Persistence
         public static void FillIfEmpty(KingPimDbContext ctx)
         {
 
+            if(!ctx.SingleAttributes.Any())
+            {
+                ctx.SingleAttributes.Add(new SingleAttribute{AttributeGroupId =1, Name="USB", Description="For connect"});
+                ctx.SingleAttributes.Add(new SingleAttribute{AttributeGroupId =1, Name="HDMI" , Description="For view"});
+                ctx.SingleAttributes.Add(new SingleAttribute{AttributeGroupId =1, Name="VGA", Description="For view"});
+            }
             if (!ctx.Catalogs.Any())
             {
                 ctx.Catalogs.Add(new Catalog { Name = "ProductCatalog" });
@@ -55,7 +61,7 @@ namespace KingPim.Persistence
             {
                 ctx.AttributeGroups.Add(new AttributeGroup
                 {
-                    Name = "Ports",
+                    Name = "Ports"
                 });
                 ctx.SaveChanges();
             }

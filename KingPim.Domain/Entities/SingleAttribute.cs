@@ -11,8 +11,6 @@ namespace KingPim.Domain.Entities
         public string Description { get; set; }
         public int AttributeGroupId { get; set; }
         public AttributeGroup AttributeGroup { get; set; }
-        public IEnumerable<AttributeValue> AttributeValues { get; set; }
-
         public AttValueEnum AttValueEnum { get; set; }
     }
 }

@@ -25,7 +25,6 @@ namespace KingPim.Application.AttributeService.Get
                  Id = c.Id,
                  Name = c.Name,
                  AttributeGroupId = c.AttributeGroupId,
-                 AttributeValues = c.AttributeValues,
                  AttValueEnum = c.AttValueEnum
 
         }).ToListAsync();
