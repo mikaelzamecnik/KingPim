@@ -58,7 +58,6 @@ namespace KingPim.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> PostCategory([FromBody] CategoryModifyCreateModel category)
         {
-            category.CatalogId = 1;
             await _categoryModifyCreate.Execute(category);
 
             return CreatedAtAction("GetCategory", new { id = category.CategoryID }, category);

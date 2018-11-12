@@ -194,7 +194,7 @@ namespace KingPim.Web
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
-            DataSeed.FillIfEmpty(ctx);
+           // DataSeed.FillIfEmpty(ctx);
 
         }
     }

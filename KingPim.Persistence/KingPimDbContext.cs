@@ -16,7 +16,6 @@ public class KingPimDbContext: DbContext
         public DbSet<SubcategoryAttributeGroup> SubcategoryAttributeGroups { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
-        public DbSet<Catalog> Catalogs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
             base.OnModelCreating(modelBuilder);

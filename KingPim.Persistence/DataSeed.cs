@@ -2,6 +2,7 @@ using System.Linq;
 using System;
 using KingPim.Domain.Entities;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace KingPim.Persistence
 {
@@ -11,16 +12,11 @@ namespace KingPim.Persistence
 
         public static void FillIfEmpty(KingPimDbContext ctx)
         {
-
-            if(!ctx.SingleAttributes.Any())
+            if (!ctx.SingleAttributes.Any())
             {
                 ctx.SingleAttributes.Add(new SingleAttribute{AttributeGroupId =1, Name="USB", Description="For connect"});
                 ctx.SingleAttributes.Add(new SingleAttribute{AttributeGroupId =1, Name="HDMI" , Description="For view"});
                 ctx.SingleAttributes.Add(new SingleAttribute{AttributeGroupId =1, Name="VGA", Description="For view"});
-            }
-            if (!ctx.Catalogs.Any())
-            {
-                ctx.Catalogs.Add(new Catalog { Name = "ProductCatalog" });
                 ctx.SaveChanges();
             }
             if (!ctx.UserRoles.Any())
@@ -32,8 +28,8 @@ namespace KingPim.Persistence
             }
             if (!ctx.Categories.Any())
             {
-                ctx.Categories.Add(new Category { CategoryName = "Computers", CatalogId = 1 });
-                ctx.Categories.Add(new Category { CategoryName = "Televisions", CatalogId = 1 });
+                ctx.Categories.Add(new Category { CategoryName = "Computers" });
+                ctx.Categories.Add(new Category { CategoryName = "Televisions" });
                 ctx.SaveChanges();
             }
             if (!ctx.SubCategories.Any())
@@ -61,10 +57,14 @@ namespace KingPim.Persistence
             {
                 ctx.AttributeGroups.Add(new AttributeGroup
                 {
-                    Name = "Ports"
+                    Name = "Ports",
+                    Description = "For connect"
                 });
                 ctx.SaveChanges();
             }
+            
+            
+            
 
         }
 

@@ -26,6 +26,7 @@ export class AttributegroupAddComponent implements OnInit {
   createForm() {
     this.angForm = this.fb.group({
       name: ['', Validators.required],
+      description: ['', Validators.required],
       subcategoryId: ['', Validators.required]
       // Add more
     });
@@ -41,9 +42,9 @@ export class AttributegroupAddComponent implements OnInit {
       });
   }
   // Add AttributeGroup to db
-  addAttributeGroup(name, subcategoryId) {
+  addAttributeGroup(name, description, subcategoryId) {
     this.loading = true;
-    this.ag.addAttributeGroup(name, subcategoryId);
+    this.ag.addAttributeGroup(name, description, subcategoryId);
   }
 
   ngOnInit() {

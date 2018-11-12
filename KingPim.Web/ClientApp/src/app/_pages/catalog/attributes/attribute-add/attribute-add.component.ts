@@ -18,9 +18,22 @@ export class AttributeAddComponent implements OnInit {
     private ag: AttributeGroupDataService,
     public scs: SubCategoryDataService,
     public att: AttributeDataService,
-    public dialogRef: MatDialogRef<AttributeGetComponent>) { }
+    public dialogRef: MatDialogRef<AttributeGetComponent>) {
+    this.createForm();
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  createForm() {
+    this.angForm = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      attributegroupId: ['', Validators.required],
+      type: ['', Validators.required]
+      // Add more
+    });
+
   }
   ngOnInit() {
     this.showAttribute();

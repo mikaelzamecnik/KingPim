@@ -28,6 +28,8 @@ namespace KingPim.Application.AttributeService.Get
                 Id = entity.Id,
                 Name = entity.Name,
                 AttributeGroupId = entity.AttributeGroupId,
+                Description = entity.Description,
+                Type = entity.Type
             };
         }
     }

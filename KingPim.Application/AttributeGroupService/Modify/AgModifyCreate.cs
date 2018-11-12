@@ -24,7 +24,8 @@ namespace KingPim.Application.AttributeGroupService.Modify
                 {
 
                     Id = model.Id,
-                    Name = model.Name
+                    Name = model.Name,
+                    Description = model.Description
                 };
                 _context.AttributeGroups.Add(entity);
 

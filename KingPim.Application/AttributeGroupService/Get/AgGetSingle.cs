@@ -27,6 +27,8 @@ namespace KingPim.Application.AttributeGroupService.Get
             {
                 Id = entity.Id,
                 Name = entity.Name,
+                Description = entity.Description
+
             };
         }
     }
