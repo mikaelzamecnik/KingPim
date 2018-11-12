@@ -35,10 +35,13 @@ export class AttributegroupGetComponent implements OnInit {
     });
   }
    // OpenModal For add new attribute
-   openAttDialog(): void {
-    const dialogRef = this.dialog.open(AttributeAddComponent, {
-      width: '500px',
-      backdropClass: 'custom-modalbox'
+  openAttDialog(id) {
+     const dialogRef = this.dialog.open(AttributeAddComponent, {
+       width: '250px',
+       data: {
+         dataKey: id
+       } ,
+       backdropClass: 'custom-modalbox',
     });
     // Show result after the button is closed
     dialogRef.afterClosed().subscribe(result => {
@@ -62,6 +65,12 @@ export class AttributegroupGetComponent implements OnInit {
         this.attributegroups = data;
       });
   }
+  getAttributeGroup(id) {
+    this.ag.getAttributeGroup(id).subscribe(res => {
+    });
+    console.log('ID', id);
+  }
+  // delete attributegroup
   deleteAttributeGroup(id) {
     this.ag.deleteAttributeGroup(id).subscribe(res => {
       this.showAttributeGroups();

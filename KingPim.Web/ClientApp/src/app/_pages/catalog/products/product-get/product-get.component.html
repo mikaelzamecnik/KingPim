@@ -38,7 +38,7 @@
     <th mat-header-cell *matHeaderCellDef>Published</th>
     <div [formGroup]="angForm" novalidate>
       <td mat-cell *matCellDef="let product">
-        <mat-checkbox formControlName="publishedStatus" #publishedStatus (click)="editProduct(product.productID)" (click)="updateProduct(publishedStatus.value)" ></mat-checkbox>
+        <mat-checkbox formControlName="publishedStatus" #publishedStatus (click)="editProduct(product.productID); updateProduct(publishedStatus.value)" ></mat-checkbox>
         {{ product.publishedStatus }}
       </td>
     </div>

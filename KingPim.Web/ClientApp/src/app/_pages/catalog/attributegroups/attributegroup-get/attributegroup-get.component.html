@@ -5,8 +5,8 @@
     <span matBadge="4" matBadgeOverlap="false" matBadgeSize="small"><button mat-button [matMenuTriggerFor]="menu" matTooltip="{{attributegroup.description}}" matTooltipPosition="left"
         aria-label="Description">{{attributegroup.name}}</button></span> <!--Should Dynamicly count how many items are in that group-->
     <mat-menu #menu="matMenu">
-      <button (click)="openAttDialog()" mat-menu-item>Add Attributes to group {{attributegroup.name}}</button>
+      <button (click)="openAttDialog(attributegroup.id)" mat-menu-item>Add Attributes to group {{attributegroup.name}}</button>
       <button (click)="deleteAttributeGroup(attributegroup.id)" mat-menu-item>Delete AttributeGroup</button>
-    </mat-menu>
+      </mat-menu>
   </mat-list-item>
 </mat-list>

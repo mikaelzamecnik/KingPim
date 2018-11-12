@@ -18,8 +18,13 @@ export class AttributeDataService {
       .http.get(`${this.accessPointUrl}`);
   }
 
-  addAttributes() {
-    const obj = { };
+  addAttribute(name, description, type) {
+    const obj = {
+      name: name,
+      description: description,
+      type: type,
+      
+    };
     console.log(obj);
     this.http.post(`${this.accessPointUrl}/`, obj)
       .subscribe(res => console.log('Done', obj));

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AttributeGetComponent } from '../../attributes/attribute-get/attribute-get.component';
 import { AttributeGroupDataService, SubCategoryDataService, AttributeDataService } from '../../../../_services';
 import { AttributeGroup } from '../../../../_models';
@@ -11,9 +11,12 @@ import { Attribute } from '../../../../_models';
 export class AttributeAddComponent implements OnInit {
   angForm: FormGroup;
   attributegroup: AttributeGroup[];
+  attg: any = {};
   attributes: Attribute[];
+  loading = false;
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private ag: AttributeGroupDataService,
     public scs: SubCategoryDataService,
@@ -36,15 +39,8 @@ export class AttributeAddComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.showAttribute();
-  }
-  // Show attributes and child attributevalue, attvalueEnum
-  showAttribute() {
-    this.att
-      .getAttributes()
-      .subscribe((data: Attribute[]) => {
-        this.attributes = data;
-      });
+    this.showAttributeGroups();
+    console.log(this.data);
   }
   showAttributeGroups() {
     this.ag
@@ -52,6 +48,11 @@ export class AttributeAddComponent implements OnInit {
       .subscribe((data: AttributeGroup[]) => {
         this.attributegroup = data;
       });
+  }
+  // Add Attribute to db
+  addAttribute(name, description, type) {
+    this.loading = true;
+    this.att.addAttribute(name, description,type);
   }
 
 }
