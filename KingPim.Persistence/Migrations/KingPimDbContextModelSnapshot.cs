@@ -143,15 +143,13 @@ namespace KingPim.Persistence.Migrations
 
             modelBuilder.Entity("KingPim.Domain.Entities.SubcategoryAttributeGroup", b =>
                 {
-                    b.Property<int>("SubcategoryId");
-
                     b.Property<int>("AttributeGroupId");
 
-                    b.Property<int>("Id");
+                    b.Property<int>("SubCategoryId");
 
-                    b.HasKey("SubcategoryId", "AttributeGroupId");
+                    b.HasKey("AttributeGroupId", "SubCategoryId");
 
-                    b.HasAlternateKey("AttributeGroupId", "SubcategoryId");
+                    b.HasIndex("SubCategoryId");
 
                     b.ToTable("SubcategoryAttributeGroups");
                 });
@@ -234,13 +232,13 @@ namespace KingPim.Persistence.Migrations
             modelBuilder.Entity("KingPim.Domain.Entities.SubcategoryAttributeGroup", b =>
                 {
                     b.HasOne("KingPim.Domain.Entities.AttributeGroup", "AttributeGroup")
-                        .WithMany()
+                        .WithMany("SubcategoryAttributeGroups")
                         .HasForeignKey("AttributeGroupId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("KingPim.Domain.Entities.SubCategory", "SubCategory")
                         .WithMany("SubcategoryAttributeGroups")
-                        .HasForeignKey("SubcategoryId")
+                        .HasForeignKey("SubCategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

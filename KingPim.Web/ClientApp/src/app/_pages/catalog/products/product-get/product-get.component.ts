@@ -14,6 +14,7 @@ export class ProductGetComponent implements OnInit {
   angForm: FormGroup;
   panelOpenState = false;
 
+
   constructor(private ps: ProductDataService,
     private route: ActivatedRoute,
     private fb: FormBuilder) {
@@ -43,12 +44,12 @@ export class ProductGetComponent implements OnInit {
       console.log('Deleted', productID);
     });
   }
-  editProduct(productID) {
-    this.ps.editProduct(productID).subscribe(res => {
+  editProduct(id) {
+    this.ps.editProduct(id).subscribe(res => {
      });
-     console.log('ID', productID);
+     console.log('ID', id);
   }
-  updateProduct(productID, productName) {
-    this.ps.updateProduct(productID, productName);
+  updateProduct(id, publishedStatus, productName) {
+    this.ps.updateProduct(id ,publishedStatus, productName);
     }
     }

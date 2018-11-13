@@ -147,14 +147,12 @@ namespace KingPim.Persistence.Migrations
                 name: "SubcategoryAttributeGroups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
-                    SubcategoryId = table.Column<int>(nullable: false),
+                    SubCategoryId = table.Column<int>(nullable: false),
                     AttributeGroupId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubcategoryAttributeGroups", x => new { x.SubcategoryId, x.AttributeGroupId });
-                    table.UniqueConstraint("AK_SubcategoryAttributeGroups_AttributeGroupId_SubcategoryId", x => new { x.AttributeGroupId, x.SubcategoryId });
+                    table.PrimaryKey("PK_SubcategoryAttributeGroups", x => new { x.AttributeGroupId, x.SubCategoryId });
                     table.ForeignKey(
                         name: "FK_SubcategoryAttributeGroups_AttributeGroups_AttributeGroupId",
                         column: x => x.AttributeGroupId,
@@ -162,8 +160,8 @@ namespace KingPim.Persistence.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SubcategoryAttributeGroups_SubCategories_SubcategoryId",
-                        column: x => x.SubcategoryId,
+                        name: "FK_SubcategoryAttributeGroups_SubCategories_SubCategoryId",
+                        column: x => x.SubCategoryId,
                         principalTable: "SubCategories",
                         principalColumn: "SubcategoryID",
                         onDelete: ReferentialAction.Cascade);
@@ -220,6 +218,11 @@ namespace KingPim.Persistence.Migrations
                 name: "IX_SubCategories_CategoryID",
                 table: "SubCategories",
                 column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubcategoryAttributeGroups_SubCategoryId",
+                table: "SubcategoryAttributeGroups",
+                column: "SubCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_UserRolesId",

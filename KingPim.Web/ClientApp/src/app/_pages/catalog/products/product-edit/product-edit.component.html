@@ -1,31 +1,63 @@
 <div class='container-fluid' id="main_container">
   <div class="row">
     <div class="col-md-2">
+      <app-category-get></app-category-get><br />
+      <app-subcategory-get></app-subcategory-get><br />
     </div>
     <div class="col-md-8">
-      <h1>Edit Product</h1><br />
+      <h1>Edit Product</h1>
+      <a class="nav-link" [routerLink]='["/catalog"]'>
+        <i class="fa fa-arrow-left"></i><small> Back to Overview</small>
+      </a>
+      <br />
       <form [formGroup]="angForm" novalidate>
-        <div class="form-group">
-          <label class="col-md-4">Name</label>
-          <input type="text" class="form-control" formControlName="productName" #productName />
-        </div>
-        <div *ngIf="angForm.controls['productName'].invalid && (angForm.controls['productName'].dirty || angForm.controls['productName'].touched)" class="alert alert-danger">
-          <div *ngIf="angForm.controls['productName'].errors.required">
-            Name is required.
-          </div>
-        </div>
-        <div class="form-group">
-          <button type="button" (click)="updateProduct(productName.value)"
-                  [disabled]="angForm.invalid"
-                  class="btn btn-primary">
-            Update Product
-          </button>
-        </div>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>General Product Information</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+
+            <div class="formcontainer">
+              <mat-form-field>
+                <input matInput type="text" placeholder="Product Name" class="form-control" formControlName="productName" #productName />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Select SubCategory" formControlName="subCategoryId" #subCategoryId>
+                  <mat-option [value]="subCategory.id" *ngFor="let subCategory of subcategories ">
+                    {{ subCategory.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br />
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Attributes</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="formcontainer">
+              <ul>
+                <li *ngFor="let subCategory of subcategories ">
+                  {{subCategory.attributeGroup}}
+                </li>
+              </ul>
+              <br />
+              <mat-card-actions>
+                <button mat-raised-button (click)="updateProduct(productName.value, subCategoryId.value)">
+                  Add Product
+                </button>
+              </mat-card-actions>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </form>
 
-    </div>
+    </div><!--Closing Main Div-->
     <div class="col-md-2">
-      Information
+      <app-attributegroup-get></app-attributegroup-get><br />
+      <app-attribute-get></app-attribute-get>
     </div>
   </div>
 </div>

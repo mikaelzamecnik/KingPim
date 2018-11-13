@@ -29,7 +29,8 @@ namespace KingPim.Application.ProductService.Modify
                     EditedBy = model.EditedBy,
                     Version = model.Version,
                     PublishedStatus = model.PublishedStatus,
-                    SubCategoryId = model.SubCategoryId
+                    SubCategoryId = model.SubCategoryId,
+                    SubCategory = model.SubCategory
 
                 };
                 _context.Products.Add(entity);
