@@ -14,9 +14,8 @@ export class AttributeAddComponent implements OnInit {
   attg: any = {};
   attributes: Attribute[];
   loading = false;
-
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data:number,
     private fb: FormBuilder,
     private ag: AttributeGroupDataService,
     public scs: SubCategoryDataService,
@@ -32,8 +31,9 @@ export class AttributeAddComponent implements OnInit {
     this.angForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      attributegroupId: ['', Validators.required],
-      type: ['', Validators.required]
+      type: ['', Validators.required],
+      attributegroupId: ['', Validators.required]
+      
       // Add more
     });
 
@@ -52,7 +52,8 @@ export class AttributeAddComponent implements OnInit {
   // Add Attribute to db
   addAttribute(name, description, type) {
     this.loading = true;
-    this.att.addAttribute(name, description,type);
+    this.att.addAttribute(name, description, type);
+    console.log(name, type);
   }
 
 }

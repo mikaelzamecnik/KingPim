@@ -39,7 +39,7 @@ export class AttributegroupGetComponent implements OnInit {
      const dialogRef = this.dialog.open(AttributeAddComponent, {
        width: '250px',
        data: {
-         dataKey: id
+         agId: id
        } ,
        backdropClass: 'custom-modalbox',
     });

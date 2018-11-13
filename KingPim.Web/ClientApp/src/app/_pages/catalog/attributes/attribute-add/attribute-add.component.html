@@ -1,7 +1,7 @@
 <div class="formcontainer">
   <h1 mat-dialog-title>Add Attribute</h1>
   <form [formGroup]="angForm" novalidate>
-
+    <p>{{data.agId}}</p>
     <!--<mat-form-field>
     <mat-select placeholder="Attributegroup" formControlName="attributegroupId" #attributegroupId>
       <mat-option *ngFor="let ag of attributegroups" [value]="attributegroup.id">
@@ -9,14 +9,15 @@
       </mat-option>
     </mat-select>
   </mat-form-field>-->
+
     <mat-form-field>
-      <input matInput type="text" class="form-control" formControlName="name" #name placeholder="Name" />
+      <input matInput type="text" formControlName="name" #name placeholder="Name" />
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput type="text" class="form-control" formControlName="description" #description placeholder="Description"></textarea>
+      <textarea matInput type="text" formControlName="description" #description placeholder="Description"></textarea>
     </mat-form-field>
     <mat-form-field>
-      <mat-select [(ngModel)]="typevar" formControlName="type" #type placeholder="Type" [value]="type" >
+      <mat-select [(ngModel)]="typevar" formControlName="type" #type placeholder="Type" [value]="type">
         <mat-option value="text">
           Text
         </mat-option>
@@ -34,13 +35,13 @@
     <div [ngSwitch]="typevar">
       <div *ngSwitchCase="'text'">
         <mat-form-field>
-          <input [disabled] matInput type="text" placeholder="Text Field" />
+          <input matInput type="text" placeholder="Text Field" />
           <mat-hint>For single lined text</mat-hint>
         </mat-form-field>
       </div>
       <div *ngSwitchCase="'number'">
         <mat-form-field>
-          <input [disabled] matInput type="number" placeholder="Number Field" />
+          <input matInput type="number" placeholder="Number Field" />
           <mat-hint>For numbers (price, sizes etc)</mat-hint>
         </mat-form-field>
       </div>
@@ -48,20 +49,20 @@
         <mat-radio-group>
           <mat-radio-button value="1">Yes</mat-radio-button>
           <mat-radio-button value="2">No</mat-radio-button>
-        </mat-radio-group>
+        </mat-radio-group><br />
         <mat-hint>For yes and no values</mat-hint>
       </div>
-      <div *ngSwitchCase="'yesno'">
+      <div *ngSwitchCase="'textbox'">
         <mat-form-field>
           <textarea matInput type="text" placeholder="Textbox"></textarea>
-          <mat-hint>For larger description of anattribute</mat-hint>
+          <mat-hint>For larger description of an attribute</mat-hint>
         </mat-form-field>
       </div>
     </div><br />
-      <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
-      <button mat-raised-button color="primary" (click)="addAttribute(
-              name.value, description.value, type.val); onNoClick()">
-        Add AttributeGroup
-      </button>
-</form>
+    <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
+    <button mat-raised-button color="primary" (click)="addAttribute(
+              name.value, description.value, type.value); onNoClick()">
+      Add AttributeGroup
+    </button>
+  </form>
 </div>
