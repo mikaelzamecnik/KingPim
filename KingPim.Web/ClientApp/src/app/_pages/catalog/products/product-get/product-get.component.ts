@@ -5,7 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-product-get', templateUrl: './product-get.component.html'})
+  selector: 'app-product-get', templateUrl: './product-get.component.html'
+})
+
 export class ProductGetComponent implements OnInit {
 
   columnsToDisplay: string[] = ['Id', 'Name', 'Category', 'SubCategory',
@@ -13,7 +15,6 @@ export class ProductGetComponent implements OnInit {
   productData: Product[];
   angForm: FormGroup;
   panelOpenState = false;
-
 
   constructor(private ps: ProductDataService,
     private route: ActivatedRoute,
