@@ -20,18 +20,13 @@ export class CatalogComponent implements OnInit {
     private cs: CategoryDataService,
     private scs: SubCategoryDataService) { }
 
-  ngOnInit() {
-    this.showProducts();
-    this.showCategories();
-    this.showSubcategories();
-  }
-
-
+  ngOnInit() { }
   showProducts() {
     this.ps
       .getProducts()
       .subscribe((data: Product[]) => {
         this.products = data;
+        this.showProducts();
       });
   }
   showCategories() {
@@ -39,6 +34,7 @@ export class CatalogComponent implements OnInit {
       .getCategories()
       .subscribe((data: Category[]) => {
         this.categories = data;
+        this.showCategories();
       });
   }
   showSubcategories() {
@@ -46,6 +42,7 @@ export class CatalogComponent implements OnInit {
       .getSubCategories()
       .subscribe((data: SubCategory[]) => {
         this.subCategories = data;
+        this.showSubcategories();
       });
   }
 }

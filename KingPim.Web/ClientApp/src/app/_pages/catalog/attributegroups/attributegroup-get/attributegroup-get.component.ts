@@ -13,8 +13,9 @@ export class AttributegroupGetComponent implements OnInit {
 
   attributegroups: AttributeGroup[];
   attributes: Attribute[];
-
-  constructor(
+  showAtt: AttributeGroup[]= [];
+  
+constructor(
     private ag: AttributeGroupDataService,
     private att: AttributeDataService,
     public dialog: MatDialog) { }
@@ -35,11 +36,12 @@ export class AttributegroupGetComponent implements OnInit {
     });
   }
    // OpenModal For add new attribute
-  openAttDialog(id) {
+  openAttDialog(id, name) {
      const dialogRef = this.dialog.open(AttributeAddComponent, {
        width: '250px',
        data: {
-         agId: id
+         agId: id,
+         agName: name
        } ,
        backdropClass: 'custom-modalbox',
     });
@@ -56,6 +58,7 @@ export class AttributegroupGetComponent implements OnInit {
 
   ngOnInit() {
     this.showAttributeGroups();
+    
   }
   // to show products oninit and after deletion
   showAttributeGroups() {
@@ -64,11 +67,6 @@ export class AttributegroupGetComponent implements OnInit {
       .subscribe((data: AttributeGroup[]) => {
         this.attributegroups = data;
       });
-  }
-  getAttributeGroup(id) {
-    this.ag.getAttributeGroup(id).subscribe(res => {
-    });
-    console.log('ID', id);
   }
   // delete attributegroup
   deleteAttributeGroup(id) {

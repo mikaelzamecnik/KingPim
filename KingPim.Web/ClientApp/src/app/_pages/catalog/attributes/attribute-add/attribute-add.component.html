@@ -1,15 +1,7 @@
 <div class="formcontainer">
-  <h1 mat-dialog-title>Add Attribute</h1>
+  <h1 mat-dialog-title>Add Attribute<br><span style='color:darkgray;font-weight: bold'><small>&raquo; {{data.agName}}</small></span></h1>
   <form [formGroup]="angForm" novalidate>
-    <p>{{data.agId}}</p>
-    <!--<mat-form-field>
-    <mat-select placeholder="Attributegroup" formControlName="attributegroupId" #attributegroupId>
-      <mat-option *ngFor="let ag of attributegroups" [value]="attributegroup.id">
-        {{attributegroup.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>-->
-
+      <input type="hidden" formControlName="attributegroupId" #attributegroupId value="{{data.agId}}"/>
     <mat-form-field>
       <input matInput type="text" formControlName="name" #name placeholder="Name" />
     </mat-form-field>
@@ -61,7 +53,7 @@
     </div><br />
     <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
     <button mat-raised-button color="primary" (click)="addAttribute(
-              name.value, description.value, type.value); onNoClick()">
+      attributegroupId.value,name.value, description.value, type.value); onNoClick()">
       Add AttributeGroup
     </button>
   </form>

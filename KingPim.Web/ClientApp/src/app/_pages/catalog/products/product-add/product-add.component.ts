@@ -22,7 +22,10 @@ export class ProductAddComponent implements OnInit {
   createForm() {
     this.angForm = this.fb.group({
       productName: ['', Validators.required],
-      subCategoryId: ['', Validators.required]
+      subCategoryId: ['', Validators.required],
+      attributeGroup: ['', Validators.required],
+      attribute:['', Validators.required],
+      value:['', Validators.required]
 
 
       // Add more
@@ -43,7 +46,7 @@ export class ProductAddComponent implements OnInit {
     console.log(subCategoryId);
     this.loading = true;
     this.ps.addProduct(productName, subCategoryId);
-    this.router.navigate(['/catalog']); // TODO routing goes to fast, backend cant keep up
+    this.router.navigate(['catalog']); // TODO routing goes to fast, backend cant keep up
   }
 
   ngOnInit() {

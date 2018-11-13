@@ -24,7 +24,8 @@ namespace KingPim.Application.AttributeGroupService.Get
                 {
                  Id = c.Id,
                  Name = c.Name,
-                 Description = c.Description
+                 Description = c.Description,
+                 SingleAttribute = c.SingleAttribute
 
         }).ToListAsync();
         }

@@ -20,27 +20,18 @@
                 <mat-form-field>
                   <input matInput type="text" placeholder="Product Name" class="form-control" formControlName="productName" #productName />
                 </mat-form-field>
-                <div *ngIf="angForm.controls['productName'].invalid && (angForm.controls['productName'].dirty || angForm.controls['productName'].touched)" class="alert alert-danger">
-                  <div *ngIf="angForm.controls['productName'].errors.required">
-                    A Product name is required.
-                  </div>
-                </div>
                 <mat-form-field>
                   <mat-select placeholder="Select SubCategory" formControlName="subCategoryId" #subCategoryId>
-                    <mat-option [value]="subCategory.id" *ngFor="let subCategory of subcategories ">
+                    <mat-option [value]="subCategory.Id" *ngFor="let subCategory of subcategories ">
                       {{ subCategory.name}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <div *ngIf="angForm.controls['subCategoryId'].invalid && (angForm.controls['subCategoryId'].dirty || angForm.controls['subCategoryId'].touched)" class="alert alert-danger">
-                  <div *ngIf="angForm.controls['subCategoryId'].errors.required">
-                    A SubCategory is required
-                  </div>
-                </div>
+                <ul><li *ngFor="let subCategory of subcategories ">
+                </li></ul>
                 <br />
                 <mat-card-actions>
-                  <button mat-raised-button (click)="addProduct(productName.value, subCategoryId.value)"
-                          [disabled]="angForm.pristine || angForm.invalid || loading">
+                  <button mat-raised-button (click)="addProduct(productName.value, subCategoryId.value)">
                     Add Product
                   </button>
                 </mat-card-actions>
