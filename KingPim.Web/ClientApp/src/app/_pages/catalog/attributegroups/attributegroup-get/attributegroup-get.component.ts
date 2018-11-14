@@ -13,8 +13,6 @@ export class AttributegroupGetComponent implements OnInit {
 
   attributegroups: AttributeGroup[];
   attributes: Attribute[];
-  showAtt: AttributeGroup[]= [];
-  
 constructor(
     private ag: AttributeGroupDataService,
     private att: AttributeDataService,
@@ -58,7 +56,6 @@ constructor(
 
   ngOnInit() {
     this.showAttributeGroups();
-    
   }
   // to show products oninit and after deletion
   showAttributeGroups() {
@@ -66,6 +63,13 @@ constructor(
       .getAttributeGroups()
       .subscribe((data: AttributeGroup[]) => {
         this.attributegroups = data;
+      });
+  }
+  showAttributes() {
+    this.att
+      .getAttributes()
+      .subscribe((data: Attribute[]) => {
+        this.attributes = data;
       });
   }
   // delete attributegroup

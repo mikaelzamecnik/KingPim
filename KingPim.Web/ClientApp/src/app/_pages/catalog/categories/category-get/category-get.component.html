@@ -5,7 +5,7 @@
     <span matBadge="4" matBadgeSize="small"><button mat-button [matMenuTriggerFor]="menu">{{category.name}}</button></span> <!--Should Dynamicly count how many items are in that group-->
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Filter Products by: {{category.name}}</button>
-      <button (click)="deleteCategory(category.id)" mat-menu-item>Delete Category</button>
+      <button class="delbutton" (click)="deleteCategory(category.id)" mat-menu-item>Delete Category</button>
     </mat-menu>
   </mat-list-item>
 </mat-list>

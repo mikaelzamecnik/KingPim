@@ -14,8 +14,9 @@ export class AttributeAddComponent implements OnInit {
   attg: any = {};
   attributes: Attribute[];
   loading = false;
+  typevar;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data:any,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private ag: AttributeGroupDataService,
     public scs: SubCategoryDataService,

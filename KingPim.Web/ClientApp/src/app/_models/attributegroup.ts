@@ -4,8 +4,8 @@ export class AttributeGroup {
   description: string;
   singleAttribute: [
     {
-      name:string;
+      name: string;
     }
-  ]
+  ];
 
 }

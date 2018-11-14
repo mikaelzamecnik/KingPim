@@ -3,10 +3,43 @@
     <div class="col-md-2">
     </div>
     <div class="col-md-8">
-      <h1>Export</h1>
-      <p>Export JSON and XML from Either Category,SubCategory,Product or all of them</p>
-
-      <a [href]="fileUrl" download="file.xml">DownloadFile</a>
+      <h1>Export</h1><br>
+      <form [formGroup]="angForm" novalidate>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Export JSON/Xml</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="formcontainer">
+                <mat-form-field>
+                  <mat-select formControlName="format" #format placeholder="Choose Format">
+                    <mat-option [value]="format" *ngFor="let f of fileformat">
+                      {{f}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field><br>
+                <mat-checkbox [value]="categories" formControlName="categories" #categories>
+                    <strong>Categories</strong>
+                  </mat-checkbox>
+                  <br>
+                  <mat-checkbox [value]="subcategories" formControlName="subcategories" #subcategories>
+                    <strong>SubCategories</strong>
+                  </mat-checkbox>
+                  <br>
+                  <mat-checkbox [value]="products" formControlName="products" #products>
+                    <strong>Products</strong>
+                  </mat-checkbox>
+                <br />
+              </div>
+            </mat-card-content>
+          </mat-card>
+              <div class="formcontainer">
+                <br />
+                <mat-card-actions>
+                  <a mat-raised-button [href]="fileUrl" download="file.txt">Download File</a>
+                </mat-card-actions>
+              </div>
+        </form>
     </div>
     <div class="col-md-2">
     </div>
