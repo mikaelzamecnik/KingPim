@@ -25,7 +25,7 @@ export class SubcategoryAddComponent implements OnInit {
   }
   createForm() {
     this.angForm = this.fb.group({
-      subcategoryName: ['', Validators.required],
+      name: ['', Validators.required],
       categoryId: ['', Validators.required]
       // Add more
     });
@@ -41,9 +41,9 @@ export class SubcategoryAddComponent implements OnInit {
       });
   }
   // Add SubCategory to db
-  addSubCategory(subcategoryName, categoryId) {
+  addSubCategory(name, categoryId) {
     this.loading = true;
-    this.scs.addSubCategory(subcategoryName, categoryId);
+    this.scs.addSubCategory(name, categoryId);
   }
 
   ngOnInit() {

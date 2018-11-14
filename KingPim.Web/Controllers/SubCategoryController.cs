@@ -62,7 +62,7 @@ namespace KingPim.Web.Controllers
 
                 await _subcategoryModifyCreate.Execute(subcategory);
 
-                return CreatedAtAction("GetSubCategory", new { id = subcategory.SubcategoryId }, subcategory);
+                return CreatedAtAction("GetSubCategory", new { id = subcategory.Id }, subcategory);
             }
             // PUT: pim/Category/SubCategory/1 , Dont work all the way
             [HttpPut("{id}")]

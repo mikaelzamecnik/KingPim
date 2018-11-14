@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KingPim.Domain.Entities
 {
-    public class SingleAttribute
+    public class SingleAttribute: SystemValues
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -12,5 +12,6 @@ namespace KingPim.Domain.Entities
         public string Type { get; set; }
         public int? AttributeGroupId { get; set; }
         public AttributeGroup AttributeGroup { get; set; }
+        public ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
     }
 }

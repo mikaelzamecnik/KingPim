@@ -16,10 +16,12 @@
             <mat-card-title>General Product Information</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-
             <div class="formcontainer">
               <mat-form-field>
-                <input matInput type="text" placeholder="Product Name" class="form-control" formControlName="productName" #productName />
+                <input matInput type="text" placeholder="Product Name" class="form-control" formControlName="name" #name />
+              </mat-form-field>
+              <mat-form-field>
+                <textarea matInput type="text" placeholder="Description" class="form-control" formControlName="description" #description></textarea>
               </mat-form-field>
               <mat-form-field>
                 <mat-select placeholder="Select SubCategory" formControlName="subCategoryId" #subCategoryId>
@@ -38,14 +40,10 @@
           </mat-card-header>
           <mat-card-content>
             <div class="formcontainer">
-              <ul>
-                <li *ngFor="let subCategory of subcategories ">
-                  {{subCategory.attributeGroup}}
-                </li>
-              </ul>
+              <!--Attributes here-->
               <br />
               <mat-card-actions>
-                <button mat-raised-button (click)="addProduct(productName.value, subCategoryId.value)">
+                <button mat-raised-button (click)="addProduct(name.value, description.value, subCategoryId.value)">
                   Add Product
                 </button>
               </mat-card-actions>

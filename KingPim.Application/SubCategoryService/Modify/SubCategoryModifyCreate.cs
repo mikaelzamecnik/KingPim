@@ -20,9 +20,9 @@ namespace KingPim.Application.SubCategoryService.Modify
         {
             var entity = new SubCategory
                 {
-                    SubcategoryID = model.SubcategoryId,
-                    SubcategoryName = model.SubcategoryName,
-                    CategoryID = model.CategoryID
+                    Id = model.Id,
+                    Name = model.Name,
+                    CategoryId = model.CategoryId
                 };
                 _context.SubCategories.Add(entity);
 

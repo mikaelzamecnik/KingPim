@@ -29,11 +29,10 @@ export class SubcategoryGetComponent implements OnInit {
         });
     });
   }
-
   ngOnInit() {
     this.showSubcategories();
   }
-  // to show categories oninit and after deletion
+  // to show subcategories oninit and after deletion
   showSubcategories() {
     this.scs
       .getSubCategories()
@@ -41,10 +40,10 @@ export class SubcategoryGetComponent implements OnInit {
         this.subcategories = data;
       });
   }
-  deleteSubCategory(subCategoryID) {
-    this.scs.deleteSubCategory(subCategoryID).subscribe(res => {
+  deleteSubCategory(id) {
+    this.scs.deleteSubCategory(id).subscribe(res => {
       this.showSubcategories();
-      console.log('Deleted', subCategoryID);
+      console.log('Deleted', id);
     });
   }
 }

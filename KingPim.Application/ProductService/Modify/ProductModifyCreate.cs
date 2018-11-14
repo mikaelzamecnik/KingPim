@@ -23,14 +23,16 @@ namespace KingPim.Application.ProductService.Modify
                 var entity = new Product
                 {
 
-                    ProductID = model.ProductID,
-                    ProductName = model.ProductName,
+                    Id = model.Id,
+                    Name = model.Name,
+                    Description = model.Description,
                     DateCreated = model.DateCreated,
                     EditedBy = model.EditedBy,
                     Version = model.Version,
                     PublishedStatus = model.PublishedStatus,
                     SubCategoryId = model.SubCategoryId,
-                    SubCategory = model.SubCategory
+                    SubCategory = model.SubCategory,
+                    ProductAttributeValues = model.ProductAttributeValues
 
                 };
                 _context.Products.Add(entity);

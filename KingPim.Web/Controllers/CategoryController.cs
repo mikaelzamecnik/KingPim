@@ -60,7 +60,7 @@ namespace KingPim.Web.Controllers
         {
             await _categoryModifyCreate.Execute(category);
 
-            return CreatedAtAction("GetCategory", new { id = category.CategoryID }, category);
+            return CreatedAtAction("GetCategory", new { id = category.Id }, category);
         }
         // PUT: pim/Category/1 , Dont work all the way
         [HttpPut("{id}")]

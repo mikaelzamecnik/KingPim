@@ -25,8 +25,8 @@ namespace KingPim.Application.SubCategoryService.Get
 
             return new SubCategoryGetSingleModel
                 {
-                    Id = entity.SubcategoryID,
-                    Name = entity.SubcategoryName
+                    Id = entity.Id,
+                    Name = entity.Name
                 };
         }
     }

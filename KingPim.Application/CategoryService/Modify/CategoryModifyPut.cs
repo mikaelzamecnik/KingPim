@@ -18,10 +18,10 @@ namespace KingPim.Application.CategoryService.Modify
 
         public async Task Execute(CategoryModifyPutModel model)
         {
-            var entity = await _context.Categories.SingleAsync(c => c.CategoryID == model.Id);
+            var entity = await _context.Categories.SingleAsync(c => c.Id == model.Id);
                 {
-                    entity.CategoryID = model.Id;
-                    entity.CategoryName = model.Name;
+                    entity.Id = model.Id;
+                    entity.Name = model.Name;
 
                      _context.Categories.Add(entity);
 

@@ -50,7 +50,7 @@ export class ProductGetComponent implements OnInit {
      });
      console.log('ID', id);
   }
-  updateProduct(id, publishedStatus, productName) {
-    this.ps.updateProduct(id ,publishedStatus, productName);
+  updateProduct(id, publishedStatus, description, productName) {
+    this.ps.updateProduct(id , publishedStatus, description, productName);
     }
     }

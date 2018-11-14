@@ -20,15 +20,17 @@ namespace KingPim.Application.ProductService.Modify
         {
             try
             {
-                var entity =  await _context.Products.SingleOrDefaultAsync(c => c.ProductID == model.ProductID);
+                var entity =  await _context.Products.SingleOrDefaultAsync(c => c.Id == model.Id);
 
 
-                entity.ProductName = model.ProductName;
+                entity.Name = model.Name;
                 entity.DateUpdated = model.DateUpdated;
                 entity.EditedBy = model.EditedBy;
+                entity.Description = model.Description;
                 entity.Version = model.Version;
                 entity.PublishedStatus = model.PublishedStatus;
                 entity.SubCategory = model.SubCategory;
+                entity.ProductAttributeValues = model.ProductAttributeValues;
 
                 _context.Products.Update(entity);
 

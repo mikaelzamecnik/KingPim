@@ -41,10 +41,10 @@ export class CategoryGetComponent implements OnInit {
         this.categories = data;
       });
   }
-  deleteCategory(categoryID) {
-    this.cs.deleteCategory(categoryID).subscribe(_res => {
+  deleteCategory(id) {
+    this.cs.deleteCategory(id).subscribe(_res => {
       this.showCategories();
-      console.log('Deleted', categoryID);
+      console.log('Deleted', id);
     });
   }
 }

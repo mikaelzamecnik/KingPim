@@ -18,7 +18,7 @@ namespace KingPim.Application.SubCategoryService.Modify
 
         public async Task Execute(int id)
         {
-            var entity = await _context.SubCategories.SingleAsync(c => c.SubcategoryID == id);
+            var entity = await _context.SubCategories.SingleAsync(c => c.Id == id);
             _context.SubCategories.Remove(entity);
 
             await _context.SaveChangesAsync();

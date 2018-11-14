@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class SubCategoryDataService {
   private headers: HttpHeaders;
-  private accessPointUrl: string = 'pim/Category/SubCategory';
+  private accessPointUrl = 'pim/Category/SubCategory';
 
 
   constructor(private http: HttpClient) {
@@ -17,9 +17,9 @@ export class SubCategoryDataService {
       .http.get(`${this.accessPointUrl}`);
   }
 
-  addSubCategory(subcategoryName, categoryId) {
+  addSubCategory(name, categoryId) {
     const obj = {
-      subcategoryName: subcategoryName,
+      name: name,
       categoryId: categoryId
     };
     console.log(obj);
@@ -36,10 +36,10 @@ export class SubCategoryDataService {
       .http
       .get(`${this.accessPointUrl}/${id}`);
   }
-  updateSubCategory(subcategoryName, id) {
+  updateSubCategory(name, id) {
 
     const obj = {
-      subcategoryName: subcategoryName
+      name: name
     };
     this
       .http

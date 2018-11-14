@@ -21,11 +21,12 @@ export class ProductAddComponent implements OnInit {
   }
   createForm() {
     this.angForm = this.fb.group({
-      productName: ['', Validators.required],
+      name: ['', Validators.required],
+      description: ['', Validators.required],
       subCategoryId: ['', Validators.required],
       attributeGroup: ['', Validators.required],
-      attribute:['', Validators.required],
-      value:['', Validators.required]
+      attribute: ['', Validators.required],
+      value: ['', Validators.required]
 
 
       // Add more
@@ -42,10 +43,10 @@ export class ProductAddComponent implements OnInit {
       });
   }
   // Add Product to db
-  addProduct(productName, subCategoryId) {
+  addProduct(name, description, subCategoryId) {
     console.log(subCategoryId);
     this.loading = true;
-    this.ps.addProduct(productName, subCategoryId);
+    this.ps.addProduct(name, description, subCategoryId);
     this.router.navigate(['catalog']); // TODO routing goes to fast, backend cant keep up
   }
 

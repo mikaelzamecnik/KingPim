@@ -17,9 +17,10 @@ export class ProductDataService {
       .http.get(`${this.accessPointUrl}`);
   }
 
-  addProduct(productName, subCategoryId) {
+  addProduct(name, description, subCategoryId) {
     const obj = {
-      productName: productName,
+      name: name,
+      description: description,
       subCategoryId: subCategoryId
     };
     console.log(obj);
@@ -36,9 +37,10 @@ export class ProductDataService {
       .http
       .get(`${this.accessPointUrl}/${id}`);
   }
-  updateProduct(id,productName,publishedStatus) {
+  updateProduct(id, name, description, publishedStatus) {
     const obj = {
-      productName: productName,
+      name: name,
+      description: description,
       publishedStatus : publishedStatus
     };
     this

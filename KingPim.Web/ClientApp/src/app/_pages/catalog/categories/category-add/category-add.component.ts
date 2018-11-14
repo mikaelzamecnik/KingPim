@@ -26,7 +26,7 @@ export class CategoryAddComponent implements OnInit {
 
   createForm() {
     this.angForm = this.fb.group({
-      categoryName: ['', Validators.required]
+      name: ['', Validators.required]
     });
 
   }
@@ -39,9 +39,9 @@ export class CategoryAddComponent implements OnInit {
   }
 
   // Add Category to db
-  addCategory(categoryName) {
+  addCategory(name) {
     this.loading = true;
-    this.cs.addCategory(categoryName);
+    this.cs.addCategory(name);
   }
 
   ngOnInit() {

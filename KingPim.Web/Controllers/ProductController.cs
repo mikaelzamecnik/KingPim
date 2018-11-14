@@ -71,7 +71,6 @@ namespace KingPim.Web.Controllers
 
 
             product.DateCreated = DateTime.Now;
-            product.DateUpdated = DateTime.Now;
             product.EditedBy = "SuperAdmin";
             product.Version = 1;
 
@@ -79,7 +78,7 @@ namespace KingPim.Web.Controllers
 
 
 
-            return CreatedAtAction("GetProduct", new { id = product.ProductID }, product);
+            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
         // PUT: pim/Category/SubCategory/Product/1 , Dont work all the way
         [HttpPut("{id}")]
@@ -89,7 +88,7 @@ namespace KingPim.Web.Controllers
          {
             // Additonal logic for put request
             int ver = 1 + product.Version++;
-            product.ProductID = id;
+            product.Id = id;
             product.EditedBy = "SuperAdmin"; // Change to user
             product.Version = ver;
             product.DateUpdated = DateTime.Now;

@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>Add Category</h1>
 <form [formGroup]="angForm" novalidate>
   <mat-form-field>
-    <input matInput type="text" formControlName="categoryName" #categoryName placeholder="Category" />
+    <input matInput type="text" formControlName="name" #name placeholder="Category" />
   </mat-form-field>
   <div class="form-group">
     <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
-    <button mat-raised-button color="primary" (click)="addCategory(categoryName.value); onNoClick()"
+    <button mat-raised-button color="primary" (click)="addCategory(name.value); onNoClick()"
             [disabled]="angForm.pristine || angForm.invalid || loading">
       Add Category
     </button>

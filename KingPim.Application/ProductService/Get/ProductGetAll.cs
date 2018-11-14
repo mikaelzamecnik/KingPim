@@ -16,20 +16,21 @@ namespace KingPim.Application.ProductService.Get
             _context = context;
         }
 
-        public IEnumerable<Product> Products => _context.Products.Include(c => c.ProductID).Include(d => d.SubCategory);
+        public IEnumerable<Product> Products => _context.Products.Include(c => c.Id).Include(d => d.SubCategory);
         public async Task<IEnumerable<ProductGetAllModel>> Execute()
         {
             return await _context.Products.Select(c =>
                 new ProductGetAllModel
                 {
-                 ProductID = c.ProductID,
-                 ProductName = c.ProductName,
+                 Id = c.Id,
+                 Name = c.Name,
                  DateCreated = c.DateCreated,
                  DateUpdated = c.DateUpdated,
                  EditedBy = c.EditedBy,
                  Version = c.Version,
                  SubCategory = c.SubCategory,
-                 PublishedStatus = c.PublishedStatus
+                 PublishedStatus = c.PublishedStatus,
+                 ProductAttributeValues = c.ProductAttributeValues
 
         }).ToListAsync();
         }

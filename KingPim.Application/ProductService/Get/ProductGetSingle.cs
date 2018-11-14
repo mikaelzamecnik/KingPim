@@ -25,13 +25,14 @@ namespace KingPim.Application.ProductService.Get
 
             return new ProductGetSingleModel
             {
-                Id = entity.ProductID,
-                Name = entity.ProductName,
+                Id = entity.Id,
+                Name = entity.Name,
                 DateCreated = entity.DateCreated,
                 DateUpdated = entity.DateUpdated,
                 EditedBy = entity.EditedBy,
                 Version = entity.Version,
                 PublishedStatus = entity.PublishedStatus,
+                ProductAttributeValues = entity.ProductAttributeValues
                 
             };
         }

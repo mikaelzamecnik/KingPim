@@ -4,14 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KingPim.Domain.Entities
 {
-    public class Category
+    public class Category: SystemValues
     {
-        [ScaffoldColumn(false)]
-        public int CategoryID { get; set; }
 
-        [Required, StringLength(100), Display(Name = "Name")]
-        public string CategoryName { get; set; }
-        public virtual ICollection<SubCategory> SubCategories { get; set; }
-        public bool PublishedStatus { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public virtual List<SubCategory> SubCategories { get; set; }
     }
 }

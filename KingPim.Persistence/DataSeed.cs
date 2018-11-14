@@ -1,8 +1,6 @@
 using System.Linq;
 using System;
 using KingPim.Domain.Entities;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 
 namespace KingPim.Persistence
 {
@@ -28,23 +26,24 @@ namespace KingPim.Persistence
             }
             if (!ctx.Categories.Any())
             {
-                ctx.Categories.Add(new Category { CategoryName = "Computers" });
-                ctx.Categories.Add(new Category { CategoryName = "Televisions" });
+                ctx.Categories.Add(new Category { Name = "Computers" });
+                ctx.Categories.Add(new Category { Name = "Televisions" });
                 ctx.SaveChanges();
             }
             if (!ctx.SubCategories.Any())
             {
-                ctx.SubCategories.Add(new SubCategory { SubcategoryName = "Laptop", CategoryID = 1 });
-                ctx.SubCategories.Add(new SubCategory { SubcategoryName = "Desktop", CategoryID =1 });
-                ctx.SubCategories.Add(new SubCategory { SubcategoryName = "Small", CategoryID = 2 });
-                ctx.SubCategories.Add(new SubCategory { SubcategoryName = "Large", CategoryID=2 });
+                ctx.SubCategories.Add(new SubCategory { Name = "Laptop", CategoryId = 1 });
+                ctx.SubCategories.Add(new SubCategory { Name = "Desktop", CategoryId =1 });
+                ctx.SubCategories.Add(new SubCategory { Name = "Small", CategoryId = 2 });
+                ctx.SubCategories.Add(new SubCategory { Name = "Large", CategoryId=2 });
                 ctx.SaveChanges();
             }
             if (!ctx.Products.Any())
             {
                 ctx.Products.Add(new Product
                 {
-                    ProductName = "Lenovo",
+                    Name = "Lenovo",
+                    Description = "Some product",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     EditedBy = "Mike",

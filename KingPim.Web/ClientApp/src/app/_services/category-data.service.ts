@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class CategoryDataService {
   private headers: HttpHeaders;
-  private accessPointUrl: string = 'pim/Category';
+  private accessPointUrl = 'pim/Category';
 
 
   constructor(private http: HttpClient) {
@@ -17,9 +17,9 @@ export class CategoryDataService {
       .http.get(`${this.accessPointUrl}`);
   }
 
-  addCategory(categoryName) {
+  addCategory(name) {
     const obj = {
-      categoryName: categoryName
+      name: name
     };
     console.log(obj);
     this.http.post(`${this.accessPointUrl}/`, obj)
@@ -35,10 +35,10 @@ export class CategoryDataService {
       .http
       .get(`${this.accessPointUrl}/${id}`);
   }
-  updateCategory(categoryName, id) {
+  updateCategory(name, id) {
 
     const obj = {
-      categoryName: categoryName
+      name: name
     };
     this
       .http
