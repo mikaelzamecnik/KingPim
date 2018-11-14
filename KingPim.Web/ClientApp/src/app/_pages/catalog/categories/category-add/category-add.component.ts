@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { interval } from 'rxjs';
 import { CategoryDataService } from '../../../../_services/category-data.service';
 import { Category } from '../../../../_models';
 import { MatDialogRef } from '@angular/material';
@@ -12,6 +12,7 @@ export class CategoryAddComponent implements OnInit {
   loading = false;
   angForm: FormGroup;
   categories: Category[];
+
 
   constructor(
     private fb: FormBuilder,

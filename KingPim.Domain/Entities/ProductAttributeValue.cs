@@ -7,6 +7,7 @@ namespace KingPim.Domain.Entities
 {
     public class ProductAttributeValue
     {
+        public int Id { get; set; }
         public string Value { get; set; }
         public virtual SingleAttribute SingleAttribute { get; set; }
         public int? SingleAttributeId { get; set; }

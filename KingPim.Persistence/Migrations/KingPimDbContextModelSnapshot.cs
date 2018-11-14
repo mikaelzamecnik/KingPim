@@ -102,6 +102,8 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<int?>("ProductId");
 
+                    b.Property<int>("Id");
+
                     b.Property<string>("Value");
 
                     b.HasKey("SingleAttributeId", "ProductId");
@@ -174,6 +176,8 @@ namespace KingPim.Persistence.Migrations
                     b.Property<int>("AttributeGroupId");
 
                     b.Property<int>("SubCategoryId");
+
+                    b.Property<int>("Id");
 
                     b.HasKey("AttributeGroupId", "SubCategoryId");
 

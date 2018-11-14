@@ -1,7 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using KingPim.Application.Helpers;
 using KingPim.Application.SubCategoryService.Get;
 using KingPim.Application.SubCategoryService.Modify;
+using KingPim.Domain.Entities;
+using KingPim.Persistence;
 using KingPim.Web.Filters;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,12 +16,15 @@ namespace KingPim.Web.Controllers
         [Route("pim/Category/[controller]")]
         public class SubCategoryController : Controller
         {
+
+            KingPimDbContext _context;
             //Inject services
             private readonly ISubCategoryGetAll _subcategoryGetAll;
             private readonly ISubCategoryGetSingle _subcategoryGetSingle;
             private readonly ISubCategoryModifyCreate _subcategoryModifyCreate;
             private readonly ISubCategoryModifyPut _subcategoryModifyPut;
             private readonly ISubCategoryModifyDelete _subcategoryModifyDelete;
+            
 
             public SubCategoryController(
                 ISubCategoryGetSingle subcategoryGetSingle,
@@ -60,9 +66,13 @@ namespace KingPim.Web.Controllers
             public async Task<IActionResult> PostSubCategory([FromBody] SubCategoryModifyCreateModel subcategory)
             {
 
+            
+            //subcategory.SubcategoryAttributeGroup = _context.SubcategoryAttributeGroups.Where(x => x.SubCategoryId == subcategory.Id).ToList();
+
+            
                 await _subcategoryModifyCreate.Execute(subcategory);
 
-                return CreatedAtAction("GetSubCategory", new { id = subcategory.Id }, subcategory);
+                return CreatedAtAction("GetSubCategory", new { id = subcategory.Id}, subcategory);
             }
             // PUT: pim/Category/SubCategory/1 , Dont work all the way
             [HttpPut("{id}")]

@@ -13,7 +13,7 @@
   <div class="form-group">
     <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
     <button mat-raised-button color="primary" (click)="addSubCategory(name.value, categoryId.value); onNoClick()"
-            [disabled]="angForm.pristine || angForm.invalid || loading"
+            [disabled]="loading"
             class="btn btn-primary">
       Add SubCategory
     </button>

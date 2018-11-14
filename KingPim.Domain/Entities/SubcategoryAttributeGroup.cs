@@ -8,6 +8,7 @@ namespace KingPim.Domain.Entities
 {
     public class SubcategoryAttributeGroup
     {
+        public int Id { get; set; }
         public int SubCategoryId { get; set; }
         public int AttributeGroupId { get; set; }
 

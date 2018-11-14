@@ -166,6 +166,7 @@ namespace KingPim.Persistence.Migrations
                 name: "SubcategoryAttributeGroups",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false),
                     SubCategoryId = table.Column<int>(nullable: false),
                     AttributeGroupId = table.Column<int>(nullable: false)
                 },
@@ -190,6 +191,7 @@ namespace KingPim.Persistence.Migrations
                 name: "ProductAttributeValues",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false),
                     Value = table.Column<string>(nullable: true),
                     SingleAttributeId = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false)

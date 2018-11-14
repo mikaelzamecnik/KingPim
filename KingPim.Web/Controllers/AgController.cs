@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using KingPim.Application.Account.Service;
 using KingPim.Application.AttributeGroupService.Get;
 using KingPim.Application.AttributeGroupService.Modify;
+using KingPim.Domain.Entities;
 using KingPim.Web.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -69,7 +70,7 @@ namespace KingPim.Web.Controllers
             //var user = _userService.GetAll(HttpContext.User);
 
 
-
+            
             await _agModifyCreate.Execute(ag);
 
 

@@ -7,8 +7,8 @@ using KingPim.Domain.Entities;
 
 namespace KingPim.Application.SubCategoryService.Modify
 {
-    public class SubCategoryModifyCreate:ISubCategoryModifyCreate
-        {
+    public class SubCategoryModifyCreate : ISubCategoryModifyCreate
+    {
         public readonly KingPimDbContext _context;
 
         public SubCategoryModifyCreate(KingPimDbContext context)
@@ -18,15 +18,17 @@ namespace KingPim.Application.SubCategoryService.Modify
 
         public async Task Execute(SubCategoryModifyCreateModel model)
         {
-            var entity = new SubCategory
-                {
-                    Id = model.Id,
-                    Name = model.Name,
-                    CategoryId = model.CategoryId
-                };
-                _context.SubCategories.Add(entity);
 
-                await _context.SaveChangesAsync();
+            var entity = new SubCategory
+            {
+                Name = model.Name,
+                CategoryId = model.CategoryId,
+                
+
+            };
+            _context.SubCategories.Add(entity);
+            await _context.SaveChangesAsync();
         }
+        
     }
 }
