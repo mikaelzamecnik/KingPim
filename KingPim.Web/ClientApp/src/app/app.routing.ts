@@ -19,11 +19,11 @@ import { SubcategoryAddComponent } from './_pages/catalog/subcategories/subcateg
 import { SubcategoryEditComponent } from './_pages/catalog/subcategories/subcategory-edit/subcategory-edit.component';
 import { AttributegroupGetComponent } from './_pages/catalog/attributegroups/attributegroup-get/attributegroup-get.component';
 import { AttributegroupAddComponent } from './_pages/catalog/attributegroups/attributegroup-add/attributegroup-add.component';
-import { AttributegroupEditComponent } from './_pages/catalog/attributegroups/attributegroup-edit/attributegroup-edit.component';
 import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get/attribute-get.component';
 import { AttributeAddComponent } from './_pages/catalog/attributes/attribute-add/attribute-add.component';
 import { AttributeEditComponent } from './_pages/catalog/attributes/attribute-edit/attribute-edit.component';
 import { ExportComponent } from './_pages/export/export.component';
+import { PublishComponent } from './_pages/publish/publish.component';
 
 
 
@@ -50,6 +50,7 @@ const routes: Routes = [
       { path: 'attribute', component: AttributeGetComponent },
       { path: 'attribute/create', component: AttributeAddComponent },
       { path: 'attribute/edit/:id', component: AttributeEditComponent },
+      { path: 'publish', component: PublishComponent }
 
     ]
   },

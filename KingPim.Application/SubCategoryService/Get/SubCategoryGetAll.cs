@@ -23,6 +23,7 @@ namespace KingPim.Application.SubCategoryService.Get
                     Id = c.SubcategoryID,
                     Name = c.SubcategoryName,
                     Category = c.Category
+                    
 
 
                 }).ToListAsync();

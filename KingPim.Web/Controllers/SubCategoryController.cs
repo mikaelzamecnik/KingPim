@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using KingPim.Application.Helpers;
 using KingPim.Application.SubCategoryService.Get;
 using KingPim.Application.SubCategoryService.Modify;
 using KingPim.Web.Filters;
@@ -81,5 +82,5 @@ namespace KingPim.Web.Controllers
                 return NoContent();
             }
 
-        }
+    }
 }

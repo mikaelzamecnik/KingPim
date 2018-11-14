@@ -15,7 +15,9 @@ import {
   MatBottomSheetModule,
   MatTooltipModule,
   MatRadioModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatGridListModule,
+  MatTreeModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -37,7 +39,9 @@ import { NgModule } from '@angular/core';
     MatBottomSheetModule,
     MatTooltipModule,
     MatRadioModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatGridListModule,
+    MatTreeModule
   ],
   exports: [
     MatButtonModule,
@@ -56,7 +60,9 @@ import { NgModule } from '@angular/core';
     MatBottomSheetModule,
     MatTooltipModule,
     MatRadioModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatGridListModule,
+    MatTreeModule
   ],
 })
 export class MaterialModule { }

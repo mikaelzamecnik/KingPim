@@ -27,6 +27,11 @@
         </a>
       </li>
       <li class="nav-item centericon" [routerLinkActive]='["link-active"]'>
+        <a class="nav-link" [routerLink]='["/publish"]' (click)='collapse()'>
+          <i class="fa fa-upload fa-3x"></i><br /> Publish
+        </a>
+      </li>
+      <li class="nav-item centericon" [routerLinkActive]='["link-active"]'>
         <a class="nav-link" [routerLink]='["/product/create"]' (click)='collapse()'>
           <i class="fa fa-plus fa-3x"></i><br /> Add Product
         </a>
