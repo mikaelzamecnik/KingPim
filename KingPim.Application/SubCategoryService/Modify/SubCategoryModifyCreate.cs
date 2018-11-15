@@ -23,12 +23,10 @@ namespace KingPim.Application.SubCategoryService.Modify
             {
                 Name = model.Name,
                 CategoryId = model.CategoryId,
-                
 
             };
             _context.SubCategories.Add(entity);
             await _context.SaveChangesAsync();
         }
-        
     }
 }

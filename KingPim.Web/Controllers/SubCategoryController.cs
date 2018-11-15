@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace KingPim.Web.Controllers
 {
         //Apply when app goes live
-        // [Authorize(Roles = "Admin")] 
+        // [Authorize(Roles = "Admin")]
         [Produces("application/json")]
         [Route("pim/Category/[controller]")]
         public class SubCategoryController : Controller
@@ -22,7 +22,7 @@ namespace KingPim.Web.Controllers
             private readonly ISubCategoryModifyCreate _subcategoryModifyCreate;
             private readonly ISubCategoryModifyPut _subcategoryModifyPut;
             private readonly ISubCategoryModifyDelete _subcategoryModifyDelete;
-            
+
 
             public SubCategoryController(
                 ISubCategoryGetSingle subcategoryGetSingle,
