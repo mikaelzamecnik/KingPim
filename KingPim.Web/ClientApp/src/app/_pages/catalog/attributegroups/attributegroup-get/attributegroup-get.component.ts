@@ -30,6 +30,7 @@ constructor(
         .getAttributeGroups()
         .subscribe((_result: AttributeGroup[]) => {
           this.attributegroups = _result;
+          this.showAttributeGroups();
         });
     });
   }

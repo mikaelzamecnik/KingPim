@@ -23,7 +23,7 @@ import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get
 import { AttributeAddComponent } from './_pages/catalog/attributes/attribute-add/attribute-add.component';
 import { AttributeEditComponent } from './_pages/catalog/attributes/attribute-edit/attribute-edit.component';
 import { ExportComponent } from './_pages/export/export.component';
-import { PublishComponent } from './_pages/publish/publish.component';
+/* import { PublishComponent } from './_pages/publish/publish.component'; */
 
 
 
@@ -50,7 +50,7 @@ const routes: Routes = [
       { path: 'attribute', component: AttributeGetComponent },
       { path: 'attribute/create', component: AttributeAddComponent },
       { path: 'attribute/edit/:id', component: AttributeEditComponent },
-      { path: 'publish', component: PublishComponent }
+      /* { path: 'publish', component: PublishComponent } */
 
     ]
   },

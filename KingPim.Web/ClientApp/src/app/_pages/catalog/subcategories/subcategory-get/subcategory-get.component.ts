@@ -26,6 +26,7 @@ export class SubcategoryGetComponent implements OnInit {
         .getSubCategories()
         .subscribe((_result: SubCategory[]) => {
           this.subcategories = _result;
+          this.showSubcategories();
         });
     });
   }

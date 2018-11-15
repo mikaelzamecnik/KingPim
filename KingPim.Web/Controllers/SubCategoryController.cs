@@ -16,8 +16,6 @@ namespace KingPim.Web.Controllers
         [Route("pim/Category/[controller]")]
         public class SubCategoryController : Controller
         {
-
-            KingPimDbContext _context;
             //Inject services
             private readonly ISubCategoryGetAll _subcategoryGetAll;
             private readonly ISubCategoryGetSingle _subcategoryGetSingle;
@@ -66,13 +64,9 @@ namespace KingPim.Web.Controllers
             public async Task<IActionResult> PostSubCategory([FromBody] SubCategoryModifyCreateModel subcategory)
             {
 
-            
-            //subcategory.SubcategoryAttributeGroup = _context.SubcategoryAttributeGroups.Where(x => x.SubCategoryId == subcategory.Id).ToList();
 
-            
                 await _subcategoryModifyCreate.Execute(subcategory);
-
-                return CreatedAtAction("GetSubCategory", new { id = subcategory.Id}, subcategory);
+                return Json(subcategory);
             }
             // PUT: pim/Category/SubCategory/1 , Dont work all the way
             [HttpPut("{id}")]

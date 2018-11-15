@@ -40,7 +40,7 @@ import { AttributeAddComponent } from './_pages/catalog/attributes/attribute-add
 import { AttributeEditComponent } from './_pages/catalog/attributes/attribute-edit/attribute-edit.component';
 import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get/attribute-get.component';
 import { ExportComponent } from './_pages/export/export.component';
-import { PublishComponent } from './_pages/publish/publish.component';
+/* import { PublishComponent } from './_pages/publish/publish.component'; */
 
 @NgModule({
   declarations: [
@@ -70,7 +70,7 @@ import { PublishComponent } from './_pages/publish/publish.component';
     AttributeEditComponent,
     AttributeGetComponent,
     ExportComponent,
-    PublishComponent,
+    /* PublishComponent, */
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
