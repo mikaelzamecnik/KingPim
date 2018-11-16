@@ -102,4 +102,12 @@ custom-modalbox {
 .delbutton{
   color:red;
 }
+/*Radio button design*/
+.radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
 
+.radio-button {
+  margin: 5px;
+}

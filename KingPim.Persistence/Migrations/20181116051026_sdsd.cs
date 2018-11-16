@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KingPim.Persistence.Migrations
 {
-    public partial class init : Migration
+    public partial class sdsd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -120,8 +120,7 @@ namespace KingPim.Persistence.Migrations
                     LastName = table.Column<string>(nullable: true),
                     Username = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    RoleId = table.Column<int>(nullable: false),
-                    UserRolesId = table.Column<int>(nullable: true),
+                    UserRoleId = table.Column<int>(nullable: true),
                     PasswordHash = table.Column<byte[]>(nullable: true),
                     PasswordSalt = table.Column<byte[]>(nullable: true)
                 },
@@ -129,8 +128,8 @@ namespace KingPim.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_UserRoles_UserRolesId",
-                        column: x => x.UserRolesId,
+                        name: "FK_Users_UserRoles_UserRoleId",
+                        column: x => x.UserRoleId,
                         principalTable: "UserRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -166,7 +165,6 @@ namespace KingPim.Persistence.Migrations
                 name: "SubcategoryAttributeGroups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
                     SubCategoryId = table.Column<int>(nullable: false),
                     AttributeGroupId = table.Column<int>(nullable: false)
                 },
@@ -239,9 +237,9 @@ namespace KingPim.Persistence.Migrations
                 column: "SubCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_UserRolesId",
+                name: "IX_Users_UserRoleId",
                 table: "Users",
-                column: "UserRolesId");
+                column: "UserRoleId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

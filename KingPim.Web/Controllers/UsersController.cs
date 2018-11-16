@@ -17,7 +17,7 @@ namespace KingPim.Web.Controllers
 {
     //Apply when app goes live
     // [Authorize(Roles = "Admin")]
-    [Authorize]
+    /* [Authorize] */
     [ApiController]
     [Route("[controller]")]
     public class UsersController : ControllerBase

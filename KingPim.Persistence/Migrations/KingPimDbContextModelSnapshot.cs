@@ -200,15 +200,13 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<byte[]>("PasswordSalt");
 
-                    b.Property<int>("RoleId");
-
-                    b.Property<int?>("UserRolesId");
+                    b.Property<int?>("UserRoleId");
 
                     b.Property<string>("Username");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserRolesId");
+                    b.HasIndex("UserRoleId");
 
                     b.ToTable("Users");
                 });
@@ -277,7 +275,7 @@ namespace KingPim.Persistence.Migrations
                 {
                     b.HasOne("KingPim.Domain.Entities.UserRole", "UserRoles")
                         .WithMany()
-                        .HasForeignKey("UserRolesId");
+                        .HasForeignKey("UserRoleId");
                 });
 #pragma warning restore 612, 618
         }

@@ -2,20 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AlertService, UserService, AuthenticationService } from '../../../_services';
-import { User } from '../../../_models';
+import { AlertService, UserService} from '../../../_services';
+import { Mustmatch } from '../../../_helpers';
 
 @Component({ selector: 'app-register-user', templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
-    submitted = false;
-    // users: User[] = [];
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService,
     private userService: UserService,
     private alertService: AlertService
   ) {}
@@ -27,16 +25,14 @@ export class RegisterComponent implements OnInit {
             lastName: ['', Validators.required],
             username: ['', Validators.required],
             email: ['', Validators.required],
-            // roleId: ['', Validators.required],
-          password: ['', [Validators.required, Validators.minLength(6)]]
+            userRoleId: ['', Validators.required],
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          confirmPassword: ['', Validators.required]
+        }, {
+          validator: Mustmatch('password', 'confirmPassword')
       });
   }
 
-  // loadAllUsers() {
-  //  this.userService.getAll().pipe(first()).subscribe(users => {
-  //    this.users = users;
-  //  });
-  // }
 
     // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }

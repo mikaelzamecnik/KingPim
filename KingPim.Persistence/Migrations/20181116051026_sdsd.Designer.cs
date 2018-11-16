@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KingPim.Persistence.Migrations
 {
     [DbContext(typeof(KingPimDbContext))]
-    [Migration("20181114165438_init")]
-    partial class init
+    [Migration("20181116051026_sdsd")]
+    partial class sdsd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -179,8 +179,6 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<int>("SubCategoryId");
 
-                    b.Property<int>("Id");
-
                     b.HasKey("AttributeGroupId", "SubCategoryId");
 
                     b.HasIndex("SubCategoryId");
@@ -204,15 +202,13 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<byte[]>("PasswordSalt");
 
-                    b.Property<int>("RoleId");
-
-                    b.Property<int?>("UserRolesId");
+                    b.Property<int?>("UserRoleId");
 
                     b.Property<string>("Username");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserRolesId");
+                    b.HasIndex("UserRoleId");
 
                     b.ToTable("Users");
                 });
@@ -267,7 +263,7 @@ namespace KingPim.Persistence.Migrations
             modelBuilder.Entity("KingPim.Domain.Entities.SubcategoryAttributeGroup", b =>
                 {
                     b.HasOne("KingPim.Domain.Entities.AttributeGroup", "AttributeGroup")
-                        .WithMany()
+                        .WithMany("SubcategoryAttributeGroups")
                         .HasForeignKey("AttributeGroupId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -281,7 +277,7 @@ namespace KingPim.Persistence.Migrations
                 {
                     b.HasOne("KingPim.Domain.Entities.UserRole", "UserRoles")
                         .WithMany()
-                        .HasForeignKey("UserRolesId");
+                        .HasForeignKey("UserRoleId");
                 });
 #pragma warning restore 612, 618
         }

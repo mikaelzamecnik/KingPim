@@ -94,7 +94,7 @@ namespace KingPim.Application.Account.Service
             user.LastName = userParam.LastName;
             user.Username = userParam.Username;
             user.Email = userParam.Email;
-            user.RoleId = userParam.RoleId;
+            user.UserRoleId = userParam.UserRoleId;
 
             // update password if it was entered
             if (!string.IsNullOrWhiteSpace(password))

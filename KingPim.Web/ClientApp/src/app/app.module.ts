@@ -8,7 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { AlertComponent } from './_components';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor, Mustmatch } from './_helpers';
 import { HomeComponent } from './home';
 import { CatalogComponent } from './_pages/catalog';
 import { LoginComponent } from './login';
@@ -70,7 +70,7 @@ import { PublishComponent } from './_pages/publish/publish.component';
     AttributeEditComponent,
     AttributeGetComponent,
     ExportComponent,
-    PublishComponent
+    PublishComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -4,7 +4,10 @@
       <h5>Current Users</h5>
       <ul>
         <li *ngFor="let user of users">
-          {{user.username}} ({{user.firstName}} {{user.lastName}})
+          <strong *ngIf="user.userRoleId === 1">Admin</strong>
+          <strong *ngIf="user.userRoleId === 2">Publisher</strong>
+          <strong *ngIf="user.userRoleId === 3">Editor</strong>
+          : {{user.username}} ({{user.firstName}} {{user.lastName}})
           - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
           <a (click)="getUser(user.id)" class="text-danger">Edit</a>
         </li>

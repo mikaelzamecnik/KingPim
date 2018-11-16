@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace KingPim.Domain.Entities
@@ -11,7 +12,7 @@ namespace KingPim.Domain.Entities
         public string LastName { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
-        public int RoleId { get; set; }
+        public int? UserRoleId { get; set; }
         public virtual UserRole UserRoles { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }

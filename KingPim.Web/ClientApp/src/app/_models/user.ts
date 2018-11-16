@@ -3,6 +3,8 @@ export class User {
     username: string;
     password: string;
     firstName: string;
+    userRoleId: number;
+    userRoles: any;
   lastName: string;
   email: string;
     token: string;
