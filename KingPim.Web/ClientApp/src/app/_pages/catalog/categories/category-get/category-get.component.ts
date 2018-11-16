@@ -12,7 +12,8 @@ export class CategoryGetComponent implements OnInit {
 
   constructor(
     private cs: CategoryDataService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog) {
+     }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CategoryAddComponent, {

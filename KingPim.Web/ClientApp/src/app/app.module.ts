@@ -41,6 +41,7 @@ import { AttributeEditComponent } from './_pages/catalog/attributes/attribute-ed
 import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get/attribute-get.component';
 import { ExportComponent } from './_pages/export/export.component';
 import { PublishComponent } from './_pages/publish/publish.component';
+import { ProductAttributeComponent } from './_pages/catalog/product-attribute/product-attribute.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,11 @@ import { PublishComponent } from './_pages/publish/publish.component';
     AttributeGetComponent,
     ExportComponent,
     PublishComponent,
+    ProductAttributeComponent,
   ],
+  entryComponents: [
+    ProductAttributeComponent
+],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     AppRoutingModule,

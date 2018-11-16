@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductDataService } from '../../../../_services';
 import { Product } from '../../../../_models';
-import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialog, } from '@angular/material';
+import { ProductAttributeComponent } from '../../product-attribute/product-attribute.component';
 
 @Component({
   selector: 'app-product-get', templateUrl: './product-get.component.html'
@@ -13,22 +13,23 @@ export class ProductGetComponent implements OnInit {
   columnsToDisplay: string[] = ['Id', 'Name', 'Category', 'SubCategory',
     'Created', 'Updated', 'Version', 'Editedby', 'Published', 'Edit', 'Delete'];
   productData: Product[];
-  angForm: FormGroup;
-  panelOpenState = false;
 
   constructor(private ps: ProductDataService,
-    private route: ActivatedRoute,
-    private fb: FormBuilder) {
-    this.createForm();
+    public dialog: MatDialog) {
   }
-
+  // Opens attribute modal
+  openProdAttDialog(id) {
+    this.dialog.open(ProductAttributeComponent, {
+      width: '500px',
+      backdropClass: 'custom-modalbox',
+      data: {
+        apId: id
+      },
+    });
+    console.log('opened', id);
+  }
   ngOnInit() {
     this.showProducts();
-  }
-  createForm() {
-    this.angForm = this.fb.group({
-      publishedStatus: ['']
-    });
   }
   // to show products oninit and after deletion
   showProducts() {
@@ -45,12 +46,4 @@ export class ProductGetComponent implements OnInit {
       console.log('Deleted', productID);
     });
   }
-  editProduct(id) {
-    this.ps.editProduct(id).subscribe(res => {
-     });
-     console.log('ID', id);
-  }
-  updateProduct(id, publishedStatus, description, productName) {
-    this.ps.updateProduct(id , publishedStatus, description, productName);
-    }
-    }
+}
