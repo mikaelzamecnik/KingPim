@@ -22,6 +22,7 @@ namespace KingPim.Application.SubCategoryService.Modify
                 {
                     entity.Id = model.Id;
                     entity.Name = model.Name;
+                    entity.PublishedStatus = model.publishedStatus;
 
                      _context.SubCategories.Add(entity);
 

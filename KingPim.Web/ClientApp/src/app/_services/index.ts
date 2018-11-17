@@ -6,3 +6,4 @@ export * from './product-data.service';
 export * from './sub-category-data.service';
 export * from './attribute-data.service';
 export * from './attribute-group-data.service';
+export * from './export.service';

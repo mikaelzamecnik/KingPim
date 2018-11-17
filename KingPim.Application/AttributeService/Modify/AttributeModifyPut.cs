@@ -27,6 +27,7 @@ namespace KingPim.Application.AttributeService.Modify
                 entity.AttributeGroupId = model.AttributeGroupId;
                 entity.Description = model.Description;
                 entity.Type = model.Type;
+                entity.PublishedStatus = model.publishedStatus;
 
                 _context.SingleAttributes.Update(entity);
 

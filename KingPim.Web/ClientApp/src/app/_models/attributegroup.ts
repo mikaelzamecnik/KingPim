@@ -2,10 +2,7 @@ export class AttributeGroup {
   id: number;
   name: string;
   description: string;
-  singleAttribute: [
-    {
-      name: string;
-    }
-  ];
+  singleAttribute: object;
+  publishedStatus: boolean;
 
 }

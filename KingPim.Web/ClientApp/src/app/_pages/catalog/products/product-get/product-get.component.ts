@@ -10,7 +10,7 @@ import { ProductAttributeComponent } from '../../product-attribute/product-attri
 
 export class ProductGetComponent implements OnInit {
 
-  columnsToDisplay: string[] = ['Id', 'Name', 'Category', 'SubCategory',
+  columnsToDisplay: string[] = ['Id', 'Name', 'SubCategory',
     'Created', 'Updated', 'Version', 'Editedby', 'Published', 'Edit', 'Delete'];
   productData: Product[];
 

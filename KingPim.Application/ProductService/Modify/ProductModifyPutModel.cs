@@ -16,5 +16,6 @@ namespace KingPim.Application.ProductService.Modify
         public int SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
         public ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
+        public List<int> listId{get;set;}
     }
 }

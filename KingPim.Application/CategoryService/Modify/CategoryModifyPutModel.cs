@@ -4,5 +4,6 @@ namespace KingPim.Application.CategoryService.Modify
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool publishedStatus {get;set;}
     }
 }

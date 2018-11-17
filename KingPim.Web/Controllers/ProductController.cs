@@ -105,6 +105,20 @@ namespace KingPim.Web.Controllers
 
             return NoContent();
         }
+        [HttpPut]
+        [ValidateModel]
+        public async Task<IActionResult> PutProductStatus([FromBody] ProductModifyPutModel product)
+
+         {
+             if(product.PublishedStatus == false)
+            product.PublishedStatus = true;
+            if(product.PublishedStatus == true)
+            product.PublishedStatus = false;
+
+
+           await _productModifyPut.PublishedStatus(product);
+            return Ok(product);
+        }
 
     }
 }

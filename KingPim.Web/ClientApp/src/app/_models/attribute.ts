@@ -4,4 +4,5 @@ export class Attribute {
   name: string;
   description: string;
   type: string;
+  publishedStatus: boolean;
 }

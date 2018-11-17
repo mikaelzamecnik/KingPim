@@ -42,5 +42,14 @@ namespace KingPim.Application.ProductService.Modify
                 throw e;
             }
         }
+        public async Task PublishedStatus(ProductModifyPutModel model)
+        {
+            
+                
+                model.PublishedStatus = true;
+
+                await _context.SaveChangesAsync();
+
+        }
     }
 }

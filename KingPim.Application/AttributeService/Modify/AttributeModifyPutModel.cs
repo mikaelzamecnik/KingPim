@@ -12,5 +12,6 @@ namespace KingPim.Application.AttributeService.Modify
         public string Type { get; set; }
         public int? AttributeGroupId { get; set; }
         public AttributeGroup AttributeGroup { get; set; }
+        public bool publishedStatus {get;set;}
     }
 }

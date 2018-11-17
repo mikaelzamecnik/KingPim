@@ -36,7 +36,7 @@
               <div class="formcontainer">
                 <br />
                 <mat-card-actions>
-                  <a mat-raised-button [href]="fileUrl" download="file.txt">Download File</a>
+                  <a mat-raised-button (click)="exportPdf()">Download File</a>
                 </mat-card-actions>
               </div>
         </form>
