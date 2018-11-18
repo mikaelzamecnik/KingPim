@@ -49,17 +49,18 @@ namespace KingPim.Application.ProductService.Modify
                     }
                 }
 
-                //    var entity =  await _context.Products.SingleAsync(c => c.Id == model.Id);
-                //{
-                //    entity.Name = model.Name;
-                //    entity.Description = model.Description;
-                //    entity.DateUpdated = model.DateUpdated;
-                //    entity.EditedBy = model.EditedBy;
-                //    entity.Version = model.Version;
-                //    entity.PublishedStatus = model.PublishedStatus;
-                //    entity.SubCategory = model.SubCategory;
 
-                //    _context.Products.Update(entity);
+                    var entity =  await _context.Products.SingleAsync(c => c.Id == model.Id);
+                {
+                    entity.Name = model.Name;
+                    entity.Description = model.Description;
+                    entity.DateUpdated = model.DateUpdated;
+                    entity.EditedBy = model.EditedBy;
+                    entity.Version = model.Version + 1;
+
+                    _context.Products.Update(entity);
+                    
+                }
 
                 await _context.SaveChangesAsync();
 
