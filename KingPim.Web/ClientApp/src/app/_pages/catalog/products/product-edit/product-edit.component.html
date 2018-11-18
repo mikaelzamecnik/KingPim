@@ -18,6 +18,14 @@
           <mat-card-content>
 
             <div class="formcontainer">
+              <mat-radio-group formControlName="publishedStatus" #publishedStatus placeholder="Status" [value]="product.publishedStatus">
+                <mat-radio-button [value]=true>
+                  True
+                </mat-radio-button>
+                <mat-radio-button [value]=false>
+                  False
+                </mat-radio-button>
+              </mat-radio-group>
               <mat-form-field>
                 <input matInput type="text" placeholder="Product Name" class="form-control" formControlName="name" #name [value]="product.name" />
               </mat-form-field>
@@ -44,8 +52,8 @@
               <!--Attributes goes here-->
               <br />
               <mat-card-actions>
-                <button mat-raised-button (click)="updateProduct(name.value, description.value, subCategoryId.value)">
-                  Add Product
+                <button mat-raised-button (click)="updateProduct(name.value, description.value, subCategoryId.value, publishedStatus.value)">
+                  Update Product
                 </button>
               </mat-card-actions>
             </div>

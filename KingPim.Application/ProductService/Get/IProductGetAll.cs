@@ -7,5 +7,6 @@ namespace KingPim.Application.ProductService.Get
     public interface IProductGetAll
     {
         Task<IEnumerable<ProductGetAllModel>> Execute();
+        IEnumerable<Product> GetAllProducts();
     }
 }

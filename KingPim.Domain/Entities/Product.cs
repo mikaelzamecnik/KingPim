@@ -12,8 +12,6 @@ namespace KingPim.Domain.Entities
         public string Description { get; set; }
         public int? SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
-        public ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
-
 
     }
 }

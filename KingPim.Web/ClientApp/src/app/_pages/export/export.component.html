@@ -10,7 +10,7 @@
               <mat-card-title>Export JSON/Xml</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <div class="formcontainer">
+              <!--<div class="formcontainer">
                 <mat-form-field>
                   <mat-select formControlName="format" #format placeholder="Choose Format">
                     <mat-option [value]="format" *ngFor="let f of fileformat">
@@ -30,13 +30,13 @@
                     <strong>Products</strong>
                   </mat-checkbox>
                 <br />
-              </div>
+              </div>-->
             </mat-card-content>
           </mat-card>
               <div class="formcontainer">
                 <br />
                 <mat-card-actions>
-                  <a mat-raised-button (click)="exportPdf()">Download File</a>
+                  <a mat-raised-button (click)="exportProductJson()">Download File for Products</a>
                 </mat-card-actions>
               </div>
         </form>

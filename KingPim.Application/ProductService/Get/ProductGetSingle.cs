@@ -31,8 +31,7 @@ namespace KingPim.Application.ProductService.Get
                 DateUpdated = entity.DateUpdated,
                 EditedBy = entity.EditedBy,
                 Version = entity.Version,
-                PublishedStatus = entity.PublishedStatus,
-                ProductAttributeValues = entity.ProductAttributeValues
+                PublishedStatus = entity.PublishedStatus
                 
             };
         }

@@ -14,6 +14,7 @@ export class ExportComponent implements OnInit {
   angForm: FormGroup;
   products: Product[];
   fileformat = ['JSON', 'XML'];
+  jsonProducts: any;
  constructor(   private sanitizer: DomSanitizer,
     private fb: FormBuilder,
     private ps: ProductDataService,
@@ -28,9 +29,11 @@ export class ExportComponent implements OnInit {
         subcategories: [false, Validators.required],
         products: [false, Validators.required]
       });
-    }
-    exportPdf() {
-      this.ex.export().subscribe(data => saveAs(data, `pdf RR2018.pdf`));
+     }
+// Export Products to json file
+  exportProductJson() {
+    this.ex.getProductsToJson().subscribe(data => saveAs(data, ''));
+    console.log(saveAs);
   }
   ngOnInit() {
   }

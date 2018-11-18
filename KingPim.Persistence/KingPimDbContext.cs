@@ -26,15 +26,6 @@ public class KingPimDbContext: DbContext
             modelBuilder.Entity<ProductAttributeValue>()
             .HasKey(x => new { x.SingleAttributeId, x.ProductId });
 
-            modelBuilder.Entity<ProductAttributeValue>()
-            .HasOne(bc => bc.SingleAttribute)
-            .WithMany(b => b.ProductAttributeValues)
-            .HasForeignKey(bc => bc.SingleAttributeId);
-
-            modelBuilder.Entity<ProductAttributeValue>()
-            .HasOne(bc => bc.Product)
-            .WithMany(b => b.ProductAttributeValues)
-            .HasForeignKey(bc => bc.ProductId);
         }
 }
 }

@@ -7,6 +7,7 @@ namespace KingPim.Application.ProductService.Modify
     public interface IProductModifyPut
     {
         Task Execute(ProductModifyPutModel model);
-        Task PublishedStatus(ProductModifyPutModel model);
+        //void PublishedStatus(ProductModifyPutModel model);
+
     }
 }

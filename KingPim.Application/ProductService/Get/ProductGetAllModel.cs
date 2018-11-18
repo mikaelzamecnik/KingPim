@@ -4,9 +4,10 @@ using System.Collections.Generic;
 
 namespace KingPim.Application.ProductService.Get
 {
-public class ProductGetAllModel {
+    [Serializable]
+    public class ProductGetAllModel {
 
-
+        
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -17,7 +18,6 @@ public class ProductGetAllModel {
         public bool PublishedStatus { get; set; }
         public int? SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
-        public ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
     }
 
 }

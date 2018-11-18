@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { isBoolean } from 'util';
 
 @Injectable()
 export class ProductDataService {
@@ -37,25 +38,26 @@ export class ProductDataService {
       .http
       .get(`${this.accessPointUrl}/${id}`);
   }
-  updateProduct(id, name, description, publishedStatus) {
+  updateProduct(name, description, subcategoryId, publishedStatus, id) {
     const obj = {
       name: name,
       description: description,
-      publishedStatus : publishedStatus
+      subcategoryId: subcategoryId,
+      publishedStatus: publishedStatus
     };
     this
       .http
       .put(`${this.accessPointUrl}/${id}`, obj)
       .subscribe(res => console.log('Done'));
   }
-  updateProductStatus(publishedStatus) {
-    const obj = {
-      publishedStatus : publishedStatus
-    };
-    this
-      .http
-      .put(`${this.accessPointUrl}/`, obj)
-      .subscribe(res => console.log('Done'));
-  }
+  //updateProductStatus(publishedStatus) {
+  //  const obj = {
+  //    publishedStatus : publishedStatus
+  //  };
+  //  this
+  //    .http
+  //    .put(`${this.accessPointUrl}/`, obj)
+  //    .subscribe(res => console.log('Done'));
+  //}
 
 }

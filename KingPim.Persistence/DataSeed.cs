@@ -10,7 +10,7 @@ namespace KingPim.Persistence
 
         public static void FillIfEmpty(KingPimDbContext ctx)
         {
-           
+
             if (!ctx.UserRoles.Any())
             {
                 ctx.UserRoles.Add(new UserRole { Role = "Admin" });

@@ -6,16 +6,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ExportService {
 
+
   private headers: HttpHeaders;
-  private accessPointUrl = 'http://localhost:65436/files';
+  private accessPointUrl = 'http://localhost:65436/pim/export/GetProductsToJson';
 
   constructor(private http: HttpClient) {
-    this.headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
+    this.headers = new HttpHeaders({ 'Content-Type': 'application/octet-stream' });
 
   }
-  export() {
-    return this.http.get(this.accessPointUrl,
-        {responseType: 'blob'});
+  //Get the json file as blob
+  public getProductsToJson() {
+    return this.http.get(this.accessPointUrl, {
+      responseType: 'blob', headers: this.headers
+    });
 }
 
 }

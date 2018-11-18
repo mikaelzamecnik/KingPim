@@ -83,18 +83,16 @@ namespace KingPim.Web.Controllers
         // PUT: pim/Category/SubCategory/Product/1 , Dont work all the way
         [HttpPut("{id}")]
         [ValidateModel]
-        public async Task<IActionResult> PutProduct([FromRoute] int id,[FromBody] ProductModifyPutModel product)
+        public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] ProductModifyPutModel product)
 
          {
             // Additonal logic for put request
-            int ver = 1 + product.Version++;
+
             product.Id = id;
-            product.EditedBy = "SuperAdmin"; // Change to user
-            product.Version = ver;
-            product.DateUpdated = DateTime.Now;
+            product.EditedBy = "SuperAdmin";
 
 
-           await _productModifyPut.Execute(product);
+            await _productModifyPut.Execute(product);
             return NoContent();
         }
         // DELETE: pim/Category/SubCategory/Product/1
@@ -105,20 +103,5 @@ namespace KingPim.Web.Controllers
 
             return NoContent();
         }
-        [HttpPut]
-        [ValidateModel]
-        public async Task<IActionResult> PutProductStatus([FromBody] ProductModifyPutModel product)
-
-         {
-             if(product.PublishedStatus == false)
-            product.PublishedStatus = true;
-            if(product.PublishedStatus == true)
-            product.PublishedStatus = false;
-
-
-           await _productModifyPut.PublishedStatus(product);
-            return Ok(product);
-        }
-
     }
 }

@@ -16,7 +16,7 @@ namespace KingPim.Application.ProductService.Get
             _context = context;
         }
 
-        public IEnumerable<Product> Products => _context.Products.Include(c => c.Id).Include(d => d.SubCategory);
+        public IEnumerable<Product> Products => _context.Products;
         public async Task<IEnumerable<ProductGetAllModel>> Execute()
         {
             return await _context.Products.Select(c =>
@@ -29,10 +29,14 @@ namespace KingPim.Application.ProductService.Get
                  EditedBy = c.EditedBy,
                  Version = c.Version,
                  SubCategory = c.SubCategory,
-                 PublishedStatus = c.PublishedStatus,
-                 ProductAttributeValues = c.ProductAttributeValues
+                 PublishedStatus = c.PublishedStatus
 
         }).ToListAsync();
         }
+        public IEnumerable<Product> GetAllProducts()
+        {
+            return Products;
+        }
+
     }
 }
