@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using KingPim.Persistence;
+using KingPim.Domain.Entities;
 
 namespace KingPim.Application.SubCategoryService.Get
 {
@@ -10,6 +11,7 @@ namespace KingPim.Application.SubCategoryService.Get
     {
         public readonly KingPimDbContext _context;
 
+        public IEnumerable<SubCategory> SubCategories => _context.SubCategories;
         public SubCategoryGetAll(KingPimDbContext context)
         {
             _context = context;
@@ -27,6 +29,10 @@ namespace KingPim.Application.SubCategoryService.Get
 
 
                 }).ToListAsync();
+        }
+        public IEnumerable<SubCategory> GetAllSubCategories()
+        {
+            return SubCategories;
         }
     }
 }

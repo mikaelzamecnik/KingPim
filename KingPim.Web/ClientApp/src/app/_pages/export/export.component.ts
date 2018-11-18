@@ -32,7 +32,15 @@ export class ExportComponent implements OnInit {
      }
 // Export Products to json file
   exportProductJson() {
-    this.ex.getProductsToJson().subscribe(data => saveAs(data, ''));
+    this.ex.getProductsToJson().subscribe(data => saveAs(data, `products.json`));
+    console.log(saveAs);
+  }
+  exportCategoryJson() {
+    this.ex.getCategoriesToJson().subscribe(data => saveAs(data, `categories.json`));
+    console.log(saveAs);
+  }
+  exportSubCategoryJson() {
+    this.ex.getSubCategoriesToJson().subscribe(data => saveAs(data, `subcategories.json`));
     console.log(saveAs);
   }
   ngOnInit() {

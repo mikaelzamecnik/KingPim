@@ -9,8 +9,15 @@
             <mat-card-header>
               <mat-card-title>Export JSON/Xml</mat-card-title>
             </mat-card-header>
+            <mat-card-actions>
+                <a mat-raised-button (click)="exportProductJson()">Download File for Products</a>
+              </mat-card-actions>
+              <mat-card-actions><a mat-raised-button (click)="exportCategoryJson()">Download File for Categories</a></mat-card-actions>
+              <mat-card-actions><a mat-raised-button (click)="exportSubCategoryJson()">Download File for SubCategories</a></mat-card-actions>
+<br>
+<h6 style="color:red;">* This function is not yet implemented at the moment</h6>
             <mat-card-content>
-              <!--<div class="formcontainer">
+              <div class="formcontainer">
                 <mat-form-field>
                   <mat-select formControlName="format" #format placeholder="Choose Format">
                     <mat-option [value]="format" *ngFor="let f of fileformat">
@@ -30,15 +37,9 @@
                     <strong>Products</strong>
                   </mat-checkbox>
                 <br />
-              </div>-->
+              </div>
             </mat-card-content>
           </mat-card>
-              <div class="formcontainer">
-                <br />
-                <mat-card-actions>
-                  <a mat-raised-button (click)="exportProductJson()">Download File for Products</a>
-                </mat-card-actions>
-              </div>
         </form>
     </div>
     <div class="col-md-2">
