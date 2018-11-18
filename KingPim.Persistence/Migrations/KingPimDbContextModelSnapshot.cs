@@ -98,17 +98,21 @@ namespace KingPim.Persistence.Migrations
 
             modelBuilder.Entity("KingPim.Domain.Entities.ProductAttributeValue", b =>
                 {
-                    b.Property<int?>("SingleAttributeId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("ProductId");
 
-                    b.Property<int>("Id");
+                    b.Property<int?>("SingleAttributeId");
 
                     b.Property<string>("Value");
 
-                    b.HasKey("SingleAttributeId", "ProductId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("SingleAttributeId");
 
                     b.ToTable("ProductAttributeValues");
                 });
@@ -173,13 +177,19 @@ namespace KingPim.Persistence.Migrations
 
             modelBuilder.Entity("KingPim.Domain.Entities.SubcategoryAttributeGroup", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("AttributeGroupId");
 
-                    b.Property<int>("SubCategoryId");
+                    b.Property<int>("SubcategoryId");
 
-                    b.HasKey("AttributeGroupId", "SubCategoryId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("SubCategoryId");
+                    b.HasIndex("AttributeGroupId");
+
+                    b.HasIndex("SubcategoryId");
 
                     b.ToTable("SubcategoryAttributeGroups");
                 });
@@ -234,14 +244,12 @@ namespace KingPim.Persistence.Migrations
             modelBuilder.Entity("KingPim.Domain.Entities.ProductAttributeValue", b =>
                 {
                     b.HasOne("KingPim.Domain.Entities.Product", "Product")
-                        .WithMany("ProductAttributeValues")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("KingPim.Domain.Entities.SingleAttribute", "SingleAttribute")
                         .WithMany("ProductAttributeValues")
-                        .HasForeignKey("SingleAttributeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("SingleAttributeId");
                 });
 
             modelBuilder.Entity("KingPim.Domain.Entities.SingleAttribute", b =>
@@ -267,7 +275,7 @@ namespace KingPim.Persistence.Migrations
 
                     b.HasOne("KingPim.Domain.Entities.SubCategory", "SubCategory")
                         .WithMany("SubcategoryAttributeGroups")
-                        .HasForeignKey("SubCategoryId")
+                        .HasForeignKey("SubcategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

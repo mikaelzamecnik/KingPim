@@ -18,12 +18,14 @@ export class ProductGetComponent implements OnInit {
     public dialog: MatDialog) {
   }
   // Opens attribute modal
-  openProdAttDialog(id) {
+  openProdAttDialog(id, name, subCategory) {
     this.dialog.open(ProductAttributeComponent, {
       width: '500px',
       backdropClass: 'custom-modalbox',
       data: {
-        apId: id
+        apId: id,
+        apName: name,
+        apSC: subCategory
       },
     });
     console.log('opened', id);

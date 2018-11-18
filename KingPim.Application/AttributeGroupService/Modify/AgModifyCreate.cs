@@ -15,27 +15,29 @@ namespace KingPim.Application.AttributeGroupService.Modify
         {
             _context = context;
         }
-
+        public IEnumerable<AttributeGroup> AttributeGroups => _context.AttributeGroups;
         public async Task Execute(AgModifyCreateModel model)
         {
-            try
+            if (model.Id == 0)     // Create
             {
-                var entity = new AttributeGroup
+                var attrGroup = new AttributeGroup
                 {
-
-                    Id = model.Id,
                     Name = model.Name,
-                    Description = model.Description
+                    Description = model.Description,
+                    SingleAttribute = null
                 };
-                _context.AttributeGroups.Add(entity);
-
-                await _context.SaveChangesAsync();
+                _context.AttributeGroups.Add(attrGroup);
             }
-            catch (System.Exception e)
+            else       // Update
             {
-
-                throw e;
+                var ctxAttributeGroup = _context.AttributeGroups.FirstOrDefault(ag => ag.Id.Equals(model.Id));
+                if (ctxAttributeGroup != null)
+                {
+                    ctxAttributeGroup.Name = model.Name;
+                    ctxAttributeGroup.Description = model.Description;
+                }
             }
+           await _context.SaveChangesAsync();
 
         }
     }

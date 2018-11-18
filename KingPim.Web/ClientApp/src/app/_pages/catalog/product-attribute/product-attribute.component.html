@@ -1,7 +1,22 @@
-<h1 mat-dialog-title>Add Attribute Group</h1>
+<h1 mat-dialog-title>Add Values to {{data.apName}} attributes<br />
+  <span style='color:darkgray;font-weight: bold'><small>&raquo; {{data.apSC}}</small></span></h1>
 <br>
-<input type="text" value="{{data.apId}}"/>
-<p>Attributes should show up as the correct input
-    corresponds with the type connected to the Product
-    SubcategoryGroup</p>
+<form [formGroup]="angForm" novalidate>
+  <input type="hidden" value="{{data.apId}}" formControlName="productId" />
 
+
+  <br />
+  <p style="color:red;">
+    *Need logic to iterate Types of inputfield in this.subcategoryId and connect
+    it with the productId and a value.
+  </p>
+
+  <!--Need logic to iterate Types of inputfield in this.subcategoryId and connect
+  it with the productId and a value--!>
+
+  <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
+  <br />
+  <button mat-raised-button color="primary" (click)="addAttributeValue(); onNoClick()">
+    Add Attribute With Value
+  </button>
+</form>

@@ -10,6 +10,6 @@ namespace KingPim.Application.SubCategoryService.Modify
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
         public IEnumerable<AttributeGroup> AttributeGroups { get; set; }
-        public List<SubcategoryAttributeGroup> SubcategoryAttributeGroup { get; set; }
+        public List<int> AttributeGroupId { get; set; }
     }
 }

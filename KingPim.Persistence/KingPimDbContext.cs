@@ -17,15 +17,6 @@ public class KingPimDbContext: DbContext
         public DbSet<ProductAttributeValue> ProductAttributeValues { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
 
-        {
-            modelBuilder.Entity<SubcategoryAttributeGroup>()
-            .HasKey(x => new { x.AttributeGroupId, x.SubCategoryId });
-
-            modelBuilder.Entity<ProductAttributeValue>()
-            .HasKey(x => new { x.SingleAttributeId, x.ProductId });
-
-        }
 }
 }

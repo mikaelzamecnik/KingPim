@@ -16,7 +16,7 @@ namespace KingPim.Application.ProductService.Modify
         public bool PublishedStatus { get; set; }
         public int SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
-        public ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
+        public ICollection<Domain.Entities.ProductAttributeValue> ProductAttributeValues { get; set; }
 
     }
 }

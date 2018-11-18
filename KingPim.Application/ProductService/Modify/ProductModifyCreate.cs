@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using KingPim.Persistence;
 using KingPim.Domain.Entities;
+using KingPim.Application.ProductAttributeValue;
 
 namespace KingPim.Application.ProductService.Modify
 {
@@ -44,6 +45,36 @@ namespace KingPim.Application.ProductService.Modify
                 throw e;
             }
 
+        }
+        public void SaveProductAttributeValue(ProductAttributeValueModel model)
+        {
+            if (model.Id == 0)     // Add
+            {
+                var row = _context.ProductAttributeValues.FirstOrDefault(x => x.SingleAttributeId.Equals(model.SingleAttributeId) && x.ProductId.Equals(model.ProductId));
+                if (row == null)
+                {
+                    var productAttributeValue = new Domain.Entities.ProductAttributeValue
+                    {
+                        Value = model.Value,
+                        SingleAttributeId = model.SingleAttributeId,
+                        ProductId = model.ProductId
+                    };
+                    _context.ProductAttributeValues.Add(productAttributeValue);
+                }
+                else
+                {
+                    _context.ProductAttributeValues.Remove(row);
+                    _context.SaveChanges();
+                    var productAttributeValue = new Domain.Entities.ProductAttributeValue
+                    {
+                        Value = model.Value,
+                        SingleAttributeId = model.SingleAttributeId,
+                        ProductId = model.ProductId
+                    };
+                    _context.ProductAttributeValues.Add(productAttributeValue);
+                }
+            }
+            _context.SaveChanges();
         }
     }
 }

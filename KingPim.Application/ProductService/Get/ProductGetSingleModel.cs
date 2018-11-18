@@ -17,7 +17,7 @@ namespace KingPim.Application.ProductService.Get
         public string EditedBy { get; set; }
         public double Version { get; set; }
         public bool PublishedStatus { get; set; }
-        public ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
+        public ICollection<Domain.Entities.ProductAttributeValue> ProductAttributeValues { get; set; }
     }
 
 }

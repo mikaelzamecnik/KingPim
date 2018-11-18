@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using KingPim.Application.Account;
 using KingPim.Application.Account.Service;
+using KingPim.Application.ProductAttributeValue;
 using KingPim.Application.ProductService.Get;
 using KingPim.Application.ProductService.Modify;
 using KingPim.Web.Filters;
@@ -13,7 +14,7 @@ namespace KingPim.Web.Controllers
     //Apply when app goes live
    //[Authorize]
     [Produces("application/json")]
-    [Route("pim/Category/SubCategory/[controller]")]
+    
     public class ProductController : Controller
     {
         //Inject services
@@ -44,6 +45,7 @@ namespace KingPim.Web.Controllers
 
         // GET: pim/Category/SubCategory/Product
         [HttpGet]
+        [Route("pim/Category/SubCategory/[controller]")]
         public async Task<IActionResult> GetProducts()
         {
             return Ok(await _productGetAll.Execute());
@@ -51,6 +53,7 @@ namespace KingPim.Web.Controllers
 
         // GET: pim/Category/SubCategory/Product/1
         [HttpGet("{id}")]
+        [Route("pim/Category/SubCategory/[controller]")]
         public async Task<IActionResult> GetProduct([FromRoute] int id)
         {
             var product= await _productGetSingle.Execute(id);
@@ -65,6 +68,7 @@ namespace KingPim.Web.Controllers
         // POST: pim/Category/SubCategory/Product
         [HttpPost]
         [ValidateModel]
+        [Route("pim/Category/SubCategory/[controller]")]
         public async Task<IActionResult> PostProduct([FromBody] ProductModifyCreateModel product)
         {
             //var user = _userService.GetAll(HttpContext.User);
@@ -83,6 +87,7 @@ namespace KingPim.Web.Controllers
         // PUT: pim/Category/SubCategory/Product/1 , Dont work all the way
         [HttpPut("{id}")]
         [ValidateModel]
+        [Route("pim/Category/SubCategory/[controller]")]
         public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] ProductModifyPutModel product)
 
          {
@@ -97,11 +102,19 @@ namespace KingPim.Web.Controllers
         }
         // DELETE: pim/Category/SubCategory/Product/1
         [HttpDelete("{id}")]
+        [Route("pim/Category/SubCategory/[controller]")]
         public async Task<IActionResult> DeleteProduct([FromRoute] int id)
         {
             await _productModifyDelete.Execute(id);
 
             return NoContent();
+        }
+        [HttpPost]
+        [Route("pim/Category/SubCategory/[controller]/Attibute")]
+        public IActionResult SaveProductAttributeValue(ProductAttributeValueModel model)
+        {
+            _productModifyCreate.SaveProductAttributeValue(model);
+            return Ok(model);
         }
     }
 }
