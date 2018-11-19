@@ -109,6 +109,8 @@ namespace KingPim.Application.Account.Service
             _context.SaveChanges();
         }
 
+
+
         public void Delete(int id)
         {
             var user = _context.Users.Find(id);
