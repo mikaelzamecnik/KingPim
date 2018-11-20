@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using KingPim.Application.Account;
 using KingPim.Application.Account.Service;
 using KingPim.Application.ProductAttributeValueService;
 using KingPim.Application.ProductService.Get;
 using KingPim.Application.ProductService.Modify;
+using KingPim.Application.SubcategoryAgService;
+using KingPim.Domain.Entities;
+using KingPim.Persistence;
 using KingPim.Web.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +29,7 @@ namespace KingPim.Web.Controllers
         private readonly IProductModifyPut _productModifyPut;
         private readonly IProductModifyDelete _productModifyDelete;
         private readonly IUserService _userService;
+        private readonly KingPimDbContext _context;
 
         public ProductController(
             IProductGetAll productGetAll,
@@ -31,7 +37,9 @@ namespace KingPim.Web.Controllers
             IProductModifyCreate productModifyCreate,
             IProductModifyPut productModifyPut,
             IProductModifyDelete productModifyDelete,
-            IUserService userService)
+            IUserService userService,
+            KingPimDbContext context
+            )
 
         {
             _productGetAll = productGetAll;
@@ -40,6 +48,7 @@ namespace KingPim.Web.Controllers
             _productModifyPut = productModifyPut;
             _productModifyDelete = productModifyDelete;
             _userService = userService;
+            _context = context;
 
         }
 
@@ -105,11 +114,41 @@ namespace KingPim.Web.Controllers
 
             return NoContent();
         }
-        [HttpPost("saveprodatt")]
-        public IActionResult SaveProductAttributeValue(ProductAttributeValueModel model)
+        [HttpPost("getscag/{id}")]
+        public IActionResult GetSubCategoryAttributeGroupList(int id)
         {
-            _productModifyCreate.SaveProductAttributeValue(model);
-            return Ok(model);
+            
+
+            SubCategory subCategory = _context.SubCategories.FirstOrDefault(m => m.Id == id);
+            List<AttributeGroup> attributeGroups = _context.AttributeGroups.ToList();
+            return View( Convert.ToString(subCategory), attributeGroups);
         }
+
+        [HttpPost("getscag")]
+        public IActionResult GetSubCategoryAttributeGroupList(SubcategoryAgModel model)
+        {
+            if (ModelState.IsValid) { 
+            var subID = model.SubcategoryId;
+            var agID = model.AttributeGroupId;
+
+            IList<SubcategoryAttributeGroup> items = _context.SubcategoryAttributeGroups
+                .Where(sa => sa.SubcategoryId == subID)
+                .Where(ag => ag.AttributeGroupId == agID).ToList();
+            if (items.Count== 0)
+            {
+                SubcategoryAttributeGroup agItem = new SubcategoryAttributeGroup
+                {
+                    AttributeGroup = _context.AttributeGroups.Single(c => c.Id == subID),
+                    SubCategory = _context.SubCategories.Single(m => m.Id == agID)
+                };
+
+                _context.SubcategoryAttributeGroups.Add(agItem);
+                _context.SaveChanges();
+            }
+            }
+
+            return View(model);
+        }
+        
     }
 }

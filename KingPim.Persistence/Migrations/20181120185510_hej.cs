@@ -165,14 +165,12 @@ namespace KingPim.Persistence.Migrations
                 name: "SubcategoryAttributeGroups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SubcategoryId = table.Column<int>(nullable: false),
                     AttributeGroupId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubcategoryAttributeGroups", x => x.Id);
+                    table.PrimaryKey("PK_SubcategoryAttributeGroups", x => new { x.SubcategoryId, x.AttributeGroupId });
                     table.ForeignKey(
                         name: "FK_SubcategoryAttributeGroups_AttributeGroups_AttributeGroupId",
                         column: x => x.AttributeGroupId,
@@ -243,11 +241,6 @@ namespace KingPim.Persistence.Migrations
                 name: "IX_SubcategoryAttributeGroups_AttributeGroupId",
                 table: "SubcategoryAttributeGroups",
                 column: "AttributeGroupId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SubcategoryAttributeGroups_SubcategoryId",
-                table: "SubcategoryAttributeGroups",
-                column: "SubcategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_UserRoleId",

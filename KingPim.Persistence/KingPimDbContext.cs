@@ -18,5 +18,11 @@ public class KingPimDbContext: DbContext
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 
-}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SubcategoryAttributeGroup>()
+                .HasKey(c => new { c.SubcategoryId, c.AttributeGroupId });
+        }
+
+    }
 }

@@ -10,7 +10,7 @@ namespace KingPim.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public List<SingleAttribute> SingleAttribute { get; set; }
-        public ICollection<SubcategoryAttributeGroup> SubcategoryAttributeGroups {get;set;}
+        public List<SubcategoryAttributeGroup> SubcategoryAttributeGroups {get;set;}
         
     }
 }

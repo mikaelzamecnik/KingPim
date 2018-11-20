@@ -177,19 +177,13 @@ namespace KingPim.Persistence.Migrations
 
             modelBuilder.Entity("KingPim.Domain.Entities.SubcategoryAttributeGroup", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("SubcategoryId");
 
                     b.Property<int>("AttributeGroupId");
 
-                    b.Property<int>("SubcategoryId");
-
-                    b.HasKey("Id");
+                    b.HasKey("SubcategoryId", "AttributeGroupId");
 
                     b.HasIndex("AttributeGroupId");
-
-                    b.HasIndex("SubcategoryId");
 
                     b.ToTable("SubcategoryAttributeGroups");
                 });
