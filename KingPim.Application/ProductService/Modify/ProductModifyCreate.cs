@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using KingPim.Persistence;
 using KingPim.Domain.Entities;
-using KingPim.Application.ProductAttributeValue;
+using KingPim.Application.ProductAttributeValueService;
 
 namespace KingPim.Application.ProductService.Modify
 {

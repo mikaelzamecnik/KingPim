@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KingPim.Application
+namespace KingPim.Application.ProductAttributeValueService
 {
     public class ProductAttributeValueRepository : IProductAttributeValueRepository
     {
@@ -13,8 +13,8 @@ namespace KingPim.Application
         {
             ctx = context;
         }
-        public IEnumerable<Domain.Entities.ProductAttributeValue> ProductAttributeValues => ctx.ProductAttributeValues;
-        public IEnumerable<Domain.Entities.ProductAttributeValue> GetAllProductAttributeValues()
+        public IEnumerable<ProductAttributeValue> ProductAttributeValues => ctx.ProductAttributeValues;
+        public IEnumerable<ProductAttributeValue> GetAllProductAttributeValues()
         {
             return ProductAttributeValues;
         }

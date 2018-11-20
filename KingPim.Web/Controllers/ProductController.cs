@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using KingPim.Application.Account;
 using KingPim.Application.Account.Service;
-using KingPim.Application.ProductAttributeValue;
+using KingPim.Application.ProductAttributeValueService;
 using KingPim.Application.ProductService.Get;
 using KingPim.Application.ProductService.Modify;
 using KingPim.Web.Filters;

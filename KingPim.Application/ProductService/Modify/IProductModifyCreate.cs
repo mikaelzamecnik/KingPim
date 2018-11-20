@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KingPim.Application.ProductAttributeValue;
+using KingPim.Application.ProductAttributeValueService;
 
 namespace KingPim.Application.ProductService.Modify
 {

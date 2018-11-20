@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KingPim.Application.ProductAttributeValue
+namespace KingPim.Application.ProductAttributeValueService
 {
     public class ProductAttributeValueModel
     {
@@ -13,6 +13,6 @@ namespace KingPim.Application.ProductAttributeValue
         public int? SingleAttributeId { get; set; }
         public int? ProductId { get; set; }
         public IEnumerable<SubcategoryAttributeGroup> SubcategoryAttributeGroups { get; set; }
-        public IEnumerable<Domain.Entities.ProductAttributeValue> ProductAttributeValues { get; set; }
+        public IEnumerable<ProductAttributeValue> ProductAttributeValues { get; set; }
     }
 }
