@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingPim.Web", "KingPim.Web\KingPim.Web.csproj", "{F814705F-5339-4348-9618-F521507F3633}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KingPim.Web", "KingPim.Web\KingPim.Web.csproj", "{F814705F-5339-4348-9618-F521507F3633}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingPim.Domain", "KingPim.Domain\KingPim.Domain.csproj", "{A8DF9398-7CE9-4882-BD2C-7C564F82D2B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KingPim.Domain", "KingPim.Domain\KingPim.Domain.csproj", "{A8DF9398-7CE9-4882-BD2C-7C564F82D2B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingPim.Application", "KingPim.Application\KingPim.Application.csproj", "{66D926CE-E4DF-454B-8098-EA226BF8E9A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KingPim.Application", "KingPim.Application\KingPim.Application.csproj", "{66D926CE-E4DF-454B-8098-EA226BF8E9A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingPim.Persistence", "KingPim.Persistence\KingPim.Persistence.csproj", "{1F71B38C-13D6-4EDF-BF41-6CF779182F56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KingPim.Persistence", "KingPim.Persistence\KingPim.Persistence.csproj", "{1F71B38C-13D6-4EDF-BF41-6CF779182F56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

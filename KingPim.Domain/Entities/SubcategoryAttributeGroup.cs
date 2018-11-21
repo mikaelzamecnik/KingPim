@@ -12,5 +12,8 @@ namespace KingPim.Domain.Entities
         public SubCategory SubCategory { get; set; }
         public int AttributeGroupId { get; set; }
         public AttributeGroup AttributeGroup { get; set; }
+
+        public virtual IEnumerable<SubcategoryAttributeGroup> SubcategoryAttributeGroups { get; set; }
+            
     }
 }

@@ -30,6 +30,7 @@ namespace KingPim.Web.Controllers
         private readonly IProductModifyDelete _productModifyDelete;
         private readonly IUserService _userService;
         private readonly KingPimDbContext _context;
+        private readonly ISubcategoryAgRepository _subcategoryAgRepository;
 
         public ProductController(
             IProductGetAll productGetAll,
@@ -38,7 +39,8 @@ namespace KingPim.Web.Controllers
             IProductModifyPut productModifyPut,
             IProductModifyDelete productModifyDelete,
             IUserService userService,
-            KingPimDbContext context
+            KingPimDbContext context,
+            ISubcategoryAgRepository subcategoryAgRepository
             )
 
         {
@@ -49,6 +51,7 @@ namespace KingPim.Web.Controllers
             _productModifyDelete = productModifyDelete;
             _userService = userService;
             _context = context;
+            _subcategoryAgRepository = subcategoryAgRepository;
 
         }
 
@@ -114,41 +117,54 @@ namespace KingPim.Web.Controllers
 
             return NoContent();
         }
-        [HttpPost("getscag/{id}")]
-        public IActionResult GetSubCategoryAttributeGroupList(int id)
-        {
-            
 
-            SubCategory subCategory = _context.SubCategories.FirstOrDefault(m => m.Id == id);
-            List<AttributeGroup> attributeGroups = _context.AttributeGroups.ToList();
-            return View( Convert.ToString(subCategory), attributeGroups);
+        [HttpPost("getscag/")]
+        public async Task<IActionResult> JoinScag([FromBody] SubcategoryAgModel model)
+        {
+
+
+            await _subcategoryAgRepository.JoinSCAG(model);
+            return NoContent();
         }
 
-        [HttpPost("getscag")]
-        public IActionResult GetSubCategoryAttributeGroupList(SubcategoryAgModel model)
-        {
-            if (ModelState.IsValid) { 
-            var subID = model.SubcategoryId;
-            var agID = model.AttributeGroupId;
 
-            IList<SubcategoryAttributeGroup> items = _context.SubcategoryAttributeGroups
-                .Where(sa => sa.SubcategoryId == subID)
-                .Where(ag => ag.AttributeGroupId == agID).ToList();
-            if (items.Count== 0)
-            {
-                SubcategoryAttributeGroup agItem = new SubcategoryAttributeGroup
-                {
-                    AttributeGroup = _context.AttributeGroups.Single(c => c.Id == subID),
-                    SubCategory = _context.SubCategories.Single(m => m.Id == agID)
-                };
 
-                _context.SubcategoryAttributeGroups.Add(agItem);
-                _context.SaveChanges();
-            }
-            }
 
-            return View(model);
-        }
-        
+        //[HttpPost("getscag/{id}")]
+        //public IActionResult GetSubCategoryAttributeGroupList(int id)
+        //{
+
+
+        //    SubCategory subCategory = _context.SubCategories.FirstOrDefault(m => m.Id == id);
+        //    List<AttributeGroup> attributeGroups = _context.AttributeGroups.ToList();
+        //    return View( Convert.ToString(subCategory), attributeGroups);
+        //}
+
+        //[HttpPost("getscag")]
+        //public IActionResult GetSubCategoryAttributeGroupList(SubcategoryAgModel model)
+        //{
+        //    if (ModelState.IsValid) { 
+        //    var subID = model.SubcategoryId;
+        //    var agID = model.AttributeGroupId;
+
+        //    IList<SubcategoryAttributeGroup> items = _context.SubcategoryAttributeGroups
+        //        .Where(sa => sa.SubcategoryId == subID)
+        //        .Where(ag => ag.AttributeGroupId == agID).ToList();
+        //    if (items.Count== 0)
+        //    {
+        //        SubcategoryAttributeGroup agItem = new SubcategoryAttributeGroup
+        //        {
+        //            AttributeGroup = _context.AttributeGroups.Single(c => c.Id == subID),
+        //            SubCategory = _context.SubCategories.Single(m => m.Id == agID)
+        //        };
+
+        //        _context.SubcategoryAttributeGroups.Add(agItem);
+        //        _context.SaveChanges();
+        //    }
+        //    }
+
+        //    return View(model);
+        //}
+
     }
 }

@@ -53,7 +53,7 @@ namespace KingPim.Application.ProductService.Modify
                 var row = _context.ProductAttributeValues.FirstOrDefault(x => x.SingleAttributeId.Equals(model.SingleAttributeId) && x.ProductId.Equals(model.ProductId));
                 if (row == null)
                 {
-                    var productAttributeValue = new Domain.Entities.ProductAttributeValue
+                    var productAttributeValue = new ProductAttributeValue
                     {
                         Value = model.Value,
                         SingleAttributeId = model.SingleAttributeId,
@@ -65,7 +65,7 @@ namespace KingPim.Application.ProductService.Modify
                 {
                     _context.ProductAttributeValues.Remove(row);
                     _context.SaveChanges();
-                    var productAttributeValue = new Domain.Entities.ProductAttributeValue
+                    var productAttributeValue = new ProductAttributeValue
                     {
                         Value = model.Value,
                         SingleAttributeId = model.SingleAttributeId,

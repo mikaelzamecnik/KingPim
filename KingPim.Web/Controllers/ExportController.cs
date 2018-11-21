@@ -38,7 +38,7 @@ namespace KingPim.Web.Controllers
             _subCategoryGetAll = subCategoryGetAll;
 
         }
-
+        // Export Products to JSON
         [HttpGet]
         [Route("pim/[controller]/Products")]
         public IActionResult GetProductsToJson()
@@ -53,7 +53,7 @@ namespace KingPim.Web.Controllers
             return File(bytes, "application/octet-stream", "products.json");
 
         }
-
+        // Export Categories to JSON
         [HttpGet]
         [Route("pim/[controller]/Categories")]
         public IActionResult GetCategoriesToJson()
@@ -68,7 +68,7 @@ namespace KingPim.Web.Controllers
             return File(bytes, "application/octet-stream", "categories.json");
 
         }
-
+        // Export SubCategories to JSON
         [HttpGet]
         [Route("pim/[controller]/SubCategories")]
         public IActionResult GetSubCategoriesToJson()
@@ -83,6 +83,8 @@ namespace KingPim.Web.Controllers
             return File(bytes, "application/octet-stream", "subcategories.json");
 
         }
+
+        // TODO Export Separate items in each product/category/subcategory
 
     }
     

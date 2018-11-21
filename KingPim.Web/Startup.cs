@@ -9,6 +9,7 @@ using KingPim.Application.CategoryService.Modify;
 using KingPim.Application.Helpers;
 using KingPim.Application.ProductService.Get;
 using KingPim.Application.ProductService.Modify;
+using KingPim.Application.SubcategoryAgService;
 using KingPim.Application.SubCategoryService.Get;
 using KingPim.Application.SubCategoryService.Modify;
 using KingPim.Persistence;
@@ -134,6 +135,8 @@ namespace KingPim.Web
             services.AddTransient<IAttributeModifyCreate, AttributeModifyCreate>();
             services.AddTransient<IAttributeModifyPut, AttributeModifyPut>();
             services.AddScoped<IAttributeModifyDelete, AttributeModifyDelete>();
+
+            services.AddTransient<ISubcategoryAgRepository, SubcategoryAgRepository>();
 
 
             // In production, the Angular files will be served from this directory

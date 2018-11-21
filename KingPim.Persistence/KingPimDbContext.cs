@@ -7,6 +7,10 @@ namespace KingPim.Persistence
 
 public class KingPimDbContext: DbContext
 {
+        public KingPimDbContext()
+        {
+        }
+
         public KingPimDbContext(DbContextOptions<KingPimDbContext> options):base(options) {}
         public DbSet<AttributeGroup> AttributeGroups{get;set;}
         public DbSet<SingleAttribute> SingleAttributes { get; set; }
