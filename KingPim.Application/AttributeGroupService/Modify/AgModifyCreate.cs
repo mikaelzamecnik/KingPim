@@ -22,6 +22,7 @@ namespace KingPim.Application.AttributeGroupService.Modify
             {
                 var attrGroup = new AttributeGroup
                 {
+                    SubCategoryId = model.SubCategoryId,
                     Name = model.Name,
                     Description = model.Description,
                     SingleAttribute = null
@@ -33,6 +34,7 @@ namespace KingPim.Application.AttributeGroupService.Modify
                 var ctxAttributeGroup = _context.AttributeGroups.FirstOrDefault(ag => ag.Id.Equals(model.Id));
                 if (ctxAttributeGroup != null)
                 {
+
                     ctxAttributeGroup.Name = model.Name;
                     ctxAttributeGroup.Description = model.Description;
                 }

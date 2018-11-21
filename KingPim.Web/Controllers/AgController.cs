@@ -70,7 +70,6 @@ namespace KingPim.Web.Controllers
             //var user = _userService.GetAll(HttpContext.User);
 
 
-            
             await _agModifyCreate.Execute(ag);
 
 

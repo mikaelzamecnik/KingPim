@@ -37,6 +37,8 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<bool>("PublishedStatus");
 
+                    b.Property<int>("SubCategoryId");
+
                     b.Property<double>("Version");
 
                     b.HasKey("Id");
