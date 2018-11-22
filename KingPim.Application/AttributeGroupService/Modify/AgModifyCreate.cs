@@ -22,6 +22,7 @@ namespace KingPim.Application.AttributeGroupService.Modify
             {
                 var attrGroup = new AttributeGroup
                 {
+                    
                     SubCategoryId = model.SubCategoryId,
                     Name = model.Name,
                     Description = model.Description,

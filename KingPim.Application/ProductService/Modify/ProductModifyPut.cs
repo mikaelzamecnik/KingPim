@@ -18,7 +18,6 @@ namespace KingPim.Application.ProductService.Modify
 
         public async Task Execute(ProductModifyPutModel model)
         {
-
             var ctxProduct = _context.Products.FirstOrDefault(p => p.Id.Equals(model.Id));
             if (ctxProduct != null)
             {
@@ -50,7 +49,7 @@ namespace KingPim.Application.ProductService.Modify
                 }
 
 
-                    var entity =  await _context.Products.SingleAsync(c => c.Id == model.Id);
+                var entity = await _context.Products.SingleAsync(c => c.Id == model.Id);
                 {
                     entity.Name = model.Name;
                     entity.Description = model.Description;
@@ -59,15 +58,12 @@ namespace KingPim.Application.ProductService.Modify
                     entity.Version = model.Version + 1;
 
                     _context.Products.Update(entity);
-                    
+
                 }
 
                 await _context.SaveChangesAsync();
 
             }
-
-
-                
         }
     }
 }

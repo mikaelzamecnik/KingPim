@@ -12,6 +12,5 @@ namespace KingPim.Domain.Entities
         public string Type { get; set; }
         public int? AttributeGroupId { get; set; }
         public AttributeGroup AttributeGroup { get; set; }
-        public ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
     }
 }

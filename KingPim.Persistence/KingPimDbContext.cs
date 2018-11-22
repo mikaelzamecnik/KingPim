@@ -12,6 +12,7 @@ public class KingPimDbContext: DbContext
         }
 
         public KingPimDbContext(DbContextOptions<KingPimDbContext> options):base(options) {}
+
         public DbSet<AttributeGroup> AttributeGroups{get;set;}
         public DbSet<SingleAttribute> SingleAttributes { get; set; }
         public DbSet<Category> Categories{get;set;}
@@ -26,6 +27,8 @@ public class KingPimDbContext: DbContext
         {
             modelBuilder.Entity<SubcategoryAttributeGroup>()
                 .HasKey(c => new { c.SubcategoryId, c.AttributeGroupId });
+            modelBuilder.Entity<ProductAttributeValue>()
+                .HasKey(c => new { c.ProductId, c.SingleAttributeId });
         }
 
     }

@@ -15,5 +15,8 @@ namespace KingPim.Application.ProductService.Modify
         public bool PublishedStatus { get; set; }
         public int SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
+        public List<SubCategory> SubCategories { get; set; }
+
+        public List<Product> Products { get; set; }
     }
 }

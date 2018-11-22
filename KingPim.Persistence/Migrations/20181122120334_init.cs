@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KingPim.Persistence.Migrations
 {
-    public partial class hejj : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -172,6 +172,7 @@ namespace KingPim.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SubcategoryAttributeGroups", x => new { x.SubcategoryId, x.AttributeGroupId });
+                    table.UniqueConstraint("AK_SubcategoryAttributeGroups_AttributeGroupId_SubcategoryId", x => new { x.AttributeGroupId, x.SubcategoryId });
                     table.ForeignKey(
                         name: "FK_SubcategoryAttributeGroups_AttributeGroups_AttributeGroupId",
                         column: x => x.AttributeGroupId,
@@ -190,38 +191,20 @@ namespace KingPim.Persistence.Migrations
                 name: "ProductAttributeValues",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Value = table.Column<string>(nullable: true),
-                    SingleAttributeId = table.Column<int>(nullable: true),
-                    ProductId = table.Column<int>(nullable: true)
+                    SingleAttributeId = table.Column<int>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductAttributeValues", x => x.Id);
+                    table.PrimaryKey("PK_ProductAttributeValues", x => new { x.ProductId, x.SingleAttributeId });
                     table.ForeignKey(
                         name: "FK_ProductAttributeValues_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ProductAttributeValues_SingleAttributes_SingleAttributeId",
-                        column: x => x.SingleAttributeId,
-                        principalTable: "SingleAttributes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductAttributeValues_ProductId",
-                table: "ProductAttributeValues",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductAttributeValues_SingleAttributeId",
-                table: "ProductAttributeValues",
-                column: "SingleAttributeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_SubCategoryId",
@@ -239,11 +222,6 @@ namespace KingPim.Persistence.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubcategoryAttributeGroups_AttributeGroupId",
-                table: "SubcategoryAttributeGroups",
-                column: "AttributeGroupId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Users_UserRoleId",
                 table: "Users",
                 column: "UserRoleId");
@@ -255,6 +233,9 @@ namespace KingPim.Persistence.Migrations
                 name: "ProductAttributeValues");
 
             migrationBuilder.DropTable(
+                name: "SingleAttributes");
+
+            migrationBuilder.DropTable(
                 name: "SubcategoryAttributeGroups");
 
             migrationBuilder.DropTable(
@@ -264,16 +245,13 @@ namespace KingPim.Persistence.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "SingleAttributes");
+                name: "AttributeGroups");
 
             migrationBuilder.DropTable(
                 name: "UserRoles");
 
             migrationBuilder.DropTable(
                 name: "SubCategories");
-
-            migrationBuilder.DropTable(
-                name: "AttributeGroups");
 
             migrationBuilder.DropTable(
                 name: "Categories");

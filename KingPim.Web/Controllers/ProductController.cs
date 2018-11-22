@@ -57,7 +57,7 @@ namespace KingPim.Web.Controllers
 
         // GET: pim/Category/SubCategory/Product
         [HttpGet]
-        
+
         public async Task<IActionResult> GetProducts()
         {
             return Ok(await _productGetAll.Execute());
@@ -118,13 +118,13 @@ namespace KingPim.Web.Controllers
             return NoContent();
         }
 
-        [HttpPost("getscag/")]
+        [HttpPost("getscag")]
         public async Task<IActionResult> JoinScag([FromBody] SubcategoryAgModel model)
         {
 
 
             await _subcategoryAgRepository.JoinSCAG(model);
-            return NoContent();
+            return Ok(model);
         }
 
 
@@ -143,7 +143,7 @@ namespace KingPim.Web.Controllers
         //[HttpPost("getscag")]
         //public IActionResult GetSubCategoryAttributeGroupList(SubcategoryAgModel model)
         //{
-        //    if (ModelState.IsValid) { 
+        //    if (ModelState.IsValid) {
         //    var subID = model.SubcategoryId;
         //    var agID = model.AttributeGroupId;
 

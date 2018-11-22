@@ -81,7 +81,6 @@ namespace KingPim.Web.Controllers
             var user = _mapper.Map<User>(userDto);
             try
             {
-               
             // save
             _userService.Create(user, userDto.Password);
                 return Ok();
