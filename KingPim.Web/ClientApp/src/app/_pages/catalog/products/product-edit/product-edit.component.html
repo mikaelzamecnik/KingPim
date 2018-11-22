@@ -20,12 +20,12 @@
             <div class="formcontainer">
               <mat-radio-group formControlName="publishedStatus" #publishedStatus placeholder="Status" [value]="product.publishedStatus">
                 <mat-radio-button [value]=true>
-                  True
-                </mat-radio-button>
+                  Publish
+                </mat-radio-button><br>
                 <mat-radio-button [value]=false>
-                  False
+                  Unpublish
                 </mat-radio-button>
-              </mat-radio-group>
+              </mat-radio-group><br>
               <mat-form-field>
                 <input matInput type="text" placeholder="Product Name" class="form-control" formControlName="name" #name [value]="product.name" />
               </mat-form-field>
