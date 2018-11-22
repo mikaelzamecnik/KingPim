@@ -17,9 +17,10 @@ namespace KingPim.Application.SubCategoryService.Modify
             _context = context;
         }
 
-        public IEnumerable<SubCategory> SubCategories => _context.SubCategories;
+        //public IEnumerable<SubCategory> SubCategories => _context.SubCategories;
         public async Task Execute(SubCategoryModifyCreateModel model)
         {
+            
 
             var entity = new SubCategory
             {

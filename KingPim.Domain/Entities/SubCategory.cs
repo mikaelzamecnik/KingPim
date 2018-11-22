@@ -11,6 +11,7 @@ namespace KingPim.Domain.Entities
         public int? CategoryId { get; set; }
         public virtual Category Category { get; set; }
         public List<Product> Products { get; set; }
+        public ICollection<AttributeGroup> AttributeGroups { get; } = new List<AttributeGroup>();
 
     }
 }

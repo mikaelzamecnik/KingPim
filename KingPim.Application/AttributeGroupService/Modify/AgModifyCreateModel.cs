@@ -12,6 +12,7 @@ namespace KingPim.Application.AttributeGroupService.Modify
         public string Description { get; set; }
         public int SubCategoryId { get; set; }
         public List<SingleAttribute> SingleAttribute { get; set; }
+        public ICollection<SubCategory> SubCategories { get; } = new List<SubCategory>();
 
     }
 }

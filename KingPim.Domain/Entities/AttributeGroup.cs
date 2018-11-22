@@ -11,7 +11,7 @@ namespace KingPim.Domain.Entities
         public string Description { get; set; }
         public int SubCategoryId { get; set; }
         public List<SingleAttribute> SingleAttribute { get; set; }
-        public List<SubcategoryAttributeGroup> SubcategoryAttributeGroups {get;set;}
+        public ICollection<SubCategory> SubCategories { get; } = new List<SubCategory>();
 
     }
 }

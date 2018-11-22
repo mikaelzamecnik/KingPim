@@ -18,24 +18,25 @@ namespace KingPim.Application.AttributeGroupService.Modify
 
         public async Task Execute(AgModifyPutModel model)
         {
-            try
+           
+                //var entity =  await _context.AttributeGroups.SingleOrDefaultAsync(c => c.Id == model.Id);
+
+
+                //entity.Name = model.Name;
+                //entity.Description = model.Description;
+
+                //_context.AttributeGroups.Update(entity);
+
+            var subCat = new SubcategoryAttributeGroup
             {
-                var entity =  await _context.AttributeGroups.SingleOrDefaultAsync(c => c.Id == model.Id);
+                AttributeGroupId = model.Id,
+                SubcategoryId = model.SubCategoryId
 
+            };
 
-                entity.Name = model.Name;
-                entity.Description = model.Description;
-                entity.PublishedStatus = model.publishedStatus;
-
-                _context.AttributeGroups.Update(entity);
-
-                await _context.SaveChangesAsync();
-            }
-            catch (System.Exception e)
-            {
-
-                throw e;
-            }
+            _context.SubcategoryAttributeGroups.Add(subCat);
+            await _context.SaveChangesAsync();
+           
         }
     }
 }

@@ -22,7 +22,7 @@ namespace KingPim.Application.AttributeGroupService.Modify
             {
                 var attrGroup = new AttributeGroup
                 {
-                    
+
                     SubCategoryId = model.SubCategoryId,
                     Name = model.Name,
                     Description = model.Description,
@@ -40,7 +40,8 @@ namespace KingPim.Application.AttributeGroupService.Modify
                     ctxAttributeGroup.Description = model.Description;
                 }
             }
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+
 
         }
     }

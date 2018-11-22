@@ -77,9 +77,9 @@ namespace KingPim.Web.Controllers
             return CreatedAtAction("GetAttributeGroup", new { id = ag.Id }, ag);
         }
         // PUT: pim/Category/SubCategory/Attributegroup/1
-        [HttpPut("{id}")]
+        [HttpPut]
         [ValidateModel]
-        public async Task<IActionResult> PutAg([FromRoute] int id,[FromBody] AgModifyPutModel ag)
+        public async Task<IActionResult> PutAg([FromBody] AgModifyPutModel ag)
 
          {
 
