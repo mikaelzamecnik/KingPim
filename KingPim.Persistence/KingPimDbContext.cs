@@ -14,7 +14,7 @@ public class KingPimDbContext: DbContext
         public KingPimDbContext(DbContextOptions<KingPimDbContext> options):base(options) {}
 
         public DbSet<AttributeGroup> AttributeGroups{get;set;}
-        public DbSet<SingleAttribute> SingleAttributes { get; set; }
+        public DbSet<ProductAttribute> ProductAttributes { get; set; }
         public DbSet<Category> Categories{get;set;}
         public DbSet<Product> Products{get;set;}
         public DbSet<SubCategory> SubCategories{get;set;}

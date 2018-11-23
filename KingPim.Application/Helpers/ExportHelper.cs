@@ -1,23 +1,19 @@
-﻿using KingPim.Application.CategoryService.Get;
-using KingPim.Application.ProductService.Get;
-using KingPim.Application.SubCategoryService.Get;
+﻿using KingPim.Application.Repositories.Models;
 using KingPim.Domain.Entities;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace KingPim.Application.Helpers
 {
     public static class ExportHelper
     {
 
-        public static List<ProductGetAllModel> GetProducts(IEnumerable<Product> products)
+        public static List<ProductModel> GetProducts(IEnumerable<Product> products)
         {
-            var productVm = new List<ProductGetAllModel>();
+            var productVm = new List<ProductModel>();
             foreach (var product in products)
             {
-                productVm.Add(new ProductGetAllModel
+                productVm.Add(new ProductModel
                 {
                     Id = product.Id,
                     Name = product.Name,
@@ -31,12 +27,12 @@ namespace KingPim.Application.Helpers
             return productVm;
 
         }
-        public static List<CategoryGetAllModel> GetCategories(IEnumerable<Category> categories)
+        public static List<CategoryModel> GetCategories(IEnumerable<Category> categories)
         {
-            var categoryVm = new List<CategoryGetAllModel>();
+            var categoryVm = new List<CategoryModel>();
             foreach (var category in categories)
             {
-                categoryVm.Add(new CategoryGetAllModel
+                categoryVm.Add(new CategoryModel
                 {
                     Id = category.Id,
                     Name = category.Name,
@@ -49,12 +45,12 @@ namespace KingPim.Application.Helpers
             return categoryVm;
 
         }
-        public static List<SubCategoryGetAllModel> GetSubCategories(IEnumerable<SubCategory> subcategories)
+        public static List<SubCategoryModel> GetSubcategories(IEnumerable<SubCategory> subcategories)
         {
-            var subcategoryVm = new List<SubCategoryGetAllModel>();
+            var subcategoryVm = new List<SubCategoryModel>();
             foreach (var subcategory in subcategories)
             {
-                subcategoryVm.Add(new SubCategoryGetAllModel
+                subcategoryVm.Add(new SubCategoryModel
                 {
                     Id = subcategory.Id,
                     Name = subcategory.Name,

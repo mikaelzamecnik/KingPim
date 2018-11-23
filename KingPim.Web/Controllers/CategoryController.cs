@@ -1,58 +1,37 @@
 ﻿using System.Threading.Tasks;
-using KingPim.Application.CategoryService.Get;
-using KingPim.Application.CategoryService.Modify;
 using KingPim.Web.Filters;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-
+using KingPim.Application.Repositories.Interfaces;
+using KingPim.Application.Repositories.Models;
 
 namespace KingPim.Web.Controllers
 {
-    //Apply when app goes live
+    // Apply when app goes live
     // [Authorize(Roles = "Admin")]
     [Produces("application/json")]
     [Route("pim/[controller]")]
     public class CategoryController : Controller
     {
         //Inject services
-        private readonly ICategoryGetAll _categoryGetAll;
-        private readonly ICategoryGetSingle _categoryGetSingle;
-        private readonly ICategoryModifyCreate _categoryModifyCreate;
-        private readonly ICategoryModifyPut _categoryModifyPut;
-        private readonly ICategoryModifyDelete _categoryModifyDelete;
+        private readonly ICategoryRepo _categoryRepo;
 
-        public CategoryController(
-            ICategoryGetSingle categoryGetSingle,
-            ICategoryGetAll categoryGetAll,
-            ICategoryModifyCreate categoryModifyCreate,
-            ICategoryModifyPut categoryModifyPut,
-            ICategoryModifyDelete categoryModifyDelete)
+        public CategoryController(ICategoryRepo categoryRepo)
         {
-            _categoryGetAll = categoryGetAll;
-            _categoryGetSingle = categoryGetSingle;
-            _categoryModifyCreate = categoryModifyCreate;
-            _categoryModifyPut = categoryModifyPut;
-            _categoryModifyDelete = categoryModifyDelete;
+            _categoryRepo = categoryRepo;
         }
 
         // GET: pim/Category/
         [HttpGet]
         public async Task<IActionResult> GetCategories()
         {
-            return Ok(await _categoryGetAll.Execute());
+            return Ok(await _categoryRepo.GetCategories());
         }
 
         // GET: pim/Category/1
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCategory([FromRoute] int id)
         {
-            var category = await _categoryGetSingle.Execute(id);
+            var category = await _categoryRepo.GetCategory(id);
 
             if (category == null)
             {
@@ -64,18 +43,18 @@ namespace KingPim.Web.Controllers
         // POST: pim/Category
         [HttpPost]
         [ValidateModel]
-        public async Task<IActionResult> PostCategory([FromBody] CategoryModifyCreateModel category)
+        public async Task<IActionResult> CreateCategory([FromBody] CategoryModel category)
         {
-            await _categoryModifyCreate.Execute(category);
+            await _categoryRepo.CreateCategory(category);
 
             return CreatedAtAction("GetCategory", new { id = category.Id }, category);
         }
         // PUT: pim/Category/1 , Dont work all the way
         [HttpPut("{id}")]
         [ValidateModel]
-        public async Task<IActionResult> PutCategory([FromRoute] int id, [FromBody] CategoryModifyPutModel category)
+        public async Task<IActionResult> UpdateCategory([FromRoute] int id, [FromBody] CategoryModel category)
         {
-            await _categoryModifyPut.Execute(category);
+            await _categoryRepo.UpdateCategory(category);
 
             return NoContent();
         }
@@ -83,10 +62,10 @@ namespace KingPim.Web.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory([FromRoute] int id)
         {
-            await _categoryModifyDelete.Execute(id);
+            await _categoryRepo.DeleteCategory(id);
 
             return NoContent();
         }
 
-        }
-        }
+    }
+}

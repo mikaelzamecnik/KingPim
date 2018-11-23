@@ -1,17 +1,8 @@
 using AutoMapper;
 using KingPim.Application.Account.Service;
-using KingPim.Application.AttributeGroupService.Get;
-using KingPim.Application.AttributeGroupService.Modify;
-using KingPim.Application.AttributeService.Get;
-using KingPim.Application.AttributeService.Modify;
-using KingPim.Application.CategoryService.Get;
-using KingPim.Application.CategoryService.Modify;
 using KingPim.Application.Helpers;
-using KingPim.Application.ProductService.Get;
-using KingPim.Application.ProductService.Modify;
-using KingPim.Application.SubcategoryAgService;
-using KingPim.Application.SubCategoryService.Get;
-using KingPim.Application.SubCategoryService.Modify;
+using KingPim.Application.Repositories;
+using KingPim.Application.Repositories.Interfaces;
 using KingPim.Persistence;
 using KingPim.Web.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -103,41 +94,14 @@ namespace KingPim.Web
             services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAutoMapper();
+
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
-            //Services for Categories
-            services.AddScoped<ICategoryGetAll, CategoryGetAll>();
-            services.AddScoped<ICategoryGetSingle, CategoryGetSingle>();
-            services.AddTransient<ICategoryModifyCreate, CategoryModifyCreate>();
-            services.AddTransient<ICategoryModifyPut, CategoryModifyPut>();
-            services.AddScoped<ICategoryModifyDelete, CategoryModifyDelete>();
-            //Services for SubCategories
-            services.AddScoped<ISubCategoryGetAll, SubCategoryGetAll>();
-            services.AddScoped<ISubCategoryGetSingle, SubCategoryGetSingle>();
-            services.AddTransient<ISubCategoryModifyCreate, SubCategoryModifyCreate>();
-            services.AddTransient<ISubCategoryModifyPut, SubCategoryModifyPut>();
-            services.AddScoped<ISubCategoryModifyDelete, SubCategoryModifyDelete>();
-            //Services for Products
-            services.AddScoped<IProductGetAll, ProductGetAll>();
-            services.AddScoped<IProductGetSingle, ProductGetSingle>();
-            services.AddTransient<IProductModifyCreate, ProductModifyCreate>();
-            services.AddTransient<IProductModifyPut, ProductModifyPut>();
-            services.AddScoped<IProductModifyDelete, ProductModifyDelete>();
-            //Services for AttributeGroups
-            services.AddScoped<IAgGetAll, AgGetAll>();
-            services.AddScoped<IAgGetSingle, AgGetSingle>();
-            services.AddTransient<IAgModifyCreate, AgModifyCreate>();
-            services.AddTransient<IAgModifyPut, AgModifyPut>();
-            services.AddScoped<IAgModifyDelete, AgModifyDelete>();
-            //Services for SingleAttribute
-            services.AddScoped<IAttributeGetAll, AttributeGetAll>();
-            services.AddScoped<IAttributeGetSingle, AttributeGetSingle>();
-            services.AddTransient<IAttributeModifyCreate, AttributeModifyCreate>();
-            services.AddTransient<IAttributeModifyPut, AttributeModifyPut>();
-            services.AddScoped<IAttributeModifyDelete, AttributeModifyDelete>();
-
-            services.AddTransient<ISubcategoryAgRepository, SubcategoryAgRepository>();
-
+            services.AddTransient<ICategoryRepo, CategoryRepo>();
+            services.AddTransient<ISubCategoryRepo, SubCategoryRepo>();
+            services.AddTransient<IProductRepo, ProductRepo>();
+            services.AddTransient<IAttributeGroupRepo, AttributeGroupRepo>();
+            services.AddTransient<IProductAttributeRepo, ProductAttributeRepo>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

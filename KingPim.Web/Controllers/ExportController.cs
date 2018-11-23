@@ -1,16 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KingPim.Application.Account;
-using KingPim.Application.Account.Service;
-using KingPim.Application.CategoryService.Get;
+﻿using System.Text;
 using KingPim.Application.Helpers;
-using KingPim.Application.ProductService.Get;
-using KingPim.Application.ProductService.Modify;
-using KingPim.Application.SubCategoryService.Get;
-using KingPim.Web.Filters;
-using Microsoft.AspNetCore.Authorization;
+using KingPim.Application.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -22,20 +12,21 @@ namespace KingPim.Web.Controllers
     public class ExportController : Controller
     {
         //Inject services
-        private readonly IProductGetAll _productGetAll;
-        private readonly ICategoryGetAll _categoryGetAll;
-        private readonly ISubCategoryGetAll _subCategoryGetAll;
+        private readonly IProductRepo _productRepo;
+        private readonly ICategoryRepo _categoryRepo;
+        private readonly ISubCategoryRepo _subCategoryRepo;
 
 
-        public ExportController(IProductGetAll productGetAll,
-            ICategoryGetAll categoryGetAll,
-            ISubCategoryGetAll subCategoryGetAll
+        public ExportController (
+            IProductRepo productRepo,
+            ICategoryRepo categoryRepo,
+            ISubCategoryRepo subCategoryRepo
             )
 
         {
-            _productGetAll = productGetAll;
-            _categoryGetAll = categoryGetAll;
-            _subCategoryGetAll = subCategoryGetAll;
+            _productRepo = productRepo;
+            _categoryRepo = categoryRepo;
+            _subCategoryRepo = subCategoryRepo;
 
         }
         // Export Products to JSON
@@ -45,7 +36,7 @@ namespace KingPim.Web.Controllers
         {
 
 
-            var products = _productGetAll.GetAllProducts();
+            var products = _productRepo.GetAllProductsExport();
             var getProducts = ExportHelper.GetProducts(products);
             var productJson = JsonConvert.SerializeObject(getProducts);
             var bytes = Encoding.UTF8.GetBytes(productJson);
@@ -60,7 +51,7 @@ namespace KingPim.Web.Controllers
         {
 
 
-            var categories = _categoryGetAll.GetAllCategories();
+            var categories = _categoryRepo.GetAllCategoriesExport();
             var getCategories = ExportHelper.GetCategories(categories);
             var categoryJson = JsonConvert.SerializeObject(getCategories);
             var bytes = Encoding.UTF8.GetBytes(categoryJson);
@@ -75,8 +66,8 @@ namespace KingPim.Web.Controllers
         {
 
 
-            var subcategories = _subCategoryGetAll.GetAllSubCategories();
-            var getSubCategories = ExportHelper.GetSubCategories(subcategories);
+            var subcategories = _subCategoryRepo.GetAllSubCategoriesExport();
+            var getSubCategories = ExportHelper.GetSubcategories(subcategories);
             var subcategoryJson = JsonConvert.SerializeObject(getSubCategories);
             var bytes = Encoding.UTF8.GetBytes(subcategoryJson);
 

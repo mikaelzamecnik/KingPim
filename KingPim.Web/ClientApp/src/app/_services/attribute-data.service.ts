@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AttributeDataService {
 
   private headers: HttpHeaders;
-  private accessPointUrl = 'pim/Category/SubCategory/AG/Attribute';
+  private accessPointUrl = 'pim/Category/SubCategory/AttributeGroup/ProductAttribute';
 
 
   constructor(private http: HttpClient) {
