@@ -13,6 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ProductAttributeComponent implements OnInit {
   products: Product[];
   angForm: FormGroup;
+  myName = 'Mikael';
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,

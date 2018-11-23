@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { isBoolean } from 'util';
+import { Observable } from 'rxjs';
+import { Product } from '../_models';
 
 @Injectable()
 export class ProductDataService {
@@ -13,9 +14,9 @@ export class ProductDataService {
 
   }
 
-  getProducts() {
+  getProducts(): Observable<Product[]> {
     return this
-      .http.get(`${this.accessPointUrl}`);
+      .http.get<Product[]>(`${this.accessPointUrl}`);
   }
 
   addProduct(name, description, subCategoryId) {
@@ -50,14 +51,4 @@ export class ProductDataService {
       .put(`${this.accessPointUrl}/${id}`, obj)
       .subscribe(res => console.log('Done'));
   }
-  //updateProductStatus(publishedStatus) {
-  //  const obj = {
-  //    publishedStatus : publishedStatus
-  //  };
-  //  this
-  //    .http
-  //    .put(`${this.accessPointUrl}/`, obj)
-  //    .subscribe(res => console.log('Done'));
-  //}
-
 }

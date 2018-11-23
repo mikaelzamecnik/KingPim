@@ -27,7 +27,6 @@ export class CategoryGetComponent implements OnInit {
         .getCategories()
         .subscribe((_result: Category[]) => {
           this.categories = _result;
-          this.showCategories();
         });
     });
   }

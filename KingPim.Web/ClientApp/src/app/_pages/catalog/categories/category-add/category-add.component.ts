@@ -31,14 +31,6 @@ export class CategoryAddComponent implements OnInit {
     });
 
   }
-  showCategories() {
-    this.cs
-      .getCategories()
-      .subscribe((data: Category[]) => {
-        this.categories = data;
-      });
-  }
-
   // Add Category to db
   addCategory(name) {
     this.loading = true;

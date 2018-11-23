@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { SubCategory } from '../_models';
 
 @Injectable()
 export class SubCategoryDataService {
@@ -12,9 +14,9 @@ export class SubCategoryDataService {
 
   }
 
-  getSubCategories() {
+  getSubCategories(): Observable<SubCategory[]> {
     return this
-      .http.get(`${this.accessPointUrl}`);
+      .http.get<SubCategory[]>(`${this.accessPointUrl}`);
   }
 
   addSubCategory(name, categoryId) {

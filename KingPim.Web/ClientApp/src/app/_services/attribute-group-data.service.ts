@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AttributeGroup } from '../_models';
 
 @Injectable()
 export class AttributeGroupDataService {
@@ -12,9 +14,9 @@ export class AttributeGroupDataService {
 
   }
 
-  getAttributeGroups() {
+  getAttributeGroups(): Observable<AttributeGroup[]> {
     return this
-      .http.get(`${this.accessPointUrl}`);
+      .http.get<AttributeGroup[]>(`${this.accessPointUrl}`);
   }
   getAttributeGroup(id) {
     return this
