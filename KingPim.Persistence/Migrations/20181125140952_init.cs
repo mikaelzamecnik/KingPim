@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KingPim.Persistence.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -200,12 +200,19 @@ namespace KingPim.Persistence.Migrations
                 columns: table => new
                 {
                     Value = table.Column<string>(nullable: true),
-                    SingleAttributeId = table.Column<int>(nullable: false),
+                    ProductAttributeId = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductAttributeValues", x => new { x.ProductId, x.SingleAttributeId });
+                    table.PrimaryKey("PK_ProductAttributeValues", x => new { x.ProductId, x.ProductAttributeId });
+                    table.UniqueConstraint("AK_ProductAttributeValues_ProductAttributeId_ProductId", x => new { x.ProductAttributeId, x.ProductId });
+                    table.ForeignKey(
+                        name: "FK_ProductAttributeValues_ProductAttributes_ProductAttributeId",
+                        column: x => x.ProductAttributeId,
+                        principalTable: "ProductAttributes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ProductAttributeValues_Products_ProductId",
                         column: x => x.ProductId,
@@ -243,9 +250,6 @@ namespace KingPim.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ProductAttributes");
-
-            migrationBuilder.DropTable(
                 name: "ProductAttributeValues");
 
             migrationBuilder.DropTable(
@@ -255,13 +259,16 @@ namespace KingPim.Persistence.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
+                name: "ProductAttributes");
+
+            migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "AttributeGroups");
+                name: "UserRoles");
 
             migrationBuilder.DropTable(
-                name: "UserRoles");
+                name: "AttributeGroups");
 
             migrationBuilder.DropTable(
                 name: "SubCategories");

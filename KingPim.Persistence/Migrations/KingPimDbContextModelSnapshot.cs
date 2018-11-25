@@ -135,13 +135,15 @@ namespace KingPim.Persistence.Migrations
 
             modelBuilder.Entity("KingPim.Domain.Entities.ProductAttributeValue", b =>
                 {
-                    b.Property<int?>("ProductId");
+                    b.Property<int>("ProductId");
 
-                    b.Property<int?>("SingleAttributeId");
+                    b.Property<int>("ProductAttributeId");
 
                     b.Property<string>("Value");
 
-                    b.HasKey("ProductId", "SingleAttributeId");
+                    b.HasKey("ProductId", "ProductAttributeId");
+
+                    b.HasAlternateKey("ProductAttributeId", "ProductId");
 
                     b.ToTable("ProductAttributeValues");
                 });
@@ -231,7 +233,7 @@ namespace KingPim.Persistence.Migrations
             modelBuilder.Entity("KingPim.Domain.Entities.AttributeGroup", b =>
                 {
                     b.HasOne("KingPim.Domain.Entities.SubCategory", "SubCategory")
-                        .WithMany("AttributeGroups")
+                        .WithMany()
                         .HasForeignKey("SubCategoryId");
                 });
 
@@ -245,14 +247,19 @@ namespace KingPim.Persistence.Migrations
             modelBuilder.Entity("KingPim.Domain.Entities.ProductAttribute", b =>
                 {
                     b.HasOne("KingPim.Domain.Entities.AttributeGroup", "AttributeGroup")
-                        .WithMany("ProductAttribute")
+                        .WithMany()
                         .HasForeignKey("AttributeGroupId");
                 });
 
             modelBuilder.Entity("KingPim.Domain.Entities.ProductAttributeValue", b =>
                 {
+                    b.HasOne("KingPim.Domain.Entities.ProductAttribute", "ProductAttribute")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductAttributeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("KingPim.Domain.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductAttributes")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -267,12 +274,12 @@ namespace KingPim.Persistence.Migrations
             modelBuilder.Entity("KingPim.Domain.Entities.SubcategoryAttributeGroup", b =>
                 {
                     b.HasOne("KingPim.Domain.Entities.AttributeGroup", "AttributeGroup")
-                        .WithMany()
+                        .WithMany("Subcategory")
                         .HasForeignKey("AttributeGroupId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("KingPim.Domain.Entities.SubCategory", "SubCategory")
-                        .WithMany()
+                        .WithMany("AttributeGroups")
                         .HasForeignKey("SubcategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

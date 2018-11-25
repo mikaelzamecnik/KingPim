@@ -10,9 +10,11 @@ namespace KingPim.Domain.Entities
     {
         public string Value { get; set; }
         [Key]
-        public int? SingleAttributeId { get; set; }
-        public virtual Product Product { get; set; }
+        public int ProductAttributeId { get; set; }
         [Key]
-        public int? ProductId { get; set; }
+        public int ProductId { get; set; }
+        public virtual ProductAttribute ProductAttribute { get;set;}
+        public virtual Product Product { get; set; }
+        
     }
 }

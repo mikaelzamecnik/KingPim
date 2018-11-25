@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace KingPim.Domain.Entities
@@ -11,7 +12,11 @@ namespace KingPim.Domain.Entities
         public int? CategoryId { get; set; }
         public virtual Category Category { get; set; }
         public List<Product> Products { get; set; }
-        public ICollection<AttributeGroup> AttributeGroups { get; } = new List<AttributeGroup>();
+        public ICollection<SubcategoryAttributeGroup> AttributeGroups { get; set; }
+        public SubCategory()
+        {
+            AttributeGroups = new Collection<SubcategoryAttributeGroup>();
+        }
 
     }
 }

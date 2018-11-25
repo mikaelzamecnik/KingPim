@@ -1,6 +1,7 @@
 ﻿using KingPim.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace KingPim.Application.Repositories.Models
@@ -18,6 +19,12 @@ namespace KingPim.Application.Repositories.Models
         public bool PublishedStatus { get; set; }
         public int? SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
-        public List<ProductAttribute> ProductAttribute { get; set; }
+        public int? AttributeGroupId { get; set; }
+        public AttributeGroup AttributeGroup { get; set; }
+        public ICollection<ProductAttributeValue> Products { get; set; }
+        public ProductAttributeModel()
+        {
+            Products = new Collection<ProductAttributeValue>();
+        }
     }
 }
