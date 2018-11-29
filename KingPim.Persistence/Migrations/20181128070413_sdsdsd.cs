@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KingPim.Persistence.Migrations
 {
-    public partial class @new : Migration
+    public partial class sdsdsd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
