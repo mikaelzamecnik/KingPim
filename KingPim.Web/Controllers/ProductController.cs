@@ -59,8 +59,8 @@ namespace KingPim.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> CreateProduct([FromBody] ProductModel product)
         {
-            //var user = _userService.GetAll(HttpContext.User);
 
+         
 
             product.DateCreated = DateTime.Now;
             product.EditedBy = "SuperAdmin";

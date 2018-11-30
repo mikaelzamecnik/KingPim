@@ -35,9 +35,6 @@ export class ProductEditComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       subCategoryId: ['', Validators.required],
-      attributeGroup: ['', Validators.required],
-      attribute: ['', Validators.required],
-      value: ['', Validators.required],
       publishedStatus: ['', Validators.required]
     });
   }
@@ -52,7 +49,7 @@ export class ProductEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.ps.updateProduct(name, description, subcategoryId, publishedStatus, params['id']);
       console.log(publishedStatus);
-      this.router.navigate(['catalog']);
+      this.router.navigate(['/catalog']);
     });
   }
 
