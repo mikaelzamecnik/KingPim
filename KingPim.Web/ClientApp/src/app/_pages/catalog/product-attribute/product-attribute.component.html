@@ -4,19 +4,21 @@
 <form [formGroup]="angForm" novalidate>
   <input type="hidden" value="{{data.apId}}" formControlName="productId" />
 {{myName}}
-
   <br />
   <p style="color:red;">
     *Need logic to iterate Types of inputfield in this.subcategoryId and connect
     it with the productId and a value.
   </p>
+  <ul>
+<li *ngFor="let ag of attributegroups" [value]="ag.name"></li>
+  </ul>
 
   <!--Need logic to iterate Types of inputfield in this.subcategoryId and connect
   it with the productId and a value--!>
 
   <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
   <br />
-  <button mat-raised-button color="primary" (click)="addAttributeValue(); onNoClick()">
+  <button mat-raised-button color="primary" (click)="onNoClick()">
     Add Attribute With Value
   </button>
 </form>

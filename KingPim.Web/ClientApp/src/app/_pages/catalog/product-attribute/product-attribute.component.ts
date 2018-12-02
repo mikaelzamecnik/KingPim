@@ -2,8 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ProductGetComponent } from '../../catalog/products/product-get/product-get.component';
 import { ProductDataService } from '../../../_services/product-data.service';
-import { Product } from '../../../_models';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AttributeGroupDataService } from '../../../_services/attribute-group-data.service';
+import { Product, AttributeGroup } from '../../../_models';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 
 
@@ -12,12 +13,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './product-attribute.component.html'})
 export class ProductAttributeComponent implements OnInit {
   products: Product[];
+  attributegroups: AttributeGroup[];
   angForm: FormGroup;
   myName = 'Mikael';
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     public pr: ProductDataService,
+    public ag: AttributeGroupDataService,
     public dialogRef: MatDialogRef<ProductGetComponent>) {
     this.createForm();
   }
@@ -40,8 +43,17 @@ export class ProductAttributeComponent implements OnInit {
         this.products = data;
       });
   }
+  showAg() {
+    this.ag
+      .getAttributeGroups()
+      .subscribe((data: AttributeGroup[]) => {
+        this.attributegroups = data;
+        console.log(data);
+      });
+  }
   ngOnInit() {
     this.showProducts();
+    this.showAg();
     console.log(this.data);
   }
 

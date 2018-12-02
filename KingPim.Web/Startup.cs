@@ -43,11 +43,11 @@ namespace KingPim.Web
 
             });
 
-            // configure strongly typed settings objects
+            // Configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
-            // configure jwt authentication
+            // Configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
             services.AddAuthentication(x =>
@@ -66,7 +66,7 @@ namespace KingPim.Web
                         var user = userService.GetById(userId);
                         if (user == null)
                         {
-                            // return unauthorized if user no longer exists
+                            // Return unauthorized if user no longer exists
                             context.Fail("Unauthorized");
                         }
                         return Task.CompletedTask;
@@ -82,7 +82,7 @@ namespace KingPim.Web
                     ValidateAudience = false
                 };
             });
-            //Configure cors to make the api avalible to other systems
+            // Configure cors to make the api avalible to other systems
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -95,7 +95,7 @@ namespace KingPim.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAutoMapper();
 
-            // configure DI for application services
+            // Configure DI for application services
             services.AddScoped<IUserService, UserService>();
             services.AddTransient<ICategoryRepo, CategoryRepo>();
             services.AddTransient<ISubCategoryRepo, SubCategoryRepo>();
@@ -152,9 +152,6 @@ namespace KingPim.Web
             });
             app.UseSpa(spa =>
             {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
                 spa.Options.SourcePath = "ClientApp";
                 if (env.IsDevelopment())
                 {
