@@ -8,13 +8,14 @@
           <strong *ngIf="user.userRoleId === 2">Publisher</strong>
           <strong *ngIf="user.userRoleId === 3">Editor</strong>
           : {{user.username}} ({{user.firstName}} {{user.lastName}})
-          <br /><a (click)="deleteUser(user.id)" class="text-danger">Delete</a> | 
+          <br /><a (click)="deleteUser(user.id)" class="text-danger">Delete</a> |
           <a (click)="getUser(user.id)" class="text-danger">Edit</a>
         </li>
       </ul>
     </div>
     <div class="col-md-8">
       <app-register-user></app-register-user>
+      <app-edit-account></app-edit-account>
     </div>
     <div class="col-md-2">
     </div>

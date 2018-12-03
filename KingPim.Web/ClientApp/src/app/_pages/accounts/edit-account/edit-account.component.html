@@ -1,0 +1,79 @@
+<h1>Edit Account</h1>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Account Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="formcontainer">
+        <mat-form-field>
+          <input matInput type="text" placeholder="First Name" class="form-control"
+                 formControlName="firstName" #firstName [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        </mat-form-field>
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Last Name" class="form-control"
+                 formControlName="lastName" #lastName [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+        </mat-form-field>
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+          <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        </div>
+        <mat-form-field>
+          <input matInput type="text" placeholder="User Name" class="form-control"
+                 formControlName="username" #username [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        </mat-form-field>
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">User Name is required</div>
+        </div>
+        <mat-form-field>
+          <input matInput type="email" placeholder="Email" class="form-control"
+                 formControlName="email" #email [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        </mat-form-field>
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" class="form-control"
+                 formControlName="password" #password [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <mat-hint>Atleast 6 characters</mat-hint>
+        </mat-form-field>
+
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+        <br>
+
+        <mat-form-field>
+          <input matInput type="password" placeholder="Confirm Password" class="form-control"
+                 formControlName="confirmPassword" #confirmPassword [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+          <mat-hint>Confirm password</mat-hint>
+        </mat-form-field>
+        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+          <div *ngIf="f.confirmPassword.errors.mustMatch">Password must match</div>
+        </div><br>
+        <!--These should be in a dropdownlist in account menu selection and based on roles-->
+        <mat-form-field>
+          <mat-select placeholder="Choose Role" formControlName="userRoleId" #userRoleId>
+            <mat-option [value]="1">
+              Admin
+            </mat-option>
+            <mat-option [value]="2">
+              Publisher
+            </mat-option>
+            <mat-option [value]="3">
+              Editor
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+      </div>
+      <mat-card-actions>
+        <button mat-raised-button [disabled]="loading">
+          Create Account
+        </button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</form>

@@ -43,6 +43,7 @@ import { AttributeGetComponent } from './_pages/catalog/attributes/attribute-get
 import { ExportComponent } from './_pages/export/export.component';
 import { PublishComponent } from './_pages/publish/publish.component';
 import { ProductAttributeComponent } from './_pages/catalog/product-attribute/product-attribute.component';
+import { EditAccountComponent } from './_pages/accounts/edit-account/edit-account.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { ProductAttributeComponent } from './_pages/catalog/product-attribute/pr
     ExportComponent,
     PublishComponent,
     ProductAttributeComponent,
+    EditAccountComponent,
   ],
   entryComponents: [
     ProductAttributeComponent
