@@ -12,10 +12,7 @@ namespace KingPim.Domain.Entities
         public string Type { get; set; }
         public int? AttributeGroupId { get; set; }
         public AttributeGroup AttributeGroup { get; set; }
-        public ICollection<ProductAttributeValue> Products { get; set; }
-        public ProductAttribute()
-        {
-            Products = new Collection<ProductAttributeValue>();
-        }
+        public int ProductAttributeValueId { get; set; }
+        public ProductAttributeValue ProductAttributeValues {get;set;}
     }
 }

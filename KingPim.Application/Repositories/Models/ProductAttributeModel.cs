@@ -9,7 +9,6 @@ namespace KingPim.Application.Repositories.Models
     public class ProductAttributeModel
     {
         public int Id { get; set; }
-        public string Type { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime DateCreated { get; set; }
@@ -19,12 +18,10 @@ namespace KingPim.Application.Repositories.Models
         public bool PublishedStatus { get; set; }
         public int? SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
+        public string Type { get; set; }
         public int? AttributeGroupId { get; set; }
         public AttributeGroup AttributeGroup { get; set; }
-        public ICollection<ProductAttributeValue> Products { get; set; }
-        public ProductAttributeModel()
-        {
-            Products = new Collection<ProductAttributeValue>();
-        }
+        public int ProductAttributeValueId { get; set; }
+        public ProductAttributeValue ProductAttributeValues {get;set;}
     }
 }

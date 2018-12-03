@@ -36,6 +36,8 @@ namespace KingPim.Application.Repositories
                     PublishedStatus = c.PublishedStatus,
                     EditedBy = c.EditedBy,
                     Version = c.Version
+                    
+                    
 
 
                 }).ToListAsync();
@@ -80,6 +82,7 @@ namespace KingPim.Application.Repositories
                     EditedBy = model.EditedBy,
                     Version = model.Version,
                     PublishedStatus = model.PublishedStatus,
+                    ProductAttributeValueId = model.ProductAttributeValueId
 
                 };
                 _context.ProductAttributes.Add(entity);

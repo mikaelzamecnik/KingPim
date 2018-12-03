@@ -18,12 +18,14 @@ export class AttributeDataService {
       .http.get(`${this.accessPointUrl}`);
   }
 
-  addAttribute(attributegroupId,name, description, type) {
+  addAttribute(attributegroupId,name, description, type, productattributevalueId,productattributevalue) {
     const obj = {
       attributegroupId:attributegroupId,
       name: name,
       description: description,
-      type: type
+      type: type,
+      productattributevalueId: productattributevalueId,
+      productattributevalue: productattributevalue
       
       
     };

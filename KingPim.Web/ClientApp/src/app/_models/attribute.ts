@@ -5,4 +5,5 @@ export class Attribute {
   description: string;
   type: string;
   publishedStatus: boolean;
+  productattributevalueId: number;
 }

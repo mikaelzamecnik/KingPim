@@ -9,7 +9,7 @@
       <textarea matInput type="text" formControlName="description" #description placeholder="Description"></textarea>
     </mat-form-field>
     <mat-form-field>
-      <mat-select [(ngModel)]="typevar" formControlName="type" #type placeholder="Type" [value]="type">
+      <mat-select formControlName="type" #type placeholder="Type" [value]="type">
         <mat-option value="text">
           Text
         </mat-option>
@@ -23,22 +23,25 @@
           Textbox
         </mat-option>
       </mat-select>
+    </mat-form-field><br>
+    <mat-form-field>
+      <input matInput type="text" formControlName="productattributevalueId" #productattributevalueId placeholder="Attribute Value" />
     </mat-form-field>
-    <div [ngSwitch]="typevar">
+   <!--  <div [ngSwitch]="typevar">
       <div *ngSwitchCase="'text'">
         <mat-form-field>
-          <input matInput type="text" placeholder="Text Field" />
+          <input matInput type="text" placeholder="Text Field" [value]="productattributevalueId"/>
           <mat-hint>For single lined text</mat-hint>
         </mat-form-field>
       </div>
       <div *ngSwitchCase="'number'">
         <mat-form-field>
-          <input matInput type="number" placeholder="Number Field" />
+          <input matInput type="number" placeholder="Number Field" [value]="productattributevalueId" />
           <mat-hint>For numbers (price, sizes etc)</mat-hint>
         </mat-form-field>
       </div>
       <div *ngSwitchCase="'yesno'">
-        <mat-radio-group>
+        <mat-radio-group [value]="productattributevalueId">
           <mat-radio-button value="1">Yes</mat-radio-button>
           <mat-radio-button value="2">No</mat-radio-button>
         </mat-radio-group><br />
@@ -46,14 +49,14 @@
       </div>
       <div *ngSwitchCase="'textbox'">
         <mat-form-field>
-          <textarea matInput type="text" placeholder="Textbox"></textarea>
+          <textarea matInput type="text" placeholder="Textbox" [value]="productattributevalueId"></textarea>
           <mat-hint>For larger description of an attribute</mat-hint>
         </mat-form-field>
       </div>
-    </div><br />
+    </div><br /> -->
     <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
     <button mat-raised-button color="primary" (click)="addAttribute(
-      attributegroupId.value,name.value, description.value, type.value); onNoClick()">
+      attributegroupId.value,name.value, description.value, type.value, productattributevalueId.value); onNoClick()">
       Add AttributeGroup
     </button>
   </form>
