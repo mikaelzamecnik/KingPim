@@ -206,7 +206,8 @@ namespace KingPim.Persistence.Migrations
                     Type = table.Column<string>(nullable: true),
                     AttributeGroupId = table.Column<int>(nullable: true),
                     ProductAttributeValueId = table.Column<int>(nullable: false),
-                    ProductAttributeValuesId = table.Column<int>(nullable: true)
+                    ProductAttributeValuesId = table.Column<int>(nullable: true),
+                    ProductId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -221,6 +222,12 @@ namespace KingPim.Persistence.Migrations
                         name: "FK_ProductAttributes_ProductAttributeValues_ProductAttributeValuesId",
                         column: x => x.ProductAttributeValuesId,
                         principalTable: "ProductAttributeValues",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProductAttributes_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -239,6 +246,11 @@ namespace KingPim.Persistence.Migrations
                 name: "IX_ProductAttributes_ProductAttributeValuesId",
                 table: "ProductAttributes",
                 column: "ProductAttributeValuesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductAttributes_ProductId",
+                table: "ProductAttributes",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductAttributeValues_ProductId",

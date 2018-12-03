@@ -44,6 +44,17 @@ namespace KingPim.Persistence
                     Version = 1,
                     SubCategoryId = 3,
                 });
+                ctx.Products.Add(new Product
+                {
+                    Name = "Samsung",
+                    Description = "Some product",
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now,
+                    EditedBy = "Sven",
+                    Version = 1,
+                    SubCategoryId = 2,
+                    
+                });
                 ctx.SaveChanges();
             }
             if (!ctx.AttributeGroups.Any())
@@ -55,9 +66,20 @@ namespace KingPim.Persistence
             }
             if (!ctx.ProductAttributes.Any())
             {
-                ctx.ProductAttributes.Add(new ProductAttribute { Name = "Usb", Description = "For connect", AttributeGroupId = 1 });
-                ctx.ProductAttributes.Add(new ProductAttribute { Name = "Width", Description = "Size", AttributeGroupId = 2 });
-                ctx.ProductAttributes.Add(new ProductAttribute { Name = "Height", Description = "Size", AttributeGroupId = 2 });
+                ctx.ProductAttributes.Add(new ProductAttribute { Name = "Usb", Description = "For connect", Type = "text", AttributeGroupId = 1});
+                ctx.ProductAttributes.Add(new ProductAttribute { Name = "Width", Description = "Size", Type = "number", AttributeGroupId = 2 });
+                ctx.ProductAttributes.Add(new ProductAttribute { Name = "Height", Description = "Size", Type = "yesno", AttributeGroupId = 2 });
+
+                ctx.SaveChanges();
+            }
+            if (!ctx.ProductAttributeValues.Any())
+            {
+                ctx.ProductAttributeValues.Add(new ProductAttributeValue { Value = "Usb30", ProductAttributeId = 1, ProductId = 1 });
+                ctx.ProductAttributeValues.Add(new ProductAttributeValue { Value = "500", ProductAttributeId = 2, ProductId = 1 });
+                ctx.ProductAttributeValues.Add(new ProductAttributeValue { Value = "Yes", ProductAttributeId = 3, ProductId = 1 });
+                ctx.ProductAttributeValues.Add(new ProductAttributeValue { Value = "Usb30", ProductAttributeId = 1, ProductId = 2 });
+                ctx.ProductAttributeValues.Add(new ProductAttributeValue { Value = "500", ProductAttributeId = 2, ProductId = 2 });
+                ctx.ProductAttributeValues.Add(new ProductAttributeValue { Value = "Yes", ProductAttributeId = 3, ProductId = 2 });
 
                 ctx.SaveChanges();
             }

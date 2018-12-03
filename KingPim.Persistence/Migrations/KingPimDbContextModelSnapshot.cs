@@ -124,6 +124,8 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<int?>("ProductAttributeValuesId");
 
+                    b.Property<int?>("ProductId");
+
                     b.Property<bool>("PublishedStatus");
 
                     b.Property<string>("Type");
@@ -135,6 +137,8 @@ namespace KingPim.Persistence.Migrations
                     b.HasIndex("AttributeGroupId");
 
                     b.HasIndex("ProductAttributeValuesId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductAttributes");
                 });
@@ -269,12 +273,16 @@ namespace KingPim.Persistence.Migrations
                     b.HasOne("KingPim.Domain.Entities.ProductAttributeValue", "ProductAttributeValues")
                         .WithMany()
                         .HasForeignKey("ProductAttributeValuesId");
+
+                    b.HasOne("KingPim.Domain.Entities.Product")
+                        .WithMany("ProductAttributes")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("KingPim.Domain.Entities.ProductAttributeValue", b =>
                 {
                     b.HasOne("KingPim.Domain.Entities.Product")
-                        .WithMany("ProductAttributes")
+                        .WithMany("ProductAttributeValues")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

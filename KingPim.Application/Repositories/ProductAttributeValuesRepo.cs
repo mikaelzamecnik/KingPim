@@ -27,9 +27,11 @@ namespace KingPim.Application.Repositories
             return await _context.ProductAttributeValues.Select(c =>
                 new ProductAttributeValuesModel
                 {
-                    
-                    
-                    
+                    Id = c.Id,
+                    ProductId = c.ProductId,
+                    ProductAttributeId = c.ProductAttributeId,
+                    Value = c.Value
+
 
 
                 }).ToListAsync();

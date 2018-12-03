@@ -44,6 +44,8 @@ namespace KingPim.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> CreateProductattributevalue([FromBody] ProductAttributeValuesModel attval)
         {
+
+
             await _productattributevalueRepo.CreateProductattributevalue(attval);
             return CreatedAtAction("GetAttributeValue", new { id = attval.Id }, attval);
         }

@@ -35,7 +35,9 @@ namespace KingPim.Application.Repositories
                     EditedBy = c.EditedBy,
                     Version = c.Version,
                     SubCategory = c.SubCategory,
-                    PublishedStatus = c.PublishedStatus
+                    PublishedStatus = c.PublishedStatus,
+                    ProductAttributes = c.ProductAttributes,
+                    ProductAttributeValues = c.ProductAttributeValues
 
 
                 }).ToListAsync();
