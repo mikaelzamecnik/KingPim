@@ -8,6 +8,7 @@ namespace KingPim.Application.Repositories.Models
 {
     public class ProductAttributeValuesModel
     {
+        public int Id { get; set; }
         public string Value { get; set; }
         public int ProductAttributeId { get; set; }
         public int ProductId { get; set; }

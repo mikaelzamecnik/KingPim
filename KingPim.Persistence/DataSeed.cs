@@ -48,11 +48,17 @@ namespace KingPim.Persistence
             }
             if (!ctx.AttributeGroups.Any())
             {
-                ctx.AttributeGroups.Add(new AttributeGroup
-                {
-                    Name = "Ports",
-                    Description = "For connect"
-                });
+                ctx.AttributeGroups.Add(new AttributeGroup { Name = "Ports", Description = "For connect", SubCategoryId = 3 });
+                ctx.AttributeGroups.Add(new AttributeGroup { Name = "Dimensions", Description = "Size", SubCategoryId = 4 });
+
+                ctx.SaveChanges();
+            }
+            if (!ctx.ProductAttributes.Any())
+            {
+                ctx.ProductAttributes.Add(new ProductAttribute { Name = "Usb", Description = "For connect", AttributeGroupId = 1 });
+                ctx.ProductAttributes.Add(new ProductAttribute { Name = "Width", Description = "Size", AttributeGroupId = 2 });
+                ctx.ProductAttributes.Add(new ProductAttribute { Name = "Height", Description = "Size", AttributeGroupId = 2 });
+
                 ctx.SaveChanges();
             }
 

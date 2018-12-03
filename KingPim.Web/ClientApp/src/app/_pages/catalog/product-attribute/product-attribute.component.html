@@ -2,23 +2,30 @@
   <span style='color:darkgray;font-weight: bold'><small>&raquo; {{data.apSC}}</small></span></h1>
 <br>
 <form [formGroup]="angForm" novalidate>
-  <input type="hidden" value="{{data.apId}}" formControlName="productId" />
-{{myName}}
+  <input type="text" value="{{data.apId}}" formControlName="productId" #productId />
+  {{myName}}
   <br />
+  <mat-form-field>
+    <mat-select placeholder="Select Attribute" formControlName="productattributeId" #productattributeId >
+      <mat-option *ngFor="let att of attributes " [value]="att.id">
+        {{att.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br />
+  <mat-form-field>
+    <input matInput type="text" class="form-control" formControlName="value" #value placeholder="Attribute Value" />
+  </mat-form-field>
   <p style="color:red;">
     *Need logic to iterate Types of inputfield in this.subcategoryId and connect
     it with the productId and a value.
   </p>
-  <ul>
-<li *ngFor="let ag of attributegroups" [value]="ag.name"></li>
-  </ul>
 
   <!--Need logic to iterate Types of inputfield in this.subcategoryId and connect
   it with the productId and a value--!>
 
   <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
   <br />
-  <button mat-raised-button color="primary" (click)="onNoClick()">
+  <button mat-raised-button color="primary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value);onNoClick()">
     Add Attribute With Value
   </button>
 </form>

@@ -57,8 +57,9 @@ namespace KingPim.Application.Repositories
             {
                 var entity = new ProductAttributeValue
                 {
-
-                  
+                    ProductId = model.ProductId,
+                    ProductAttributeId = model.ProductAttributeId,
+                    Value = model.Value
 
                 };
                 _context.ProductAttributeValues.Add(entity);

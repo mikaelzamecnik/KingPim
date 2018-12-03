@@ -42,10 +42,10 @@ namespace KingPim.Web.Controllers
         // POST: pim/Category/SubCategory/AttributeGroup/ProductAttribute/
         [HttpPost]
         [ValidateModel]
-        public async Task<IActionResult> CreateProductattributevalue([FromBody] ProductAttributeValuesModel att)
+        public async Task<IActionResult> CreateProductattributevalue([FromBody] ProductAttributeValuesModel attval)
         {
-            await _productattributevalueRepo.CreateProductattributevalue(att);
-            return CreatedAtAction("GetAttribute", new { id = att.ProductAttributeId }, att);
+            await _productattributevalueRepo.CreateProductattributevalue(attval);
+            return CreatedAtAction("GetAttributeValue", new { id = attval.Id }, attval);
         }
         // PUT: pim/Category/SubCategory/AttributeGroup/ProductAttribute/1
         [HttpPut("{id}")]

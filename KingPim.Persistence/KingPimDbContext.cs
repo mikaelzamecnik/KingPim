@@ -25,11 +25,9 @@ public class KingPimDbContext: DbContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<SubcategoryAttributeGroup>()
-                .HasKey(c => new { c.SubcategoryId, c.AttributeGroupId });
-            modelBuilder.Entity<ProductAttributeValue>()
-                .HasKey(c => new { c.ProductId, c.ProductAttributeId });
-        }
+            base.OnModelCreating(modelBuilder);
+
+        }       
 
     }
 }

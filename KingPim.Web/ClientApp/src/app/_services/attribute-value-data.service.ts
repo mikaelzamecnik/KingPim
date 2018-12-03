@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root'})
-export class AttributeDataService {
+export class AttributeValueDataService {
 
   private headers: HttpHeaders;
-  private accessPointUrl = 'pim/Category/SubCategory/AttributeGroup/ProductAttribute';
+  private accessPointUrl = 'pim/Category/SubCategory/AttributeGroup/ProductAttribute/ProductAttributeValue';
 
 
   constructor(private http: HttpClient) {
@@ -18,32 +18,27 @@ export class AttributeDataService {
       .http.get(`${this.accessPointUrl}`);
   }
 
-  addAttribute(attributegroupId,name, description, type, productattributevalueId,productattributevalue) {
+  addAttributevalue(productId, productattributeId, value) {
     const obj = {
-      attributegroupId:attributegroupId,
-      name: name,
-      description: description,
-      type: type,
-      productattributevalueId: productattributevalueId,
-      productattributevalue: productattributevalue
-      
-      
+      productId: productId,
+      productattributeId: productattributeId,
+      value: value
     };
     console.log(obj);
     this.http.post(`${this.accessPointUrl}/`, obj)
       .subscribe(res => console.log('Done', obj));
   }
-  deleteAttribute(id) {
+  deleteAttributevalue(id) {
     return this
       .http
       .delete(`${this.accessPointUrl}/${id}`);
   }
-  editAttribute(id) {
+  editAttributevalue(id) {
     return this
       .http
       .get(`${this.accessPointUrl}/${id}`);
   }
-  updateAttribute(name, id) {
+  updateAttributevalue(name, id) {
 
     const obj = {
       name: name

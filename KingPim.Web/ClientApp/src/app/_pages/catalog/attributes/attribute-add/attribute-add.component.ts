@@ -33,9 +33,7 @@ export class AttributeAddComponent implements OnInit {
       attributegroupId: ['', Validators.required],
       name: ['', Validators.required],
       description: ['', Validators.required],
-      type: ['', Validators.required],
-      productattributevalueId: ['', Validators.required],
-      productattributevalue: ['', Validators.required]
+      type: ['', Validators.required]
     });
 
   }
@@ -51,10 +49,10 @@ export class AttributeAddComponent implements OnInit {
       });
   }
   // Add Attribute to db
-  addAttribute(name, description, type, attributegroupId,productattributevalueId,productattributevalue) {
+  addAttribute(name, description, type, attributegroupId) {
     this.loading = true;
-    this.att.addAttribute(name, description, type, attributegroupId, productattributevalueId,productattributevalue);
-    console.log(name, type, attributegroupId, productattributevalueId,productattributevalue);
+    this.att.addAttribute(name, description, type, attributegroupId);
+    console.log(name, type, attributegroupId);
   }
 
 }

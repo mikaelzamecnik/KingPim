@@ -4,3 +4,4 @@ export * from './subcategory';
 export * from './product';
 export * from './attributegroup';
 export * from './attribute';
+export * from './attributevalue';

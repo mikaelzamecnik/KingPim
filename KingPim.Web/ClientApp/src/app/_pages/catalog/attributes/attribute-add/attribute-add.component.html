@@ -24,9 +24,6 @@
         </mat-option>
       </mat-select>
     </mat-form-field><br>
-    <mat-form-field>
-      <input matInput type="text" formControlName="productattributevalueId" #productattributevalueId placeholder="Attribute Value" />
-    </mat-form-field>
    <!--  <div [ngSwitch]="typevar">
       <div *ngSwitchCase="'text'">
         <mat-form-field>
@@ -56,7 +53,7 @@
     </div><br /> -->
     <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
     <button mat-raised-button color="primary" (click)="addAttribute(
-      attributegroupId.value,name.value, description.value, type.value, productattributevalueId.value); onNoClick()">
+      attributegroupId.value,name.value, description.value, type.value); onNoClick()">
       Add AttributeGroup
     </button>
   </form>

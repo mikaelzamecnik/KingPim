@@ -19,11 +19,15 @@ namespace KingPim.Application.Repositories.Models
         public bool PublishedStatus { get; set; }
         public int? SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
+        public virtual ProductAttribute ProductAttribute { get; set; }
+        public virtual ICollection<ProductAttributeValue> ProductAttValues { get; set; }
         public List<Product> Products { get; set; }
-        public ICollection<ProductAttributeValue> ProductAttributes { get; set; }
         public ProductModel()
         {
-            ProductAttributes = new Collection<ProductAttributeValue>();
+            var valuelist = new ProductAttributeValue()
+            {
+
+            }
         }
     }
 }
