@@ -4,9 +4,9 @@
 </button><br /><br />
 <table mat-table [dataSource]="productData" class="mat-elevation-z8">
   <ng-container matColumnDef="Id">
-    <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let product"><button mat-raised-button (click)="openProdAttDialog(product.id, product.name, product.subCategory.name)" matTooltip="Click Here for Attributes(temp)"
-      aria-label="Button that displays a tooltip when focused or hovered over"><span >{{ product.id }}</span></button></td>
+    <th mat-header-cell *matHeaderCellDef>Attributes</th>
+    <td mat-cell *matCellDef="let product"><button mat-raised-button (click)="openProdAttDialog(product.id, product.name, product.subCategory.name)"
+      aria-label="Button that displays a tooltip when focused or hovered over"><i class="fa fa-book"></i></button></td>
   </ng-container>
   <ng-container matColumnDef="Name">
     <th mat-header-cell *matHeaderCellDef>Name</th>

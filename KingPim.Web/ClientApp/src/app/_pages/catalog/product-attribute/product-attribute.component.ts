@@ -14,10 +14,11 @@ import { AttributeValueDataService } from '../../../_services';
   selector: 'app-product-attribute',
   templateUrl: './product-attribute.component.html'})
 export class ProductAttributeComponent implements OnInit {
-  products: Product[];
+  products: [];
+   
   attributegroups: AttributeGroup[];
   attributes: Attribute[];
-  attvalue: AttributeValue[];
+  attvalues: AttributeValue[];
   angForm: FormGroup;
     loading: boolean;
 
@@ -50,11 +51,20 @@ export class ProductAttributeComponent implements OnInit {
     this.loading = true;
     this.attv.addAttributevalue(productId, productattributeId, value);
   }
+  showAttv() {
+    this.attv
+      .getAttributevalues()
+      .subscribe((data: AttributeValue[]) => {
+        this.attvalues = data;
+        console.log(data);
+      });
+  }
   showProducts() {
     this.pr
       .getProducts()
-      .subscribe((data: Product[]) => {
+      .subscribe((data: [] = []) => {
         this.products = data;
+ 
       });
   }
   showAg() {
@@ -62,7 +72,7 @@ export class ProductAttributeComponent implements OnInit {
       .getAttributeGroups()
       .subscribe((data: AttributeGroup[]) => {
         this.attributegroups = data;
-        console.log(data);
+     
       });
   }
   showAtt() {
@@ -77,7 +87,6 @@ export class ProductAttributeComponent implements OnInit {
     this.showProducts();
     this.showAg();
     this.showAtt()
-    console.log(this.data);
   }
 
 }

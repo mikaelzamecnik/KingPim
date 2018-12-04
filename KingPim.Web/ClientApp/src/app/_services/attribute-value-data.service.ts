@@ -13,7 +13,7 @@ export class AttributeValueDataService {
 
   }
 
-  getAttributes() {
+  getAttributevalues() {
     return this
       .http.get(`${this.accessPointUrl}`);
   }

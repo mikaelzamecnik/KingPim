@@ -26,8 +26,8 @@
       <mat-list>
           <mat-list-item><strong>Attributes</strong></mat-list-item>
           <mat-divider></mat-divider>
-          <mat-list-item *ngFor="let product of products">
-            {{product.productAttributeValues.productattributeId}}
+          <mat-list-item *ngFor="let attvalue of attvalues">
+            {{attvalue.value }}
           </mat-list-item>
         </mat-list>
   </div>
