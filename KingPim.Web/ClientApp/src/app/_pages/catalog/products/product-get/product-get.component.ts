@@ -20,7 +20,7 @@ export class ProductGetComponent implements OnInit {
   // Opens attribute modal
   openProdAttDialog(id, name, subCategory) {
     this.dialog.open(ProductAttributeComponent, {
-      width: '500px',
+      width: '600px',
       backdropClass: 'custom-modalbox',
       data: {
         apId: id,

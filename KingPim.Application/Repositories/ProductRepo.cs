@@ -41,7 +41,6 @@ namespace KingPim.Application.Repositories
 
 
                 }).ToListAsync();
-            
         }
 
         // Get Single Product
@@ -78,7 +77,7 @@ namespace KingPim.Application.Repositories
                     Description = model.Description,
                     DateCreated = model.DateCreated,
                     EditedBy = model.EditedBy,
-                    Version = model.Version,
+                    Version = 1,
                     PublishedStatus = model.PublishedStatus,
                     SubCategoryId = model.SubCategoryId,
                     SubCategory = model.SubCategory
@@ -136,7 +135,7 @@ namespace KingPim.Application.Repositories
                     entity.Description = model.Description;
                     entity.DateUpdated = model.DateUpdated;
                     entity.EditedBy = model.EditedBy;
-                    entity.Version = model.Version + 1;
+                    entity.Version = entity.Version + 1;
 
                     _context.Products.Update(entity);
 

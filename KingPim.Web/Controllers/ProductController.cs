@@ -60,11 +60,8 @@ namespace KingPim.Web.Controllers
         public async Task<IActionResult> CreateProduct([FromBody] ProductModel product)
         {
 
-         
-
             product.DateCreated = DateTime.Now;
-            product.EditedBy = "SuperAdmin";
-            product.Version = 1;
+            product.EditedBy = User.Identity.Name;
 
             await _productRepo.CreateProduct(product);
 
@@ -78,12 +75,6 @@ namespace KingPim.Web.Controllers
         public async Task<IActionResult> UpdateProduct([FromRoute] int id, [FromBody] ProductModel product)
 
          {
-            // Additonal logic for put request
-
-            product.Id = id;
-            product.EditedBy = "SuperAdmin";
-
-
             await _productRepo.UpdateProduct(product);
             return NoContent();
         }

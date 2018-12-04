@@ -1,31 +1,36 @@
 <h1 mat-dialog-title>Add Values to {{data.apName}} attributes<br />
   <span style='color:darkgray;font-weight: bold'><small>&raquo; {{data.apSC}}</small></span></h1>
-<br>
-<form [formGroup]="angForm" novalidate>
-  <input type="text" value="{{data.apId}}" formControlName="productId" #productId />
-  {{myName}}
-  <br />
-  <mat-form-field>
-    <mat-select placeholder="Select Attribute" formControlName="productattributeId" #productattributeId >
-      <mat-option *ngFor="let att of attributes " [value]="att.id">
-        {{att.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field><br />
-  <mat-form-field>
-    <input matInput type="text" class="form-control" formControlName="value" #value placeholder="Attribute Value" />
-  </mat-form-field>
-  <p style="color:red;">
-    *Need logic to iterate Types of inputfield in this.subcategoryId and connect
-    it with the productId and a value.
-  </p>
+  <div class="container">
+  <div class="row">
+  <div class="col-sm content-divider">
+    <form [formGroup]="angForm" novalidate>
+      <input type="hidden" value="{{data.apId}}" formControlName="productId" #productId />
+      <mat-form-field>
+        <mat-select placeholder="Select Attribute" formControlName="productattributeId" #productattributeId >
+          <mat-option *ngFor="let att of attributes " [value]="att.id">
+            {{att.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br />
+      <mat-form-field>
+        <input matInput type="text" class="form-control" formControlName="value" #value placeholder="Attribute Value" />
+      </mat-form-field>
+      <br />
+      <button mat-raised-button color="primary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value);onNoClick()">
+        Add Attribute With Value
+      </button>
+    </form>
+  </div>
+  <!--AttributeValues goes here-->
+  <div class="col-sm">
+      <mat-list>
+          <mat-list-item><strong>Attributes</strong></mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item *ngFor="let product of products">
+            {{product.productAttributeValues.productattributeId}}
+          </mat-list-item>
+        </mat-list>
+  </div>
+</div>
+</div>
 
-  <!--Need logic to iterate Types of inputfield in this.subcategoryId and connect
-  it with the productId and a value--!>
-
-  <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
-  <br />
-  <button mat-raised-button color="primary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value);onNoClick()">
-    Add Attribute With Value
-  </button>
-</form>
