@@ -25,6 +25,7 @@ namespace KingPim.Application.Repositories
         // Get All Products
         public async Task<IEnumerable<ProductModel>> GetProducts()
         {
+            
             return await _context.Products.Select(c =>
                 new ProductModel
                 {

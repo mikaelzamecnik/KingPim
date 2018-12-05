@@ -18,6 +18,11 @@ export class ProductDataService {
     return this
       .http.get<Product[]>(`${this.accessPointUrl}`);
   }
+  getProduct(id) {
+    return this
+      .http
+      .get(`${this.accessPointUrl}/${id}`);
+  }
 
   addProduct(name, description, subCategoryId) {
     const obj = {

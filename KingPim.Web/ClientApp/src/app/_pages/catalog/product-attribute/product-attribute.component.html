@@ -16,18 +16,33 @@
         <input matInput type="text" class="form-control" formControlName="value" #value placeholder="Attribute Value" />
       </mat-form-field>
       <br />
-      <button mat-raised-button color="primary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value);onNoClick()">
+      <button mat-raised-button color="primary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value)">
         Add Attribute With Value
       </button>
     </form>
   </div>
   <!--AttributeValues goes here-->
   <div class="col-sm">
-    <mat-list>
-      <mat-list-item *ngFor="let productvalue of productvalues">
-        {{productvalue.productAttributeValues.value}}
-      </mat-list-item>
-    </mat-list>
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+
+          <tbody>
+              <span *ngFor="let productvalue of productvalues">
+              <tr *ngFor="let s of productvalue.productAttributeValues">
+                  
+                  
+                      <td  >{{s.value}}</td>
+                   
+               </tr>
+              </span>
+          
+            
+          </tbody>
+        </table>
   </div>
 </div>
 </div>

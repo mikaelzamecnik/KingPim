@@ -7,6 +7,7 @@ import { Product, AttributeGroup, Attribute, AttributeValue } from '../../../_mo
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AttributeDataService } from '../../../_services';
 import { AttributeValueDataService } from '../../../_services';
+import { delay } from 'q';
 
 
 
@@ -14,8 +15,7 @@ import { AttributeValueDataService } from '../../../_services';
   selector: 'app-product-attribute',
   templateUrl: './product-attribute.component.html'})
 export class ProductAttributeComponent implements OnInit {
-  productvalues: Product[] = [];
-
+  productvalues: Product[];
   attributegroups: AttributeGroup[];
   attributes: Attribute[];
   attvalues: AttributeValue[];
@@ -48,8 +48,10 @@ export class ProductAttributeComponent implements OnInit {
   // Add AttributeGroup to db
   addAttributeValue(productId, productattributeId, value) {
     console.log(productId, productattributeId, value);
-    this.loading = true;
     this.attv.addAttributevalue(productId, productattributeId, value);
+    this.loading = true;
+    delay(500);
+
   }
   showAttv() {
     this.attv
@@ -64,7 +66,7 @@ export class ProductAttributeComponent implements OnInit {
       .getProducts()
       .subscribe((data: Product[]) => {
         this.productvalues = data;
-        console.log(data);
+        console.log("SingleData",data);
       });
   }
   showAg() {

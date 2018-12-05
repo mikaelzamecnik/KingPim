@@ -1,3 +1,5 @@
+import { AttributeValue } from "./attributevalue";
+
 export class Product {
   id: number;
   name: string;
@@ -8,5 +10,5 @@ export class Product {
   publishedStatus: boolean;
   editedBy: string;
   subCategory: any;
-  productAttributeValues = [ ];
+  productAttributeValues: AttributeValue[ ];
 }
