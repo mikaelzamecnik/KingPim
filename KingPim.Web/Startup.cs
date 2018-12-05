@@ -96,7 +96,7 @@ namespace KingPim.Web
             services.AddAutoMapper();
 
             // Configure DI for application services
-            services.AddScoped<IUserService, UserService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICategoryRepo, CategoryRepo>();
             services.AddTransient<ISubCategoryRepo, SubCategoryRepo>();
             services.AddTransient<IProductRepo, ProductRepo>();

@@ -6,6 +6,7 @@ import { LoginLayoutComponent } from './_layouts/login-layout.component';
 import { HomeLayoutComponent } from './_layouts/home-layout.component';
 import { CatalogComponent } from './_pages/catalog';
 import { AccountsComponent } from './_pages/accounts';
+import { EditAccountComponent } from './_pages/accounts/edit-account/edit-account.component';
 import { HomeComponent } from './home';
 import { RegisterComponent } from './_pages/accounts/register';
 import { ProductGetComponent } from './_pages/catalog/products/product-get/product-get.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'catalog', component: CatalogComponent },
       { path: 'accounts', component: AccountsComponent },
+      { path: 'accounts/:id', component: EditAccountComponent },
       { path: 'export', component: ExportComponent },
       { path: 'product', component: ProductGetComponent },
       { path: 'product/create', component: ProductAddComponent },
