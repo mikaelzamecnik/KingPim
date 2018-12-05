@@ -22,6 +22,6 @@ namespace KingPim.Application.Repositories.Models
         public virtual List<ProductAttributeValue> ProductAttributeValues { get; set; }
         public virtual List<ProductAttribute> ProductAttributes { get; set; }
         public List<Product> Products { get; set; }
-        
+
     }
 }

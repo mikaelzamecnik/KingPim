@@ -14,8 +14,8 @@ import { AttributeValueDataService } from '../../../_services';
   selector: 'app-product-attribute',
   templateUrl: './product-attribute.component.html'})
 export class ProductAttributeComponent implements OnInit {
-  products: [];
-   
+  productvalues: Product[] = [];
+
   attributegroups: AttributeGroup[];
   attributes: Attribute[];
   attvalues: AttributeValue[];
@@ -62,9 +62,9 @@ export class ProductAttributeComponent implements OnInit {
   showProducts() {
     this.pr
       .getProducts()
-      .subscribe((data: [] = []) => {
-        this.products = data;
- 
+      .subscribe((data: Product[]) => {
+        this.productvalues = data;
+        console.log(data);
       });
   }
   showAg() {
@@ -72,7 +72,7 @@ export class ProductAttributeComponent implements OnInit {
       .getAttributeGroups()
       .subscribe((data: AttributeGroup[]) => {
         this.attributegroups = data;
-     
+
       });
   }
   showAtt() {

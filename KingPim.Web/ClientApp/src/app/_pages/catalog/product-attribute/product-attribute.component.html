@@ -23,13 +23,11 @@
   </div>
   <!--AttributeValues goes here-->
   <div class="col-sm">
-      <mat-list>
-          <mat-list-item><strong>Attributes</strong></mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item *ngFor="let attvalue of attvalues">
-            {{attvalue.value }}
-          </mat-list-item>
-        </mat-list>
+    <mat-list>
+      <mat-list-item *ngFor="let productvalue of productvalues">
+        {{productvalue.productAttributeValues.value}}
+      </mat-list-item>
+    </mat-list>
   </div>
 </div>
 </div>
