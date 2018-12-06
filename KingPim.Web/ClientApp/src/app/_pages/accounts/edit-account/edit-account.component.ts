@@ -26,7 +26,7 @@ export class EditAccountComponent implements OnInit {
 
 
     this.registerForm = this.formBuilder.group({
-      id:[1],
+      id:[0],
       firstName: [''],
       lastName: [''],
       username: [''],
@@ -36,7 +36,9 @@ export class EditAccountComponent implements OnInit {
       confirmPassword: ['', Validators.required]
     }, {
         validator: Mustmatch('password', 'confirmPassword')
+        
       });
+      console.log(this.registerForm);
   }
 
   
