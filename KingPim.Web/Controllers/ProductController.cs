@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AutoMapper;
 using KingPim.Application.Account.Service;
 using KingPim.Application.Repositories;
 using KingPim.Application.Repositories.Interfaces;
@@ -20,17 +21,20 @@ namespace KingPim.Web.Controllers
         private readonly IProductRepo _productRepo;
         private readonly IUserService _userService;
         private readonly KingPimDbContext _context;
+        private readonly IMapper _mapper;
 
         public ProductController(
             IProductRepo productRepo,
             IUserService userService,
-            KingPimDbContext context
+            KingPimDbContext context,
+            IMapper mapper
             )
 
         {
             _productRepo = productRepo;
             _userService = userService;
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: pim/Category/SubCategory/Product

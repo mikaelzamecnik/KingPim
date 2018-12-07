@@ -11,7 +11,13 @@ namespace KingPim.Application.Helpers
         {
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
-            CreateMap<SubCategory, SubCategoryModel>();
+            CreateMap<SubCategory, SubCategoryModel>().ReverseMap();
+            CreateMap<ProductAttribute, ProductAttributeModel>().ReverseMap();
+            CreateMap<Product, ProductModel>().ReverseMap();
+            CreateMap<Category, CategoryModel>().ReverseMap();
+            CreateMap<AttributeGroup, AttributeGroupModel>().ReverseMap();
+            CreateMap<ProductAttributeValue, ProductAttributeValuesModel>().ReverseMap();
+
         }
     }
 }

@@ -36,10 +36,6 @@ namespace KingPim.Application.Repositories
                     PublishedStatus = c.PublishedStatus,
                     EditedBy = c.EditedBy,
                     Version = c.Version
-                    
-                    
-
-
                 }).ToListAsync();
         }
 

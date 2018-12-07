@@ -25,7 +25,6 @@ namespace KingPim.Application.Repositories
         // Get All Products
         public async Task<IEnumerable<ProductModel>> GetProducts()
         {
-            
             return await _context.Products.Select(c =>
                 new ProductModel
                 {
@@ -68,8 +67,6 @@ namespace KingPim.Application.Repositories
         // Create new Product
         public async Task CreateProduct(ProductModel model)
         {
-            try
-            {
                 var entity = new Product
                 {
 
@@ -87,13 +84,6 @@ namespace KingPim.Application.Repositories
                 _context.Products.Add(entity);
 
                 await _context.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-
-                throw e;
-            }
-
         }
 
         // Update Product
