@@ -35,6 +35,19 @@ namespace KingPim.Application.Account.Service
             // authentication successful
             return user;
         }
+        public User ForgotPassword(string username)
+        {
+            if (string.IsNullOrEmpty(username))
+                return null;
+
+            var userEmail = _context.Users.SingleOrDefault(x => x.Username == username);
+
+            // check if email exists
+            if (userEmail == null)
+                return null;
+            // authentication successful
+            return userEmail;
+        }
 
         public IEnumerable<User> GetAll()
         {

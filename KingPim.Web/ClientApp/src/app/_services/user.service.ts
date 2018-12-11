@@ -27,6 +27,6 @@ export class UserService {
     return this.http.delete(`/users/` + id);
   }
   forgotPassword(user: User) {
-    return this.http.put(`/users/forgotpassword` + user.id, user);
+    return this.http.post(`/users/forgotpassword` ,user);
   }
 }

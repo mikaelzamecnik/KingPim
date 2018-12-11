@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace KingPim.Web.Controllers
 {
@@ -136,6 +137,20 @@ namespace KingPim.Web.Controllers
         {
             _userService.Delete(id);
             return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpPost("forgotpassword")]
+        public IActionResult ForgotPassword([FromBody]UserDto userDto)
+        {
+            var user = _userService.ForgotPassword(userDto.Username);
+
+            if (user == null) {
+                return BadRequest(new { message = "Mail is Empty" });
+            }
+
+            // TODO getting grid to work with user and email
+            return Ok(user);
         }
 
     }
