@@ -12,6 +12,7 @@ using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -148,6 +149,31 @@ namespace KingPim.Web.Controllers
             if (user == null) {
                 return BadRequest(new { message = "Mail is Empty" });
             }
+            string userId = user.Username;
+            var code = Guid.NewGuid().ToString();
+            var callbackUrl = Url.Action(
+                controller: "Account",
+                action: "ResetPassword",
+                values: new { userId = user.Id, code },
+                protocol: Request.Scheme);
+
+            var smtpClient = new SmtpClient
+            {
+                Host = "localhost",
+                Port = 587,
+                UseDefaultCredentials = true
+            };
+
+            var msg = new MailMessage("KingPim PasswordReset", $"{user.Email}")
+            {
+                Subject = "Reset Password",
+                IsBodyHtml = true,
+                Body = $"Click for reset " +
+                $"<a href={callbackUrl}>this link</a>"
+            };
+
+            smtpClient.Send(msg);
+            
 
             // TODO getting grid to work with user and email
             return Ok(user);
