@@ -59,7 +59,10 @@ namespace KingPim.Application.Repositories
                 DateUpdated = entity.DateUpdated,
                 EditedBy = entity.EditedBy,
                 Version = entity.Version,
-                PublishedStatus = entity.PublishedStatus
+                SubCategory = entity.SubCategory,
+                PublishedStatus = entity.PublishedStatus,
+                ProductAttributes = entity.ProductAttributes,
+                ProductAttributeValues = entity.ProductAttributeValues
 
             };
         }

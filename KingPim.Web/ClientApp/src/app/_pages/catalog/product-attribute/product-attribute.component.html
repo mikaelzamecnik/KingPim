@@ -23,26 +23,11 @@
   </div>
   <!--AttributeValues goes here-->
   <div class="col-sm">
-      <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Value</th>
-            </tr>
-          </thead>
 
-          <tbody>
-              <span *ngFor="let productvalue of productvalues">
-              <tr *ngFor="let s of productvalue.productAttributeValues">
-                  
-                  
-                      <td  >{{s.value}}</td>
-                   
-               </tr>
-              </span>
-          
-            
-          </tbody>
-        </table>
+    <ul *ngFor="let productvalue of productvalues">
+      <li *ngFor="let s of productvalue.productAttributeValues">
+      <strong>Attribute:</strong> {{s.productAttributeId}},<strong>Value:</strong> {{s.value}}</li>
+    </ul>
   </div>
 </div>
 </div>

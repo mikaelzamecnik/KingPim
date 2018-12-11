@@ -13,14 +13,15 @@ import { delay } from 'q';
 
 @Component({
   selector: 'app-product-attribute',
-  templateUrl: './product-attribute.component.html'})
+  templateUrl: './product-attribute.component.html'
+})
 export class ProductAttributeComponent implements OnInit {
   productvalues: Product[];
   attributegroups: AttributeGroup[];
   attributes: Attribute[];
   attvalues: AttributeValue[];
   angForm: FormGroup;
-    loading: boolean;
+  loading: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -45,7 +46,6 @@ export class ProductAttributeComponent implements OnInit {
     });
 
   }
-  // Add AttributeGroup to db
   addAttributeValue(productId, productattributeId, value) {
     console.log(productId, productattributeId, value);
     this.attv.addAttributevalue(productId, productattributeId, value);
@@ -66,7 +66,7 @@ export class ProductAttributeComponent implements OnInit {
       .getProducts()
       .subscribe((data: Product[]) => {
         this.productvalues = data;
-        console.log("SingleData",data);
+        console.log("SingleData", data);
       });
   }
   showAg() {
