@@ -152,7 +152,7 @@ namespace KingPim.Web.Controllers
             string userId = user.Username;
             var code = Guid.NewGuid().ToString();
             var callbackUrl = Url.Action(
-                controller: "Account",
+                controller: "Users",
                 action: "ResetPassword",
                 values: new { userId = user.Id, code },
                 protocol: Request.Scheme);
@@ -160,11 +160,11 @@ namespace KingPim.Web.Controllers
             var smtpClient = new SmtpClient
             {
                 Host = "localhost",
-                Port = 587,
+                Port = 25,
                 UseDefaultCredentials = true
             };
 
-            var msg = new MailMessage("KingPim PasswordReset", $"{user.Email}")
+            var msg = new MailMessage("KingPim@support.com", $"{user.Email}")
             {
                 Subject = "Reset Password",
                 IsBodyHtml = true,
@@ -173,7 +173,6 @@ namespace KingPim.Web.Controllers
             };
 
             smtpClient.Send(msg);
-            
 
             // TODO getting grid to work with user and email
             return Ok(user);
