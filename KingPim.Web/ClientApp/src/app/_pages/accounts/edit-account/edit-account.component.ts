@@ -23,8 +23,6 @@ export class EditAccountComponent implements OnInit {
     private alertService: AlertService
   ) {
 
-
-
     this.registerForm = this.formBuilder.group({
       id:[0],
       firstName: [''],
@@ -36,26 +34,16 @@ export class EditAccountComponent implements OnInit {
       confirmPassword: ['', Validators.required]
     }, {
         validator: Mustmatch('password', 'confirmPassword')
-        
       });
       console.log(this.registerForm);
   }
-
-  
-
   ngOnInit() {
-
     this.route.params.subscribe(params => {
       this.userService.getById(params['id']).subscribe(res => {
         this.user = res;
       });
     });
-
-    
   }
-  
-
-
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 

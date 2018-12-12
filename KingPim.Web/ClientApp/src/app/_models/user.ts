@@ -5,7 +5,7 @@ export class User {
     firstName: string;
     userRoleId: number;
     userRoles: any;
-  lastName: string;
-  email: string;
+    lastName: string;
+    email: string;
     token: string;
 }

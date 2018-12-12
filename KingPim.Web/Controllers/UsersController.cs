@@ -149,13 +149,17 @@ namespace KingPim.Web.Controllers
             if (user == null) {
                 return BadRequest(new { message = "Mail is Empty" });
             }
-            string userId = user.Username;
+            int userId = user.Id;
             var code = Guid.NewGuid().ToString();
-            var callbackUrl = Url.Action(
-                controller: "Users",
-                action: "ResetPassword",
-                values: new { userId = user.Id, code },
-                protocol: Request.Scheme);
+            var callbackUrl = $"https://localhost:44306/newpassword/{userId}/{code}";
+
+
+
+                //Url.Action(
+                //controller: "Users",
+                //action: "ResetPassword",
+                //values: new { userId = user.Id, code },
+                //protocol: Request.Scheme);
 
             var smtpClient = new SmtpClient
             {
@@ -174,9 +178,10 @@ namespace KingPim.Web.Controllers
 
             smtpClient.Send(msg);
 
-            // TODO getting grid to work with user and email
+            // TODO Change UserName to userId
             return Ok(user);
         }
+
 
     }
 }

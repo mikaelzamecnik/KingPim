@@ -45,6 +45,7 @@ import { PublishComponent } from './_pages/publish/publish.component';
 import { ProductAttributeComponent } from './_pages/catalog/product-attribute/product-attribute.component';
 import { EditAccountComponent } from './_pages/accounts/edit-account/edit-account.component';
 import { ResetPassword } from './login/reset-password';
+import { NewPassword } from './login/new-password';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { ResetPassword } from './login/reset-password';
     PublishComponent,
     ProductAttributeComponent,
     EditAccountComponent,
-    ResetPassword
+    ResetPassword,
+    NewPassword
   ],
   entryComponents: [
     ProductAttributeComponent

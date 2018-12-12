@@ -26,6 +26,7 @@ import { AttributeEditComponent } from './_pages/catalog/attributes/attribute-ed
 import { ExportComponent } from './_pages/export/export.component';
 import { PublishComponent } from './_pages/publish/publish.component';
 import { ResetPassword } from './login/reset-password';
+import { NewPassword } from './login/new-password';
 
 
 const routes: Routes = [
@@ -58,7 +59,12 @@ const routes: Routes = [
   },
   { path: 'register', component: RegisterComponent }, // Removed when going live
 
-  { path: '', component: LoginLayoutComponent, children: [{ path: 'login', component: LoginComponent }, { path: 'resetpassword', component: ResetPassword}] },
+  {
+    path: '', component: LoginLayoutComponent, children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'resetpassword', component: ResetPassword },
+      { path: 'newpassword/:userId/:code', component: NewPassword }
+    ]},
   { path: '**', redirectTo: '' }
 ];
 
