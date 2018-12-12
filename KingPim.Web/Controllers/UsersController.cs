@@ -97,9 +97,6 @@ namespace KingPim.Web.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-
-
-
             var users = _userService.GetAll();
             var userDtos = _mapper.Map<IList<UserDto>>(users);
             return Ok(userDtos);
@@ -151,9 +148,9 @@ namespace KingPim.Web.Controllers
             }
             int userId = user.Id;
             var code = Guid.NewGuid().ToString();
-            var callbackUrl = $"https://localhost:44306/newpassword/{userId}/{code}";
+            var callbackUrl = $"http://localhost:65432/newpassword/{userId}/{code}";
 
-
+            //TODO Change url to a more permanent
 
                 //Url.Action(
                 //controller: "Users",

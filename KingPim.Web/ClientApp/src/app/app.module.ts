@@ -46,6 +46,7 @@ import { ProductAttributeComponent } from './_pages/catalog/product-attribute/pr
 import { EditAccountComponent } from './_pages/accounts/edit-account/edit-account.component';
 import { ResetPassword } from './login/reset-password';
 import { NewPassword } from './login/new-password';
+import { UserService } from './_services';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { NewPassword } from './login/new-password';
     SubCategoryDataService,
     ProductDataService,
     AttributeGroupDataService,
-    AttributeDataService
+    AttributeDataService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

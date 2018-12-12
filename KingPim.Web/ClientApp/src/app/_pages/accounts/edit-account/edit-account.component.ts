@@ -13,29 +13,27 @@ import { User } from '../../../_models';
 export class EditAccountComponent implements OnInit {
   user: any = {};
   registerForm: FormGroup;
-  loading = false;
-  submitted = false;
 
   constructor(private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
     private alertService: AlertService
-  ) {
+  ) { this.createForm(); }
 
+  createForm() {
     this.registerForm = this.formBuilder.group({
-      id:[0],
-      firstName: [''],
-      lastName: [''],
-      username: [''],
-      email: [''],
-      userRoleId: [''],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: ['', Validators.required],
+      email: ['', Validators.required],
+      userRoleId: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     }, {
         validator: Mustmatch('password', 'confirmPassword')
       });
-      console.log(this.registerForm);
+    console.log(this.registerForm);
   }
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -44,22 +42,12 @@ export class EditAccountComponent implements OnInit {
       });
     });
   }
-  // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
-
-  onSubmit() {
-    this.submitted = true;
-    this.loading = true;
-    this.userService.update(this.user.id, this.registerForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.alertService.success('Update successful', true);
-          this.router.navigate(['/accounts']);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+  updateUser(firstName, lastName, username, email,
+    userRoleId, password, confirmPassword ) {
+    this.route.params.subscribe(params => {
+      this.userService.update(firstName, lastName, username, email,
+        userRoleId, password, confirmPassword, params['id']);
+      this.router.navigate(['/accounts']);
+    });
   }
 }

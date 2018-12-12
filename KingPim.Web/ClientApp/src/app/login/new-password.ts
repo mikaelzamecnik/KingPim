@@ -2,40 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { AlertService, AuthenticationService, UserService } from '../_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, Params, ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
 import { Mustmatch } from '../../app/_helpers/mustmatch';
 
-
-@Component({
-  template: `
-   <form [formGroup]="angForm" novalidate> Password:
-<input type=text placeholder="Password" formControlName="password" #password />
-Confirm Password:
-<input type=text placeholder="Confirm Password" formControlName="confirmpassword" #confirmpassword />
-<input type=text formControlName="firstname" #firstname [value]="user.firstName" />
-<input type=text formControlName="lastname" #lastname [value]="user.lastName" />
-<input type=text formControlName="username" #username [value]="user.username" />
-<input type=text formControlName="email" #email [value]="user.email"/>
-<input type=text formControlName="userRoleId" #userRoleId [value]="user.userRoleId" />
-<button (click)="submit(password.value,
-confirmpassword.value,
-firstname.value,
-lastname.value,
-username.value,
-email.value,
-userRoleId.value
-)">Reset</button></form>
-  `
-})
+@Component({ templateUrl: 'new-password.html' })
 export class NewPassword implements OnInit {
-  angForm: FormGroup;
+  registerForm: FormGroup;
   user: any = {};
   loading = false;
   submitted = false;
 
   constructor(
-    private fb: FormBuilder,
-    private us: UserService,
+    private formBuilder: FormBuilder,
+    private userService: UserService,
     private alertService: AlertService,
     private router: Router,
     private route: ActivatedRoute,
@@ -45,22 +23,24 @@ export class NewPassword implements OnInit {
 
 
   createForm() {
-    this.angForm = this.fb.group({
-      id: 2,
-      firstname: [''],
-      lastname: [''],
-      username: [''],
-      email: [''],
-      userRoleId: [''],
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: ['', Validators.required],
+      email: ['', Validators.required],
+      userRoleId: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmpassword: ['', Validators.required]
-    })
+      confirmPassword: ['', Validators.required]
+    }, {
+        validator: Mustmatch('password', 'confirmPassword')
+      });
+    console.log(this.registerForm);
   }
 
   ngOnInit() {
 
     this.route.params.subscribe(params => {
-      this.us.getById(params['userId']).subscribe(res => {
+      this.userService.getById(params['userId']).subscribe(res => {
         this.user = res;
         console.log(res);
       });
@@ -68,24 +48,13 @@ export class NewPassword implements OnInit {
 
 
   }
-
-
-  // convenience getter for easy access to form fields
-  get f() { return this.angForm.controls; }
-  submit() {
-    this.submitted = true;
-    this.loading = true;
-    this.us.update(this.user.id, this.angForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.alertService.success('Update successful', true);
-          this.router.navigate(['/']);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+  updateUser(firstName, lastName, username, email,
+    userRoleId, password, confirmPassword) {
+    this.route.params.subscribe(params => {
+      this.userService.update(firstName, lastName, username, email,
+        userRoleId, password, confirmPassword, params['id']);
+      this.router.navigate(['/']);
+    });
+  }
 
   }
-}
