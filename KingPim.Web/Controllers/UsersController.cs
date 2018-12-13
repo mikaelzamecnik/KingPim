@@ -113,6 +113,7 @@ namespace KingPim.Web.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody]UserDto userDto)
         {
+            if(userDto.Code == null) {
             // map dto to entity and set id
             var user = _mapper.Map<User>(userDto);
             user.Id = id;
@@ -128,6 +129,10 @@ namespace KingPim.Web.Controllers
                 // return error message if there was an exception
                 return BadRequest(new { message = ex.Message });
             }
+            }
+
+            return Ok();
+            //TODO change Update  or create new update for ResetPassword
         }
 
         [HttpDelete("{id}")]
@@ -147,16 +152,10 @@ namespace KingPim.Web.Controllers
                 return BadRequest(new { message = "Mail is Empty" });
             }
             int userId = user.Id;
-            var code = Guid.NewGuid().ToString();
+            var code = new UserDto { Code = Guid.NewGuid().ToString() };
             var callbackUrl = $"https://localhost:44306/newpassword/{userId}/{code}";
 
             //TODO Change url to a more permanent
-
-                //Url.Action(
-                //controller: "Users",
-                //action: "ResetPassword",
-                //values: new { userId = user.Id, code },
-                //protocol: Request.Scheme);
 
             var smtpClient = new SmtpClient
             {

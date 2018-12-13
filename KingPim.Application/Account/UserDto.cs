@@ -15,5 +15,6 @@ namespace KingPim.Application.Account
         public int? UserRoleId { get; set; }
         public virtual UserRole UserRoles { get; set; }
         public string Password { get; set; }
+        public string Code { get; set; }
     }
 }

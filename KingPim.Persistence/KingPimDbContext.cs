@@ -27,7 +27,7 @@ public class KingPimDbContext: DbContext
         {
             base.OnModelCreating(modelBuilder);
 
-        }       
+        }
 
     }
 }
