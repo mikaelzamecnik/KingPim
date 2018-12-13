@@ -63,7 +63,7 @@ const routes: Routes = [
     path: '', component: LoginLayoutComponent, children: [
       { path: 'login', component: LoginComponent },
       { path: 'resetpassword', component: ResetPassword },
-      { path: 'newpassword/:userId/:code', component: NewPassword }
+      { path: 'newpassword/:id/:code', component: NewPassword }
     ]},
   { path: '**', redirectTo: '' }
 ];

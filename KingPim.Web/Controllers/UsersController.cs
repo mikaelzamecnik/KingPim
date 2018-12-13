@@ -148,7 +148,7 @@ namespace KingPim.Web.Controllers
             }
             int userId = user.Id;
             var code = Guid.NewGuid().ToString();
-            var callbackUrl = $"http://localhost:65432/newpassword/{userId}/{code}";
+            var callbackUrl = $"https://localhost:44306/newpassword/{userId}/{code}";
 
             //TODO Change url to a more permanent
 

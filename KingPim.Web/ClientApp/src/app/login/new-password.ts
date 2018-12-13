@@ -6,24 +6,19 @@ import { Mustmatch } from '../../app/_helpers/mustmatch';
 
 @Component({ templateUrl: 'new-password.html' })
 export class NewPassword implements OnInit {
-  registerForm: FormGroup;
   user: any = {};
-  loading = false;
-  submitted = false;
+  registerForm: FormGroup;
 
-  constructor(
+  constructor(private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private userService: UserService,
-    private alertService: AlertService,
     private router: Router,
-    private route: ActivatedRoute,
-  ) {
-    this.createForm();
-  }
-
+    private userService: UserService,
+    private alertService: AlertService
+  ) { this.createForm(); }
 
   createForm() {
     this.registerForm = this.formBuilder.group({
+      id: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       username: ['', Validators.required],
@@ -36,17 +31,12 @@ export class NewPassword implements OnInit {
       });
     console.log(this.registerForm);
   }
-
   ngOnInit() {
-
     this.route.params.subscribe(params => {
-      this.userService.getById(params['userId']).subscribe(res => {
+      this.userService.getById(params['id']).subscribe(res => {
         this.user = res;
-        console.log(res);
       });
     });
-
-
   }
   updateUser(firstName, lastName, username, email,
     userRoleId, password, confirmPassword) {
