@@ -71,6 +71,7 @@ namespace KingPim.Web.Controllers
                 user.FirstName,
                 user.LastName,
                 user.Email,
+                user.UserRoleId,
                 Token = tokenString
             });
         }
@@ -152,7 +153,7 @@ namespace KingPim.Web.Controllers
                 return BadRequest(new { message = "Mail is Empty" });
             }
             int userId = user.Id;
-            var code = new UserDto { Code = Guid.NewGuid().ToString() };
+            var code = Guid.NewGuid().ToString();
             var callbackUrl = $"https://localhost:44306/newpassword/{userId}/{code}";
 
             //TODO Change url to a more permanent
