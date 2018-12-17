@@ -29,7 +29,12 @@ public getSubCategoriesToJson() {
   return this.http.get(this.accessPointUrl + '/SubCategories', {
     responseType: 'blob', headers: this.headers
   });
-}
+  }
+  public getCatalogToJson() {
+    return this.http.get(this.accessPointUrl + '/Catalog', {
+      responseType: 'blob', headers: this.headers
+    });
+  }
 
 }
 

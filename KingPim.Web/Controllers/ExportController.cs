@@ -75,6 +75,31 @@ namespace KingPim.Web.Controllers
 
         }
 
+        // Export SubCategories to JSON
+        [HttpGet]
+        [Route("pim/[controller]/Catalog")]
+        public IActionResult GetCatalogToJson()
+        {
+
+
+            var subcategories = _subCategoryRepo.GetAllSubCategoriesExport();
+            var getSubCategories = ExportHelper.GetSubcategories(subcategories);
+            var subcategoryJson = JsonConvert.SerializeObject(getSubCategories);
+
+            var categories = _categoryRepo.GetAllCategoriesExport();
+            var getCategories = ExportHelper.GetCategories(categories);
+            var categoryJson = JsonConvert.SerializeObject(getCategories);
+
+            var products = _productRepo.GetAllProductsExport();
+            var getProducts = ExportHelper.GetProducts(products);
+            var productJson = JsonConvert.SerializeObject(getProducts);
+            var bytes = Encoding.UTF8.GetBytes(categoryJson + subcategoryJson + productJson);
+
+
+            return File(bytes, "application/octet-stream", "catalog.json");
+
+        }
+
         // TODO Export Separate items in each product/category/subcategory
 
     }
