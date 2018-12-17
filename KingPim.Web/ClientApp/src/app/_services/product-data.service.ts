@@ -56,4 +56,13 @@ export class ProductDataService {
       .put(`${this.accessPointUrl}/${id}`, obj)
       .subscribe(res => console.log('Done'));
   }
+  updateProductStatus(productid, publishedStatus) {
+    const obj = {
+      publishedStatus: publishedStatus
+    };
+    this
+      .http
+      .put(`${this.accessPointUrl}/publish/${productid}`, obj)
+      .subscribe(res => console.log('Done'));
+  }
 }

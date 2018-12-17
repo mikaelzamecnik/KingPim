@@ -63,7 +63,10 @@ namespace KingPim.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> CreateProduct([FromBody] ProductModel product)
         {
-
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             product.DateCreated = DateTime.Now;
             product.EditedBy = User.Identity.Name;
 
@@ -77,9 +80,26 @@ namespace KingPim.Web.Controllers
         [HttpPut("{id}")]
         [ValidateModel]
         public async Task<IActionResult> UpdateProduct([FromRoute] int id, [FromBody] ProductModel product)
-
-         {
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            product.Id = id;
             await _productRepo.UpdateProduct(product);
+            return NoContent();
+        }
+
+        [HttpPut("publish/{productid}")]
+        [ValidateModel]
+        public async Task<IActionResult> PublishProduct([FromRoute] int productid, [FromBody] ProductModel product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            product.Id = productid;
+            await _productRepo.PublishProduct(product);
             return NoContent();
         }
         // DELETE: pim/Category/SubCategory/Product/1

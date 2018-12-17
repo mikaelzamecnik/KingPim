@@ -44,10 +44,11 @@ export class ProductEditComponent implements OnInit {
         this.product = res;
       });
     });
+    this.showSubCategories();
   }
-  updateProduct(name, description, subcategoryId, publishedStatus) {
+  updateProduct(name, description, subCategoryId, publishedStatus) {
     this.route.params.subscribe(params => {
-      this.ps.updateProduct(name, description, subcategoryId, publishedStatus, params['id']);
+      this.ps.updateProduct(name, description, subCategoryId, publishedStatus, params['id']);
       console.log(publishedStatus);
       this.router.navigate(['/catalog']);
     });

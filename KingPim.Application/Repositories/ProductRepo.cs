@@ -55,11 +55,12 @@ namespace KingPim.Application.Repositories
             {
                 Id = entity.Id,
                 Name = entity.Name,
+                Description = entity.Description,
                 DateCreated = entity.DateCreated,
                 DateUpdated = entity.DateUpdated,
                 EditedBy = entity.EditedBy,
                 Version = entity.Version,
-                SubCategory = entity.SubCategory,
+                SubCategoryId = entity.SubCategoryId,
                 PublishedStatus = entity.PublishedStatus,
                 ProductAttributes = entity.ProductAttributes,
                 ProductAttributeValues = entity.ProductAttributeValues
@@ -89,8 +90,25 @@ namespace KingPim.Application.Repositories
                 await _context.SaveChangesAsync();
         }
 
+
         // Update Product
         public async Task UpdateProduct(ProductModel model)
+        {
+            var entity = await _context.Products.SingleAsync(c => c.Id == model.Id);
+            {
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+                entity.DateUpdated = model.DateUpdated;
+                entity.EditedBy = model.EditedBy;
+                entity.Version = entity.Version + 1;
+
+                _context.Products.Add(entity);
+
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task PublishProduct(ProductModel model)
         {
             var ctxProduct = _context.Products.FirstOrDefault(p => p.Id.Equals(model.Id));
             if (ctxProduct != null)
@@ -99,7 +117,6 @@ namespace KingPim.Application.Repositories
                 var ctxSubcategory = _context.SubCategories.FirstOrDefault(s => s.Id.Equals(ctxProduct.SubCategoryId));
                 // The products subcategories category.
                 var ctxCategory = _context.Categories.FirstOrDefault(c => c.Id.Equals(ctxSubcategory.CategoryId));
-
                 if (!ctxProduct.PublishedStatus)
                 {
                     ctxProduct.PublishedStatus = true;
@@ -109,7 +126,6 @@ namespace KingPim.Application.Repositories
                 else
                 {
                     ctxProduct.PublishedStatus = false;
-
                     // If all the subcategory products have false (unpublished) for all products, then the subcategory needs to also be false (unpublished).
                     if (ctxSubcategory.Products.Count(p => p.PublishedStatus) == 0)
                     {
@@ -121,25 +137,9 @@ namespace KingPim.Application.Repositories
                         ctxCategory.PublishedStatus = false;
                     }
                 }
-
-
-                var entity = await _context.Products.SingleAsync(c => c.Id == model.Id);
-                {
-                    entity.Name = model.Name;
-                    entity.Description = model.Description;
-                    entity.DateUpdated = model.DateUpdated;
-                    entity.EditedBy = model.EditedBy;
-                    entity.Version = entity.Version + 1;
-
-                    _context.Products.Update(entity);
-
-                }
-
                 await _context.SaveChangesAsync();
-
             }
         }
-
         // Delete Product
         public async Task DeleteProduct(int id)
         {
@@ -149,7 +149,6 @@ namespace KingPim.Application.Repositories
             await _context.SaveChangesAsync();
 
         }
-
         // Return All products for export
         public IEnumerable<Product> Products => _context.Products;
         public IEnumerable<Product> GetAllProductsExport()

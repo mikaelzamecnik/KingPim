@@ -13,6 +13,7 @@ namespace KingPim.Application.Repositories.Interfaces
         Task<ProductModel> GetProduct(int id);
         Task CreateProduct(ProductModel model);
         Task UpdateProduct(ProductModel model);
+        Task PublishProduct(ProductModel model);
         Task DeleteProduct(int id);
         IEnumerable<Product> GetAllProductsExport();
     }
