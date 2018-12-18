@@ -18,6 +18,8 @@ namespace KingPim.Persistence
         {
             // Create Admin , Publisher, Editor Accounts
 
+            // Not operational just yet
+
             password = "admin11";
             CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
 

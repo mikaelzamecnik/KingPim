@@ -63,17 +63,9 @@ namespace KingPim.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> CreateProduct([FromBody] ProductModel product)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
             product.DateCreated = DateTime.Now;
-            product.EditedBy = User.Identity.Name;
-
+            product.EditedBy = "Admin"; // Should connect to users
             await _productRepo.CreateProduct(product);
-
-
-
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
         // PUT: pim/Category/SubCategory/Product/1 , Dont work all the way
@@ -81,10 +73,7 @@ namespace KingPim.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> UpdateProduct([FromRoute] int id, [FromBody] ProductModel product)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            
             product.Id = id;
             await _productRepo.UpdateProduct(product);
             return NoContent();
@@ -94,10 +83,6 @@ namespace KingPim.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> PublishProduct([FromRoute] int productid, [FromBody] ProductModel product)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
             product.Id = productid;
             await _productRepo.PublishProduct(product);
             return NoContent();
