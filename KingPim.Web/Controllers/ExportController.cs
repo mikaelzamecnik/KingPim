@@ -100,7 +100,7 @@ namespace KingPim.Web.Controllers
 
         }
 
-        // TODO Export Separate items in each product/category/subcategory
+        // TODO Export Separate items in each product/category/subcategory for angular tree view
 
     }
     

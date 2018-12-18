@@ -23,8 +23,9 @@
   </div>
   <!--AttributeValues goes here-->
   <div class="col-sm">
-
+    <h5>All attributes</h5>
     <ul *ngFor="let productvalue of productvalues">
+      <li>{{productvalue.name}}</li>
       <li *ngFor="let s of productvalue.productAttributeValues">
       <strong>Attribute:</strong> {{s.productAttributeId}},<strong>Value:</strong> {{s.value}}</li>
     </ul>

@@ -61,7 +61,6 @@ namespace KingPim.Application.Account.Service
 
         public User Create(User user, string password)
         {
-
             // validation
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required");
