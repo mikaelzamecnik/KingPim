@@ -16,7 +16,8 @@
             <mat-card-title>General Product Information</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-
+            <input type="hidden" [value]="product.version" formControlName="version" #version />
+            <input type="hidden" [value]="product.subCategoryId" formControlName="subCategoryId" #subCategoryId />
             <div class="formcontainer">
               <mat-radio-group formControlName="publishedStatus" #publishedStatus placeholder="Status" [value]="product.publishedStatus">
                 <mat-radio-button [value]=true>
@@ -32,20 +33,21 @@
               <mat-form-field>
                 <textarea matInput type="text" placeholder="Description" class="form-control" formControlName="description" #description [value]="product.description"></textarea>
               </mat-form-field>
-              <mat-form-field>
-                <mat-select placeholder="Select SubCategory" formControlName="subCategoryId" #subCategoryId>
-                  <mat-option [value]="subCategory.id" *ngFor="let subCategory of subcategories ">
-                    {{ subCategory.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+              <!--Should not be able to change subcategory when editing a product-->
+              <!--<mat-form-field>
+      <mat-select placeholder="Select SubCategory" formControlName="subCategoryId" #subCategoryId>
+        <mat-option [value]="subCategory.id" *ngFor="let subCategory of subcategories ">
+          {{ subCategory.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>-->
               <br />
             </div>
           </mat-card-content>
         </mat-card>
         <br />
         <mat-card-actions>
-          <button mat-raised-button (click)="updateProduct(name.value, description.value, subCategoryId.value, publishedStatus.value)">
+          <button mat-raised-button (click)="updateProduct(name.value, description.value, subCategoryId.value, version.value, publishedStatus.value)">
             Update Product
           </button>
         </mat-card-actions>

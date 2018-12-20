@@ -75,6 +75,9 @@ namespace KingPim.Web.Controllers
         {
             
             product.Id = id;
+            product.EditedBy = "Admin";
+            product.DateUpdated = DateTime.Now;
+            product.Version = product.Version + 1;
             await _productRepo.UpdateProduct(product);
             return NoContent();
         }
@@ -85,7 +88,7 @@ namespace KingPim.Web.Controllers
         {
             product.Id = productid;
             await _productRepo.PublishProduct(product);
-            return NoContent();
+            return Ok();
         }
         // DELETE: pim/Category/SubCategory/Product/1
         [HttpDelete("{id}")]

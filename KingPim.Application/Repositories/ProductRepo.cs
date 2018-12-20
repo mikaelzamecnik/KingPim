@@ -94,29 +94,39 @@ namespace KingPim.Application.Repositories
         // Update Product
         public async Task UpdateProduct(ProductModel model)
         {
-            var entity = await _context.Products.SingleAsync(c => c.Id == model.Id);
+            try
             {
-                entity.Name = model.Name;
-                entity.Description = model.Description;
-                entity.DateUpdated = model.DateUpdated;
-                entity.EditedBy = model.EditedBy;
-                entity.Version = entity.Version + 1;
+                var entity = await _context.Products.FirstOrDefaultAsync(c => c.Id.Equals(model.Id));
+                {
+                    entity.Name = model.Name;
+                    entity.Description = model.Description;
+                    entity.DateUpdated = model.DateUpdated;
+                    entity.EditedBy = model.EditedBy;
+                    entity.SubCategoryId = model.SubCategoryId;
+                    entity.Version = model.Version;
 
-                _context.Products.Add(entity);
+                    _context.Products.Add(entity);
 
-                await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
+                }
             }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
         public async Task PublishProduct(ProductModel model)
         {
-            var ctxProduct = _context.Products.FirstOrDefault(p => p.Id.Equals(model.Id));
+            var ctxProduct = await _context.Products.FirstOrDefaultAsync(p => p.Id.Equals(model.Id));
             if (ctxProduct != null)
             {
                 // The products subcategory.
-                var ctxSubcategory = _context.SubCategories.FirstOrDefault(s => s.Id.Equals(ctxProduct.SubCategoryId));
+                var ctxSubcategory = await _context.SubCategories.FirstOrDefaultAsync(s => s.Id.Equals(ctxProduct.SubCategoryId));
                 // The products subcategories category.
-                var ctxCategory = _context.Categories.FirstOrDefault(c => c.Id.Equals(ctxSubcategory.CategoryId));
+                var ctxCategory = await _context.Categories.FirstOrDefaultAsync(c => c.Id.Equals(ctxSubcategory.CategoryId));
                 if (!ctxProduct.PublishedStatus)
                 {
                     ctxProduct.PublishedStatus = true;

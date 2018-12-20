@@ -35,20 +35,22 @@ export class ProductEditComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       subCategoryId: ['', Validators.required],
-      publishedStatus: ['', Validators.required]
+      publishedStatus: ['', Validators.required],
+      version: ['', Validators.required],
     });
   }
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.ps.editProduct(params['id']).subscribe(res => {
         this.product = res;
+        console.log(res);
       });
     });
     this.showSubCategories();
   }
-  updateProduct(name, description, subCategoryId, publishedStatus) {
+  updateProduct(name, description, subCategoryId, version, publishedStatus) {
     this.route.params.subscribe(params => {
-      this.ps.updateProduct(name, description, subCategoryId, publishedStatus, params['id']);
+      this.ps.updateProduct(name, description, subCategoryId, version, publishedStatus, params['id']);
       console.log(publishedStatus);
       this.router.navigate(['/catalog']);
     });

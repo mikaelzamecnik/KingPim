@@ -10,7 +10,7 @@ namespace KingPim.Domain.Entities
         public DateTime DateUpdated { get; set; }
         public string Description { get; set; }
         public string EditedBy { get; set; }
-        public double Version { get; set; }
+        public int Version { get; set; }
         public bool PublishedStatus { get; set; }
     }
 }

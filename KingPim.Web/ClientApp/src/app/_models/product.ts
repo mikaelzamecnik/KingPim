@@ -10,5 +10,6 @@ export class Product {
   publishedStatus: boolean;
   editedBy: string;
   subCategory: any;
+  subCategoryId: number;
   productAttributeValues: AttributeValue[ ];
 }

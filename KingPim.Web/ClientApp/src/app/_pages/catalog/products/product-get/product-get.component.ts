@@ -3,6 +3,7 @@ import { ProductDataService, AuthenticationService } from '../../../../_services
 import { Product, User } from '../../../../_models';
 import { MatDialog, } from '@angular/material';
 import { ProductAttributeComponent } from '../../product-attribute/product-attribute.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-get', templateUrl: './product-get.component.html'
@@ -34,9 +35,10 @@ export class ProductGetComponent implements OnInit {
     this.showProducts();
   }
   changeStatus(id, publishedStatus) {
-    this.ps.updateProductStatus(id, publishedStatus)
-    this.showProducts(); // Need some delay or observable state
-    console.log(publishedStatus);
+    this.ps.updateProductStatus(id, publishedStatus);
+
+      console.log(publishedStatus);
+
   }
   // to show products oninit and after deletion
   showProducts() {
