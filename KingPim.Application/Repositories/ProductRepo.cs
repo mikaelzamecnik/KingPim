@@ -96,7 +96,7 @@ namespace KingPim.Application.Repositories
         {
             try
             {
-                var entity = await _context.Products.FirstOrDefaultAsync(c => c.Id.Equals(model.Id));
+                var entity = await _context.Products.SingleAsync(c => c.Id == model.Id);
                 {
                     entity.Name = model.Name;
                     entity.Description = model.Description;
@@ -105,7 +105,7 @@ namespace KingPim.Application.Repositories
                     entity.SubCategoryId = model.SubCategoryId;
                     entity.Version = model.Version;
 
-                    _context.Products.Add(entity);
+                    _context.Products.Update(entity);
 
                     await _context.SaveChangesAsync();
                 }
