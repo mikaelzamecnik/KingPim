@@ -83,7 +83,7 @@ namespace KingPim.Application.Repositories
             {
                 
 
-                _context.ProductAttributeValues.Add(entity);
+                _context.ProductAttributeValues.Update(entity);
 
                 await _context.SaveChangesAsync();
             }

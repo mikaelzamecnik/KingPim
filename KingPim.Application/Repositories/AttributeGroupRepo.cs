@@ -98,7 +98,7 @@ namespace KingPim.Application.Repositories
                 entity.Id = model.Id;
                 entity.Name = model.Name;
 
-                _context.AttributeGroups.Add(entity);
+                _context.AttributeGroups.Update(entity);
 
                 await _context.SaveChangesAsync();
             }

@@ -36,7 +36,7 @@ export class ProductGetComponent implements OnInit {
   }
   changeStatus(id, publishedStatus) {
     this.ps.updateProductStatus(id, publishedStatus);
-
+    this.showProducts();
       console.log(publishedStatus);
 
   }

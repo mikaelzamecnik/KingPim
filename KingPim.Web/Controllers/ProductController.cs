@@ -88,7 +88,7 @@ namespace KingPim.Web.Controllers
         {
             product.Id = productid;
             await _productRepo.PublishProduct(product);
-            return Ok();
+            return Ok(product);
         }
         // DELETE: pim/Category/SubCategory/Product/1
         [HttpDelete("{id}")]
