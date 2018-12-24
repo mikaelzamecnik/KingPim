@@ -21,6 +21,10 @@ export class AppComponent {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
+  get isAdmin() {
+    return this.currentUser && this.currentUser.userRoleId === 1;
+  }
+
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
