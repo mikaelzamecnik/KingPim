@@ -14,9 +14,12 @@ export class ProductGetComponent implements OnInit {
   columnsToDisplay: string[] = ['Id', 'Name', 'SubCategory',
     'Created', 'Updated', 'Version', 'Editedby', 'Published', 'Edit', 'Delete'];
   productData: Product[];
+  currentUser: User;
 
   constructor(private ps: ProductDataService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
   // Opens attribute modal
   openProdAttDialog(id, name, subCategory) {
@@ -33,6 +36,16 @@ export class ProductGetComponent implements OnInit {
   }
   ngOnInit() {
     this.showProducts();
+  }
+
+  get isAdmin() {
+    return this.currentUser && this.currentUser.userRoleId === 1;
+  }
+  get isPublisher() {
+    return this.currentUser && this.currentUser.userRoleId === 2;
+  }
+  get isEditor() {
+    return this.currentUser && this.currentUser.userRoleId === 3;
   }
   changeStatus(id, publishedStatus) {
     this.ps.updateProductStatus(id, publishedStatus);
