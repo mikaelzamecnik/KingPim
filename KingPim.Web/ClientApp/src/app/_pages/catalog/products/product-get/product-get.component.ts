@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ProductDataService, AuthenticationService } from '../../../../_services';
 import { Product, User } from '../../../../_models';
 import { MatDialog, } from '@angular/material';
 import { ProductAttributeComponent } from '../../product-attribute/product-attribute.component';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-get', templateUrl: './product-get.component.html'
@@ -34,19 +33,12 @@ export class ProductGetComponent implements OnInit {
     });
     console.log('opened', id);
   }
+
   ngOnInit() {
     this.showProducts();
   }
 
-  get isAdmin() {
-    return this.currentUser && this.currentUser.userRoleId === 1;
-  }
-  get isPublisher() {
-    return this.currentUser && this.currentUser.userRoleId === 2;
-  }
-  get isEditor() {
-    return this.currentUser && this.currentUser.userRoleId === 3;
-  }
+  // Change publishstatus
   changeStatus(id, publishedStatus) {
     this.ps.updateProductStatus(id, publishedStatus);
     this.showProducts();
@@ -62,10 +54,23 @@ export class ProductGetComponent implements OnInit {
         console.log(data);
       });
   }
+  // Delete product
   deleteProduct(productID) {
     this.ps.deleteProduct(productID).subscribe(res => {
       this.showProducts();
       console.log('Deleted', productID);
     });
   }
+
+  // UserRole
+  get isAdmin() {
+    return this.currentUser && this.currentUser.userRoleId === 1;
+  }
+  get isPublisher() {
+    return this.currentUser && this.currentUser.userRoleId === 2;
+  }
+  get isEditor() {
+    return this.currentUser && this.currentUser.userRoleId === 3;
+  }
+
 }
