@@ -40,9 +40,9 @@ export class ProductGetComponent implements OnInit {
 
   // Change publishstatus
   changeStatus(id, publishedStatus) {
-    this.ps.updateProductStatus(id, publishedStatus);
-    this.showProducts();
-      console.log(publishedStatus);
+    this.ps.updateProductStatus(id, publishedStatus).subscribe(res => {
+      this.showProducts();
+    });
 
   }
   // to show products oninit and after deletion
@@ -54,6 +54,7 @@ export class ProductGetComponent implements OnInit {
         console.log(data);
       });
   }
+
   // Delete product
   deleteProduct(productID) {
     this.ps.deleteProduct(productID).subscribe(res => {

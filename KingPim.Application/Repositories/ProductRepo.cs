@@ -115,7 +115,6 @@ namespace KingPim.Application.Repositories
 
                 throw e;
             }
-            
         }
 
         public async Task PublishProduct(ProductModel model)

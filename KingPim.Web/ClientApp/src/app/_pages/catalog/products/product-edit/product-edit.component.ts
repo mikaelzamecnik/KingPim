@@ -3,7 +3,7 @@ import { ProductDataService, AuthenticationService, UserService } from '../../..
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SubCategoryDataService } from '../../../../_services/sub-category-data.service';
-import { SubCategory, AttributeGroup, User } from '../../../../_models';
+import { SubCategory, AttributeGroup, User, Product } from '../../../../_models';
 
 @Component({
   selector: 'app-product-edit', templateUrl: './product-edit.component.html'})
@@ -13,6 +13,7 @@ export class ProductEditComponent implements OnInit {
   subcategories: SubCategory[];
   attributegroups: AttributeGroup[];
   currentUser: User;
+  productData: Product[];
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -29,6 +30,15 @@ export class ProductEditComponent implements OnInit {
       .getSubCategories()
       .subscribe((data: SubCategory[]) => {
         this.subcategories = data;
+        console.log(data);
+      });
+  }
+  // to show products oninit and after deletion
+  showProducts() {
+    this.ps
+      .getProducts()
+      .subscribe((data: Product[]) => {
+        this.productData = data;
         console.log(data);
       });
   }
@@ -55,7 +65,10 @@ export class ProductEditComponent implements OnInit {
   }
   updateProduct(name, description, subCategoryId, version, editedBy) {
     this.route.params.subscribe(params => {
-      this.ps.updateProduct(name, description, subCategoryId, version, editedBy, params['id']);
+      this.ps.updateProduct(name, description, subCategoryId, version, editedBy, params['id'])
+        .subscribe(res => {
+          this.showProducts();
+      });
       this.router.navigate(['/catalog']);
     });
   }

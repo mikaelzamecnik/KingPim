@@ -31,9 +31,8 @@ export class ProductDataService {
       subCategoryId: subCategoryId,
       editedBy: editedBy
     };
-    console.log(obj);
-    this.http.post(`${this.accessPointUrl}/`, obj)
-      .subscribe(res => console.log('Done'));
+    return this
+    .http.post(`${this.accessPointUrl}/`, obj);
   }
   deleteProduct(id) {
     return this
@@ -53,18 +52,16 @@ export class ProductDataService {
       version: version,
       editedBy: editedBy
     };
-    this
+    return this
       .http
-      .put(`${this.accessPointUrl}/${id}`, obj)
-      .subscribe(res => console.log('Done'));
+      .put(`${this.accessPointUrl}/${id}`, obj);
   }
   updateProductStatus(productid, publishedStatus) {
     const obj = {
       publishedStatus: publishedStatus
     };
-    this
+    return this
       .http
-      .put(`${this.accessPointUrl}/publish/${productid}`, obj)
-      .subscribe(res => console.log('Done'));
+      .put(`${this.accessPointUrl}/publish/${productid}`, obj);
   }
 }

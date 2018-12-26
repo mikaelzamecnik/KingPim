@@ -64,6 +64,7 @@ namespace KingPim.Web.Controllers
         public async Task<IActionResult> CreateProduct([FromBody] ProductModel product)
         {
             product.DateCreated = DateTime.Now;
+            product.DateUpdated = DateTime.Now;
             await _productRepo.CreateProduct(product);
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
