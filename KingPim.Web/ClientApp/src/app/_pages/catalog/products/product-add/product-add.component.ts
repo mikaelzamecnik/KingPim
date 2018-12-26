@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ProductDataService } from '../../../../_services';
+import { ProductDataService, AuthenticationService } from '../../../../_services';
 import { Router } from '@angular/router';
 import { SubCategoryDataService } from '../../../../_services/sub-category-data.service';
-import { SubCategory } from '../../../../_models';
-import { Product } from '../../../../_models';
+import { Product, User, SubCategory } from '../../../../_models';
 
 @Component({
   selector: 'app-product-add', templateUrl: './product-add.component.html'})
@@ -13,19 +12,23 @@ export class ProductAddComponent implements OnInit {
   angForm: FormGroup;
   subcategories: SubCategory[];
   products: Product[];
+  currentUser: User;
 
   constructor(
     private fb: FormBuilder,
     private ps: ProductDataService,
     private scs: SubCategoryDataService,
-    private router: Router) {
+    private router: Router,
+    private authenticationService: AuthenticationService) {
     this.createForm();
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
   createForm() {
     this.angForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      subCategoryId: ['', Validators.required]
+      subCategoryId: ['', Validators.required],
+      editedBy: ['', Validators.required]
     });
 
   }
@@ -39,10 +42,10 @@ export class ProductAddComponent implements OnInit {
       });
   }
   // Add Product to db
-  addProduct(name, description, subCategoryId) {
+  addProduct(name, description, subCategoryId, editedBy) {
     console.log(subCategoryId);
     this.loading = true;
-    this.ps.addProduct(name, description, subCategoryId);
+    this.ps.addProduct(name, description, subCategoryId, editedBy);
     this.router.navigate(['/catalog']); // TODO routing goes to fast, backend cant keep up
   }
 

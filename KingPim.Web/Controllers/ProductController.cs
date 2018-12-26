@@ -64,7 +64,6 @@ namespace KingPim.Web.Controllers
         public async Task<IActionResult> CreateProduct([FromBody] ProductModel product)
         {
             product.DateCreated = DateTime.Now;
-            product.EditedBy = "Admin"; // Should connect to users
             await _productRepo.CreateProduct(product);
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
@@ -73,9 +72,7 @@ namespace KingPim.Web.Controllers
         [ValidateModel]
         public async Task<IActionResult> UpdateProduct([FromRoute] int id, [FromBody] ProductModel product)
         {
-            
             product.Id = id;
-            product.EditedBy = "Admin";
             product.DateUpdated = DateTime.Now;
             product.Version = product.Version + 1;
             await _productRepo.UpdateProduct(product);

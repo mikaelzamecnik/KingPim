@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
 import { Mustmatch } from '../../../_helpers';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService, AlertService } from '../../../_services';
+import { UserService } from '../../../_services';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../../../_models';
 
 @Component({
   selector: 'app-edit-account',
@@ -18,7 +16,6 @@ export class EditAccountComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private alertService: AlertService
   ) { this.createForm(); }
 
   createForm() {

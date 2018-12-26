@@ -24,11 +24,12 @@ export class ProductDataService {
       .get(`${this.accessPointUrl}/${id}`);
   }
 
-  addProduct(name, description, subCategoryId) {
+  addProduct(name, description, subCategoryId, editedBy) {
     const obj = {
       name: name,
       description: description,
-      subCategoryId: subCategoryId
+      subCategoryId: subCategoryId,
+      editedBy: editedBy
     };
     console.log(obj);
     this.http.post(`${this.accessPointUrl}/`, obj)
@@ -44,12 +45,13 @@ export class ProductDataService {
       .http
       .get(`${this.accessPointUrl}/${id}`);
   }
-  updateProduct(name, description, subCategoryId, version, id) {
+  updateProduct(name, description, subCategoryId, version, editedBy, id) {
     const obj = {
       name: name,
       description: description,
       subCategoryId: subCategoryId,
-      version: version
+      version: version,
+      editedBy: editedBy
     };
     this
       .http

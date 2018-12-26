@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductDataService } from '../../../../_services';
+import { ProductDataService, AuthenticationService, UserService } from '../../../../_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SubCategoryDataService } from '../../../../_services/sub-category-data.service';
-import { SubCategory, AttributeGroup } from '../../../../_models';
+import { SubCategory, AttributeGroup, User } from '../../../../_models';
 
 @Component({
   selector: 'app-product-edit', templateUrl: './product-edit.component.html'})
@@ -12,13 +12,16 @@ export class ProductEditComponent implements OnInit {
   angForm: FormGroup;
   subcategories: SubCategory[];
   attributegroups: AttributeGroup[];
+  currentUser: User;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private ps: ProductDataService,
     private scs: SubCategoryDataService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService) {
     this.createForm();
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   showSubCategories() {
@@ -37,6 +40,7 @@ export class ProductEditComponent implements OnInit {
       subCategoryId: ['', Validators.required],
       publishedStatus: ['', Validators.required],
       version: ['', Validators.required],
+      editedBy: ['', Validators.required]
     });
   }
   ngOnInit() {
@@ -44,13 +48,14 @@ export class ProductEditComponent implements OnInit {
       this.ps.editProduct(params['id']).subscribe(res => {
         this.product = res;
         console.log(res);
+        console.log('UserName', this.currentUser.username);
       });
     });
     this.showSubCategories();
   }
-  updateProduct(name, description, subCategoryId, version) {
+  updateProduct(name, description, subCategoryId, version, editedBy) {
     this.route.params.subscribe(params => {
-      this.ps.updateProduct(name, description, subCategoryId, version, params['id']);
+      this.ps.updateProduct(name, description, subCategoryId, version, editedBy, params['id']);
       this.router.navigate(['/catalog']);
     });
   }
