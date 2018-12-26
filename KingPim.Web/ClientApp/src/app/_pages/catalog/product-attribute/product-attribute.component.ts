@@ -47,11 +47,11 @@ export class ProductAttributeComponent implements OnInit {
 
   }
   addAttributeValue(productId, productattributeId, value) {
-    console.log(productId, productattributeId, value);
-    this.attv.addAttributevalue(productId, productattributeId, value);
-    this.loading = true;
-    delay(500);
-
+    this.attv.addAttributevalue(productId, productattributeId, value)
+      .subscribe(res => {
+        this.showProducts();
+        this.angForm.reset();
+      });
   }
   showAttv() {
     this.attv

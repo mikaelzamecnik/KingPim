@@ -24,9 +24,8 @@ export class AttributeValueDataService {
       productattributeId: productattributeId,
       value: value
     };
-    console.log(obj);
-    this.http.post(`${this.accessPointUrl}/`, obj)
-      .subscribe(res => console.log('Done', obj));
+    return this
+      .http.post(`${this.accessPointUrl}/`, obj);
   }
   deleteAttributevalue(id) {
     return this
