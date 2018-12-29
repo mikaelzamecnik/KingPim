@@ -78,6 +78,7 @@ namespace KingPim.Application.Repositories
                     EditedBy = model.EditedBy,
                     Version = model.Version,
                     PublishedStatus = model.PublishedStatus,
+                    AttributeGroupId = model.AttributeGroupId,
                     ProductAttributeValueId = model.ProductAttributeValueId
 
                 };

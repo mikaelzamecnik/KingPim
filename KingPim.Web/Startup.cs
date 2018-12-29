@@ -103,6 +103,7 @@ namespace KingPim.Web
             services.AddTransient<IAttributeGroupRepo, AttributeGroupRepo>();
             services.AddTransient<IProductAttributeRepo, ProductAttributeRepo>();
             services.AddTransient<IProductAttributeValueRepo, ProductAttributeValuesRepo>();
+            services.AddTransient<IAttributeOptionListRepo, AttributeOptionListRepo>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

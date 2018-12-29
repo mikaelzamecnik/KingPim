@@ -3,18 +3,18 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AttributeGetComponent } from '../../attributes/attribute-get/attribute-get.component';
 import { AttributeGroupDataService, SubCategoryDataService, AttributeDataService } from '../../../../_services';
-import { AttributeGroup } from '../../../../_models';
-import { Attribute } from '../../../../_models';
+import { AttributeGroup, Attribute } from '../../../../_models';
 
 @Component({
   selector: 'app-attribute-add', templateUrl: './attribute-add.component.html'})
 export class AttributeAddComponent implements OnInit {
   angForm: FormGroup;
+  angFormValue: FormGroup;
   attributegroup: AttributeGroup[];
   attg: any = {};
   attributes: Attribute[];
   loading = false;
-  typevar;
+  selectedValue: string = '';
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
@@ -34,6 +34,10 @@ export class AttributeAddComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       type: ['', Validators.required]
+    });
+    this.angFormValue = this.fb.group({
+      attributegroupId: ['', Validators.required],
+      
     });
 
   }

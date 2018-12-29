@@ -11,7 +11,7 @@
       </a>
       <br />
       <form [formGroup]="angForm" novalidate>
-        <input type="text" [value]="currentUser.username" formControlName="editedBy" #editedBy />
+        <input type="hidden" [value]="currentUser.username" formControlName="editedBy" #editedBy />
         <mat-card>
           <mat-card-header>
             <mat-card-title>General Product Information</mat-card-title>

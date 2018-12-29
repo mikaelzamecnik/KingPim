@@ -9,7 +9,7 @@
       <textarea matInput type="text" formControlName="description" #description placeholder="Description"></textarea>
     </mat-form-field>
     <mat-form-field>
-      <mat-select formControlName="type" #type placeholder="Type" [value]="type">
+      <mat-select [(ngModel)]="selectedValue" formControlName="type" #type placeholder="Type" [value]="type">
         <mat-option value="text">
           Text
         </mat-option>
@@ -22,35 +22,18 @@
         <mat-option value="textbox">
           Textbox
         </mat-option>
+        <mat-option value="list">
+          List
+        </mat-option>
       </mat-select>
     </mat-form-field><br>
-     <div [ngSwitch]="typevar">
-      <div *ngSwitchCase="'text'">
-        <mat-form-field>
-          <input matInput type="text" placeholder="Text Field" [value]="productattributevalueId"/>
-          <mat-hint>For single lined text</mat-hint>
-        </mat-form-field>
-      </div>
-      <div *ngSwitchCase="'number'">
-        <mat-form-field>
-          <input matInput type="number" placeholder="Number Field" [value]="productattributevalueId" />
-          <mat-hint>For numbers (price, sizes etc)</mat-hint>
-        </mat-form-field>
-      </div>
-      <div *ngSwitchCase="'yesno'">
-        <mat-radio-group [value]="productattributevalueId">
-          <mat-radio-button value="1">Yes</mat-radio-button>
-          <mat-radio-button value="2">No</mat-radio-button>
-        </mat-radio-group><br />
-        <mat-hint>For yes and no values</mat-hint>
-      </div>
-      <div *ngSwitchCase="'textbox'">
-        <mat-form-field>
-          <textarea matInput type="text" placeholder="Textbox" [value]="productattributevalueId"></textarea>
-          <mat-hint>For larger description of an attribute</mat-hint>
-        </mat-form-field>
-      </div>
-    </div><br /> 
+    <!-- If list i chosen there should be a way to add values in attribute modal-->
+                       <div *ngIf="selectedValue == 'list'">
+                         <mat-form-field>
+                           <input matInput type="text" placeholder="List" [value]="productattributevalueId" />
+                           <mat-hint>Fill out the list * value,value,value</mat-hint>
+                         </mat-form-field>
+                     </div><br /> 
     <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
     <button mat-raised-button color="primary" (click)="addAttribute(
       attributegroupId.value,name.value, description.value, type.value); onNoClick()">

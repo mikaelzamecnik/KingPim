@@ -14,11 +14,13 @@ namespace KingPim.Web.Controllers
     {
         //Inject services
         private readonly IProductAttributeRepo _productattributeRepo;
+        private readonly IAttributeOptionListRepo _attributeOptionListRepo;
 
-        public ProductAttributeController(IProductAttributeRepo productattributeRepo)
+        public ProductAttributeController(IProductAttributeRepo productattributeRepo, IAttributeOptionListRepo attributeOptionListRepo)
 
         {
             _productattributeRepo = productattributeRepo;
+            _attributeOptionListRepo = attributeOptionListRepo;
         }
         // GET: pim/Category/SubCategory/AttributeGroup/ProductAttribute
         [HttpGet]
@@ -61,6 +63,15 @@ namespace KingPim.Web.Controllers
         {
             await _productattributeRepo.DeleteProductattribute(id);
             return NoContent();
+        }
+
+        // POST: pim/Category/SubCategory/AttributeGroup/ProductAttribute/AttributeOptionList/
+        [HttpPost("postattolist")]
+        [ValidateModel]
+        public async Task<IActionResult> CreateAttributeOptionList([FromBody] AttributeOptionListModel attolist)
+        {
+            await _attributeOptionListRepo.CreateAttributeOptionList(attolist);
+            return CreatedAtAction("GetAttributeOptionList", new { id = attolist.Id }, attolist);
         }
 
     }
