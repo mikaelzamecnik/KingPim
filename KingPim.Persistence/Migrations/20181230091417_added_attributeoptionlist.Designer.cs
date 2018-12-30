@@ -4,14 +4,16 @@ using KingPim.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KingPim.Persistence.Migrations
 {
     [DbContext(typeof(KingPimDbContext))]
-    partial class KingPimDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181230091417_added_attributeoptionlist")]
+    partial class added_attributeoptionlist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,10 +125,6 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<int?>("AttributeGroupId");
 
-                    b.Property<int?>("AttributeOptionListId");
-
-                    b.Property<int>("AttributeOptionsListId");
-
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<DateTime>("DateUpdated");
@@ -152,8 +150,6 @@ namespace KingPim.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AttributeGroupId");
-
-                    b.HasIndex("AttributeOptionListId");
 
                     b.HasIndex("ProductAttributeValuesId");
 
@@ -288,10 +284,6 @@ namespace KingPim.Persistence.Migrations
                     b.HasOne("KingPim.Domain.Entities.AttributeGroup", "AttributeGroup")
                         .WithMany()
                         .HasForeignKey("AttributeGroupId");
-
-                    b.HasOne("KingPim.Domain.Entities.AttributeOptionList", "AttributeOptionList")
-                        .WithMany()
-                        .HasForeignKey("AttributeOptionListId");
 
                     b.HasOne("KingPim.Domain.Entities.ProductAttributeValue", "ProductAttributeValues")
                         .WithMany()

@@ -6,4 +6,6 @@ export class Attribute {
   type: string;
   publishedStatus: boolean;
   productattributevalueId: number;
+  attributeOptionListId: number;
+  attributeOptionList: [];
 }

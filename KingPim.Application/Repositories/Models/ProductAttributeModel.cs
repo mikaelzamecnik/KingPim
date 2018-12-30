@@ -19,6 +19,8 @@ namespace KingPim.Application.Repositories.Models
         public int? SubCategoryId { get; set; }
         public virtual SubCategory SubCategory { get; set; }
         public string Type { get; set; }
+        public int AttributeOptionsListId { get; set; }
+        public AttributeOptionList AttributeOptionList { get; set; }
         public int? AttributeGroupId { get; set; }
         public AttributeGroup AttributeGroup { get; set; }
         public int ProductAttributeValueId { get; set; }

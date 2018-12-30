@@ -79,7 +79,9 @@ namespace KingPim.Application.Repositories
                     Version = model.Version,
                     PublishedStatus = model.PublishedStatus,
                     AttributeGroupId = model.AttributeGroupId,
-                    ProductAttributeValueId = model.ProductAttributeValueId
+                    ProductAttributeValueId = model.ProductAttributeValueId,
+                    AttributeOptionsListId = model.AttributeOptionsListId,
+                    AttributeOptionList = model.AttributeOptionList
 
                 };
                 _context.ProductAttributes.Add(entity);

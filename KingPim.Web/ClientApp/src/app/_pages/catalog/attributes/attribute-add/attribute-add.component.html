@@ -1,7 +1,7 @@
 <div class="formcontainer">
   <h1 mat-dialog-title>Add Attribute<br><span style='color:darkgray;font-weight: bold'><small>&raquo; {{data.agName}}</small></span></h1>
   <form [formGroup]="angForm" novalidate>
-      <input type="hidden" formControlName="attributegroupId" #attributegroupId value="{{data.agId}}"/>
+    <input type="hidden" formControlName="attributegroupId" #attributegroupId value="{{data.agId}}" />
     <mat-form-field>
       <input matInput type="text" formControlName="name" #name placeholder="Name" />
     </mat-form-field>
@@ -27,17 +27,21 @@
         </mat-option>
       </mat-select>
     </mat-form-field><br>
-    <!-- If list i chosen there should be a way to add values in attribute modal-->
-                       <div *ngIf="selectedValue == 'list'">
-                         <mat-form-field>
-                           <input matInput type="text" placeholder="List" [value]="productattributevalueId" />
-                           <mat-hint>Fill out the list * value,value,value</mat-hint>
-                         </mat-form-field>
-                     </div><br /> 
     <!--DONT FORGET TO PUT VALUES ON CLICK FUNCTION-->
     <button mat-raised-button color="primary" (click)="addAttribute(
       attributegroupId.value,name.value, description.value, type.value); onNoClick()">
-      Add AttributeGroup
+      Add Attribute
     </button>
+  </form>
+  <form [formGroup]="angFormValue" novalidate>
+    <!-- If list i chosen there should be a way to add values in attribute modal-->
+    <div *ngIf="selectedValue == 'list'">
+      <mat-form-field>
+        <input matInput type="text" placeholder="List"
+               formControlName="value"
+               #value />
+        <mat-hint>Fill out the list * value,value,value</mat-hint>
+      </mat-form-field>
+    </div><br />
   </form>
 </div>

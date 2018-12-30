@@ -33,11 +33,9 @@ export class AttributeAddComponent implements OnInit {
       attributegroupId: ['', Validators.required],
       name: ['', Validators.required],
       description: ['', Validators.required],
-      type: ['', Validators.required]
-    });
-    this.angFormValue = this.fb.group({
-      attributegroupId: ['', Validators.required],
-      
+      type: ['', Validators.required],
+      attributeOptionListId: [''],
+      attributeOptionList: ['']
     });
 
   }
@@ -53,9 +51,9 @@ export class AttributeAddComponent implements OnInit {
       });
   }
   // Add Attribute to db
-  addAttribute(name, description, type, attributegroupId) {
+  addAttribute(name, description, type, attributegroupId, attributeOptionListId, attributeOptionList) {
     this.loading = true;
-    this.att.addAttribute(name, description, type, attributegroupId);
+    this.att.addAttribute(name, description, type, attributegroupId, attributeOptionListId, attributeOptionList);
     console.log(name, type, attributegroupId);
   }
 
