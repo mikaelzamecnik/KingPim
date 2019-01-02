@@ -48,6 +48,7 @@ export class AttributelistAddComponent implements OnInit {
   addAttributeListValue(attributeOptionListId, listValue) {
     this.loading = true;
     this.attl.addAttributeListValue(attributeOptionListId, listValue);
+
   }
   addedtoList() {
     this.listMessage = 'Added';
@@ -64,6 +65,7 @@ export class AttributelistAddComponent implements OnInit {
   addAttributeList(attributeGroupId, name) {
     this.loading = true;
     this.attl.addAttributeList(attributeGroupId, name);
+    this.angForm.reset();
     this.getAttributeLists();
   }
 

@@ -7,7 +7,6 @@ import { Product, AttributeGroup, Attribute, AttributeValue, AttributeList, Attr
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AttributeDataService, AttributelistDataService } from '../../../_services';
 import { AttributeValueDataService } from '../../../_services';
-import { delay } from 'q';
 
 
 
@@ -25,6 +24,7 @@ export class ProductAttributeComponent implements OnInit {
   angForm: FormGroup;
   angFormList: FormGroup;
   loading: boolean;
+  value = '';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -39,6 +39,9 @@ export class ProductAttributeComponent implements OnInit {
   }
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  onSelect(event) {
+    console.log('Focus out' + event.target.value);
   }
   createForm() {
     this.angForm = this.fb.group({
@@ -75,8 +78,17 @@ export class ProductAttributeComponent implements OnInit {
         console.log(data);
       });
   }
-  getAttributeListValue() {
-    this.attl.getAttributeListValues()
+  //getAttributeListValues() {
+  //  this.attl.getAttributeListValues()
+  //    .subscribe((data: AttributeListValue[]) => {
+  //      this.attributelistvalue = data;
+  //      console.log(data);
+  //    });
+  //}
+
+  // Single List Value
+  getAttributeListValue(id) {
+    this.attl.getAttributeListValue(id)
       .subscribe((data: AttributeListValue[]) => {
         this.attributelistvalue = data;
         console.log(data);
@@ -111,7 +123,6 @@ export class ProductAttributeComponent implements OnInit {
     this.showAg();
     this.showAtt();
     this.getAttributeList();
-    this.getAttributeListValue();
   }
 
 }

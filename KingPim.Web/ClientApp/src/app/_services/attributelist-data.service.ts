@@ -35,6 +35,12 @@ export class AttributelistDataService {
       .http.get(`${this.accessPointUrl}/getattovaluelist/`);
   }
 
+  getAttributeListValue(id) {
+    return this
+      .http
+      .get(`${this.accessPointUrl}/getattovaluelist/${id}`);
+  }
+
   addAttributeListValue(attributeOptionListId, listValue) {
     const obj = {
       listValue: listValue,

@@ -28,7 +28,7 @@
         <input type="hidden" value="{{data.apId}}" formControlName="productId" #productId />
         <mat-form-field>
           <mat-select placeholder="Select List" formControlName="productattributeId" #productattributeId>
-            <mat-option *ngFor="let attl of attributelist " [value]="attl.id">
+            <mat-option *ngFor="let attl of attributelist " (focusout)="onSelect($event.target.value)" [value]="attl.id">
               {{attl.name}}
             </mat-option>
           </mat-select>

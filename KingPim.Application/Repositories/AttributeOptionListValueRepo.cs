@@ -24,7 +24,6 @@ namespace KingPim.Application.Repositories
         // Get All ProductAttributes
         public async Task<IEnumerable<AttributeOptionListValueModel>> GetAttributeOptionListValues()
         {
-            
             return await _context.AttributeOptionListValues.Select(c =>
                 new AttributeOptionListValueModel
                 {

@@ -102,6 +102,20 @@ namespace KingPim.Web.Controllers
             return Ok(await _attributeOptionListValueRepo.GetAttributeOptionListValues());
         }
 
+        // GET: pim/Category/SubCategory/AttributeGroup/ProductAttribute
+        [HttpGet("getattovaluelist/{id}")]
+        public async Task<IActionResult> GetAttributeOptionListValue([FromRoute] int id)
+        {
+            var attlv = await _attributeOptionListValueRepo.GetAttributeOptionListValue(id);
+
+            if (attlv == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(attlv);
+        }
+
 
     }
 }
