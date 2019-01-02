@@ -54,11 +54,28 @@ namespace KingPim.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ListValue");
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
                     b.ToTable("AttributeOptionLists");
+                });
+
+            modelBuilder.Entity("KingPim.Domain.Entities.AttributeOptionListValue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AttributeOptionListId");
+
+                    b.Property<string>("ListValue");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeOptionListId");
+
+                    b.ToTable("AttributeOptionListValues");
                 });
 
             modelBuilder.Entity("KingPim.Domain.Entities.Category", b =>
@@ -274,6 +291,13 @@ namespace KingPim.Persistence.Migrations
                     b.HasOne("KingPim.Domain.Entities.SubCategory", "SubCategory")
                         .WithMany()
                         .HasForeignKey("SubCategoryId");
+                });
+
+            modelBuilder.Entity("KingPim.Domain.Entities.AttributeOptionListValue", b =>
+                {
+                    b.HasOne("KingPim.Domain.Entities.AttributeOptionList", "AttributeOptionList")
+                        .WithMany()
+                        .HasForeignKey("AttributeOptionListId");
                 });
 
             modelBuilder.Entity("KingPim.Domain.Entities.Product", b =>

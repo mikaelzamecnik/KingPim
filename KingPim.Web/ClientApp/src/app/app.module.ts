@@ -46,7 +46,8 @@ import { ProductAttributeComponent } from './_pages/catalog/product-attribute/pr
 import { EditAccountComponent } from './_pages/accounts/edit-account/edit-account.component';
 import { ResetPassword } from './login/reset-password';
 import { NewPassword } from './login/new-password';
-import { UserService } from './_services';
+import { UserService, AttributelistDataService } from './_services';
+import { AttributelistAddComponent } from './_pages/catalog/attributes/attributelist/attributelist-add.component';
 
 @NgModule({
   declarations: [
@@ -80,10 +81,12 @@ import { UserService } from './_services';
     ProductAttributeComponent,
     EditAccountComponent,
     ResetPassword,
-    NewPassword
+    NewPassword,
+    AttributelistAddComponent
   ],
   entryComponents: [
-    ProductAttributeComponent
+    ProductAttributeComponent,
+    AttributelistAddComponent
 ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -106,7 +109,8 @@ import { UserService } from './_services';
     ProductDataService,
     AttributeGroupDataService,
     AttributeDataService,
-    UserService
+    UserService,
+    AttributelistDataService
   ],
   bootstrap: [AppComponent]
 })

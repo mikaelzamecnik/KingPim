@@ -9,6 +9,19 @@ namespace KingPim.Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AttributeOptionLists",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AttributeOptionLists", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
@@ -16,7 +29,7 @@ namespace KingPim.Persistence.Migrations
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     EditedBy = table.Column<string>(nullable: true),
-                    Version = table.Column<double>(nullable: false),
+                    Version = table.Column<int>(nullable: false),
                     PublishedStatus = table.Column<bool>(nullable: false),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -41,6 +54,26 @@ namespace KingPim.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AttributeOptionListValues",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ListValue = table.Column<string>(nullable: true),
+                    AttributeOptionListId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AttributeOptionListValues", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AttributeOptionListValues_AttributeOptionLists_AttributeOptionListId",
+                        column: x => x.AttributeOptionListId,
+                        principalTable: "AttributeOptionLists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SubCategories",
                 columns: table => new
                 {
@@ -48,7 +81,7 @@ namespace KingPim.Persistence.Migrations
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     EditedBy = table.Column<string>(nullable: true),
-                    Version = table.Column<double>(nullable: false),
+                    Version = table.Column<int>(nullable: false),
                     PublishedStatus = table.Column<bool>(nullable: false),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -99,7 +132,7 @@ namespace KingPim.Persistence.Migrations
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     EditedBy = table.Column<string>(nullable: true),
-                    Version = table.Column<double>(nullable: false),
+                    Version = table.Column<int>(nullable: false),
                     PublishedStatus = table.Column<bool>(nullable: false),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -125,7 +158,7 @@ namespace KingPim.Persistence.Migrations
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     EditedBy = table.Column<string>(nullable: true),
-                    Version = table.Column<double>(nullable: false),
+                    Version = table.Column<int>(nullable: false),
                     PublishedStatus = table.Column<bool>(nullable: false),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -198,12 +231,14 @@ namespace KingPim.Persistence.Migrations
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     EditedBy = table.Column<string>(nullable: true),
-                    Version = table.Column<double>(nullable: false),
+                    Version = table.Column<int>(nullable: false),
                     PublishedStatus = table.Column<bool>(nullable: false),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Type = table.Column<string>(nullable: true),
+                    AttributeOptionsListId = table.Column<int>(nullable: false),
+                    AttributeOptionListId = table.Column<int>(nullable: true),
                     AttributeGroupId = table.Column<int>(nullable: true),
                     ProductAttributeValueId = table.Column<int>(nullable: false),
                     ProductAttributeValuesId = table.Column<int>(nullable: true),
@@ -216,6 +251,12 @@ namespace KingPim.Persistence.Migrations
                         name: "FK_ProductAttributes_AttributeGroups_AttributeGroupId",
                         column: x => x.AttributeGroupId,
                         principalTable: "AttributeGroups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProductAttributes_AttributeOptionLists_AttributeOptionListId",
+                        column: x => x.AttributeOptionListId,
+                        principalTable: "AttributeOptionLists",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -238,9 +279,19 @@ namespace KingPim.Persistence.Migrations
                 column: "SubCategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AttributeOptionListValues_AttributeOptionListId",
+                table: "AttributeOptionListValues",
+                column: "AttributeOptionListId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductAttributes_AttributeGroupId",
                 table: "ProductAttributes",
                 column: "AttributeGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductAttributes_AttributeOptionListId",
+                table: "ProductAttributes",
+                column: "AttributeOptionListId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductAttributes_ProductAttributeValuesId",
@@ -286,6 +337,9 @@ namespace KingPim.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AttributeOptionListValues");
+
+            migrationBuilder.DropTable(
                 name: "ProductAttributes");
 
             migrationBuilder.DropTable(
@@ -293,6 +347,9 @@ namespace KingPim.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "AttributeOptionLists");
 
             migrationBuilder.DropTable(
                 name: "ProductAttributeValues");

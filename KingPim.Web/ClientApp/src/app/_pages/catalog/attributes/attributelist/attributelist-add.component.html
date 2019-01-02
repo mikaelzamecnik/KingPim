@@ -1,0 +1,27 @@
+<div class="formcontainer">
+  <h1 mat-dialog-title>Add Attribute List<br><span style='color:darkgray;font-weight: bold'><small>&raquo; {{data.agName}}</small></span></h1>
+  <form [formGroup]="angForm" novalidate>
+    <mat-form-field>
+      <input matInput type="text" formControlName="name" #name placeholder="Name" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addAttributeList(
+      name.value)">
+      Add A List
+    </button>
+  </form><br />
+  <hr />
+  <h6><strong>Select List</strong></h6>
+  <form [formGroup]="angFormValue" novalidate>
+    <mat-form-field>
+      <mat-select placeholder="Select Attribute List" formControlName="attributeOptionListId" #attributeOptionListId>
+        <mat-option *ngFor="let attl of attributelist " [value]="attl.id">
+          {{attl.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" formControlName="listValue" #listValue placeholder="Add Values" />
+    </mat-form-field>
+  </form>
+
+</div>

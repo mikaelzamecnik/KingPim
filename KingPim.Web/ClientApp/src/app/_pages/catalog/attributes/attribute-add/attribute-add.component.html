@@ -33,15 +33,4 @@
       Add Attribute
     </button>
   </form>
-  <form [formGroup]="angFormValue" novalidate>
-    <!-- If list i chosen there should be a way to add values in attribute modal-->
-    <div *ngIf="selectedValue == 'list'">
-      <mat-form-field>
-        <input matInput type="text" placeholder="List"
-               formControlName="value"
-               #value />
-        <mat-hint>Fill out the list * value,value,value</mat-hint>
-      </mat-form-field>
-    </div><br />
-  </form>
 </div>

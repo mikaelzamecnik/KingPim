@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AttributeGroup } from '../../../../_models/attributegroup';
 import { Attribute } from '../../../../_models/attribute';
-import { AttributeGroupDataService } from '../../../../_services';
+import { AttributeGroupDataService, AttributelistDataService } from '../../../../_services';
 import { AttributeDataService } from '../../../../_services';
 import { MatDialog } from '@angular/material';
 import { AttributegroupAddComponent } from '../attributegroup-add/attributegroup-add.component';
 import { AttributeAddComponent } from '../../attributes/attribute-add/attribute-add.component';
+import { AttributelistAddComponent } from '../../attributes/attributelist/attributelist-add.component';
+import { AttributeList } from '../../../../_models/attributelist';
 
 @Component({
   selector: 'app-attributegroup-get', templateUrl: './attributegroup-get.component.html'})
@@ -13,9 +15,11 @@ export class AttributegroupGetComponent implements OnInit {
 
   attributegroups: AttributeGroup[];
   attributes: Attribute[];
+  attributelist: AttributeList[];
 constructor(
     private ag: AttributeGroupDataService,
-    private att: AttributeDataService,
+  private att: AttributeDataService,
+  private attl: AttributelistDataService,
     public dialog: MatDialog) { }
   // OpenModal For add new attributegroup
   openAgDialog(): void {
@@ -34,15 +38,36 @@ constructor(
         });
     });
   }
-   // OpenModal For add new attribute
-  openAttDialog(id, name) {
-     const dialogRef = this.dialog.open(AttributeAddComponent, {
-       width: '250px',
-       data: {
-         agId: id,
-         agName: name
-       } ,
+   // OpenModal For add new attribute LIST
+  openAttListDialog(id, name) {
+    const dialogRef = this.dialog.open(AttributelistAddComponent, {
+      width: '250px',
+      data: {
+        agId: id,
+        agName: name
+      },
        backdropClass: 'custom-modalbox',
+    });
+    // Show result after the button is closed
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Added');
+      this.attl
+        .getAttributeLists()
+        .subscribe((_result: AttributeList[]) => {
+          this.attributelist = _result;
+        });
+    });
+  }
+
+  // OpenModal For add new attribute
+  openAttDialog(id, name) {
+    const dialogRef = this.dialog.open(AttributeAddComponent, {
+      width: '250px',
+      data: {
+        agId: id,
+        agName: name
+      },
+      backdropClass: 'custom-modalbox',
     });
     // Show result after the button is closed
     dialogRef.afterClosed().subscribe(result => {

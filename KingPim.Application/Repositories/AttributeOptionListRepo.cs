@@ -22,18 +22,18 @@ namespace KingPim.Application.Repositories
 
 
         // Get All ProductAttributes
-        public async Task<IEnumerable<AttributeOptionListModel>> GetAttributeOptionList()
+        public async Task<IEnumerable<AttributeOptionListModel>> GetAttributeOptionLists()
         {
             return await _context.AttributeOptionLists.Select(c =>
                 new AttributeOptionListModel
                 {
                     Id = c.Id,
-                    ListValue = c.ListValue
+                    Name = c.Name
                 }).ToListAsync();
         }
 
         // Get Single ProductAttribute
-        public async Task<AttributeOptionListModel> GetAttributeOptionValue(int id)
+        public async Task<AttributeOptionListModel> GetAttributeOptionList(int id)
         {
             var entity = await _context.AttributeOptionLists.FindAsync(id);
 
@@ -43,7 +43,7 @@ namespace KingPim.Application.Repositories
             return new AttributeOptionListModel
             {
                 Id = entity.Id,
-                ListValue = entity.ListValue
+                Name = entity.Name
             };
         }
 
@@ -56,8 +56,7 @@ namespace KingPim.Application.Repositories
                 {
 
                     Id = model.Id,
-                    ListValue = model.ListValue
-                   
+                    Name = model.Name
 
                 };
                 _context.AttributeOptionLists.Add(entity);

@@ -6,8 +6,8 @@ namespace KingPim.Application.Repositories.Interfaces
 {
     public interface IAttributeOptionListRepo
     {
-        Task<IEnumerable<AttributeOptionListModel>> GetAttributeOptionList();
-        Task<AttributeOptionListModel> GetAttributeOptionValue(int id);
+        Task<IEnumerable<AttributeOptionListModel>> GetAttributeOptionLists();
+        Task<AttributeOptionListModel> GetAttributeOptionList(int id);
         Task CreateAttributeOptionList(AttributeOptionListModel model);
     }
 }

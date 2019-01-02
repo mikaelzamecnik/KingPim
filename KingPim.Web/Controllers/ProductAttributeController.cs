@@ -15,12 +15,17 @@ namespace KingPim.Web.Controllers
         //Inject services
         private readonly IProductAttributeRepo _productattributeRepo;
         private readonly IAttributeOptionListRepo _attributeOptionListRepo;
+        private readonly IAttributeOptionListValueRepo _attributeOptionListValueRepo;
 
-        public ProductAttributeController(IProductAttributeRepo productattributeRepo, IAttributeOptionListRepo attributeOptionListRepo)
+        public ProductAttributeController
+            (IProductAttributeRepo productattributeRepo,
+            IAttributeOptionListRepo attributeOptionListRepo,
+            IAttributeOptionListValueRepo attributeOptionListValueRepo)
 
         {
             _productattributeRepo = productattributeRepo;
             _attributeOptionListRepo = attributeOptionListRepo;
+            _attributeOptionListValueRepo = attributeOptionListValueRepo;
         }
         // GET: pim/Category/SubCategory/AttributeGroup/ProductAttribute
         [HttpGet]
@@ -73,6 +78,30 @@ namespace KingPim.Web.Controllers
             await _attributeOptionListRepo.CreateAttributeOptionList(attolist);
             return CreatedAtAction("GetAttributeOptionList", new { id = attolist.Id }, attolist);
         }
+
+        // POST: pim/Category/SubCategory/AttributeGroup/ProductAttribute/AttributeOptionValueList/
+        [HttpPost("postattovaluelist")]
+        [ValidateModel]
+        public async Task<IActionResult> CreateAttributeOptionValueList([FromBody] AttributeOptionListValueModel attolist)
+        {
+            await _attributeOptionListValueRepo.CreateAttributeOptionListValue(attolist);
+            return CreatedAtAction("GetAttributeOptionList", new { id = attolist.Id }, attolist);
+        }
+
+        // GET: pim/Category/SubCategory/AttributeGroup/ProductAttribute
+        [HttpGet("getattolist")]
+        public async Task<IActionResult> GetAttributeOptionLists()
+        {
+            return Ok(await _attributeOptionListRepo.GetAttributeOptionLists());
+        }
+
+        // GET: pim/Category/SubCategory/AttributeGroup/ProductAttribute
+        [HttpGet("getattovaluelist")]
+        public async Task<IActionResult> GetAttributeOptionListValues()
+        {
+            return Ok(await _attributeOptionListValueRepo.GetAttributeOptionListValues());
+        }
+
 
     }
 }

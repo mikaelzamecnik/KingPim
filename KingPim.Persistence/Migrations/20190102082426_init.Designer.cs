@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KingPim.Persistence.Migrations
 {
     [DbContext(typeof(KingPimDbContext))]
-    [Migration("20181230091417_added_attributeoptionlist")]
-    partial class added_attributeoptionlist
+    [Migration("20190102082426_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,11 +56,28 @@ namespace KingPim.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ListValue");
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
                     b.ToTable("AttributeOptionLists");
+                });
+
+            modelBuilder.Entity("KingPim.Domain.Entities.AttributeOptionListValue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AttributeOptionListId");
+
+                    b.Property<string>("ListValue");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeOptionListId");
+
+                    b.ToTable("AttributeOptionListValues");
                 });
 
             modelBuilder.Entity("KingPim.Domain.Entities.Category", b =>
@@ -125,6 +142,10 @@ namespace KingPim.Persistence.Migrations
 
                     b.Property<int?>("AttributeGroupId");
 
+                    b.Property<int?>("AttributeOptionListId");
+
+                    b.Property<int>("AttributeOptionsListId");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<DateTime>("DateUpdated");
@@ -150,6 +171,8 @@ namespace KingPim.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AttributeGroupId");
+
+                    b.HasIndex("AttributeOptionListId");
 
                     b.HasIndex("ProductAttributeValuesId");
 
@@ -272,6 +295,13 @@ namespace KingPim.Persistence.Migrations
                         .HasForeignKey("SubCategoryId");
                 });
 
+            modelBuilder.Entity("KingPim.Domain.Entities.AttributeOptionListValue", b =>
+                {
+                    b.HasOne("KingPim.Domain.Entities.AttributeOptionList", "AttributeOptionList")
+                        .WithMany()
+                        .HasForeignKey("AttributeOptionListId");
+                });
+
             modelBuilder.Entity("KingPim.Domain.Entities.Product", b =>
                 {
                     b.HasOne("KingPim.Domain.Entities.SubCategory", "SubCategory")
@@ -284,6 +314,10 @@ namespace KingPim.Persistence.Migrations
                     b.HasOne("KingPim.Domain.Entities.AttributeGroup", "AttributeGroup")
                         .WithMany()
                         .HasForeignKey("AttributeGroupId");
+
+                    b.HasOne("KingPim.Domain.Entities.AttributeOptionList", "AttributeOptionList")
+                        .WithMany()
+                        .HasForeignKey("AttributeOptionListId");
 
                     b.HasOne("KingPim.Domain.Entities.ProductAttributeValue", "ProductAttributeValues")
                         .WithMany()

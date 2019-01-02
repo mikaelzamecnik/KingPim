@@ -5,3 +5,4 @@ export * from './product';
 export * from './attributegroup';
 export * from './attribute';
 export * from './attributevalue';
+export * from './attributelist';

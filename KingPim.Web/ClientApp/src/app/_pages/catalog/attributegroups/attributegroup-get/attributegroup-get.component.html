@@ -6,9 +6,10 @@
         aria-label="Description">{{attributegroup.name}}</button></span> <!--Should Dynamicly count how many items are in that group-->
     <mat-menu #menu="matMenu">
       <button (click)="openAttDialog(attributegroup.id, attributegroup.name)" mat-menu-item>Add Attributes to group {{attributegroup.name}}</button>
-      <button class="delbutton" (click)="deleteAttributeGroup(attributegroup.id)"  mat-menu-item>Delete AttributeGroup</button>
+      <button (click)="openAttListDialog(attributegroup.id, attributegroup.name)" mat-menu-item>Add AttributeList to group {{attributegroup.name}}</button>
+      <button class="delbutton" (click)="deleteAttributeGroup(attributegroup.id)" mat-menu-item>Delete AttributeGroup</button>
       <mat-divider></mat-divider><br>
-      <ul><li style="list-style-type: none"*ngFor="let att of attributes">{{att.name}} / {{att.type}}</li></ul>
-      </mat-menu>
+      <ul><li style="list-style-type: none" *ngFor="let att of attributes">{{att.name}} / {{att.type}}</li></ul>
+    </mat-menu>
   </mat-list-item>
 </mat-list>
