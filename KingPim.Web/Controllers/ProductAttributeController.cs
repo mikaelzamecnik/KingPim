@@ -79,20 +79,20 @@ namespace KingPim.Web.Controllers
             return CreatedAtAction("GetAttributeOptionList", new { id = attolist.Id }, attolist);
         }
 
-        // POST: pim/Category/SubCategory/AttributeGroup/ProductAttribute/AttributeOptionValueList/
-        [HttpPost("postattovaluelist")]
-        [ValidateModel]
-        public async Task<IActionResult> CreateAttributeOptionValueList([FromBody] AttributeOptionListValueModel attolist)
-        {
-            await _attributeOptionListValueRepo.CreateAttributeOptionListValue(attolist);
-            return CreatedAtAction("GetAttributeOptionList", new { id = attolist.Id }, attolist);
-        }
-
         // GET: pim/Category/SubCategory/AttributeGroup/ProductAttribute
         [HttpGet("getattolist")]
         public async Task<IActionResult> GetAttributeOptionLists()
         {
             return Ok(await _attributeOptionListRepo.GetAttributeOptionLists());
+        }
+
+        // POST: pim/Category/SubCategory/AttributeGroup/ProductAttribute/AttributeOptionValueList/
+        [HttpPost("postattovaluelist")]
+        [ValidateModel]
+        public async Task<IActionResult> CreateAttributeOptionValueList([FromBody] AttributeOptionListValueModel attolistv)
+        {
+            await _attributeOptionListValueRepo.CreateAttributeOptionListValue(attolistv);
+            return CreatedAtAction("GetAttributeOptionListValue", new { id = attolistv.Id }, attolistv);
         }
 
         // GET: pim/Category/SubCategory/AttributeGroup/ProductAttribute

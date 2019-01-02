@@ -42,6 +42,7 @@ constructor(
   openAttListDialog(id, name) {
     const dialogRef = this.dialog.open(AttributelistAddComponent, {
       width: '250px',
+      minHeight: '500px',
       data: {
         agId: id,
         agName: name

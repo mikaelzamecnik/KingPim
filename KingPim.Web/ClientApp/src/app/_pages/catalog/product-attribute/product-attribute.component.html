@@ -1,36 +1,64 @@
 <h1 mat-dialog-title>Add Values to {{data.apName}} attributes<br />
   <span style='color:darkgray;font-weight: bold'><small>&raquo; {{data.apSC}}</small></span></h1>
-  <div class="container">
+<div class="container">
   <div class="row">
-  <div class="col-sm content-divider">
-    <form [formGroup]="angForm" novalidate>
-      <input type="hidden" value="{{data.apId}}" formControlName="productId" #productId />
-      <mat-form-field>
-        <mat-select placeholder="Select Attribute" formControlName="productattributeId" #productattributeId >
-          <mat-option *ngFor="let att of attributes " [value]="att.id">
-            {{att.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field><br />
-      <mat-form-field>
-        <input matInput type="text" class="form-control" formControlName="value" #value placeholder="Attribute Value" />
-      </mat-form-field>
-      <br />
-      <button mat-raised-button color="primary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value
+    <div class="col-sm content-divider">
+      <h6 style="background-color:bisque"><strong>Add single attribute values</strong></h6>
+      <form [formGroup]="angForm" novalidate>
+        <input type="hidden" value="{{data.apId}}" formControlName="productId" #productId />
+        <mat-form-field>
+          <mat-select placeholder="Select Attribute" formControlName="productattributeId" #productattributeId>
+            <mat-option *ngFor="let att of attributes " [value]="att.id">
+              {{att.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br />
+        <mat-form-field>
+          <input matInput type="text" class="form-control" formControlName="value" #value placeholder="Attribute Value" />
+        </mat-form-field>
+        <br />
+        <button mat-raised-button color="secondary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value
               )">
-        Add Attribute With Value
-      </button>
-    </form>
+          Add Attribute With Value
+        </button>
+      </form>
+      <hr />
+      <h6 style="background-color:aliceblue"><strong>Add attribute from predefined list</strong></h6>
+      <form [formGroup]="angFormList" novalidate>
+        <input type="hidden" value="{{data.apId}}" formControlName="productId" #productId />
+        <mat-form-field>
+          <mat-select placeholder="Select List" formControlName="productattributeId" #productattributeId>
+            <mat-option *ngFor="let attl of attributelist " [value]="attl.id">
+              {{attl.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br />
+        <mat-form-field>
+          <mat-select placeholder="Select One Value" formControlName="value" #value>
+            <mat-option *ngFor="let attlv of attributelistvalue " [value]="attlv.listValue">
+              {{attlv.listValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br />
+        <br />
+        <button mat-raised-button color="secondary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value
+              )">
+          Add From Predefined List
+        </button>
+      </form>
+    </div>
+    <!--AttributeValues goes here-->
+    <div class="col-sm">
+      <h5>All attributes</h5>
+      <ul *ngFor="let productvalue of productvalues">
+        <li>{{productvalue.name}}</li>
+        <li *ngFor="let s of productvalue.productAttributeValues">
+          <strong>Attribute:</strong> {{s.productAttributeId}},<strong>Value:</strong> {{s.value}}
+        </li>
+      </ul>
+
+    </div>
   </div>
-  <!--AttributeValues goes here-->
-  <div class="col-sm">
-    <h5>All attributes</h5>
-    <ul *ngFor="let productvalue of productvalues">
-      <li>{{productvalue.name}}</li>
-      <li *ngFor="let s of productvalue.productAttributeValues">
-      <strong>Attribute:</strong> {{s.productAttributeId}},<strong>Value:</strong> {{s.value}}</li>
-    </ul>
-  </div>
-</div>
+  <button mat-raised-button color="primary" style="float: right;" (click)="onNoClick()">Close</button>
 </div>
 

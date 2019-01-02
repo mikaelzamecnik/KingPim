@@ -15,6 +15,8 @@ export class AttributelistAddComponent implements OnInit {
   angFormValue: FormGroup;
   attributelist: AttributeList[];
   attributelistvalue: AttributeListValue[];
+  listMessage = '';
+  value = '';
 
 
   constructor(
@@ -31,6 +33,7 @@ export class AttributelistAddComponent implements OnInit {
 
   createForm() {
     this.angForm = this.fb.group({
+      attributeGroupId: ['', Validators.required],
       name: ['', Validators.required]
     });
     this.angFormValue = this.fb.group({
@@ -46,18 +49,22 @@ export class AttributelistAddComponent implements OnInit {
     this.loading = true;
     this.attl.addAttributeListValue(attributeOptionListId, listValue);
   }
-
-  getAttributeListValues() {
-    this.attl.getAttributeListValues()
-      .subscribe((data: AttributeListValue[]) => {
-        this.attributelistvalue = data;
-      });
+  addedtoList() {
+    this.listMessage = 'Added';
   }
 
+  //getAttributeListValues() {
+  //  this.attl.getAttributeListValues()
+  //    .subscribe((data: AttributeListValue[]) => {
+  //      this.attributelistvalue = data;
+  //    });
+  //}
+
   // Handles the attribute list
-  addAttributeList(name) {
+  addAttributeList(attributeGroupId, name) {
     this.loading = true;
-    this.attl.addAttributeList(name);
+    this.attl.addAttributeList(attributeGroupId, name);
+    this.getAttributeLists();
   }
 
   getAttributeLists() {
@@ -65,7 +72,7 @@ export class AttributelistAddComponent implements OnInit {
       .subscribe((data: AttributeList[]) => {
         this.attributelist = data;
       });
-    this.getAttributeLists();
+
   }
 
   ngOnInit() {

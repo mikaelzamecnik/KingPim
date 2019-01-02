@@ -19,9 +19,10 @@ export class AttributelistDataService {
       .http.get(`${this.accessPointUrl}/getattolist/`);
   }
 
-  addAttributeList(name) {
+  addAttributeList(attributeGroupId, name) {
     const obj = {
-      name: name
+      name: name,
+      attributeGroupId: attributeGroupId
 
     };
     console.log(obj);

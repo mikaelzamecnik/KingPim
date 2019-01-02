@@ -28,7 +28,8 @@ namespace KingPim.Application.Repositories
                 new AttributeOptionListModel
                 {
                     Id = c.Id,
-                    Name = c.Name
+                    Name = c.Name,
+                    AttributeGroupId = c.AttributeGroupId
                 }).ToListAsync();
         }
 
@@ -43,7 +44,8 @@ namespace KingPim.Application.Repositories
             return new AttributeOptionListModel
             {
                 Id = entity.Id,
-                Name = entity.Name
+                Name = entity.Name,
+                AttributeGroupId = entity.AttributeGroupId
             };
         }
 
@@ -56,7 +58,8 @@ namespace KingPim.Application.Repositories
                 {
 
                     Id = model.Id,
-                    Name = model.Name
+                    Name = model.Name,
+                    AttributeGroupId = model.AttributeGroupId
 
                 };
                 _context.AttributeOptionLists.Add(entity);

@@ -1,11 +1,12 @@
 <div class="formcontainer">
   <h1 mat-dialog-title>Add Attribute List<br><span style='color:darkgray;font-weight: bold'><small>&raquo; {{data.agName}}</small></span></h1>
   <form [formGroup]="angForm" novalidate>
+  <input type="hidden" [value]="data.agId" formControlName="attributeGroupId" #attributeGroupId />
     <mat-form-field>
       <input matInput type="text" formControlName="name" #name placeholder="Name" />
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="addAttributeList(
-      name.value)">
+    <button mat-raised-button (click)="addAttributeList(
+      attributeGroupId.value, name.value)">
       Add A List
     </button>
   </form><br />
@@ -20,8 +21,20 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" formControlName="listValue" #listValue placeholder="Add Values" />
+      <input matInput type="text" formControlName="listValue" #listValue placeholder="Add Values" [(ngModel)]="value" />
+
+      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="addAttributeListValue(
+      attributeOptionListId.value, listValue.value);addedtoList();value=''">
+        <i class="material-icons">
+          add_circle_outline
+        </i>
+      </button>
     </mat-form-field>
+    <div>
+      {{listMessage}}
+    </div><br />
+
+    <button mat-raised-button color="primary" (click)="onNoClick()">Close</button>
   </form>
 
 </div>

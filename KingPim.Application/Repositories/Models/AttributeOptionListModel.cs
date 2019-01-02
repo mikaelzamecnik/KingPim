@@ -10,6 +10,8 @@ namespace KingPim.Application.Repositories.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int? AttributeGroupId { get; set; }
+        public AttributeGroup AttributeGroup { get; set; }
 
     }
 }
