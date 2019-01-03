@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Output } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ProductGetComponent } from '../../catalog/products/product-get/product-get.component';
 import { ProductDataService } from '../../../_services/product-data.service';
@@ -8,18 +8,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AttributeDataService, AttributelistDataService } from '../../../_services';
 import { AttributeValueDataService } from '../../../_services';
 
-
-
 @Component({
-  selector: 'app-product-attribute',
-  templateUrl: './product-attribute.component.html'
+  selector: 'app-product-attributelist',
+  templateUrl: './product-attributelist.component.html'
 })
-export class ProductAttributeComponent implements OnInit {
+export class ProductAttributelistComponent implements OnInit {
 
   productvalues: Product[];
   attributegroups: AttributeGroup[];
-  attributes: Attribute[];
-  attvalues: AttributeValue[];
   attributelist: AttributeList[];
   attributelistvalue: AttributeListValue[];
   angForm: FormGroup;
@@ -37,7 +33,7 @@ export class ProductAttributeComponent implements OnInit {
     public att: AttributeDataService,
     public attv: AttributeValueDataService,
     public dialogRef: MatDialogRef<ProductGetComponent>) {
-    this.createForm();
+    this.createFormList();
   }
   onNoClick(): void {
     this.dialogRef.close();
@@ -45,25 +41,41 @@ export class ProductAttributeComponent implements OnInit {
   onSelect(attlid) {
     console.log('List' + attlid);
   }
-  createForm() {
-    this.angForm = this.fb.group({
+  createFormList() {
+    this.angFormList = this.fb.group({
       productId: ['', Validators.required],
       productattributeId: ['', Validators.required],
       value: ['', Validators.required],
     });
   }
-  addAttributeValue(productId, productattributeId, value) {
+  addAttributeListValue(productId, productattributeId, value) {
     this.attv.addAttributevalue(productId, productattributeId, value)
       .subscribe(_res => {
       });
   }
-  showAttv() {
-    this.attv
-      .getAttributevalues()
-      .subscribe((data: AttributeValue[]) => {
-        this.attvalues = data;
+  getAttributeList() {
+    this.attl.getAttributeLists()
+      .subscribe((data: AttributeList[]) => {
+        this.attributelist = data;
       });
   }
+  getAttributeListValues() {
+    this.attl.getAttributeListValues()
+      .subscribe((data: AttributeListValue[]) => {
+        this.attributelistvalue = data;
+        console.log('Whole List', data);
+      });
+  }
+
+  //// Single List Value
+  //getAttributeListValue(id) {
+  //  this.attl.getAttributeListValue(id)
+  //    .subscribe((data: AttributeListValue[]) => {
+  //      this.attributelistvalue = data;
+  //      console.log("from SingleList" + data);
+  //    });
+  //}
+
   showProducts() {
     this.pr
       .getProducts()
@@ -71,24 +83,10 @@ export class ProductAttributeComponent implements OnInit {
         this.productvalues = data;
       });
   }
-  showAg() {
-    this.ag
-      .getAttributeGroups()
-      .subscribe((data: AttributeGroup[]) => {
-        this.attributegroups = data;
-
-      });
-  }
-  showAtt() {
-    this.att
-      .getAttributes()
-      .subscribe((data: Attribute[]) => {
-        this.attributes = data;
-      });
-  }
   ngOnInit() {
     this.showProducts();
-    this.showAg();
-    this.showAtt();
+    this.getAttributeList();
+    this.getAttributeListValues();
   }
+
 }

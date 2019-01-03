@@ -7,4 +7,6 @@ import * as _ from 'lodash';
   styleUrls: ['./catalog.component.scss'],
 })
 
-export class CatalogComponent {}
+export class CatalogComponent{
+
+}

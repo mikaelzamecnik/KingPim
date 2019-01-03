@@ -1,7 +1,9 @@
 <div class="formcontainer">
   <h1 mat-dialog-title>Add Attribute List<br><span style='color:darkgray;font-weight: bold'><small>&raquo; {{data.agName}}</small></span></h1>
+  <br />
+  <h6><strong>Create List</strong></h6>
   <form [formGroup]="angForm" novalidate>
-  <input type="hidden" [value]="data.agId" formControlName="attributeGroupId" #attributeGroupId />
+    <input type="hidden" [value]="data.agId" formControlName="attributeGroupId" #attributeGroupId />
     <mat-form-field>
       <input matInput type="text" formControlName="name" #name placeholder="Name" />
     </mat-form-field>

@@ -10,7 +10,7 @@
         <i class="fa fa-arrow-left"></i><small> Back to Overview</small>
       </a>
       <br />
-      <form [formGroup]="angForm" novalidate>
+      <form [formGroup]="productAddForm" novalidate>
         <input type="hidden" [value]="currentUser.username" formControlName="editedBy" #editedBy />
         <mat-card>
           <mat-card-header>

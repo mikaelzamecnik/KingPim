@@ -32,7 +32,7 @@ export class ProductDataService {
       editedBy: editedBy
     };
     return this
-    .http.post(`${this.accessPointUrl}/`, obj);
+      .http.post(`${this.accessPointUrl}/`, obj);
   }
   deleteProduct(id) {
     return this

@@ -48,6 +48,7 @@ import { ResetPassword } from './login/reset-password';
 import { NewPassword } from './login/new-password';
 import { UserService, AttributelistDataService } from './_services';
 import { AttributelistAddComponent } from './_pages/catalog/attributes/attributelist/attributelist-add.component';
+import { ProductAttributelistComponent } from './_pages/catalog/product-attribute/product-attributelist.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { AttributelistAddComponent } from './_pages/catalog/attributes/attribute
     EditAccountComponent,
     ResetPassword,
     NewPassword,
-    AttributelistAddComponent
+    AttributelistAddComponent,
+    ProductAttributelistComponent
   ],
   entryComponents: [
     ProductAttributeComponent,

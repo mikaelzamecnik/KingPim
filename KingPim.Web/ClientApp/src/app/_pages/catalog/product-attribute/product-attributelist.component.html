@@ -1,0 +1,28 @@
+<h6 style="background-color:aliceblue"><strong>Add attribute from predefined list</strong></h6>
+<form [formGroup]="angFormList">
+  <input type="hidden" value="{{data.apId}}" formControlName="productId" #productId />
+  <mat-form-field>
+    <mat-select placeholder="Select List"
+                [(ngModel)]="selectedValue"
+                formControlName="productattributeId" #productattributeId>
+      <mat-option *ngFor="let attl of attributelist" [value]="attl.id">
+        {{attl.name}}
+      </mat-option>
+
+    </mat-select>
+  </mat-form-field><br />
+  <p><strong>List Key: </strong>{{selectedValue}}</p>
+  <mat-form-field>
+    <mat-select placeholder="Select One Value" formControlName="value" #value>
+      <mat-option *ngFor="let attlv of attributelistvalue" [value]="attlv.listValue">
+        <strong>List: </strong>{{attlv.attributeOptionListId}}, <strong>Value: </strong>{{attlv.listValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br />
+  <br />
+  <button mat-raised-button color="secondary" (click)="addAttributeListValue(productId.value, productattributeId.value, value.value)">
+    Add From Predefined List
+  </button>
+</form>
+
+

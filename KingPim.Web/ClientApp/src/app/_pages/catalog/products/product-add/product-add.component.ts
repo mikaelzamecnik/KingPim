@@ -9,7 +9,7 @@ import { Product, User, SubCategory } from '../../../../_models';
   selector: 'app-product-add', templateUrl: './product-add.component.html'})
 export class ProductAddComponent implements OnInit {
   loading = false;
-  angForm: FormGroup;
+  productAddForm: FormGroup;
   subcategories: SubCategory[];
   products: Product[];
   currentUser: User;
@@ -24,7 +24,7 @@ export class ProductAddComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
   createForm() {
-    this.angForm = this.fb.group({
+    this.productAddForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
       subCategoryId: ['', Validators.required],
@@ -38,15 +38,14 @@ export class ProductAddComponent implements OnInit {
       .getSubCategories()
       .subscribe((data: SubCategory[]) => {
         this.subcategories = data;
-        console.log(data);
       });
   }
   // Add Product to db
   addProduct(name, description, subCategoryId, editedBy) {
-    console.log(subCategoryId);
     this.loading = true;
-    this.ps.addProduct(name, description, subCategoryId, editedBy);
-    this.router.navigate(['/catalog']); // TODO routing goes to fast, backend cant keep up
+    this.ps.addProduct(name, description, subCategoryId, editedBy).subscribe(res => {
+    });
+    this.router.navigate(['/catalog']);
   }
 
   ngOnInit() {

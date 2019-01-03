@@ -25,7 +25,6 @@ export class AttributelistDataService {
       attributeGroupId: attributeGroupId
 
     };
-    console.log(obj);
     this.http.post(`${this.accessPointUrl}/postattolist/`, obj)
       .subscribe(res => console.log('Done', obj));
   }
@@ -47,7 +46,6 @@ export class AttributelistDataService {
       attributeOptionListId: attributeOptionListId
 
     };
-    console.log(obj);
     this.http.post(`${this.accessPointUrl}/postattovaluelist/`, obj)
       .subscribe(res => console.log('Done', obj));
   }

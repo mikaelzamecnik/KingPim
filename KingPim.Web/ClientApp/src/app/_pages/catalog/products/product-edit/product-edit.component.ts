@@ -30,7 +30,6 @@ export class ProductEditComponent implements OnInit {
       .getSubCategories()
       .subscribe((data: SubCategory[]) => {
         this.subcategories = data;
-        console.log(data);
       });
   }
   // to show products oninit and after deletion
@@ -39,7 +38,6 @@ export class ProductEditComponent implements OnInit {
       .getProducts()
       .subscribe((data: Product[]) => {
         this.productData = data;
-        console.log(data);
       });
   }
 
@@ -57,8 +55,6 @@ export class ProductEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.ps.editProduct(params['id']).subscribe(res => {
         this.product = res;
-        console.log(res);
-        console.log('UserName', this.currentUser.username);
       });
     });
     this.showSubCategories();
@@ -67,7 +63,6 @@ export class ProductEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.ps.updateProduct(name, description, subCategoryId, version, editedBy, params['id'])
         .subscribe(res => {
-          this.showProducts();
       });
       this.router.navigate(['/catalog']);
     });
