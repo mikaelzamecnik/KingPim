@@ -20,28 +20,12 @@
             <input type="hidden" [value]="product.subCategoryId" formControlName="subCategoryId" #subCategoryId />
             <input type="hidden" [value]="currentUser.username" formControlName="editedBy" #editedBy />
             <div class="formcontainer">
-              <!--<mat-radio-group formControlName="publishedStatus" #publishedStatus placeholder="Status" [value]="product.publishedStatus">
-      <mat-radio-button [value]=true>
-        Publish
-      </mat-radio-button><br>
-      <mat-radio-button [value]=false>
-        Unpublish
-      </mat-radio-button>
-    </mat-radio-group><br>-->
               <mat-form-field>
                 <input matInput type="text" placeholder="Product Name" class="form-control" formControlName="name" #name [value]="product.name" />
               </mat-form-field>
               <mat-form-field>
                 <textarea matInput type="text" placeholder="Description" class="form-control" formControlName="description" #description [value]="product.description"></textarea>
               </mat-form-field>
-              <!--Should not be able to change subcategory when editing a product-->
-              <!--<mat-form-field>
-      <mat-select placeholder="Select SubCategory" formControlName="subCategoryId" #subCategoryId>
-        <mat-option [value]="subCategory.id" *ngFor="let subCategory of subcategories ">
-          {{ subCategory.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>-->
               <br />
             </div>
           </mat-card-content>

@@ -62,7 +62,7 @@ export class ProductEditComponent implements OnInit {
   updateProduct(name, description, subCategoryId, version, editedBy) {
     this.route.params.subscribe(params => {
       this.ps.updateProduct(name, description, subCategoryId, version, editedBy, params['id'])
-        .subscribe(res => {
+        .subscribe(_res => {
       });
       this.router.navigate(['/catalog']);
     });

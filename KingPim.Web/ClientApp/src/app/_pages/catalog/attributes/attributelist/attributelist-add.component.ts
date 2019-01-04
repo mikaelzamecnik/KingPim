@@ -66,7 +66,6 @@ export class AttributelistAddComponent implements OnInit {
     this.loading = true;
     this.attl.addAttributeList(attributeGroupId, name);
     this.angForm.reset();
-    this.getAttributeLists();
   }
 
   getAttributeLists() {

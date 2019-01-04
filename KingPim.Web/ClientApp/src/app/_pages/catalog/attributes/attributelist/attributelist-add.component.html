@@ -16,7 +16,7 @@
   <h6><strong>Select List</strong></h6>
   <form [formGroup]="angFormValue" novalidate>
     <mat-form-field>
-      <mat-select placeholder="Select Attribute List" formControlName="attributeOptionListId" #attributeOptionListId>
+      <mat-select placeholder="Select Attribute List" formControlName="attributeOptionListId" (click)="getAttributeLists()" #attributeOptionListId>
         <mat-option *ngFor="let attl of attributelist " [value]="attl.id">
           {{attl.name}}
         </mat-option>
