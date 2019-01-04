@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SubCategoryDataService } from '../../../../_services/sub-category-data.service';
 import { SubCategory, AttributeGroup, User, Product } from '../../../../_models';
+import { setTimeout } from 'timers';
 
 @Component({
   selector: 'app-product-edit', templateUrl: './product-edit.component.html'})
@@ -33,13 +34,13 @@ export class ProductEditComponent implements OnInit {
       });
   }
   // to show products oninit and after deletion
-  showProducts() {
-    this.ps
-      .getProducts()
-      .subscribe((data: Product[]) => {
-        this.productData = data;
-      });
-  }
+  //showProducts() {
+  //  this.ps
+  //    .getProducts()
+  //    .subscribe((data: Product[]) => {
+  //      this.productData = data;
+  //    });
+  //}
 
   createForm() {
     this.angForm = this.fb.group({
@@ -63,8 +64,9 @@ export class ProductEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.ps.updateProduct(name, description, subCategoryId, version, editedBy, params['id'])
         .subscribe(_res => {
-      });
-      this.router.navigate(['/catalog']);
+        this.router.navigate(['/catalog']);
+        });
+      
     });
   }
 

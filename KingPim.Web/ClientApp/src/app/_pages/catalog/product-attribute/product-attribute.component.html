@@ -5,41 +5,71 @@
 <div class="container">
   <div class="row">
     <div class="col-sm content-divider">
-
-      <h6 style="background-color:bisque"><strong>Add single attribute values</strong></h6>
-      <form [formGroup]="angForm">
-        <input type="hidden" value="{{data.apId}}" formControlName="productId" #productId />
-        <mat-form-field>
-          <mat-select placeholder="Select Attribute" formControlName="productattributeId" #productattributeId>
-            <mat-option *ngFor="let att of attributes " [value]="att.id">
-              {{att.name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field><br />
-        <mat-form-field>
-          <input matInput type="text" class="form-control" formControlName="value" #value placeholder="Attribute Value" />
-        </mat-form-field>
-        <br />
-        <button mat-raised-button color="secondary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value)">
-          Add Attribute With Value
-        </button>
-      </form>
+      <a class="btn" mat-button color="primary" (click)="show = !show">{{show ? 'Add attribute from predefined list' : 'Add attribute with value'}}</a>
       <hr />
-      <app-product-attributelist></app-product-attributelist>
-    </div>
-    <!--AttributeValues goes here-->
-    <div class="col-sm">
-      <h5>All attributes</h5>
-      <button mat-raised-button color="accent" (click)="showProducts()">Update</button><br />
-      <ul *ngFor="let productvalue of productvalues">
-        <li>{{productvalue.name}}</li>
-        <li *ngFor="let s of productvalue.productAttributeValues">
-          <strong>Attribute:</strong> {{s.productAttributeId}},<strong>Value:</strong> {{s.value}}
-        </li>
-      </ul>
+      <!--Attribute Value-->
+      <div *ngIf="show">
+        <h6 style="background-color:bisque"><strong>Add single attribute values</strong></h6>
+        <form [formGroup]="angForm">
+          <input type="hidden" value="{{data.apId}}" formControlName="productId" #productId />
+          <mat-form-field>
+            <mat-select placeholder="Select Attribute" formControlName="productattributeId" #productattributeId>
+              <mat-option *ngFor="let att of attributes " [value]="att.id">
+                {{att.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br />
+          <mat-form-field>
+            <input matInput type="text" class="form-control" formControlName="value" #value placeholder="Attribute Value" />
+          </mat-form-field>
+          <br />
+          <button mat-raised-button color="secondary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value)">
+            Add Attribute With Value
+          </button>
+        </form>
+      </div>
+      <!--List Attribute-->
+      <div *ngIf="!show">
+        <h6 style="background-color:aliceblue"><strong>Add attribute from predefined list</strong></h6>
+        <form [formGroup]="angForm">
+          <input type="hidden" value="{{data.apId}}" formControlName="productId" #productId />
+          <mat-form-field>
+            <mat-select placeholder="Select List"
+                        [(ngModel)]="selectedValue"
+                        formControlName="productattributeId" #productattributeId>
+              <mat-option *ngFor="let attl of attributelist" [value]="attl.id">
+                {{attl.name}}
+              </mat-option>
 
+            </mat-select>
+          </mat-form-field><br />
+          <p><strong>List Key: </strong>{{selectedValue}}</p>
+          <mat-form-field>
+            <mat-select placeholder="Select One Value" formControlName="value" #value>
+              <mat-option *ngFor="let attlv of attributelistvalue" [value]="attlv.listValue">
+                <strong>List: </strong>{{attlv.attributeOptionListId}}, <strong>Value: </strong>{{attlv.listValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br />
+          <br />
+          <button mat-raised-button color="secondary" (click)="addAttributeValue(productId.value, productattributeId.value, value.value)">
+            Add From Predefined List
+          </button>
+        </form>
+      </div>
     </div>
-  </div>
+        <!--AttributeValues goes here-->
+        <div class="col-sm">
+          <h5>All attributes</h5>
+          <ul *ngFor="let productvalue of productvalues">
+            <li>{{productvalue.name}}</li>
+            <li *ngFor="let s of productvalue.productAttributeValues">
+              <strong>Attribute:</strong> {{s.productAttributeId}},<strong>Value:</strong> {{s.value}}
+            </li>
+          </ul>
+
+        </div>
+      </div>
   <button mat-raised-button color="primary" style="float: right;" (click)="onNoClick()">Close</button>
 </div>
 

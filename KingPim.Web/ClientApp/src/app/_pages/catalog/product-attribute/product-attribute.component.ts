@@ -27,6 +27,7 @@ export class ProductAttributeComponent implements OnInit {
   loading: boolean;
   value = '';
   selectedValue: number;
+  show: boolean = true;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -55,6 +56,7 @@ export class ProductAttributeComponent implements OnInit {
   addAttributeValue(productId, productattributeId, value) {
     this.attv.addAttributevalue(productId, productattributeId, value)
       .subscribe(_res => {
+        this.showProducts();
       });
   }
   showAttv() {
@@ -86,9 +88,24 @@ export class ProductAttributeComponent implements OnInit {
         this.attributes = data;
       });
   }
+  getAttributeList() {
+    this.attl.getAttributeLists()
+      .subscribe((data: AttributeList[]) => {
+        this.attributelist = data;
+      });
+  }
+  getAttributeListValues() {
+    this.attl.getAttributeListValues()
+      .subscribe((data: AttributeListValue[]) => {
+        this.attributelistvalue = data;
+        console.log('Whole List', data);
+      });
+  }
   ngOnInit() {
     this.showProducts();
     this.showAg();
     this.showAtt();
+    this.getAttributeList();
+    this.getAttributeListValues();
   }
 }
